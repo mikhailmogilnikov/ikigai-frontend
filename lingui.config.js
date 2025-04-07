@@ -6,7 +6,7 @@ export default defineConfig({
 
   catalogs: [
     {
-      path: '<rootDir>/src/shared/i18n/locales/{locale}/messages',
+      path: '<rootDir>/src/domains/global/entities/i18n/locales/{locale}/messages',
       include: ['<rootDir>/src'],
       exclude: ['**/node_modules/**'],
     },
