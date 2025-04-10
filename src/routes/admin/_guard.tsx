@@ -1,21 +1,20 @@
-import { createFileRoute, Navigate, Outlet } from '@tanstack/react-router';
+import { createFileRoute, Outlet } from '@tanstack/react-router';
 
-import { useSession } from '~/domains/global/entities/session';
+import { PrivateGuard } from '~/domains/global/entities/session';
+import { AppLayout } from '~/domains/global/widgets/layout';
 
 export const Route = createFileRoute('/admin/_guard')({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  const { isAuthenticated, user } = useSession();
+  console.log('admin guard');
 
-  if (!isAuthenticated) {
-    return <Navigate to='/auth/sign-in' />;
-  }
-
-  if (user?.role !== 'admin') {
-    return <Navigate to='/' />;
-  }
-
-  return <Outlet />;
+  return (
+    <PrivateGuard role='admin'>
+      <AppLayout>
+        <Outlet />
+      </AppLayout>
+    </PrivateGuard>
+  );
 }

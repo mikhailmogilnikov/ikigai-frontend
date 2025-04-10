@@ -1,24 +1,30 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
-import { Session } from '../../model/session.type';
+import { Session, SessionPayload } from '../../model/session.type';
 
 interface SessionState {
   isAuthenticated: Session['isAuthenticated'];
-  user: Session['user'];
+  payload: SessionPayload;
   setIsAuthenticated: (isAuthenticated: Session['isAuthenticated']) => void;
-  setUser: (user: Session['user']) => void;
+  setPayload: (payload: SessionPayload) => void;
+  isInitialized: boolean;
+  setIsInitialized: (isInitialized: boolean) => void;
 }
 
 const useSessionStore = create<SessionState>()(
   devtools((set) => ({
     isAuthenticated: false,
-    user: null,
+    payload: null,
+    isInitialized: false,
     setIsAuthenticated: (isAuthenticated: Session['isAuthenticated']) => {
       set({ isAuthenticated });
     },
-    setUser: (user: Session['user']) => {
-      set({ user });
+    setPayload: (payload: SessionPayload) => {
+      set({ payload });
+    },
+    setIsInitialized: (isInitialized: boolean) => {
+      set({ isInitialized });
     },
   })),
 );

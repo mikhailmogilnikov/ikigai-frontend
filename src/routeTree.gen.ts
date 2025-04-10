@@ -21,6 +21,7 @@ import { Route as AuthGuardSignUpImport } from './routes/auth/_guard/sign-up';
 import { Route as AuthGuardSignInImport } from './routes/auth/_guard/sign-in';
 import { Route as AuthGuardRecoverPasswordImport } from './routes/auth/_guard/recover-password';
 import { Route as AdminGuardDashboardImport } from './routes/admin/_guard/dashboard';
+import { Route as educationGuardTestImport } from './routes/(education)/_guard/test';
 
 // Create Virtual Routes
 
@@ -92,6 +93,12 @@ const AdminGuardDashboardRoute = AdminGuardDashboardImport.update({
   getParentRoute: () => AdminGuardRoute,
 } as any);
 
+const educationGuardTestRoute = educationGuardTestImport.update({
+  id: '/test',
+  path: '/test',
+  getParentRoute: () => educationGuardRoute,
+} as any);
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -138,6 +145,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthGuardImport;
       parentRoute: typeof AuthRoute;
     };
+    '/(education)/_guard/test': {
+      id: '/(education)/_guard/test';
+      path: '/test';
+      fullPath: '/test';
+      preLoaderRoute: typeof educationGuardTestImport;
+      parentRoute: typeof educationGuardImport;
+    };
     '/admin/_guard/dashboard': {
       id: '/admin/_guard/dashboard';
       path: '/dashboard';
@@ -179,10 +193,12 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 interface educationGuardRouteChildren {
+  educationGuardTestRoute: typeof educationGuardTestRoute;
   educationGuardIndexRoute: typeof educationGuardIndexRoute;
 }
 
 const educationGuardRouteChildren: educationGuardRouteChildren = {
+  educationGuardTestRoute: educationGuardTestRoute,
   educationGuardIndexRoute: educationGuardIndexRoute,
 };
 
@@ -246,6 +262,7 @@ export interface FileRoutesByFullPath {
   '/': typeof educationGuardIndexRoute;
   '/admin': typeof AdminGuardRouteWithChildren;
   '/auth': typeof AuthGuardRouteWithChildren;
+  '/test': typeof educationGuardTestRoute;
   '/admin/dashboard': typeof AdminGuardDashboardRoute;
   '/auth/recover-password': typeof AuthGuardRecoverPasswordRoute;
   '/auth/sign-in': typeof AuthGuardSignInRoute;
@@ -255,6 +272,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/admin': typeof AdminGuardRouteWithChildren;
   '/auth': typeof AuthGuardRouteWithChildren;
+  '/test': typeof educationGuardTestRoute;
   '/admin/dashboard': typeof AdminGuardDashboardRoute;
   '/auth/recover-password': typeof AuthGuardRecoverPasswordRoute;
   '/auth/sign-in': typeof AuthGuardSignInRoute;
@@ -270,6 +288,7 @@ export interface FileRoutesById {
   '/admin/_guard': typeof AdminGuardRouteWithChildren;
   '/auth': typeof AuthRouteWithChildren;
   '/auth/_guard': typeof AuthGuardRouteWithChildren;
+  '/(education)/_guard/test': typeof educationGuardTestRoute;
   '/admin/_guard/dashboard': typeof AdminGuardDashboardRoute;
   '/auth/_guard/recover-password': typeof AuthGuardRecoverPasswordRoute;
   '/auth/_guard/sign-in': typeof AuthGuardSignInRoute;
@@ -283,12 +302,21 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/auth'
+    | '/test'
     | '/admin/dashboard'
     | '/auth/recover-password'
     | '/auth/sign-in'
     | '/auth/sign-up';
   fileRoutesByTo: FileRoutesByTo;
-  to: '/admin' | '/auth' | '/admin/dashboard' | '/auth/recover-password' | '/auth/sign-in' | '/auth/sign-up' | '/';
+  to:
+    | '/admin'
+    | '/auth'
+    | '/test'
+    | '/admin/dashboard'
+    | '/auth/recover-password'
+    | '/auth/sign-in'
+    | '/auth/sign-up'
+    | '/';
   id:
     | '__root__'
     | '/(education)'
@@ -297,6 +325,7 @@ export interface FileRouteTypes {
     | '/admin/_guard'
     | '/auth'
     | '/auth/_guard'
+    | '/(education)/_guard/test'
     | '/admin/_guard/dashboard'
     | '/auth/_guard/recover-password'
     | '/auth/_guard/sign-in'
@@ -340,6 +369,7 @@ export const routeTree = rootRoute._addFileChildren(rootRouteChildren)._addFileT
       "filePath": "(education)/_guard.tsx",
       "parent": "/(education)",
       "children": [
+        "/(education)/_guard/test",
         "/(education)/_guard/"
       ]
     },
@@ -370,6 +400,10 @@ export const routeTree = rootRoute._addFileChildren(rootRouteChildren)._addFileT
         "/auth/_guard/sign-in",
         "/auth/_guard/sign-up"
       ]
+    },
+    "/(education)/_guard/test": {
+      "filePath": "(education)/_guard/test.tsx",
+      "parent": "/(education)/_guard"
     },
     "/admin/_guard/dashboard": {
       "filePath": "admin/_guard/dashboard.tsx",

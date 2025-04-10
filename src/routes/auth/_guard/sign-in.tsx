@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/react/macro';
 import { createFileRoute } from '@tanstack/react-router';
 
 import { useSession } from '~/domains/global/entities/session';
@@ -10,19 +11,13 @@ function RouteComponent() {
   const { login } = useSession();
 
   const handleLogin = (role: 'admin' | 'student') => {
+    const studentToken =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImV4cCI6MTc0NTY1NDkyMiwicm9sZSI6InN0dWRlbnQifQ.IA0up6uQFlGNWG-zo7iKHh0DTLEjyI5DMMO8JvWgNfY';
+    const adminToken =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImV4cCI6MTc0NTY1NDkyMiwicm9sZSI6ImFkbWluIn0.QGfAjdzEzjAoozLSePfPawuWJkRanWSlzggnn796Cpw';
+
     login({
-      token: '1234567890',
-      expiresAt: '1234',
-      user: {
-        id: '1234567890',
-        email: 'test@test.com',
-        first_name: 'Test',
-        last_name: 'Test',
-        patronymic: 'Test',
-        phone: '1234567890',
-        join_date: '1234',
-        role,
-      },
+      access_token: role === 'admin' ? adminToken : studentToken,
     });
   };
 
@@ -33,14 +28,14 @@ function RouteComponent() {
           handleLogin('admin');
         }}
       >
-        Login as admin
+        <Trans>Login as admin</Trans>
       </button>
       <button
         onClick={() => {
           handleLogin('student');
         }}
       >
-        Login as student
+        <Trans>Login as student</Trans>
       </button>
     </div>
   );

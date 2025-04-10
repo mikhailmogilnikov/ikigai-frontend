@@ -1,11 +1,11 @@
 import { createRootRoute, Outlet } from '@tanstack/react-router';
 
-import { Providers } from '~/app/providers';
+import { SessionProvider } from '~/domains/global/entities/session';
 
 export const Route = createRootRoute({
   component: () => (
-    <Providers>
+    <SessionProvider>
       <Outlet />
-    </Providers>
+    </SessionProvider>
   ),
 });

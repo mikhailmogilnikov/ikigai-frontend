@@ -1,14 +1,14 @@
-import { User } from '~/domains/global/entities/user';
+import { TokenPayload } from './token-payload.type';
 
 export interface LoginPayload {
-  token: string;
-  expiresAt: string;
-  user: User;
+  access_token: string;
 }
+
+export type SessionPayload = TokenPayload | null;
 
 export interface Session {
   isAuthenticated: boolean;
-  user: User | null;
+  payload: SessionPayload;
   login: (payload: LoginPayload) => void;
   logout: () => void;
 }
