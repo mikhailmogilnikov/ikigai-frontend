@@ -1,38 +1,38 @@
 # IKIGAI Education Platform
 
-### Требования для запуска
+### Prerequisites
 
 - Bun 1.2+
-- Chocolatey (только для Windows)
+- Chocolatey (Windows only)
 
-### Установка зависимостей
+### Installing Dependencies
 
 ```bash
 make i
 ```
 
-### Запуск в режиме разработки
+### Running in Development Mode
 
 ```bash
 make dev
 ```
 
-### Запуск в режиме продакшен-сборки
+### Running a Production Build
 
 ```bash
 make build
 make preview
 ```
 
-### Проверка кода
+### Code Linting
 
 ```bash
 make lint
 ```
 
-### Структура проекта
+### Project Structure
 
 `/src` \
--- `/shared` (Все что переиспользуется в проекте) \
--- `/pages` (Маршруты приложения) \
--- `/domains` – Бизнес-домены приложения
+-- `/shared` (Shared across the project) \
+-- `/routes` (Application routes) \
+-- `/domains` – Application business domains

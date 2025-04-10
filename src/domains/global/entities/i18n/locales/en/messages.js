@@ -1,1 +1,1 @@
-module.exports = { messages: JSON.parse('{"mY42CM":["Hello World"]}') };
+module.exports = { messages: JSON.parse('{}') };
