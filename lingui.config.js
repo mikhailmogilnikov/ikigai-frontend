@@ -3,6 +3,9 @@ import { defineConfig } from '@lingui/cli';
 export default defineConfig({
   locales: ['en', 'ru'],
   sourceLocale: 'ru',
+  fallbackLocales: {
+    default: 'ru',
+  },
 
   catalogs: [
     {

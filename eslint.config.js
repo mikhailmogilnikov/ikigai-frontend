@@ -4,7 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+
 import prettier from 'eslint-plugin-prettier';
 import unusedImports from 'eslint-plugin-unused-imports';
 import importPlugin from 'eslint-plugin-import';
@@ -31,7 +31,6 @@ export default tseslint.config(
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       'react-x': reactX,
-      'react-dom': reactDom,
       prettier: prettier,
       'unused-imports': unusedImports,
       import: importPlugin,
@@ -39,9 +38,9 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       ...reactX.configs['recommended-typescript'].rules,
-      ...reactDom.configs.recommended.rules,
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       '@typescript-eslint/no-unused-vars': 'warn',
+      'react-hooks/exhaustive-deps': 'off',
       'no-console': 'warn',
       'prettier/prettier': 'off',
       'no-unused-vars': 'off',

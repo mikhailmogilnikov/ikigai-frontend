@@ -5,28 +5,36 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && lingui compile",
     "lint": "eslint .",
     "preview": "vite preview",
     "extract": "lingui extract",
-    "extract-clean": "lingui extract --clean"
+    "extract-clean": "lingui extract --clean",
+    "compile": "lingui compile"
   },
   "dependencies": {
+    "@blur-ui/tailwind-themes": "^1.0.6",
     "@lingui/react": "^5.3.0",
     "@lingui/swc-plugin": "^5.5.1",
     "@lingui/vite-plugin": "^5.3.0",
-    "@million/lint": "^1.0.14",
     "@tailwindcss/vite": "^4.1.3",
     "@tanstack/react-query": "^5.72.0",
+    "@tanstack/react-router": "^1.115.2",
+    "clsx": "^2.1.1",
+    "ky": "^1.8.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "tailwind-merge": "^3.2.0",
+    "tailwind-variants": "^1.0.0",
     "tailwindcss": "^4.1.3",
-    "typed-local-store": "^2.0.2"
+    "typed-local-store": "^2.0.2",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",
     "@tanstack/eslint-plugin-query": "^5.72.0",
     "@tanstack/react-query-devtools": "^5.72.0",
+    "@tanstack/router-plugin": "^1.115.2",
     "@types/node": "^22.14.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.1",

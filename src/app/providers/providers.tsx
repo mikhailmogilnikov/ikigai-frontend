@@ -1,14 +1,19 @@
-import { ThemeProvider } from '~/domains/global/entities/theme';
+import { IsolatedThemeHandler } from '~/domains/global/entities/theme';
 import { I18nProvider } from '~/domains/global/entities/i18n';
 
 import { QueryProvider } from './query';
 
-export function Providers({ children }: { children: React.ReactNode }) {
+interface ProvidersProps {
+  children: React.ReactNode;
+}
+
+export function Providers({ children }: ProvidersProps) {
   return (
-    <QueryProvider>
-      <I18nProvider>
-        <ThemeProvider>{children}</ThemeProvider>
-      </I18nProvider>
-    </QueryProvider>
+    <>
+      <IsolatedThemeHandler />
+      <QueryProvider>
+        <I18nProvider>{children}</I18nProvider>
+      </QueryProvider>
+    </>
   );
 }

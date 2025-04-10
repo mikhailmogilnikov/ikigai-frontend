@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 @import './scrollbar.css';
+@plugin '../../domains/global/entities/theme/lib/utils/theme-plugin.ts';
+@plugin 'tailwindcss-motion';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
