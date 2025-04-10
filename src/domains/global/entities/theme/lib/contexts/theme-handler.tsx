@@ -34,7 +34,7 @@ export function IsolatedThemeHandler() {
       root.classList.add(theme);
       setResolvedTheme(theme);
     }
-  }, []);
+  }, [theme, setResolvedTheme]);
 
   return null;
 }

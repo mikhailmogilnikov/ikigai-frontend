@@ -6,12 +6,17 @@ import { DesktopLayout } from './desktop';
 
 interface AppLayoutProps {
   children: React.ReactNode;
+  header: React.ReactNode;
 }
 
-export function AppLayout({ children }: AppLayoutProps) {
-  const isMobile = useMediaQuery('(max-width: 768px)');
+export function AppLayout({ children, header }: AppLayoutProps) {
+  const isMobile = useMediaQuery('(max-width: 767px)');
 
   const childrenMemo = useMemo(() => children, [children]);
 
-  return isMobile ? <MobileLayout>{childrenMemo}</MobileLayout> : <DesktopLayout>{childrenMemo}</DesktopLayout>;
+  return isMobile ? (
+    <MobileLayout>{childrenMemo}</MobileLayout>
+  ) : (
+    <DesktopLayout header={header}>{childrenMemo}</DesktopLayout>
+  );
 }

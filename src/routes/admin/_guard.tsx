@@ -12,7 +12,7 @@ function RouteComponent() {
 
   return (
     <PrivateGuard role='admin'>
-      <AppLayout>
+      <AppLayout header={<>d</>}>
         <Outlet />
       </AppLayout>
     </PrivateGuard>

@@ -1,5 +1,5 @@
 module.exports = {
   messages: JSON.parse(
-    '{"U3pytU":["Admin"],"Lgu9ir":["Hello \\"/(education)/_education/\\"!"],"Jc4tfZ":["Hello \\"/(education)/_guard/test\\"!"],"X6ussB":["Hello \\"/admin/dashboard\\"!"],"+4sO8L":["Login as admin"],"vB68mK":["Login as student"],"nOhz3x":["Logout"],"5lWFkC":["Sign in"],"NnH3pK":["Test"]}',
+    '{"jjFx10":["Header Close"],"Jc4tfZ":["Hello \\"/(education)/_guard/test\\"!"],"X6ussB":["Hello \\"/admin/dashboard\\"!"],"+4sO8L":["Login as admin"],"vB68mK":["Login as student"],"nOhz3x":["Logout"],"WPSnau":["Open Header"],"uWi2Q+":["Sidebar"],"h1GsJy":["Sidebar Close"],"NnH3pK":["Test"]}',
   ),
 };

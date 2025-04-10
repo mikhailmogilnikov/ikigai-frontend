@@ -8,6 +8,36 @@
 @theme {
   --color-black: #000;
   --color-white: #fff;
+
+  --spring-easing: linear(
+    0,
+    0.0039 0.87%,
+    0.0195,
+    0.0446,
+    0.0766 4.35%,
+    0.1546 6.68%,
+    0.4668 15.1%,
+    0.5684 18.29%,
+    0.648 21.19%,
+    0.7215,
+    0.7817 27.58%,
+    0.8339 31.06%,
+    0.8776 34.84%,
+    0.8964 36.87%,
+    0.9147,
+    0.9298,
+    0.9424 43.84%,
+    0.954,
+    0.9633 49.06%,
+    0.9723,
+    0.9791 55.45%,
+    0.9888 62.42%,
+    0.9949 71.13%,
+    0.9982 82.45%,
+    0.9997 99.87%
+  );
+
+  --ease-snappy: var(--spring-easing);
 }
 
 @layer utilities {
@@ -16,7 +46,7 @@
   }
 
   *:focus-visible {
-    outline: 2px solid var(--theme-color-foreground, #4f46e5);
+    outline: 2px solid var(--theme-color-focus, #4f46e5);
     outline-offset: 2px;
   }
 }

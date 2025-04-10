@@ -1,9 +1,9 @@
 import { Trans } from '@lingui/react/macro';
 import { createFileRoute, Link } from '@tanstack/react-router';
 
-import { EducationHeader } from '~/domains/education/widgets/header';
 import { useSession } from '~/domains/global/entities/session';
 import { useAppLayout } from '~/domains/global/widgets/layout/lib/hooks/use-app-layout';
+import { Button } from '~/shared/ui/primitives/button/button';
 import { Flex } from '~/shared/ui/primitives/flex';
 
 export const Route = createFileRoute('/(education)/_guard/')({
@@ -12,32 +12,12 @@ export const Route = createFileRoute('/(education)/_guard/')({
 
 function RouteComponent() {
   const { logout } = useSession();
-  const { setHeader, setSidebar } = useAppLayout();
-
-  console.log('education guard');
+  const { setSidebar } = useAppLayout();
 
   return (
-    <Flex col wrap>
-      <Link to='/test'>
-        <Trans>Test</Trans>
-      </Link>
+    <Flex col>
       <button onClick={logout}>
         <Trans>Logout</Trans>
-      </button>
-      <button
-        onClick={() => {
-          setHeader(<EducationHeader />);
-        }}
-      >
-        <Trans>Open Header</Trans>
-      </button>
-
-      <button
-        onClick={() => {
-          setHeader(null);
-        }}
-      >
-        <Trans>Header Close</Trans>
       </button>
 
       <button
@@ -54,6 +34,17 @@ function RouteComponent() {
       >
         <Trans>Sidebar Close</Trans>
       </button>
+
+      <Button
+        as={Link}
+        color='primary'
+        className='w-30'
+        to='/courses/$course/lessons/$lesson'
+        params={{ course: '1', lesson: '2' } as unknown as true}
+      >
+        <Trans>Course 1</Trans>
+      </Button>
+
       <div className='h-200 bg-default w-20' />
       <div className='h-200 bg-default w-20' />
     </Flex>

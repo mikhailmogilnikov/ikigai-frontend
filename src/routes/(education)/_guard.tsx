@@ -1,5 +1,6 @@
 import { createFileRoute, Outlet } from '@tanstack/react-router';
 
+import { EducationHeader } from '~/domains/education/widgets/header';
 import { PrivateGuard } from '~/domains/global/entities/session';
 import { AppLayout } from '~/domains/global/widgets/layout';
 
@@ -10,7 +11,7 @@ export const Route = createFileRoute('/(education)/_guard')({
 function RouteComponent() {
   return (
     <PrivateGuard role='student'>
-      <AppLayout>
+      <AppLayout header={<EducationHeader />}>
         <Outlet />
       </AppLayout>
     </PrivateGuard>

@@ -10,6 +10,8 @@ const LightColors = {
     },
     default: 'hsl(0, 0%, 100%)',
     divider: 'hsl(0, 0%, 85%)',
+    primary: { color: 'hsl(348, 93%, 60%)', foreground: 'hsl(0, 0%, 100%)' },
+    focus: 'hsl(348, 93%, 60%)',
   },
 } as const satisfies ThemeConfig['themes']['light'];
 
@@ -20,6 +22,8 @@ const DarkColors = {
     foreground: { color: 'hsl(0, 0%, 100%)', generatePalette: false },
     default: 'hsl(0, 0%, 10%)',
     divider: 'hsl(0, 0%, 20%)',
+    primary: { color: 'hsl(348, 71%, 58%)', foreground: 'hsl(0, 0%, 100%)' },
+    focus: 'hsl(348, 71%, 58%)',
   },
 } as const satisfies ThemeConfig['themes']['dark'];
 

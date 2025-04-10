@@ -5,9 +5,5 @@ interface MobileLayoutProps {
 }
 
 export function MobileLayout({ children }: MobileLayoutProps) {
-  return (
-    <Flex>
-      <Flex>{children}</Flex>
-    </Flex>
-  );
+  return <Flex>{children}</Flex>;
 }

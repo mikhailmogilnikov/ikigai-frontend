@@ -6,14 +6,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: ru\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
-#: src/routes/(education)/_guard/index.tsx:29
-msgid "Admin"
-msgstr "Admin"
-
-#: src/routes/(education)/_guard/index.tsx:16
-msgid "Hello \"/(education)/_education/\"!"
-msgstr "Hello \"/(education)/_education/\"!"
+#: src/routes/(education)/_guard/index.tsx:40
+msgid "Header Close"
+msgstr "Header Close"
 
 #: src/routes/(education)/_guard/test.tsx:11
 msgid "Hello \"/(education)/_guard/test\"!"
@@ -32,14 +34,22 @@ msgid "Login as student"
 msgstr "Login as student"
 
 #: src/routes/admin/_guard/dashboard.tsx:17
-#: src/routes/(education)/_guard/index.tsx:35
+#: src/routes/(education)/_guard/index.tsx:25
 msgid "Logout"
 msgstr "Logout"
 
-#: src/routes/(education)/_guard/index.tsx:22
-msgid "Sign in"
-msgstr "Sign in"
-
 #: src/routes/(education)/_guard/index.tsx:32
+msgid "Open Header"
+msgstr "Open Header"
+
+#: src/routes/(education)/_guard/index.tsx:48
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: src/routes/(education)/_guard/index.tsx:55
+msgid "Sidebar Close"
+msgstr "Sidebar Close"
+
+#: src/routes/(education)/_guard/index.tsx:22
 msgid "Test"
 msgstr "Test"
