@@ -41,7 +41,7 @@ export function DesktopLayout({ children, header }: DesktopLayoutProps) {
         <div
           id='sidebar-container'
           className={clsx(
-            'ease-snappy shrink-0 overflow-hidden transition-[width,margin,opacity,translate] duration-200',
+            'ease-snappy duration-400 shrink-0 overflow-hidden transition-[width,margin,opacity,translate]',
             sidebarVisible ? 'mr-2 w-60 translate-x-0 opacity-100' : 'mr-0 w-0 -translate-x-1/2 opacity-0',
           )}
         >

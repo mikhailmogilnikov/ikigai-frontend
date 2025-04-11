@@ -1,8 +1,9 @@
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { Link } from '@tanstack/react-router';
 
 import { useTheme } from '~/domains/global/entities/theme';
+import { LogoIcon } from '~/shared/assets/svg/logo';
 import { Flex } from '~/shared/ui/primitives/flex';
-import { Typo } from '~/shared/ui/primitives/typo';
 
 export function EducationHeader() {
   const { theme, setTheme } = useTheme();
@@ -11,9 +12,10 @@ export function EducationHeader() {
     <>
       <Flex>
         <Link to='/'>
-          <Typo as='h1' weight='bold' size='xl'>
-            IKIGAI
-          </Typo>
+          <VisuallyHidden>
+            <h1 id='logo'>IKIGAI</h1>
+          </VisuallyHidden>
+          <LogoIcon className='h-6' aria-labelledby='logo' />
         </Link>
       </Flex>
       <Flex>

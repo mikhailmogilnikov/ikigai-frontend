@@ -13,12 +13,16 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/routes/(education)/_guard/index.tsx:40
-msgid "Header Close"
+#: src/domains/global/widgets/error-page/ui/default.tsx:19
+msgid "<0>Попробуйте</0> <1>обновить страницу</1> <2>или</2> <3>вернуться на главную</3>"
 msgstr ""
 
-#: src/routes/(education)/_guard/test.tsx:11
-msgid "Hello \"/(education)/_guard/test\"!"
+#: src/routes/(education)/_guard/index.tsx:29
+msgid "Course 1"
+msgstr ""
+
+#: src/routes/(education)/_guard/courses/$course/_layout/lessons/$lesson.tsx:18
+msgid "Course 2"
 msgstr ""
 
 #: src/routes/admin/_guard/dashboard.tsx:15
@@ -34,22 +38,18 @@ msgid "Login as student"
 msgstr ""
 
 #: src/routes/admin/_guard/dashboard.tsx:17
-#: src/routes/(education)/_guard/index.tsx:25
+#: src/routes/(education)/_guard/index.tsx:20
 msgid "Logout"
 msgstr ""
 
-#: src/routes/(education)/_guard/index.tsx:32
-msgid "Open Header"
+#: src/domains/global/widgets/not-found/ui/index.tsx:12
+msgid "Вернуться на главную"
 msgstr ""
 
-#: src/routes/(education)/_guard/index.tsx:48
-msgid "Sidebar"
+#: src/domains/global/widgets/error-page/ui/default.tsx:15
+msgid "Произошла неизвестная ошибка"
 msgstr ""
 
-#: src/routes/(education)/_guard/index.tsx:55
-msgid "Sidebar Close"
-msgstr ""
-
-#: src/routes/(education)/_guard/index.tsx:22
-msgid "Test"
+#: src/domains/global/widgets/not-found/ui/index.tsx:9
+msgid "Страница не найдена"
 msgstr ""

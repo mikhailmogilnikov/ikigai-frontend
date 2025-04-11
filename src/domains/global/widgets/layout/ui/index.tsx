@@ -15,7 +15,7 @@ export function AppLayout({ children, header }: AppLayoutProps) {
   const childrenMemo = useMemo(() => children, [children]);
 
   return isMobile ? (
-    <MobileLayout>{childrenMemo}</MobileLayout>
+    <MobileLayout header={header}>{childrenMemo}</MobileLayout>
   ) : (
     <DesktopLayout header={header}>{childrenMemo}</DesktopLayout>
   );
