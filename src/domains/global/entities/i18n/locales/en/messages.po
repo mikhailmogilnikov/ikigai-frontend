@@ -17,14 +17,6 @@ msgstr ""
 msgid "<0>Попробуйте</0> <1>обновить страницу</1> <2>или</2> <3>вернуться на главную</3>"
 msgstr ""
 
-#: src/routes/(education)/_guard/index.tsx:29
-msgid "Course 1"
-msgstr ""
-
-#: src/routes/(education)/_guard/courses/$course/_layout/lessons/$lesson.tsx:18
-msgid "Course 2"
-msgstr ""
-
 #: src/routes/admin/_guard/dashboard.tsx:15
 msgid "Hello \"/admin/dashboard\"!"
 msgstr ""
@@ -38,7 +30,6 @@ msgid "Login as student"
 msgstr ""
 
 #: src/routes/admin/_guard/dashboard.tsx:17
-#: src/routes/(education)/_guard/index.tsx:20
 msgid "Logout"
 msgstr ""
 
@@ -46,10 +37,38 @@ msgstr ""
 msgid "Вернуться на главную"
 msgstr ""
 
+#: src/domains/global/features/logout/ui/button.tsx:13
+msgid "Выйти из аккаунта"
+msgstr ""
+
+#: src/domains/education/widgets/menu/ui/navigation.tsx:52
+msgid "История транзакций"
+msgstr ""
+
+#: src/domains/education/widgets/menu/ui/navigation.tsx:32
+msgid "Магазин курсов"
+msgstr ""
+
+#: src/domains/education/widgets/menu/ui/index.tsx:47
+msgid "Меню"
+msgstr ""
+
+#: src/domains/education/widgets/menu/ui/navigation.tsx:22
+msgid "Мои курсы"
+msgstr ""
+
 #: src/domains/global/widgets/error-page/ui/default.tsx:15
 msgid "Произошла неизвестная ошибка"
 msgstr ""
 
+#: src/domains/education/widgets/menu/ui/navigation.tsx:42
+msgid "Профиль"
+msgstr ""
+
 #: src/domains/global/widgets/not-found/ui/index.tsx:9
 msgid "Страница не найдена"
+msgstr ""
+
+#: src/domains/education/widgets/menu/ui/settings.tsx:22
+msgid "Тема оформления"
 msgstr ""

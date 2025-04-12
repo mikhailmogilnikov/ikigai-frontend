@@ -32,7 +32,7 @@ export function EducationMenu() {
     <>
       <button
         onClick={handleOpenChange}
-        className='hover:bg-default-200 dark:hover:bg-default-100 -mr-2 flex cursor-pointer items-center gap-2 rounded-md p-0.5 pl-2 transition-colors ease-linear'
+        className='hover:bg-default-50 dark:hover:bg-default-100 -mr-2 flex cursor-pointer items-center gap-2 rounded-md p-0.5 pl-2 transition-colors ease-linear'
       >
         <PiCaretDownBold
           className='size-3 opacity-40 transition-transform data-[open=true]:rotate-180'

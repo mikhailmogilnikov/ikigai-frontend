@@ -1,10 +1,33 @@
-import { Trans } from '@lingui/react/macro';
+import { Trans } from '@lingui/react';
 import { Link } from '@tanstack/react-router';
 import { PiBookBold, PiCreditCardBold, PiShoppingCartBold, PiUserBold } from 'react-icons/pi';
 
 import { Option } from '~/shared/ui/primitives/option';
 import { OptionList, OptionListItem } from '~/shared/ui/primitives/option-list';
 import { Typo } from '~/shared/ui/primitives/typo';
+
+const navigationItems = [
+  {
+    icon: PiBookBold,
+    label: 'Мои курсы',
+    to: '/',
+  },
+  {
+    icon: PiShoppingCartBold,
+    label: 'Магазин курсов',
+    to: '/shop',
+  },
+  {
+    icon: PiUserBold,
+    label: 'Профиль',
+    to: '/profile',
+  },
+  {
+    icon: PiCreditCardBold,
+    label: 'История транзакций',
+    to: '/transactions',
+  },
+];
 
 interface MenuNavigationProps {
   closeMenu: () => void;
@@ -15,45 +38,22 @@ export function MenuNavigation(props: MenuNavigationProps) {
 
   return (
     <OptionList title='Навигация'>
-      <Link to='/' className='focus-visible:-outline-offset-6 w-full rounded-lg' onClick={closeMenu}>
-        <OptionListItem pressable>
-          <Option icon={<PiBookBold className='size-4 opacity-50' />}>
-            <Typo>
-              <Trans>Мои курсы</Trans>
-            </Typo>
-          </Option>
-        </OptionListItem>
-      </Link>
-
-      <Link to='/shop' className='focus-visible:-outline-offset-6 w-full rounded-lg' onClick={closeMenu}>
-        <OptionListItem pressable>
-          <Option icon={<PiShoppingCartBold className='size-4 opacity-50' />}>
-            <Typo>
-              <Trans>Магазин курсов</Trans>
-            </Typo>
-          </Option>
-        </OptionListItem>
-      </Link>
-
-      <Link to='/profile' className='focus-visible:-outline-offset-6 w-full rounded-lg' onClick={closeMenu}>
-        <OptionListItem pressable>
-          <Option icon={<PiUserBold className='size-4 opacity-50' />}>
-            <Typo>
-              <Trans>Профиль</Trans>
-            </Typo>
-          </Option>
-        </OptionListItem>
-      </Link>
-
-      <Link to='/transactions' className='focus-visible:-outline-offset-6 w-full rounded-lg' onClick={closeMenu}>
-        <OptionListItem pressable>
-          <Option icon={<PiCreditCardBold className='size-4 opacity-50' />}>
-            <Typo>
-              <Trans>История транзакций</Trans>
-            </Typo>
-          </Option>
-        </OptionListItem>
-      </Link>
+      {navigationItems.map((item) => (
+        <Link
+          to={item.to}
+          key={item.to}
+          className='focus-visible:-outline-offset-6 w-full rounded-lg'
+          onClick={closeMenu}
+        >
+          <OptionListItem pressable>
+            <Option icon={<item.icon className='size-4 opacity-50' />}>
+              <Typo>
+                <Trans id={item.label} message={item.label} />
+              </Typo>
+            </Option>
+          </OptionListItem>
+        </Link>
+      ))}
     </OptionList>
   );
 }

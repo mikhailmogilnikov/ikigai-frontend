@@ -17,14 +17,6 @@ msgstr ""
 msgid "<0>Попробуйте</0> <1>обновить страницу</1> <2>или</2> <3>вернуться на главную</3>"
 msgstr "<0>Попробуйте</0> <1>обновить страницу</1> <2>или</2> <3>вернуться на главную</3>"
 
-#: src/routes/(education)/_guard/index.tsx:29
-msgid "Course 1"
-msgstr "Course 1"
-
-#: src/routes/(education)/_guard/courses/$course/_layout/lessons/$lesson.tsx:18
-msgid "Course 2"
-msgstr "Course 2"
-
 #: src/routes/admin/_guard/dashboard.tsx:15
 msgid "Hello \"/admin/dashboard\"!"
 msgstr "Hello \"/admin/dashboard\"!"
@@ -38,7 +30,6 @@ msgid "Login as student"
 msgstr "Login as student"
 
 #: src/routes/admin/_guard/dashboard.tsx:17
-#: src/routes/(education)/_guard/index.tsx:20
 msgid "Logout"
 msgstr "Logout"
 
@@ -46,10 +37,38 @@ msgstr "Logout"
 msgid "Вернуться на главную"
 msgstr "Вернуться на главную"
 
+#: src/domains/global/features/logout/ui/button.tsx:13
+msgid "Выйти из аккаунта"
+msgstr "Выйти из аккаунта"
+
+#: src/domains/education/widgets/menu/ui/navigation.tsx:52
+msgid "История транзакций"
+msgstr "История транзакций"
+
+#: src/domains/education/widgets/menu/ui/navigation.tsx:32
+msgid "Магазин курсов"
+msgstr "Магазин курсов"
+
+#: src/domains/education/widgets/menu/ui/index.tsx:47
+msgid "Меню"
+msgstr "Меню"
+
+#: src/domains/education/widgets/menu/ui/navigation.tsx:22
+msgid "Мои курсы"
+msgstr "Мои курсы"
+
 #: src/domains/global/widgets/error-page/ui/default.tsx:15
 msgid "Произошла неизвестная ошибка"
 msgstr "Произошла неизвестная ошибка"
 
+#: src/domains/education/widgets/menu/ui/navigation.tsx:42
+msgid "Профиль"
+msgstr "Профиль"
+
 #: src/domains/global/widgets/not-found/ui/index.tsx:9
 msgid "Страница не найдена"
 msgstr "Страница не найдена"
+
+#: src/domains/education/widgets/menu/ui/settings.tsx:22
+msgid "Тема оформления"
+msgstr "Тема оформления"

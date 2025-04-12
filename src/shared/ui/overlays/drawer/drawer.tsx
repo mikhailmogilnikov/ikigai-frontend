@@ -25,7 +25,7 @@ export const Drawer = (props: DrawerProps) => {
       {...rest}
     >
       <VaulDrawer.Portal>
-        <VaulDrawer.Overlay className='z-8900 fixed inset-0 bg-black/40' />
+        <VaulDrawer.Overlay className='z-8900 fixed inset-0 bg-black/60' />
 
         <VaulDrawer.Content className='bg-default-50 z-9000 fixed bottom-0 left-0 right-0 h-fit max-h-[95svh] rounded-t-lg outline-none'>
           <div className='z-10 overflow-hidden'>

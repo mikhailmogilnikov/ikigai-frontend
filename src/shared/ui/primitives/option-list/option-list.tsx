@@ -30,7 +30,14 @@ export function OptionListItem(props: OptionListItemProps) {
   const { children, pressable } = props;
 
   return (
-    <Flex as='li' className={cn('w-full p-4', pressable && 'cursor-pointer')}>
+    <Flex
+      as='li'
+      className={cn(
+        'w-full p-4',
+        pressable &&
+          'hover:bg-foreground/10 dark:hover:bg-foreground/5 active:bg-foreground/15 dark:active:bg-foreground/10 cursor-pointer transition-colors',
+      )}
+    >
       {children}
     </Flex>
   );
