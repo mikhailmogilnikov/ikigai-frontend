@@ -1,4 +1,5 @@
-import { Trans } from '@lingui/react';
+import { msg } from '@lingui/core/macro';
+import { useLingui } from '@lingui/react/macro';
 import { Link } from '@tanstack/react-router';
 import { PiBookBold, PiCreditCardBold, PiShoppingCartBold, PiUserBold } from 'react-icons/pi';
 
@@ -9,22 +10,22 @@ import { Typo } from '~/shared/ui/primitives/typo';
 const navigationItems = [
   {
     icon: PiBookBold,
-    label: 'Мои курсы',
+    label: msg`Мои курсы`,
     to: '/',
   },
   {
     icon: PiShoppingCartBold,
-    label: 'Магазин курсов',
+    label: msg`Магазин курсов`,
     to: '/shop',
   },
   {
     icon: PiUserBold,
-    label: 'Профиль',
+    label: msg`Профиль`,
     to: '/profile',
   },
   {
     icon: PiCreditCardBold,
-    label: 'История транзакций',
+    label: msg`История транзакций`,
     to: '/transactions',
   },
 ];
@@ -35,6 +36,8 @@ interface MenuNavigationProps {
 
 export function MenuNavigation(props: MenuNavigationProps) {
   const { closeMenu } = props;
+
+  const { i18n } = useLingui();
 
   return (
     <OptionList title='Навигация'>
@@ -47,9 +50,7 @@ export function MenuNavigation(props: MenuNavigationProps) {
         >
           <OptionListItem pressable>
             <Option icon={<item.icon className='size-4 opacity-50' />}>
-              <Typo>
-                <Trans id={item.label} message={item.label} />
-              </Typo>
+              <Typo>{i18n._(item.label)}</Typo>
             </Option>
           </OptionListItem>
         </Link>

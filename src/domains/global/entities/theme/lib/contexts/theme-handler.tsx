@@ -1,12 +1,14 @@
 import { useEffect } from 'react';
 
 import { useTheme } from '../hooks/use-theme';
+import { AppThemes } from '../../config/themes';
 
 export function IsolatedThemeHandler() {
   const { theme, setResolvedTheme } = useTheme();
 
   useEffect(() => {
     const root = window.document.documentElement;
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
 
     root.classList.remove('light', 'dark');
 
@@ -14,6 +16,15 @@ export function IsolatedThemeHandler() {
       const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
       root.classList.add(systemTheme);
+
+      if (metaThemeColor) {
+        metaThemeColor.setAttribute(
+          'content',
+          systemTheme === 'dark'
+            ? AppThemes.themes.dark.colors.background.color
+            : AppThemes.themes.light.colors.background.color,
+        );
+      }
 
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -23,6 +34,10 @@ export function IsolatedThemeHandler() {
         root.classList.remove('light', 'dark');
         root.classList.add(newSystemTheme);
         setResolvedTheme(newSystemTheme);
+
+        if (metaThemeColor) {
+          metaThemeColor.setAttribute('content', newSystemTheme === 'dark' ? '#000000' : '#ffffff');
+        }
       };
 
       mediaQuery.addEventListener('change', handleChangeSystemTheme);
@@ -33,6 +48,15 @@ export function IsolatedThemeHandler() {
     } else {
       root.classList.add(theme);
       setResolvedTheme(theme);
+
+      if (metaThemeColor) {
+        metaThemeColor.setAttribute(
+          'content',
+          theme === 'dark'
+            ? AppThemes.themes.dark.colors.background.color
+            : AppThemes.themes.light.colors.background.color,
+        );
+      }
     }
   }, [theme, setResolvedTheme]);
 
