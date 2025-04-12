@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import './scrollbar.css';
+@import '../../shared/assets/fonts/gilroy/stylesheet.css';
 @plugin '../../domains/global/entities/theme/lib/utils/theme-plugin.ts';
 @plugin 'tailwindcss-motion';
 
@@ -49,4 +50,12 @@
     outline: 2px solid var(--theme-color-focus, #4f46e5);
     outline-offset: 2px;
   }
+}
+
+:root {
+  --font-family-sans: 'Gilroy', sans-serif;
+}
+
+body {
+  font-family: var(--font-family-sans);
 }

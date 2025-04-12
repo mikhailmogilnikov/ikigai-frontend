@@ -1,5 +1,4 @@
-import { Trans } from '@lingui/react/macro';
-import { createFileRoute, Link, useParams } from '@tanstack/react-router';
+import { createFileRoute, useParams } from '@tanstack/react-router';
 
 import { PageLoader } from '~/shared/ui/common/page-loader';
 
@@ -14,9 +13,6 @@ function RouteComponent() {
   return (
     <div className='mx-auto w-full max-w-screen-md'>
       Hello course {course} lesson {lesson}
-      <Link to='/courses/$course/lessons/$lesson' params={{ course: '1', lesson: '3' }}>
-        <Trans>Course 2</Trans>
-      </Link>
     </div>
   );
 }

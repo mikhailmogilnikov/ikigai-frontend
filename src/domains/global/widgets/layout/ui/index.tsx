@@ -1,6 +1,8 @@
 import { useMediaQuery } from 'usehooks-ts';
 import { useMemo } from 'react';
 
+import { BREAKPOINT_MOBILE } from '~/shared/config/constants';
+
 import { MobileLayout } from './mobile';
 import { DesktopLayout } from './desktop';
 
@@ -10,7 +12,7 @@ interface AppLayoutProps {
 }
 
 export function AppLayout({ children, header }: AppLayoutProps) {
-  const isMobile = useMediaQuery('(max-width: 767px)');
+  const isMobile = useMediaQuery(BREAKPOINT_MOBILE);
 
   const childrenMemo = useMemo(() => children, [children]);
 

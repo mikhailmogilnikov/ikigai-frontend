@@ -1,6 +1,7 @@
 import { Skeleton as SkeletonComponent, SkeletonProps } from '@blur-ui/skeleton';
 
 import { cn } from '~/shared/lib/utils';
+
 export function Skeleton(props: SkeletonProps) {
   const { className, shadowClassName, ...rest } = props;
 

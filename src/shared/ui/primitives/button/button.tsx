@@ -11,7 +11,7 @@ type ButtonBaseProps = HTMLAttributes<HTMLButtonElement> & ButtonTvProps;
 export type ButtonProps<C extends ElementType> = PolymorphicComponentProps<C, ButtonBaseProps>;
 
 export function Button<T extends ElementType = 'button'>(props: ButtonProps<T>) {
-  const { className, as: Component = 'button', isLoading, isDisabled, color, size, children, ...rest } = props;
+  const { className, as: Component = 'button', isLoading, isDisabled, color, size, children, variant, ...rest } = props;
 
   const ButtonClassName = buttonTV({
     className,
@@ -19,6 +19,7 @@ export function Button<T extends ElementType = 'button'>(props: ButtonProps<T>) 
     isDisabled,
     color,
     size,
+    variant,
   });
 
   return (

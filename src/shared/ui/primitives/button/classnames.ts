@@ -3,10 +3,11 @@ import { VariantProps } from 'tailwind-variants';
 import { tv } from '~/shared/lib/utils';
 
 export const buttonTV = tv({
-  base: 'inline-flex items-center justify-center font-medium transition-[scale,color,background,filter] cursor-pointer hover:brightness-90 active:scale-95',
+  base: 'inline-flex gap-2 items-center justify-center font-medium transition-[scale,color,background,filter] cursor-pointer active:scale-95 shadow-sm',
   variants: {
     variant: {
       default: 'bg-default text-default-foreground',
+      ghost: '',
     },
     color: {
       default: 'bg-default text-default-foreground',
@@ -25,6 +26,13 @@ export const buttonTV = tv({
       true: 'opacity-50 pointer-events-none active:scale-100 cursor-default',
     },
   },
+  compoundVariants: [
+    {
+      variant: 'ghost',
+      color: 'default',
+      className: 'bg-transparent hover:bg-default-100 shadow-none',
+    },
+  ],
   defaultVariants: {
     color: 'default',
     size: 'md',

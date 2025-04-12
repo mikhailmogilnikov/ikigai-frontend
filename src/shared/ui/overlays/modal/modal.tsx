@@ -6,7 +6,7 @@ import { ScrollArea, ScrollAreaProps } from '~/shared/ui/primitives/scrollarea';
 
 import { modalTV, ModalVariants } from './classnames';
 
-interface ModalProps extends Dialog.DialogProps, ModalVariants {
+export interface ModalProps extends Dialog.DialogProps, ModalVariants {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   /**
@@ -61,7 +61,7 @@ export function Modal(props: ModalProps) {
   );
 }
 
-interface ModalHeaderProps extends Dialog.DialogTitleProps {
+export interface ModalHeaderProps extends Dialog.DialogTitleProps {
   wrapperProps?: React.HTMLAttributes<HTMLDivElement>;
   restContent?: React.ReactNode;
 }
@@ -80,7 +80,9 @@ export function ModalHeader(props: ModalHeaderProps) {
   );
 }
 
-export function ModalContent(props: ScrollAreaProps) {
+export type ModalContentProps = ScrollAreaProps;
+
+export function ModalContent(props: ModalContentProps) {
   const { children, ...rest } = props;
 
   return (
@@ -98,16 +100,16 @@ export function ModalContent(props: ScrollAreaProps) {
   );
 }
 
-interface ModalFooterProps extends React.HTMLAttributes<HTMLDivElement> {
-  disableCancel?: boolean;
+export interface ModalFooterProps extends React.HTMLAttributes<HTMLDivElement> {
+  cancelButton?: boolean;
 }
 
 export function ModalFooter(props: ModalFooterProps) {
-  const { disableCancel = false, children, ...rest } = props;
+  const { cancelButton = false, children, ...rest } = props;
 
   return (
     <div className='flex shrink-0 gap-4 px-4 pb-4' {...rest}>
-      {!disableCancel && (
+      {cancelButton && (
         <Dialog.Close asChild>
           <button className='bg-default w-full cursor-pointer rounded-xl px-4 py-2 font-medium shadow'>Отмена</button>
         </Dialog.Close>

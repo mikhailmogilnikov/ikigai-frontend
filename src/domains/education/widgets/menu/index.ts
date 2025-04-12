@@ -1,0 +1,1 @@
+export { EducationMenu } from './ui';
