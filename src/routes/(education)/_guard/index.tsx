@@ -1,3 +1,4 @@
+import { useLingui } from '@lingui/react/macro';
 import { createFileRoute } from '@tanstack/react-router';
 
 import { CoursesSection } from '~/domains/education/widgets/course-section';
@@ -10,11 +11,13 @@ export const Route = createFileRoute('/(education)/_guard/')({
 });
 
 function RouteComponent() {
+  const { t } = useLingui();
+
   return (
     <Flex col>
-      <CoursesSection title='В процессе изучения' />
-      <CoursesSection title='Не начатые' />
-      <CoursesSection title='Завершенные' />
+      <CoursesSection title={t`В процессе изучения`} />
+      <CoursesSection title={t`Не начатые`} />
+      <CoursesSection title={t`Завершенные`} />
     </Flex>
   );
 }

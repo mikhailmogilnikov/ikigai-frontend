@@ -27,7 +27,7 @@ export const Drawer = (props: DrawerProps) => {
       <VaulDrawer.Portal>
         <VaulDrawer.Overlay className='z-8900 fixed inset-0 bg-black/60' />
 
-        <VaulDrawer.Content className='bg-default-50 z-9000 fixed bottom-0 left-0 right-0 h-fit max-h-[95svh] rounded-t-lg outline-none'>
+        <VaulDrawer.Content className='bg-default-50 z-9000 fixed bottom-0 left-0 right-0 h-fit max-h-[95svh] rounded-t-lg outline-none focus:outline-none'>
           <div className='z-10 overflow-hidden'>
             {!hideThumb && (
               <div className='fixed left-0 right-0 top-0 flex h-6 items-center justify-center' id='drawer-header'>
