@@ -23,7 +23,7 @@ const DarkColors = {
     foreground: { color: 'hsl(0, 0%, 100%)', generatePalette: false },
     default: 'hsl(0, 0%, 10%)',
     divider: 'hsl(0, 0%, 20%)',
-    primary: { color: 'hsl(348, 71%, 58%)', foreground: 'hsl(0, 0%, 100%)' },
+    primary: { color: 'hsl(352, 100%, 56%)', foreground: 'hsl(0, 0%, 100%)' },
     focus: 'hsl(348, 71%, 58%)',
     danger: { color: 'hsl(0, 85%, 61%)', foreground: 'hsl(0, 0%, 100%)' },
   },

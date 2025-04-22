@@ -33,12 +33,20 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
+#: src/routes/(education)/_guard/index.tsx:18
+msgid "В процессе изучения"
+msgstr ""
+
 #: src/domains/global/widgets/not-found/ui/index.tsx:12
 msgid "Вернуться на главную"
 msgstr ""
 
 #: src/domains/global/features/logout/ui/button.tsx:13
 msgid "Выйти из аккаунта"
+msgstr ""
+
+#: src/routes/(education)/_guard/index.tsx:20
+msgid "Завершенные"
 msgstr ""
 
 #: src/domains/education/widgets/menu/ui/navigation.tsx:28
@@ -55,6 +63,27 @@ msgstr ""
 
 #: src/domains/education/widgets/menu/ui/navigation.tsx:13
 msgid "Мои курсы"
+msgstr ""
+
+#: src/domains/education/entities/course/ui/card/course-card.tsx:97
+msgid "Начать"
+msgstr ""
+
+#: src/routes/(education)/_guard/index.tsx:19
+msgid "Не начатые"
+msgstr ""
+
+#: src/domains/education/entities/course/ui/card/course-card.tsx:99
+msgid "Повторить"
+msgstr ""
+
+#: src/domains/education/entities/course/ui/card/course-card.tsx:69
+#: src/domains/education/entities/course/ui/card/course-card.tsx:89
+msgid "Подробнее"
+msgstr ""
+
+#: src/domains/education/entities/course/ui/card/course-card.tsx:98
+msgid "Продолжить"
 msgstr ""
 
 #: src/domains/global/widgets/error-page/ui/default.tsx:15

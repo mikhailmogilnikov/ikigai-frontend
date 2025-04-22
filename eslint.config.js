@@ -10,9 +10,12 @@ import unusedImports from 'eslint-plugin-unused-imports';
 import importPlugin from 'eslint-plugin-import';
 import pluginLingui from 'eslint-plugin-lingui';
 import pluginQuery from '@tanstack/eslint-plugin-query';
+import pluginRouter from '@tanstack/eslint-plugin-router';
 
 export default tseslint.config(
   ...pluginQuery.configs['flat/recommended'],
+  ...pluginRouter.configs['flat/recommended'],
+
   pluginLingui.configs['flat/recommended'],
   { ignores: ['dist', './vite.config.ts'] },
   {
