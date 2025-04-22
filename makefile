@@ -21,3 +21,7 @@ clean:
 
 lingui:
 	bun run lingui
+
+pre:
+	make lingui
+	make build
