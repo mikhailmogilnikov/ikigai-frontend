@@ -98,11 +98,11 @@ msgstr "Пройдено уроков: {completedLessonsCount} / {lessonsCount}"
 msgid "Профиль"
 msgstr "Профиль"
 
-#: src/domains/education/widgets/menu/ui/settings.tsx:54
+#: src/domains/global/features/change-theme/config/themes.ts:14
 msgid "Светлая"
 msgstr "Светлая"
 
-#: src/domains/education/widgets/menu/ui/settings.tsx:60
+#: src/domains/global/features/change-theme/config/themes.ts:22
 msgid "Системная"
 msgstr "Системная"
 
@@ -110,11 +110,11 @@ msgstr "Системная"
 msgid "Страница не найдена"
 msgstr "Страница не найдена"
 
-#: src/domains/education/widgets/menu/ui/settings.tsx:43
-#: src/domains/education/widgets/menu/ui/settings.tsx:50
+#: src/domains/global/features/change-theme/ui/change-theme-menu-button.tsx:49
+#: src/domains/global/features/change-theme/ui/change-theme-menu-button.tsx:56
 msgid "Тема оформления"
 msgstr "Тема оформления"
 
-#: src/domains/education/widgets/menu/ui/settings.tsx:57
+#: src/domains/global/features/change-theme/config/themes.ts:18
 msgid "Темная"
 msgstr "Темная"
