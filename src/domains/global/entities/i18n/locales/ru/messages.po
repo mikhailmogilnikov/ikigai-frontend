@@ -65,7 +65,7 @@ msgstr "Меню"
 msgid "Мои курсы"
 msgstr "Мои курсы"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:97
+#: src/domains/education/entities/course/ui/card/course-card.tsx:104
 msgid "Начать"
 msgstr "Начать"
 
@@ -73,22 +73,26 @@ msgstr "Начать"
 msgid "Не начатые"
 msgstr "Не начатые"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:99
+#: src/domains/education/entities/course/ui/card/course-card.tsx:106
 msgid "Повторить"
 msgstr "Повторить"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:69
-#: src/domains/education/entities/course/ui/card/course-card.tsx:89
+#: src/domains/education/entities/course/ui/card/course-card.tsx:67
+#: src/domains/education/entities/course/ui/card/course-card.tsx:96
 msgid "Подробнее"
 msgstr "Подробнее"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:98
+#: src/domains/education/entities/course/ui/card/course-card.tsx:105
 msgid "Продолжить"
 msgstr "Продолжить"
 
 #: src/domains/global/widgets/error-page/ui/default.tsx:15
 msgid "Произошла неизвестная ошибка"
 msgstr "Произошла неизвестная ошибка"
+
+#: src/domains/education/entities/course/ui/card/course-card.tsx:88
+msgid "Пройдено уроков: {completedLessonsCount} / {lessonsCount}"
+msgstr "Пройдено уроков: {completedLessonsCount} / {lessonsCount}"
 
 #: src/domains/education/widgets/menu/ui/navigation.tsx:23
 msgid "Профиль"

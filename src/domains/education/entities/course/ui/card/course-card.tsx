@@ -35,7 +35,7 @@ export function CourseCard(props: CourseCardProps) {
   return (
     <Flex col gap='none' className={cn('bg-default h-fit w-full overflow-clip rounded-xl shadow-md', className)}>
       <div className='bg-foreground/5 h-50 w-full overflow-hidden'>
-        <Image src={imageUrl} alt={title} className='h-full w-full object-cover' />
+        <Image src={imageUrl} alt={title} className='h-full w-full object-fill' />
       </div>
       <Flex col className='p-4'>
         <Typo as='h6' size='lg' weight='semibold'>

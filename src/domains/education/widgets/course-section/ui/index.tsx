@@ -16,7 +16,7 @@ export function CoursesSection({ title }: CoursesSectionProps) {
       <Typo as='h5' weight='semibold' size='2xl'>
         <Trans id={title} message={title} />
       </Typo>
-      <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3'>
+      <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'>
         {courses.map((course) => (
           <CourseCard
             key={course}
@@ -24,7 +24,7 @@ export function CoursesSection({ title }: CoursesSectionProps) {
             variant='collection'
             completedLessonsCount={Math.floor(Math.random() * 10)}
             title={`Курс ${course.toString()}`}
-            imageUrl='https://placehold.co/330x200'
+            imageUrl='https://fakeimg.pl/600x400/292929/909090?font=bebas'
             lessonsCount={10}
           />
         ))}

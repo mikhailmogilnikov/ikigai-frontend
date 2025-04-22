@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useEffect } from 'react';
 
+import { CourseSidebar } from '~/domains/education/widgets/course-sidebar';
 import { useAppLayout } from '~/domains/global/widgets/layout';
 import { PageLoader } from '~/shared/ui/common/page-loader';
 import { Container } from '~/shared/ui/primitives/container';
@@ -20,7 +21,7 @@ function RouteComponent() {
 
   useEffect(() => {
     if (!sidebar) {
-      setSidebar(<>sidebar</>);
+      setSidebar(<CourseSidebar />);
     }
 
     return () => {

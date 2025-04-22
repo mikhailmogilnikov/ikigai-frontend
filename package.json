@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "extract": "lingui extract",
     "extract-clean": "lingui extract --clean",
-    "compile": "lingui compile"
+    "compile": "lingui compile",
+    "lingui": "bun run extract && bun run compile"
   },
   "dependencies": {
     "@blur-ui/scroll-area": "^1.0.1",

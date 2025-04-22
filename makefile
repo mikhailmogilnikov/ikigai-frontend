@@ -19,6 +19,5 @@ extract:
 clean:
 	bun run extract-clean
 
-pre:
-	make clean
-	make build
+lingui:
+	bun run lingui
