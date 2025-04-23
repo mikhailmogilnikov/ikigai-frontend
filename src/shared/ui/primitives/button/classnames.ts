@@ -7,12 +7,14 @@ export const buttonTV = tv({
   variants: {
     variant: {
       default: 'bg-default text-default-foreground',
+      bordered: 'border',
       ghost: '',
     },
     color: {
       default: 'bg-default text-default-foreground',
       inverse: 'bg-foreground text-background',
       primary: 'bg-primary text-primary-foreground',
+      success: 'bg-success text-success-foreground',
     },
     size: {
       sm: 'px-2 h-8 text-sm rounded-md',
@@ -31,6 +33,11 @@ export const buttonTV = tv({
       variant: 'ghost',
       color: 'default',
       className: 'bg-transparent hover:bg-default-100 shadow-none',
+    },
+    {
+      variant: 'bordered',
+      color: 'default',
+      className: 'border-default',
     },
   ],
   defaultVariants: {

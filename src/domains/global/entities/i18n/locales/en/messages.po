@@ -13,6 +13,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/domains/education/entities/course/ui/card/course-card.tsx:66
+msgid "{lessonsCount, plural, one {урок} few {урока} many {уроков}}"
+msgstr ""
+
+#: src/domains/education/entities/course/ui/card/course-card.tsx:65
+msgid "{modulesCount, plural, one {модуль} few {модуля} many {модулей}}"
+msgstr ""
+
 #: src/domains/global/widgets/error-page/ui/default.tsx:19
 msgid "<0>Попробуйте</0> <1>обновить страницу</1> <2>или</2> <3>вернуться на главную</3>"
 msgstr ""
@@ -33,7 +41,7 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: src/routes/(education)/_guard/index.tsx:18
+#: src/routes/(education)/_guard/index.tsx:47
 msgid "В процессе изучения"
 msgstr ""
 
@@ -45,12 +53,20 @@ msgstr ""
 msgid "Выйти из аккаунта"
 msgstr ""
 
-#: src/routes/(education)/_guard/index.tsx:20
+#: src/routes/(education)/_guard/index.tsx:55
 msgid "Завершенные"
 msgstr ""
 
 #: src/domains/education/widgets/menu/ui/navigation.tsx:28
 msgid "История транзакций"
+msgstr ""
+
+#: src/domains/education/entities/course/ui/card/course-card.tsx:78
+msgid "Купить"
+msgstr ""
+
+#: src/routes/(education)/_guard/shop.tsx:17
+msgid "Магазин"
 msgstr ""
 
 #: src/domains/education/widgets/menu/ui/navigation.tsx:18
@@ -65,24 +81,24 @@ msgstr ""
 msgid "Мои курсы"
 msgstr ""
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:104
+#: src/domains/education/entities/course/ui/card/course-card.tsx:115
 msgid "Начать"
 msgstr ""
 
-#: src/routes/(education)/_guard/index.tsx:19
+#: src/routes/(education)/_guard/index.tsx:51
 msgid "Не начатые"
 msgstr ""
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:106
+#: src/domains/education/entities/course/ui/card/course-card.tsx:117
 msgid "Повторить"
 msgstr ""
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:67
-#: src/domains/education/entities/course/ui/card/course-card.tsx:96
+#: src/domains/education/entities/course/ui/card/course-card.tsx:75
+#: src/domains/education/entities/course/ui/card/course-card.tsx:107
 msgid "Подробнее"
 msgstr ""
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:105
+#: src/domains/education/entities/course/ui/card/course-card.tsx:116
 msgid "Продолжить"
 msgstr ""
 
@@ -90,7 +106,7 @@ msgstr ""
 msgid "Произошла неизвестная ошибка"
 msgstr ""
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:88
+#: src/domains/education/entities/course/ui/card/course-card.tsx:99
 msgid "Пройдено уроков: {completedLessonsCount} / {lessonsCount}"
 msgstr ""
 

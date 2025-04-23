@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 
+import { LocalStorageService } from '~/shared/lib/services/storage';
+
 import { useTheme } from '../hooks/use-theme';
 import { AppThemes } from '../../config/themes';
 
@@ -13,6 +15,7 @@ export function IsolatedThemeHandler() {
     root.classList.remove('light', 'dark');
 
     if (theme === 'system') {
+      LocalStorageService.setItem('theme', 'system');
       const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
       root.classList.add(systemTheme);
@@ -48,6 +51,7 @@ export function IsolatedThemeHandler() {
     } else {
       root.classList.add(theme);
       setResolvedTheme(theme);
+      LocalStorageService.setItem('theme', theme);
 
       if (metaThemeColor) {
         metaThemeColor.setAttribute(
