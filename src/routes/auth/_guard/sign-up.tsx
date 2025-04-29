@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/react/macro';
 import { createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/auth/_guard/sign-up')({
@@ -5,5 +6,9 @@ export const Route = createFileRoute('/auth/_guard/sign-up')({
 });
 
 function RouteComponent() {
-  return <div>Hello "/auth/sign-up"!</div>;
+  return (
+    <div>
+      <Trans>Hello "/auth/sign-up"!</Trans>
+    </div>
+  );
 }

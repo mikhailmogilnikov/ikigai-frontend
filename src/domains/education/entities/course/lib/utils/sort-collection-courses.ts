@@ -15,9 +15,9 @@ interface SortCollectionCoursesProps {
 export function sortCollectionCourses(courses: CourseCollection[]): SortCollectionCoursesProps {
   const sortedCourses = courses.reduce<SortCollectionCoursesProps>(
     (acc, course) => {
-      if (course.completedLessonsCount === course.lessonsCount) {
+      if (course.completed_lessons_amount === course.lessons_amount) {
         acc.completed.push(course);
-      } else if (course.completedLessonsCount > 0) {
+      } else if (course.completed_lessons_amount > 0) {
         acc.inProgress.push(course);
       } else {
         acc.notStarted.push(course);

@@ -4,6 +4,9 @@ i:
 dev:
 	bun run dev
 
+typecheck:
+	bun run typecheck
+
 build:
 	bun run build
 

@@ -14,20 +14,48 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/domains/education/entities/course/ui/card/course-card.tsx:66
-msgid "{lessonsCount, plural, one {урок} few {урока} many {уроков}}"
-msgstr "{lessonsCount, plural, one {урок} few {урока} many {уроков}}"
+msgid "{lessons_amount, plural, one {урок} few {урока} many {уроков}}"
+msgstr "{lessons_amount, plural, one {урок} few {урока} many {уроков}}"
+
+#: src/domains/education/entities/course/ui/card/course-card.tsx:66
+#~ msgid "{lessonsCount, plural, one {урок} few {урока} many {уроков}}"
+#~ msgstr "{lessonsCount, plural, one {урок} few {урока} many {уроков}}"
 
 #: src/domains/education/entities/course/ui/card/course-card.tsx:65
-msgid "{modulesCount, plural, one {модуль} few {модуля} many {модулей}}"
-msgstr "{modulesCount, plural, one {модуль} few {модуля} many {модулей}}"
+msgid "{modules_amount, plural, one {модуль} few {модуля} many {модулей}}"
+msgstr "{modules_amount, plural, one {модуль} few {модуля} many {модулей}}"
+
+#: src/domains/education/entities/course/ui/card/course-card.tsx:65
+#~ msgid "{modulesCount, plural, one {модуль} few {модуля} many {модулей}}"
+#~ msgstr "{modulesCount, plural, one {модуль} few {модуля} many {модулей}}"
 
 #: src/domains/global/widgets/error-page/ui/default.tsx:19
 msgid "<0>Попробуйте</0> <1>обновить страницу</1> <2>или</2> <3>вернуться на главную</3>"
 msgstr "<0>Попробуйте</0> <1>обновить страницу</1> <2>или</2> <3>вернуться на главную</3>"
 
+#: src/domains/admin/widgets/header/ui/index.tsx:6
+msgid "AdminHeader"
+msgstr "AdminHeader"
+
+#: src/domains/education/widgets/course-sidebar/ui/course-sidebar.tsx:6
+msgid "CourseSidebar"
+msgstr "CourseSidebar"
+
+#: src/routes/auth/_guard/recover-password.tsx:11
+msgid "Hello \"/(auth)/recover-password\"!"
+msgstr "Hello \"/(auth)/recover-password\"!"
+
 #: src/routes/admin/_guard/dashboard.tsx:15
 msgid "Hello \"/admin/dashboard\"!"
 msgstr "Hello \"/admin/dashboard\"!"
+
+#: src/routes/auth/_guard/sign-up.tsx:11
+msgid "Hello \"/auth/sign-up\"!"
+msgstr "Hello \"/auth/sign-up\"!"
+
+#: src/routes/(education)/_guard/courses_/$course.tsx:15
+msgid "Hello course {course}"
+msgstr "Hello course {course}"
 
 #: src/routes/auth/_guard/sign-in.tsx:31
 msgid "Login as admin"
@@ -53,10 +81,15 @@ msgstr "Вернуться на главную"
 msgid "Выйти из аккаунта"
 msgstr "Выйти из аккаунта"
 
+#: src/domains/education/widgets/transactions-table/ui/index.tsx:15
+msgid "Дата"
+msgstr "Дата"
+
 #: src/routes/(education)/_guard/index.tsx:55
 msgid "Завершенные"
 msgstr "Завершенные"
 
+#: src/routes/(education)/_guard/transactions.tsx:20
 #: src/domains/education/widgets/menu/ui/navigation.tsx:28
 msgid "История транзакций"
 msgstr "История транзакций"
@@ -65,11 +98,16 @@ msgstr "История транзакций"
 msgid "Купить"
 msgstr "Купить"
 
+#: src/domains/education/widgets/transactions-table/ui/index.tsx:18
+msgid "Курс"
+msgstr "Курс"
+
 #: src/routes/(education)/_guard/shop.tsx:17
 msgid "Магазин"
 msgstr "Магазин"
 
 #: src/domains/education/widgets/menu/ui/navigation.tsx:18
+#: src/domains/education/widgets/header/ui/desktop-navigation.tsx:22
 msgid "Магазин курсов"
 msgstr "Магазин курсов"
 
@@ -81,7 +119,11 @@ msgstr "Меню"
 msgid "Мои курсы"
 msgstr "Мои курсы"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:115
+#: src/domains/education/widgets/header/ui/desktop-navigation.tsx:17
+msgid "Моя коллекция"
+msgstr "Моя коллекция"
+
+#: src/domains/education/entities/course/ui/card/course-card.tsx:114
 msgid "Начать"
 msgstr "Начать"
 
@@ -89,16 +131,16 @@ msgstr "Начать"
 msgid "Не начатые"
 msgstr "Не начатые"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:117
+#: src/domains/education/entities/course/ui/card/course-card.tsx:116
 msgid "Повторить"
 msgstr "Повторить"
 
 #: src/domains/education/entities/course/ui/card/course-card.tsx:75
-#: src/domains/education/entities/course/ui/card/course-card.tsx:107
+#: src/domains/education/entities/course/ui/card/course-card.tsx:106
 msgid "Подробнее"
 msgstr "Подробнее"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:116
+#: src/domains/education/entities/course/ui/card/course-card.tsx:115
 msgid "Продолжить"
 msgstr "Продолжить"
 
@@ -106,10 +148,15 @@ msgstr "Продолжить"
 msgid "Произошла неизвестная ошибка"
 msgstr "Произошла неизвестная ошибка"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:99
-msgid "Пройдено уроков: {completedLessonsCount} / {lessonsCount}"
-msgstr "Пройдено уроков: {completedLessonsCount} / {lessonsCount}"
+#: src/domains/education/entities/course/ui/card/course-card.tsx:98
+msgid "Пройдено уроков: {completed_lessons_amount} / {lessons_amount}"
+msgstr "Пройдено уроков: {completed_lessons_amount} / {lessons_amount}"
 
+#: src/domains/education/entities/course/ui/card/course-card.tsx:99
+#~ msgid "Пройдено уроков: {completedLessonsCount} / {lessonsCount}"
+#~ msgstr "Пройдено уроков: {completedLessonsCount} / {lessonsCount}"
+
+#: src/routes/(education)/_guard/profile.tsx:13
 #: src/domains/education/widgets/menu/ui/navigation.tsx:23
 msgid "Профиль"
 msgstr "Профиль"
@@ -126,6 +173,10 @@ msgstr "Системная"
 msgid "Страница не найдена"
 msgstr "Страница не найдена"
 
+#: src/domains/education/widgets/transactions-table/ui/index.tsx:21
+msgid "Сумма"
+msgstr "Сумма"
+
 #: src/domains/global/features/change-theme/ui/change-theme-menu-button.tsx:49
 #: src/domains/global/features/change-theme/ui/change-theme-menu-button.tsx:56
 msgid "Тема оформления"
@@ -134,3 +185,7 @@ msgstr "Тема оформления"
 #: src/domains/global/features/change-theme/config/themes.ts:18
 msgid "Темная"
 msgstr "Темная"
+
+#: src/routes/(education)/_guard/courses_/$course_.lessons_.$lesson.tsx:35
+msgid "Урок {lesson}"
+msgstr "Урок {lesson}"

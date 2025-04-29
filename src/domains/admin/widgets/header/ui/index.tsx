@@ -1,3 +1,9 @@
+import { Trans } from '@lingui/react/macro';
+
 export function AdminHeader() {
-  return <div>AdminHeader</div>;
+  return (
+    <div>
+      <Trans>AdminHeader</Trans>
+    </div>
+  );
 }

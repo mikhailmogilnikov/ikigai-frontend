@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/react/macro';
 import { createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/auth/_guard/recover-password')({
@@ -5,5 +6,9 @@ export const Route = createFileRoute('/auth/_guard/recover-password')({
 });
 
 function RouteComponent() {
-  return <div>Hello "/(auth)/recover-password"!</div>;
+  return (
+    <div>
+      <Trans>Hello "/(auth)/recover-password"!</Trans>
+    </div>
+  );
 }

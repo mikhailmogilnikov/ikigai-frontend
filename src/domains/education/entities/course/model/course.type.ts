@@ -1,17 +1,15 @@
 export interface Course {
   id: string;
   title: string;
-  imageUrl: string;
-  lessonsCount: number;
+  image_url: string;
+  lessons_amount: number;
 }
 
 export interface CourseCollection extends Course {
-  completedLessonsCount: number;
-  currentLessonId: string;
+  completed_lessons_amount: number;
 }
 
 export interface CourseShop extends Course {
   price: number;
-  lessonsCount: number;
-  modulesCount: number;
+  modules_amount: number;
 }

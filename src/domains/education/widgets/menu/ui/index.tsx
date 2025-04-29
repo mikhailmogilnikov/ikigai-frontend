@@ -49,7 +49,8 @@ export function EducationMenu() {
         </VisuallyHidden>
         <AdaptiveModalContent>
           <Flex col className='mt-4 gap-8 max-md:mt-12 md:mb-4'>
-            <UserInfo />
+            {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
+            <UserInfo name='Михаил Могильников' phone='+7 (999) 999-99-99' />
             <MenuNavigation closeMenu={handleCloseMenu} />
             <MenuSettings />
           </Flex>

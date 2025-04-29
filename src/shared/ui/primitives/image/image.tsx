@@ -1,5 +1,3 @@
-'use client';
-
 import { ElementType, HTMLAttributes } from 'react';
 
 import { Skeleton } from '../skeleton';

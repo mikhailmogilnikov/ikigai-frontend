@@ -28,12 +28,12 @@ type CourseCardProps = CourseCardVariants & {
 };
 
 export function CourseCard(props: CourseCardProps) {
-  const { className, title, imageUrl, variant } = props;
+  const { className, title, image_url, variant } = props;
 
   return (
     <Flex col gap='none' className={cn('bg-default h-fit w-full overflow-clip rounded-xl shadow-md', className)}>
       <div className='bg-foreground/5 h-50 w-full overflow-hidden'>
-        <Image src={imageUrl} alt={title} className='h-full w-full object-fill' />
+        <Image src={image_url} alt={title} className='h-full w-full object-fill' />
       </div>
       <Flex col className='p-4'>
         <Typo as='h6' size='lg' weight='semibold'>
@@ -54,7 +54,7 @@ export function CourseCard(props: CourseCardProps) {
 }
 
 function CourseCardContentShop(props: CourseCardProps) {
-  const { price, id, modulesCount, lessonsCount } = props as CourseCardProps & CourseCardContentShopProps;
+  const { price, id, modules_amount, lessons_amount } = props as CourseCardProps & CourseCardContentShopProps;
 
   return (
     <>
@@ -62,8 +62,8 @@ function CourseCardContentShop(props: CourseCardProps) {
         <Flex align='center' gap='sm' className='opacity-50'>
           <PiFolderBold />
           <Typo as='p' size='sm' weight='medium'>
-            {modulesCount} <Plural value={modulesCount} one='модуль' few='модуля' many='модулей' /> · {lessonsCount}{' '}
-            <Plural value={lessonsCount} one='урок' few='урока' many='уроков' />
+            {modules_amount} <Plural value={modules_amount} one='модуль' few='модуля' many='модулей' /> ·{' '}
+            {lessons_amount} <Plural value={lessons_amount} one='урок' few='урока' many='уроков' />
           </Typo>
         </Flex>
       </Flex>
@@ -83,21 +83,20 @@ function CourseCardContentShop(props: CourseCardProps) {
 }
 
 function CourseCardContentCollection(props: CourseCardProps) {
-  const { completedLessonsCount, id, lessonsCount, currentLessonId } = props as CourseCardProps &
-    CourseCardContentCollectionProps;
+  const { completed_lessons_amount, id, lessons_amount } = props as CourseCardProps & CourseCardContentCollectionProps;
 
-  const isNotStarted = completedLessonsCount === 0;
-  const isCompleted = completedLessonsCount === lessonsCount;
+  const isNotStarted = completed_lessons_amount === 0;
+  const isCompleted = completed_lessons_amount === lessons_amount;
   const isInProgress = !isNotStarted && !isCompleted;
 
-  const progress = (completedLessonsCount / lessonsCount) * 100;
+  const progress = (completed_lessons_amount / lessons_amount) * 100;
 
   return (
     <>
       <Flex col gap='sm'>
         <Typo as='p' size='sm' weight='medium' className={clsx(isCompleted ? 'text-success' : 'opacity-50')}>
           <Trans>
-            Пройдено уроков: {completedLessonsCount} / {lessonsCount}
+            Пройдено уроков: {completed_lessons_amount} / {lessons_amount}
           </Trans>
         </Typo>
         <Progress className='h-2' value={progress} trackClassName={cn(isCompleted && 'bg-success')} />
@@ -108,7 +107,7 @@ function CourseCardContentCollection(props: CourseCardProps) {
         </LinkButton>
         <LinkButton
           to='/courses/$course/lessons/$lesson'
-          params={{ course: id, lesson: currentLessonId }}
+          params={{ course: id, lesson: '1' }}
           className='w-full'
           color={isCompleted ? 'success' : 'primary'}
         >

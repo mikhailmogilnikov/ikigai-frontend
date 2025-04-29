@@ -19,6 +19,11 @@ export default tseslint.config(
   pluginLingui.configs['flat/recommended'],
   { ignores: ['dist', './vite.config.ts'] },
   {
+    linterOptions: {
+      reportUnusedDisableDirectives: 'off',
+    },
+  },
+  {
     extends: [js.configs.recommended, ...tseslint.configs.strictTypeChecked, ...tseslint.configs.stylisticTypeChecked],
     settings: { react: { version: '19.0' } },
     files: ['**/*.{ts,tsx}'],
@@ -71,6 +76,67 @@ export default tseslint.config(
           blankLine: 'any',
           prev: ['const', 'let', 'var'],
           next: ['const', 'let', 'var'],
+        },
+      ],
+      'lingui/no-unlocalized-strings': [
+        'error',
+        {
+          ignore: [
+            // Ignore strings which are a single "word" (no spaces)
+            // and doesn't start with an uppercase letter
+            '^(?![A-Z])\\S+$',
+            // Ignore UPPERCASE literals
+            // Example: const test = "FOO"
+            '^[A-Z0-9_-]+$',
+          ],
+          ignoreNames: [
+            // Ignore matching className (case-insensitive)
+            { regex: { pattern: 'className', flags: 'i' } },
+            // Ignore UPPERCASE names
+            // Example: test.FOO = "ola!"
+            { regex: { pattern: '^[A-Z0-9_-]+$' } },
+            'styleName',
+            'src',
+            'srcSet',
+            'type',
+            'id',
+            'width',
+            'height',
+            'displayName',
+            'Authorization',
+            'colors',
+          ],
+          ignoreFunctions: [
+            'cva',
+            'cn',
+            'clsx',
+            'tv',
+            'track',
+            'Error',
+            'console.*',
+            '*headers.set',
+            '*.addEventListener',
+            '*.removeEventListener',
+            '*.postMessage',
+            '*.getElementById',
+            '*.dispatch',
+            '*.commit',
+            '*.includes',
+            '*.indexOf',
+            '*.endsWith',
+            '*.startsWith',
+            'require',
+            '*.matchMedia',
+            'devtools',
+          ],
+          // Following settings require typed linting https://typescript-eslint.io/getting-started/typed-linting/
+          useTsTypes: true,
+          ignoreMethodsOnTypes: [
+            // Ignore specified methods on Map and Set types
+            'Map.get',
+            'Map.has',
+            'Set.has',
+          ],
         },
       ],
     },

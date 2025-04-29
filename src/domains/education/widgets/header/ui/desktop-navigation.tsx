@@ -1,6 +1,8 @@
 import { Trans } from '@lingui/react';
 import { useMediaQuery } from 'usehooks-ts';
 import { useLocation } from '@tanstack/react-router';
+import { msg } from '@lingui/core/macro';
+import { useLingui } from '@lingui/react/macro';
 
 import { BREAKPOINT_MOBILE } from '~/shared/config/constants';
 import { Divider } from '~/shared/ui/primitives/divider';
@@ -12,16 +14,17 @@ const navigationItems = [
   {
     id: 'my_collection',
     path: '/',
-    label: 'Моя коллекция',
+    label: msg`Моя коллекция`,
   },
   {
     id: 'course_shop',
     path: '/shop',
-    label: 'Магазин курсов',
+    label: msg`Магазин курсов`,
   },
 ] as const;
 
 export function HeaderDesktopNavigation() {
+  const { i18n } = useLingui();
   const isMobile = useMediaQuery(BREAKPOINT_MOBILE);
   const location = useLocation();
 
@@ -44,7 +47,7 @@ export function HeaderDesktopNavigation() {
               isActive(item.path) ? 'bg-default-50 dark:bg-default-100 opacity-100' : 'opacity-75',
             )}
           >
-            <Trans id={`navigation.${item.id}`} message={item.label} />
+            <Trans id={`navigation.${item.id}`} message={i18n._(item.label)} />
           </LinkButton>
         ))}
       </Flex>

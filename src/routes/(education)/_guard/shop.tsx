@@ -23,37 +23,38 @@ function RouteComponent() {
   );
 }
 
+/* eslint-disable lingui/no-unlocalized-strings */
 const MOCK_COURSES: CourseShop[] = [
   {
     id: '1',
     title: 'Курс 1',
-    imageUrl: 'https://fakeimg.pl/600x400/292929/909090?font=bebas',
+    image_url: 'https://fakeimg.pl/600x400/292929/909090?font=bebas',
     price: 10000,
-    lessonsCount: 10,
-    modulesCount: 1,
+    lessons_amount: 10,
+    modules_amount: 1,
   },
   {
     id: '2',
     title: 'Курс 2',
-    imageUrl: 'https://fakeimg.pl/600x400/292929/909090?font=bebas',
+    image_url: 'https://fakeimg.pl/600x400/292929/909090?font=bebas',
     price: 12442,
-    lessonsCount: 10,
-    modulesCount: 1,
+    lessons_amount: 10,
+    modules_amount: 1,
   },
   {
     id: '3',
     title: 'Курс 3',
-    imageUrl: 'https://fakeimg.pl/600x400/292929/909090?font=bebas',
+    image_url: 'https://fakeimg.pl/600x400/292929/909090?font=bebas',
     price: 400,
-    lessonsCount: 10,
-    modulesCount: 5,
+    lessons_amount: 10,
+    modules_amount: 5,
   },
   {
     id: '4',
     title: 'Курс 4',
-    imageUrl: 'https://fakeimg.pl/600x400/292929/909090?font=bebas',
+    image_url: 'https://fakeimg.pl/600x400/292929/909090?font=bebas',
     price: 100000,
-    lessonsCount: 1,
-    modulesCount: 2,
+    lessons_amount: 1,
+    modules_amount: 2,
   },
 ];

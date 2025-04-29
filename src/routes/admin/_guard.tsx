@@ -8,8 +8,6 @@ export const Route = createFileRoute('/admin/_guard')({
 });
 
 function RouteComponent() {
-  console.log('admin guard');
-
   return (
     <PrivateGuard role='admin'>
       <AppLayout header={<>d</>}>
