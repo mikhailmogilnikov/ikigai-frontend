@@ -17,17 +17,9 @@ msgstr ""
 msgid "{lessons_amount, plural, one {урок} few {урока} many {уроков}}"
 msgstr "{lessons_amount, plural, one {урок} few {урока} many {уроков}}"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:66
-#~ msgid "{lessonsCount, plural, one {урок} few {урока} many {уроков}}"
-#~ msgstr "{lessonsCount, plural, one {урок} few {урока} many {уроков}}"
-
 #: src/domains/education/entities/course/ui/card/course-card.tsx:65
 msgid "{modules_amount, plural, one {модуль} few {модуля} many {модулей}}"
 msgstr "{modules_amount, plural, one {модуль} few {модуля} many {модулей}}"
-
-#: src/domains/education/entities/course/ui/card/course-card.tsx:65
-#~ msgid "{modulesCount, plural, one {модуль} few {модуля} many {модулей}}"
-#~ msgstr "{modulesCount, plural, one {модуль} few {модуля} many {модулей}}"
 
 #: src/domains/global/widgets/error-page/ui/default.tsx:19
 msgid "<0>Попробуйте</0> <1>обновить страницу</1> <2>или</2> <3>вернуться на главную</3>"
@@ -37,7 +29,7 @@ msgstr "<0>Попробуйте</0> <1>обновить страницу</1> <2>
 msgid "AdminHeader"
 msgstr "AdminHeader"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:26
+#: src/shared/ui/common/video-player/use-video.ts:30
 msgid "AirPlay"
 msgstr "AirPlay"
 
@@ -45,7 +37,7 @@ msgstr "AirPlay"
 msgid "CourseSidebar"
 msgstr "CourseSidebar"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:19
+#: src/shared/ui/common/video-player/use-video.ts:23
 msgid "Google Cast"
 msgstr "Google Cast"
 
@@ -65,6 +57,10 @@ msgstr "Hello \"/auth/sign-up\"!"
 msgid "Hello course {course}"
 msgstr "Hello course {course}"
 
+#: src/shared/ui/common/video-player/use-video.ts:48
+msgid "Live-трансляция"
+msgstr "Live-трансляция"
+
 #: src/routes/auth/_guard/sign-in.tsx:31
 msgid "Login as admin"
 msgstr "Login as admin"
@@ -77,21 +73,13 @@ msgstr "Login as student"
 msgid "Logout"
 msgstr "Logout"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:51
-msgid "PiP"
-msgstr "PiP"
-
-#: src/shared/ui/common/video-player/use-video-translations.ts:29
+#: src/shared/ui/common/video-player/use-video.ts:33
 msgid "Авто"
 msgstr "Авто"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:20
+#: src/shared/ui/common/video-player/use-video.ts:24
 msgid "Анимации клавиатуры"
 msgstr "Анимации клавиатуры"
-
-#: src/shared/ui/common/video-player/use-video-translations.ts:28
-msgid "Аудио"
-msgstr "Аудио"
 
 #: src/routes/(education)/_guard/index.tsx:47
 msgid "В процессе изучения"
@@ -101,39 +89,51 @@ msgstr "В процессе изучения"
 msgid "Вернуться на главную"
 msgstr "Вернуться на главную"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:64
+#: src/shared/ui/common/video-player/use-video.ts:68
 msgid "Включить звук"
 msgstr "Включить звук"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:15
+#: src/shared/ui/common/video-player/use-video.ts:19
 msgid "Войти в полноэкранный режим"
 msgstr "Войти в полноэкранный режим"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:16
-msgid "Войти в режим Picture-in-Picture"
-msgstr "Войти в режим Picture-in-Picture"
+#: src/shared/ui/common/video-player/use-video.ts:20
+msgid "Войти в режим Картинка-в-Картинку"
+msgstr "Войти в режим Картинка-в-Картинку"
+
+#: src/shared/ui/common/video-player/use-video.ts:57
+msgid "Воспроизведение"
+msgstr "Воспроизведение"
+
+#: src/shared/ui/common/video-player/use-video.ts:56
+msgid "Воспроизвести"
+msgstr "Воспроизвести"
 
 #: src/domains/global/features/logout/ui/button.tsx:13
 msgid "Выйти из аккаунта"
 msgstr "Выйти из аккаунта"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:17
+#: src/shared/ui/common/video-player/use-video.ts:21
 msgid "Выйти из полноэкранного режима"
 msgstr "Выйти из полноэкранного режима"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:18
-msgid "Выйти из режима Picture-in-Picture"
-msgstr "Выйти из режима Picture-in-Picture"
+#: src/shared/ui/common/video-player/use-video.ts:22
+msgid "Выйти из режима Картинка-в-Картинка"
+msgstr "Выйти из режима Картинка-в-Картинка"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:48
+#: src/shared/ui/common/video-player/use-video.ts:52
 msgid "Выключено"
 msgstr "Выключено"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:32
+#: src/shared/ui/common/video-player/use-video.ts:50
+msgid "Выключить звук"
+msgstr "Выключить звук"
+
+#: src/shared/ui/common/video-player/use-video.ts:36
 msgid "Главы"
 msgstr "Главы"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:65
+#: src/shared/ui/common/video-player/use-video.ts:69
 msgid "Громкость"
 msgstr "Громкость"
 
@@ -141,24 +141,32 @@ msgstr "Громкость"
 msgid "Дата"
 msgstr "Дата"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:25
+#: src/shared/ui/common/video-player/use-video.ts:67
+msgid "Дорожка"
+msgstr "Дорожка"
+
+#: src/shared/ui/common/video-player/use-video.ts:29
 msgid "Доступность"
 msgstr "Доступность"
-
-#: src/shared/ui/common/video-player/use-video-translations.ts:44
-msgid "Живая трансляция"
-msgstr "Живая трансляция"
 
 #: src/routes/(education)/_guard/index.tsx:55
 msgid "Завершенные"
 msgstr "Завершенные"
+
+#: src/shared/ui/common/video-player/use-video.ts:49
+msgid "Зациклить видео"
+msgstr "Зациклить видео"
 
 #: src/routes/(education)/_guard/transactions.tsx:20
 #: src/domains/education/widgets/menu/ui/navigation.tsx:28
 msgid "История транзакций"
 msgstr "История транзакций"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:54
+#: src/shared/ui/common/video-player/use-video.ts:55
+msgid "Картинка-в-Картинке"
+msgstr "Картинка-в-Картинке"
+
+#: src/shared/ui/common/video-player/use-video.ts:58
 msgid "Качество"
 msgstr "Качество"
 
@@ -191,13 +199,13 @@ msgstr "Мои курсы"
 msgid "Моя коллекция"
 msgstr "Моя коллекция"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:46
-msgid "Муть"
-msgstr "Муть"
-
-#: src/shared/ui/common/video-player/use-video-translations.ts:58
+#: src/shared/ui/common/video-player/use-video.ts:62
 msgid "Настройки"
 msgstr "Настройки"
+
+#: src/shared/ui/common/video-player/use-video.ts:32
+msgid "Настройки звука"
+msgstr "Настройки звука"
 
 #: src/domains/education/entities/course/ui/card/course-card.tsx:114
 msgid "Начать"
@@ -207,60 +215,57 @@ msgstr "Начать"
 msgid "Не начатые"
 msgstr "Не начатые"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:49
+#: src/shared/ui/common/video-player/use-video.ts:53
 msgid "Непрозрачность"
 msgstr "Непрозрачность"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:47
-msgid "Нормальный"
-msgstr "Нормальный"
-
-#: src/shared/ui/common/video-player/use-video-translations.ts:27
+#: src/shared/ui/common/video-player/use-video.ts:31
 msgid "Объявления"
 msgstr "Объявления"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:38
-#: src/shared/ui/common/video-player/use-video-translations.ts:39
+#: src/shared/ui/common/video-player/use-video.ts:51
+msgid "Обычная"
+msgstr "Обычная"
+
+#: src/shared/ui/common/video-player/use-video.ts:42
+#: src/shared/ui/common/video-player/use-video.ts:43
 msgid "Отключено"
 msgstr "Отключено"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:14
+#: src/shared/ui/common/video-player/use-video.ts:18
 msgid "Отображать фон"
 msgstr "Отображать фон"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:50
+#: src/shared/ui/common/video-player/use-video.ts:54
 msgid "Пауза"
 msgstr "Пауза"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:22
-msgid "Перемотка вперед"
-msgstr "Перемотка вперед"
+#: src/shared/ui/common/video-player/use-video.ts:26
+msgid "Перемотать вперед"
+msgstr "Перемотать вперед"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:21
-msgid "Перемотка назад"
-msgstr "Перемотка назад"
+#: src/shared/ui/common/video-player/use-video.ts:25
+msgid "Перемотать назад"
+msgstr "Перемотать назад"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:23
-msgid "Переход к живым трансляциям"
-msgstr "Переход к живым трансляциям"
+#: src/shared/ui/common/video-player/use-video.ts:27
+msgid "Переход к Live-трансляциям"
+msgstr "Переход к Live-трансляциям"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:37
+#: src/shared/ui/common/video-player/use-video.ts:41
 msgid "По умолчанию"
 msgstr "По умолчанию"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:55
-msgid "Повтор"
-msgstr "Повтор"
-
+#: src/shared/ui/common/video-player/use-video.ts:59
 #: src/domains/education/entities/course/ui/card/course-card.tsx:116
 msgid "Повторить"
 msgstr "Повторить"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:35
+#: src/shared/ui/common/video-player/use-video.ts:39
 msgid "Подключение"
 msgstr "Подключение"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:34
+#: src/shared/ui/common/video-player/use-video.ts:38
 msgid "Подключено"
 msgstr "Подключено"
 
@@ -269,23 +274,18 @@ msgstr "Подключено"
 msgid "Подробнее"
 msgstr "Подробнее"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:57
+#: src/shared/ui/common/video-player/use-video.ts:61
 msgid "Поиск"
 msgstr "Поиск"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:43
+#: src/shared/ui/common/video-player/use-video.ts:47
 msgid "Полноэкранный режим"
 msgstr "Полноэкранный режим"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:36
+#: src/shared/ui/common/video-player/use-video.ts:40
 #: src/domains/education/entities/course/ui/card/course-card.tsx:115
 msgid "Продолжить"
 msgstr "Продолжить"
-
-#: src/shared/ui/common/video-player/use-video-translations.ts:52
-#: src/shared/ui/common/video-player/use-video-translations.ts:53
-msgid "Проигрывание"
-msgstr "Проигрывание"
 
 #: src/domains/global/widgets/error-page/ui/default.tsx:15
 msgid "Произошла неизвестная ошибка"
@@ -295,28 +295,24 @@ msgstr "Произошла неизвестная ошибка"
 msgid "Пройдено уроков: {completed_lessons_amount} / {lessons_amount}"
 msgstr "Пройдено уроков: {completed_lessons_amount} / {lessons_amount}"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:99
-#~ msgid "Пройдено уроков: {completedLessonsCount} / {lessonsCount}"
-#~ msgstr "Пройдено уроков: {completedLessonsCount} / {lessonsCount}"
-
 #: src/routes/(education)/_guard/profile.tsx:13
 #: src/domains/education/widgets/menu/ui/navigation.tsx:23
 msgid "Профиль"
 msgstr "Профиль"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:60
+#: src/shared/ui/common/video-player/use-video.ts:64
 msgid "Размер"
 msgstr "Размер"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:56
-msgid "Сброс"
-msgstr "Сброс"
+#: src/shared/ui/common/video-player/use-video.ts:60
+msgid "Сбросить"
+msgstr "Сбросить"
 
 #: src/domains/global/features/change-theme/config/themes.ts:14
 msgid "Светлая"
 msgstr "Светлая"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:41
+#: src/shared/ui/common/video-player/use-video.ts:45
 msgid "Семья"
 msgstr "Семья"
 
@@ -324,15 +320,15 @@ msgstr "Семья"
 msgid "Системная"
 msgstr "Системная"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:40
+#: src/shared/ui/common/video-player/use-video.ts:44
 msgid "Скачать"
 msgstr "Скачать"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:61
+#: src/shared/ui/common/video-player/use-video.ts:65
 msgid "Скорость"
 msgstr "Скорость"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:10
+#: src/shared/ui/common/video-player/use-video.ts:14
 msgid "Стили субтитров"
 msgstr "Стили субтитров"
 
@@ -340,19 +336,19 @@ msgstr "Стили субтитров"
 msgid "Страница не найдена"
 msgstr "Страница не найдена"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:31
+#: src/shared/ui/common/video-player/use-video.ts:35
 msgid "Субтитры"
 msgstr "Субтитры"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:13
+#: src/shared/ui/common/video-player/use-video.ts:17
 msgid "Субтитры включены"
 msgstr "Субтитры включены"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:11
+#: src/shared/ui/common/video-player/use-video.ts:15
 msgid "Субтитры выглядят так"
 msgstr "Субтитры выглядят так"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:12
+#: src/shared/ui/common/video-player/use-video.ts:16
 msgid "Субтитры выключены"
 msgstr "Субтитры выключены"
 
@@ -360,13 +356,9 @@ msgstr "Субтитры выключены"
 msgid "Сумма"
 msgstr "Сумма"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:62
+#: src/shared/ui/common/video-player/use-video.ts:66
 msgid "Текст"
 msgstr "Текст"
-
-#: src/shared/ui/common/video-player/use-video-translations.ts:24
-msgid "Текстовый фон"
-msgstr "Текстовый фон"
 
 #: src/domains/global/features/change-theme/ui/change-theme-menu-button.tsx:49
 #: src/domains/global/features/change-theme/ui/change-theme-menu-button.tsx:56
@@ -377,31 +369,27 @@ msgstr "Тема оформления"
 msgid "Темная"
 msgstr "Темная"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:59
+#: src/shared/ui/common/video-player/use-video.ts:63
 msgid "Тень"
 msgstr "Тень"
-
-#: src/shared/ui/common/video-player/use-video-translations.ts:63
-msgid "Трек"
-msgstr "Трек"
 
 #: src/routes/(education)/_guard/courses_/$course_.lessons_.$lesson.tsx:40
 #: src/routes/(education)/_guard/courses_/$course_.lessons_.$lesson.tsx:43
 msgid "Урок {lesson}"
 msgstr "Урок {lesson}"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:30
+#: src/shared/ui/common/video-player/use-video.ts:34
 msgid "Усиление"
 msgstr "Усиление"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:33
+#: src/shared/ui/common/video-player/use-video.ts:28
+msgid "Фон текста"
+msgstr "Фон текста"
+
+#: src/shared/ui/common/video-player/use-video.ts:37
 msgid "Цвет"
 msgstr "Цвет"
 
-#: src/shared/ui/common/video-player/use-video-translations.ts:45
-msgid "Цикл"
-msgstr "Цикл"
-
-#: src/shared/ui/common/video-player/use-video-translations.ts:42
+#: src/shared/ui/common/video-player/use-video.ts:46
 msgid "Шрифт"
 msgstr "Шрифт"
