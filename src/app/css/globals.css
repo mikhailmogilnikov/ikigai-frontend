@@ -50,6 +50,11 @@
     outline: 2px solid var(--theme-color-focus, #4f46e5);
     outline-offset: 2px;
   }
+
+  [data-media-player][data-layout='video'] {
+    --video-border-radius: 0.25rem;
+    --video-border: none;
+  }
 }
 
 :root {

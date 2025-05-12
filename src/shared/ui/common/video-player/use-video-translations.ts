@@ -1,0 +1,71 @@
+import { useLingui } from '@lingui/react/macro';
+import { DefaultLayoutTranslations } from '@vidstack/react/types/vidstack.js';
+import { useMemo } from 'react';
+
+export const useVideoTranslations = () => {
+  const { t } = useLingui();
+
+  const translations: DefaultLayoutTranslations = useMemo(
+    () => ({
+      'Caption Styles': t`Стили субтитров`,
+      'Captions look like this': t`Субтитры выглядят так`,
+      'Closed-Captions Off': t`Субтитры выключены`,
+      'Closed-Captions On': t`Субтитры включены`,
+      'Display Background': t`Отображать фон`,
+      'Enter Fullscreen': t`Войти в полноэкранный режим`,
+      'Enter PiP': t`Войти в режим Picture-in-Picture`,
+      'Exit Fullscreen': t`Выйти из полноэкранного режима`,
+      'Exit PiP': t`Выйти из режима Picture-in-Picture`,
+      'Google Cast': t`Google Cast`,
+      'Keyboard Animations': t`Анимации клавиатуры`,
+      'Seek Backward': t`Перемотка назад`,
+      'Seek Forward': t`Перемотка вперед`,
+      'Skip To Live': t`Переход к живым трансляциям`,
+      'Text Background': t`Текстовый фон`,
+      Accessibility: t`Доступность`,
+      AirPlay: t`AirPlay`,
+      Announcements: t`Объявления`,
+      Audio: t`Аудио`,
+      Auto: t`Авто`,
+      Boost: t`Усиление`,
+      Captions: t`Субтитры`,
+      Chapters: t`Главы`,
+      Color: t`Цвет`,
+      Connected: t`Подключено`,
+      Connecting: t`Подключение`,
+      Continue: t`Продолжить`,
+      Default: t`По умолчанию`,
+      Disabled: t`Отключено`,
+      Disconnected: t`Отключено`,
+      Download: t`Скачать`,
+      Family: t`Семья`,
+      Font: t`Шрифт`,
+      Fullscreen: t`Полноэкранный режим`,
+      LIVE: t`Живая трансляция`,
+      Loop: t`Цикл`,
+      Mute: t`Муть`,
+      Normal: t`Нормальный`,
+      Off: t`Выключено`,
+      Opacity: t`Непрозрачность`,
+      Pause: t`Пауза`,
+      PiP: t`PiP`,
+      Play: t`Проигрывание`,
+      Playback: t`Проигрывание`,
+      Quality: t`Качество`,
+      Replay: t`Повтор`,
+      Reset: t`Сброс`,
+      Seek: t`Поиск`,
+      Settings: t`Настройки`,
+      Shadow: t`Тень`,
+      Size: t`Размер`,
+      Speed: t`Скорость`,
+      Text: t`Текст`,
+      Track: t`Трек`,
+      Unmute: t`Включить звук`,
+      Volume: t`Громкость`,
+    }),
+    [t],
+  );
+
+  return { translations };
+};

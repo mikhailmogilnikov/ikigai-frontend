@@ -37,9 +37,17 @@ msgstr "<0>Попробуйте</0> <1>обновить страницу</1> <2>
 msgid "AdminHeader"
 msgstr "AdminHeader"
 
+#: src/shared/ui/common/video-player/use-video-translations.ts:26
+msgid "AirPlay"
+msgstr "AirPlay"
+
 #: src/domains/education/widgets/course-sidebar/ui/course-sidebar.tsx:6
 msgid "CourseSidebar"
 msgstr "CourseSidebar"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:19
+msgid "Google Cast"
+msgstr "Google Cast"
 
 #: src/routes/auth/_guard/recover-password.tsx:11
 msgid "Hello \"/(auth)/recover-password\"!"
@@ -69,6 +77,22 @@ msgstr "Login as student"
 msgid "Logout"
 msgstr "Logout"
 
+#: src/shared/ui/common/video-player/use-video-translations.ts:51
+msgid "PiP"
+msgstr "PiP"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:29
+msgid "Авто"
+msgstr "Авто"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:20
+msgid "Анимации клавиатуры"
+msgstr "Анимации клавиатуры"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:28
+msgid "Аудио"
+msgstr "Аудио"
+
 #: src/routes/(education)/_guard/index.tsx:47
 msgid "В процессе изучения"
 msgstr "В процессе изучения"
@@ -77,13 +101,53 @@ msgstr "В процессе изучения"
 msgid "Вернуться на главную"
 msgstr "Вернуться на главную"
 
+#: src/shared/ui/common/video-player/use-video-translations.ts:64
+msgid "Включить звук"
+msgstr "Включить звук"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:15
+msgid "Войти в полноэкранный режим"
+msgstr "Войти в полноэкранный режим"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:16
+msgid "Войти в режим Picture-in-Picture"
+msgstr "Войти в режим Picture-in-Picture"
+
 #: src/domains/global/features/logout/ui/button.tsx:13
 msgid "Выйти из аккаунта"
 msgstr "Выйти из аккаунта"
 
+#: src/shared/ui/common/video-player/use-video-translations.ts:17
+msgid "Выйти из полноэкранного режима"
+msgstr "Выйти из полноэкранного режима"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:18
+msgid "Выйти из режима Picture-in-Picture"
+msgstr "Выйти из режима Picture-in-Picture"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:48
+msgid "Выключено"
+msgstr "Выключено"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:32
+msgid "Главы"
+msgstr "Главы"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:65
+msgid "Громкость"
+msgstr "Громкость"
+
 #: src/domains/education/widgets/transactions-table/ui/index.tsx:15
 msgid "Дата"
 msgstr "Дата"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:25
+msgid "Доступность"
+msgstr "Доступность"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:44
+msgid "Живая трансляция"
+msgstr "Живая трансляция"
 
 #: src/routes/(education)/_guard/index.tsx:55
 msgid "Завершенные"
@@ -93,6 +157,10 @@ msgstr "Завершенные"
 #: src/domains/education/widgets/menu/ui/navigation.tsx:28
 msgid "История транзакций"
 msgstr "История транзакций"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:54
+msgid "Качество"
+msgstr "Качество"
 
 #: src/domains/education/entities/course/ui/card/course-card.tsx:78
 msgid "Купить"
@@ -123,6 +191,14 @@ msgstr "Мои курсы"
 msgid "Моя коллекция"
 msgstr "Моя коллекция"
 
+#: src/shared/ui/common/video-player/use-video-translations.ts:46
+msgid "Муть"
+msgstr "Муть"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:58
+msgid "Настройки"
+msgstr "Настройки"
+
 #: src/domains/education/entities/course/ui/card/course-card.tsx:114
 msgid "Начать"
 msgstr "Начать"
@@ -131,18 +207,85 @@ msgstr "Начать"
 msgid "Не начатые"
 msgstr "Не начатые"
 
+#: src/shared/ui/common/video-player/use-video-translations.ts:49
+msgid "Непрозрачность"
+msgstr "Непрозрачность"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:47
+msgid "Нормальный"
+msgstr "Нормальный"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:27
+msgid "Объявления"
+msgstr "Объявления"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:38
+#: src/shared/ui/common/video-player/use-video-translations.ts:39
+msgid "Отключено"
+msgstr "Отключено"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:14
+msgid "Отображать фон"
+msgstr "Отображать фон"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:50
+msgid "Пауза"
+msgstr "Пауза"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:22
+msgid "Перемотка вперед"
+msgstr "Перемотка вперед"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:21
+msgid "Перемотка назад"
+msgstr "Перемотка назад"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:23
+msgid "Переход к живым трансляциям"
+msgstr "Переход к живым трансляциям"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:37
+msgid "По умолчанию"
+msgstr "По умолчанию"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:55
+msgid "Повтор"
+msgstr "Повтор"
+
 #: src/domains/education/entities/course/ui/card/course-card.tsx:116
 msgid "Повторить"
 msgstr "Повторить"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:35
+msgid "Подключение"
+msgstr "Подключение"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:34
+msgid "Подключено"
+msgstr "Подключено"
 
 #: src/domains/education/entities/course/ui/card/course-card.tsx:75
 #: src/domains/education/entities/course/ui/card/course-card.tsx:106
 msgid "Подробнее"
 msgstr "Подробнее"
 
+#: src/shared/ui/common/video-player/use-video-translations.ts:57
+msgid "Поиск"
+msgstr "Поиск"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:43
+msgid "Полноэкранный режим"
+msgstr "Полноэкранный режим"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:36
 #: src/domains/education/entities/course/ui/card/course-card.tsx:115
 msgid "Продолжить"
 msgstr "Продолжить"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:52
+#: src/shared/ui/common/video-player/use-video-translations.ts:53
+msgid "Проигрывание"
+msgstr "Проигрывание"
 
 #: src/domains/global/widgets/error-page/ui/default.tsx:15
 msgid "Произошла неизвестная ошибка"
@@ -161,21 +304,69 @@ msgstr "Пройдено уроков: {completed_lessons_amount} / {lessons_amo
 msgid "Профиль"
 msgstr "Профиль"
 
+#: src/shared/ui/common/video-player/use-video-translations.ts:60
+msgid "Размер"
+msgstr "Размер"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:56
+msgid "Сброс"
+msgstr "Сброс"
+
 #: src/domains/global/features/change-theme/config/themes.ts:14
 msgid "Светлая"
 msgstr "Светлая"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:41
+msgid "Семья"
+msgstr "Семья"
 
 #: src/domains/global/features/change-theme/config/themes.ts:22
 msgid "Системная"
 msgstr "Системная"
 
+#: src/shared/ui/common/video-player/use-video-translations.ts:40
+msgid "Скачать"
+msgstr "Скачать"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:61
+msgid "Скорость"
+msgstr "Скорость"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:10
+msgid "Стили субтитров"
+msgstr "Стили субтитров"
+
 #: src/domains/global/widgets/not-found/ui/index.tsx:9
 msgid "Страница не найдена"
 msgstr "Страница не найдена"
 
+#: src/shared/ui/common/video-player/use-video-translations.ts:31
+msgid "Субтитры"
+msgstr "Субтитры"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:13
+msgid "Субтитры включены"
+msgstr "Субтитры включены"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:11
+msgid "Субтитры выглядят так"
+msgstr "Субтитры выглядят так"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:12
+msgid "Субтитры выключены"
+msgstr "Субтитры выключены"
+
 #: src/domains/education/widgets/transactions-table/ui/index.tsx:21
 msgid "Сумма"
 msgstr "Сумма"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:62
+msgid "Текст"
+msgstr "Текст"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:24
+msgid "Текстовый фон"
+msgstr "Текстовый фон"
 
 #: src/domains/global/features/change-theme/ui/change-theme-menu-button.tsx:49
 #: src/domains/global/features/change-theme/ui/change-theme-menu-button.tsx:56
@@ -186,6 +377,31 @@ msgstr "Тема оформления"
 msgid "Темная"
 msgstr "Темная"
 
-#: src/routes/(education)/_guard/courses_/$course_.lessons_.$lesson.tsx:35
+#: src/shared/ui/common/video-player/use-video-translations.ts:59
+msgid "Тень"
+msgstr "Тень"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:63
+msgid "Трек"
+msgstr "Трек"
+
+#: src/routes/(education)/_guard/courses_/$course_.lessons_.$lesson.tsx:40
+#: src/routes/(education)/_guard/courses_/$course_.lessons_.$lesson.tsx:43
 msgid "Урок {lesson}"
 msgstr "Урок {lesson}"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:30
+msgid "Усиление"
+msgstr "Усиление"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:33
+msgid "Цвет"
+msgstr "Цвет"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:45
+msgid "Цикл"
+msgstr "Цикл"
+
+#: src/shared/ui/common/video-player/use-video-translations.ts:42
+msgid "Шрифт"
+msgstr "Шрифт"
