@@ -1,0 +1,141 @@
+getShopCourses:
+  description: "Получить список курсов, которые можно купить в магазине"
+  # security:
+  #   - BearerAuth: []
+  responses:
+    '200':
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../schemas/course-schemas.yaml#/schemas/ShopCourse'
+    '401':
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+
+getMyCourses:
+  description: "Получить список курсов, которые пользователь купил"
+  # security:
+  #   - BearerAuth: []
+  responses:
+    '200':
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../schemas/course-schemas.yaml#/schemas/MyCourse'
+    '401':
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+
+getCourse:
+  description: "Получить информацию о курсе"
+  # security:
+  #   - BearerAuth: []
+  parameters:
+    - name: courseId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/course-schemas.yaml#/schemas/FullCourse'
+    '401':
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+    '404':
+      description: "Not Found"
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/NotFoundError'
+
+getCourseLessons:
+  description: "Получить список уроков в курсе"
+  # security:
+  #   - BearerAuth: []
+  parameters:
+    - name: courseId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/course-schemas.yaml#/schemas/CourseLessons'
+    '401':
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+    '403':
+      description: "Forbidden"
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/ForbiddenError'
+    '404':
+      description: "Not Found"
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/NotFoundError'
+
+getLesson:
+  description: "Получить содержимое урока"
+  # security:
+  #   - BearerAuth: []
+  parameters:
+    - name: lessonId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/course-schemas.yaml#/schemas/FullLesson'
+    '401':
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+    '403':
+      description: "Forbidden"
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/ForbiddenError'
+    '404':
+      description: "Not Found"
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/NotFoundError'

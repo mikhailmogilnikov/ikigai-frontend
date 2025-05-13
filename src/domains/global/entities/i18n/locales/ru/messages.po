@@ -54,8 +54,8 @@ msgid "Hello \"/auth/sign-up\"!"
 msgstr "Hello \"/auth/sign-up\"!"
 
 #: src/routes/(education)/_guard/courses_/$course.tsx:15
-msgid "Hello course {course}"
-msgstr "Hello course {course}"
+#~ msgid "Hello course {course}"
+#~ msgstr "Hello course {course}"
 
 #: src/shared/ui/common/video-player/use-video.ts:48
 msgid "Live-трансляция"
@@ -81,7 +81,7 @@ msgstr "Авто"
 msgid "Анимации клавиатуры"
 msgstr "Анимации клавиатуры"
 
-#: src/routes/(education)/_guard/index.tsx:47
+#: src/routes/(education)/_guard/index.tsx:51
 msgid "В процессе изучения"
 msgstr "В процессе изучения"
 
@@ -98,8 +98,12 @@ msgid "Войти в полноэкранный режим"
 msgstr "Войти в полноэкранный режим"
 
 #: src/shared/ui/common/video-player/use-video.ts:20
-msgid "Войти в режим Картинка-в-Картинку"
-msgstr "Войти в режим Картинка-в-Картинку"
+msgid "Войти в режим Картинка-в-Картинке"
+msgstr "Войти в режим Картинка-в-Картинке"
+
+#: src/shared/ui/common/video-player/use-video.ts:20
+#~ msgid "Войти в режим Картинка-в-Картинку"
+#~ msgstr "Войти в режим Картинка-в-Картинку"
 
 #: src/shared/ui/common/video-player/use-video.ts:57
 msgid "Воспроизведение"
@@ -118,8 +122,12 @@ msgid "Выйти из полноэкранного режима"
 msgstr "Выйти из полноэкранного режима"
 
 #: src/shared/ui/common/video-player/use-video.ts:22
-msgid "Выйти из режима Картинка-в-Картинка"
-msgstr "Выйти из режима Картинка-в-Картинка"
+#~ msgid "Выйти из режима Картинка-в-Картинка"
+#~ msgstr "Выйти из режима Картинка-в-Картинка"
+
+#: src/shared/ui/common/video-player/use-video.ts:22
+msgid "Выйти из режима Картинка-в-Картинке"
+msgstr "Выйти из режима Картинка-в-Картинке"
 
 #: src/shared/ui/common/video-player/use-video.ts:52
 msgid "Выключено"
@@ -149,7 +157,7 @@ msgstr "Дорожка"
 msgid "Доступность"
 msgstr "Доступность"
 
-#: src/routes/(education)/_guard/index.tsx:55
+#: src/routes/(education)/_guard/index.tsx:59
 msgid "Завершенные"
 msgstr "Завершенные"
 
@@ -170,6 +178,10 @@ msgstr "Картинка-в-Картинке"
 msgid "Качество"
 msgstr "Качество"
 
+#: src/domains/education/entities/test/ui/lesson-test/index.tsx:32
+msgid "Корректно"
+msgstr "Корректно"
+
 #: src/domains/education/entities/course/ui/card/course-card.tsx:78
 msgid "Купить"
 msgstr "Купить"
@@ -179,9 +191,10 @@ msgid "Курс"
 msgstr "Курс"
 
 #: src/routes/(education)/_guard/shop.tsx:17
-msgid "Магазин"
-msgstr "Магазин"
+#~ msgid "Магазин"
+#~ msgstr "Магазин"
 
+#: src/routes/(education)/_guard/shop.tsx:28
 #: src/domains/education/widgets/menu/ui/navigation.tsx:18
 #: src/domains/education/widgets/header/ui/desktop-navigation.tsx:22
 msgid "Магазин курсов"
@@ -211,7 +224,7 @@ msgstr "Настройки звука"
 msgid "Начать"
 msgstr "Начать"
 
-#: src/routes/(education)/_guard/index.tsx:51
+#: src/routes/(education)/_guard/index.tsx:55
 msgid "Не начатые"
 msgstr "Не начатые"
 
@@ -282,6 +295,18 @@ msgstr "Поиск"
 msgid "Полноэкранный режим"
 msgstr "Полноэкранный режим"
 
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:38
+msgid "Прежде чем перейти к следующему уроку, пройдите тесты по усвоенному материалу."
+msgstr "Прежде чем перейти к следующему уроку, пройдите тесты по усвоенному материалу."
+
+#: src/domains/education/entities/test/ui/lesson-test/index.tsx:35
+msgid "Проверить"
+msgstr "Проверить"
+
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:35
+msgid "Проверьте себя"
+msgstr "Проверьте себя"
+
 #: src/shared/ui/common/video-player/use-video.ts:40
 #: src/domains/education/entities/course/ui/card/course-card.tsx:115
 msgid "Продолжить"
@@ -295,7 +320,7 @@ msgstr "Произошла неизвестная ошибка"
 msgid "Пройдено уроков: {completed_lessons_amount} / {lessons_amount}"
 msgstr "Пройдено уроков: {completed_lessons_amount} / {lessons_amount}"
 
-#: src/routes/(education)/_guard/profile.tsx:13
+#: src/routes/(education)/_guard/profile.tsx:15
 #: src/domains/education/widgets/menu/ui/navigation.tsx:23
 msgid "Профиль"
 msgstr "Профиль"
@@ -327,6 +352,10 @@ msgstr "Скачать"
 #: src/shared/ui/common/video-player/use-video.ts:65
 msgid "Скорость"
 msgstr "Скорость"
+
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:46
+msgid "Следующий урок"
+msgstr "Следующий урок"
 
 #: src/shared/ui/common/video-player/use-video.ts:14
 msgid "Стили субтитров"
@@ -360,8 +389,8 @@ msgstr "Сумма"
 msgid "Текст"
 msgstr "Текст"
 
-#: src/domains/global/features/change-theme/ui/change-theme-menu-button.tsx:49
-#: src/domains/global/features/change-theme/ui/change-theme-menu-button.tsx:56
+#: src/domains/global/features/change-theme/ui/change-theme-menu-button.tsx:53
+#: src/domains/global/features/change-theme/ui/change-theme-menu-button.tsx:60
 msgid "Тема оформления"
 msgstr "Тема оформления"
 
@@ -375,8 +404,8 @@ msgstr "Тень"
 
 #: src/routes/(education)/_guard/courses_/$course_.lessons_.$lesson.tsx:40
 #: src/routes/(education)/_guard/courses_/$course_.lessons_.$lesson.tsx:43
-msgid "Урок {lesson}"
-msgstr "Урок {lesson}"
+#~ msgid "Урок {lesson}"
+#~ msgstr "Урок {lesson}"
 
 #: src/shared/ui/common/video-player/use-video.ts:34
 msgid "Усиление"

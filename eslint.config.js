@@ -17,7 +17,7 @@ export default tseslint.config(
   ...pluginRouter.configs['flat/recommended'],
 
   pluginLingui.configs['flat/recommended'],
-  { ignores: ['dist', './vite.config.ts'] },
+  { ignores: ['dist', './vite.config.ts', './src/shared/api/sсhema/generated.ts'] },
   {
     linterOptions: {
       reportUnusedDisableDirectives: 'off',
@@ -139,6 +139,12 @@ export default tseslint.config(
           ],
         },
       ],
+    },
+  },
+  {
+    files: ['**/mocks/**/*.ts', '**/mocks/**/*.tsx'],
+    rules: {
+      'lingui/no-unlocalized-strings': 'off',
     },
   },
 );

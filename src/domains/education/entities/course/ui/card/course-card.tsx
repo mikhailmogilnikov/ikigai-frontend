@@ -36,7 +36,7 @@ export function CourseCard(props: CourseCardProps) {
         <Image src={image_url} alt={title} className='h-full w-full object-fill' />
       </div>
       <Flex col className='p-4'>
-        <Typo as='h6' size='lg' weight='semibold'>
+        <Typo as='h6' size='base' weight='semibold'>
           {title}
         </Typo>
 
@@ -107,7 +107,7 @@ function CourseCardContentCollection(props: CourseCardProps) {
         </LinkButton>
         <LinkButton
           to='/courses/$course/lessons/$lesson'
-          params={{ course: id, lesson: '1' }}
+          params={{ course: id, lesson: 'current' }}
           className='w-full'
           color={isCompleted ? 'success' : 'primary'}
         >

@@ -1,0 +1,23 @@
+schemas:
+  AdminCourse:
+    description: "Курс для админа в списке курсов"
+    allOf:
+      - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseCourse"
+      - type: object
+        properties:
+          is_published:
+            type: boolean
+          modules_amount:
+            type: number
+          price:
+            type: number
+          users_amount:
+            type: number
+          finished_users_amount:
+            type: number
+    required:
+      - is_published
+      - modules_amount
+      - price
+      - users_amount
+      - finished_users_amount

@@ -1,0 +1,107 @@
+schemas:
+  BaseCourse:
+    description: Базовая схема курса
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      image_url:
+        type: string
+      lessons_amount:
+        type: number
+      createdAt:
+        type: string
+        format: date-time
+      updatedAt:
+        type: string
+        format: date-time
+    required:
+      - id
+      - title
+      - image_url
+      - lessons_amount
+      - createdAt
+      - updatedAt
+
+  BaseLesson:
+    description: Базовая схема урока в курсе
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      order:
+        type: number
+    required:
+      - id
+      - title
+      - order
+
+  BaseModule:
+    description: Базовая схема модуля в курсе
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      order:
+        type: number
+    required:
+      - id
+      - title
+      - order
+
+  BaseVideo:
+    description: Базовая схема видео в уроке
+    type: object
+    properties:
+      video_url:
+        type: string
+      poster_url:
+        type: string
+    required:
+      - video_url
+      - poster_url
+
+  BaseTest:
+    description: Базовая схема теста
+    type: object
+    properties:
+      id:
+        type: string
+      lesson_id:
+        type: string
+      title:
+        type: string
+      order:
+        type: number
+    required:
+      - id
+      - lesson_id
+      - title
+      - order
+
+  BaseTestVariant:
+    description: Базовая схема варианта ответа на тест
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      is_correct:
+        type: boolean
+      description:
+        type: [string, "null"]
+      order:
+        type: number
+    required:
+      - id
+      - title
+      - is_correct
+      - description
+      - order

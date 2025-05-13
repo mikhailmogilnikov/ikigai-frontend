@@ -1,0 +1,65 @@
+openapi: 3.1.0
+info:
+  title: Ikigai API
+  version: 1.0.0
+  description: API to manage Ikigai
+
+# components:
+#   securitySchemes:
+#     BearerAuth:
+#       type: http
+#       scheme: bearer
+#       bearerFormat: JWT
+
+tags:
+  - name: public
+    description: Публичные маршруты
+  - name: admin
+    description: Административные маршруты
+
+paths:
+  # Публичные маршруты
+  /courses/store:
+    get:
+      tags:
+        - public
+      $ref: ./edu/endpoints/courses.yaml#/getShopCourses
+  /courses/my-courses:
+    get:
+      tags:
+        - public
+      $ref: ./edu/endpoints/courses.yaml#/getMyCourses
+  /courses/{courseId}:
+    get:
+      tags:
+        - public
+      $ref: ./edu/endpoints/courses.yaml#/getCourse
+  /courses/{courseId}/lessons:
+    get:
+      tags:
+        - public
+      $ref: ./edu/endpoints/courses.yaml#/getCourseLessons
+  /lessons/{lessonId}:
+    get:
+      tags:
+        - public
+      $ref: ./edu/endpoints/courses.yaml#/getLesson
+
+  # Админ маршруты
+  /admin/courses:
+    get:
+      tags:
+        - admin
+      $ref: ./admin/endpoints/courses.yaml#/getAdminCourses
+    # post:
+    #   tags:
+    #     - admin
+    #   $ref: ./admin/endpoints/courses.yaml#/createAdminCourse
+    # put:
+    #   tags:
+    #     - admin
+    #   $ref: ./admin/endpoints/courses.yaml#/updateAdminCourse
+    # delete:
+    #   tags:
+    #     - admin
+    #   $ref: ./admin/endpoints/courses.yaml#/deleteAdminCourse

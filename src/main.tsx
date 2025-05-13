@@ -35,11 +35,26 @@ declare module '@tanstack/react-router' {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <Providers queryClient={queryClient}>
-      <RouterProvider router={router} />
-    </Providers>
-  </StrictMode>,
-);
+async function enableMocking() {
+  // if (import.meta.env.PROD) return;
+
+  const { worker } = await import('~/shared/api/mocks/browser');
+
+  return worker.start();
+}
+
+enableMocking()
+  .then(() => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    createRoot(document.getElementById('root')!).render(
+      <StrictMode>
+        <Providers queryClient={queryClient}>
+          <RouterProvider router={router} />
+        </Providers>
+      </StrictMode>,
+    );
+  })
+  .catch((error: unknown) => {
+    // eslint-disable-next-line no-console
+    console.error(error);
+  });

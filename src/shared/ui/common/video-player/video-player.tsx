@@ -27,7 +27,7 @@ export function VideoPlayer({ src, poster, title, autoPlay = false, chapters }: 
     <MediaPlayer
       viewType='video'
       streamType='on-demand'
-      logLevel='warn'
+      logLevel='silent'
       storage='video-player'
       title={title}
       src={src}

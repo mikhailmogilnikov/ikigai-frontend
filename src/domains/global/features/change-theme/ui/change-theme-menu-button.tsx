@@ -30,7 +30,11 @@ export function ChangeThemeMenuButton() {
   };
 
   const getThemeLabel = (theme: Theme) => {
-    return CHANGE_THEME_ITEMS.find((item) => item.id === theme)?.label ?? CHANGE_THEME_ITEMS[2].label;
+    const themeItem = CHANGE_THEME_ITEMS.find((item) => item.id === theme);
+    const systemTheme = CHANGE_THEME_ITEMS.find((item) => item.id === 'system');
+    const firstTheme = CHANGE_THEME_ITEMS[0];
+
+    return themeItem?.label ?? systemTheme?.label ?? firstTheme.label;
   };
 
   return (

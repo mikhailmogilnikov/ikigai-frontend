@@ -1,4 +1,4 @@
-import { CourseCollection } from '../../model/course.type';
+import { ApiComponents } from '~/shared/api';
 
 export enum CourseCollectionStatus {
   IN_PROGRESS = 'inProgress',
@@ -7,12 +7,12 @@ export enum CourseCollectionStatus {
 }
 
 interface SortCollectionCoursesProps {
-  [CourseCollectionStatus.IN_PROGRESS]: CourseCollection[];
-  [CourseCollectionStatus.NOT_STARTED]: CourseCollection[];
-  [CourseCollectionStatus.COMPLETED]: CourseCollection[];
+  [CourseCollectionStatus.IN_PROGRESS]: ApiComponents['MyCourse'][];
+  [CourseCollectionStatus.NOT_STARTED]: ApiComponents['MyCourse'][];
+  [CourseCollectionStatus.COMPLETED]: ApiComponents['MyCourse'][];
 }
 
-export function sortCollectionCourses(courses: CourseCollection[]): SortCollectionCoursesProps {
+export function sortCollectionCourses(courses: ApiComponents['MyCourse'][]): SortCollectionCoursesProps {
   const sortedCourses = courses.reduce<SortCollectionCoursesProps>(
     (acc, course) => {
       if (course.completed_lessons_amount === course.lessons_amount) {

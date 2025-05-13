@@ -1,0 +1,443 @@
+openapi: 3.1.0
+info:
+  title: Ikigai API
+  version: 1.0.0
+  description: API to manage Ikigai
+tags:
+  - name: public
+    description: Публичные маршруты
+  - name: admin
+    description: Административные маршруты
+paths:
+  /courses/store:
+    get:
+      tags:
+        - public
+      description: Получить список курсов, которые можно купить в магазине
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShopCourse'
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+  /courses/my-courses:
+    get:
+      tags:
+        - public
+      description: Получить список курсов, которые пользователь купил
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MyCourse'
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+  /courses/{courseId}:
+    get:
+      tags:
+        - public
+      description: Получить информацию о курсе
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FullCourse'
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+  /courses/{courseId}/lessons:
+    get:
+      tags:
+        - public
+      description: Получить список уроков в курсе
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseLessons'
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+  /lessons/{lessonId}:
+    get:
+      tags:
+        - public
+      description: Получить содержимое урока
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: lessonId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FullLesson'
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+  /admin/courses:
+    get:
+      tags:
+        - admin
+      description: Получить список курсов для админа
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AdminCourse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    BaseCourse:
+      description: Базовая схема курса
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        image_url:
+          type: string
+        lessons_amount:
+          type: number
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - title
+        - image_url
+        - lessons_amount
+        - createdAt
+        - updatedAt
+    ShopCourse:
+      description: Курс в списке курсов для магазина
+      allOf:
+        - $ref: '#/components/schemas/BaseCourse'
+        - type: object
+          properties:
+            price:
+              type: number
+            modules_amount:
+              type: number
+          required:
+            - price
+            - modules_amount
+    ErrorSchema:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+        - message
+        - code
+    UnauthorizedError:
+      description: Unauthorized
+      allOf:
+        - $ref: '#/components/schemas/ErrorSchema'
+    MyCourse:
+      description: Курс в списке курсов, которые пользователь купил
+      allOf:
+        - $ref: '#/components/schemas/BaseCourse'
+        - type: object
+          properties:
+            completed_lessons_amount:
+              type: number
+          required:
+            - completed_lessons_amount
+    BaseModule:
+      description: Базовая схема модуля в курсе
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        order:
+          type: number
+      required:
+        - id
+        - title
+        - order
+    BaseLesson:
+      description: Базовая схема урока в курсе
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        order:
+          type: number
+      required:
+        - id
+        - title
+        - order
+    CourseLesson:
+      description: Урок в курсе
+      allOf:
+        - $ref: '#/components/schemas/BaseLesson'
+        - type: object
+          properties:
+            is_completed:
+              type: boolean
+          required:
+            - is_completed
+    ModuleWithLessons:
+      description: Модуль с уроками
+      allOf:
+        - $ref: '#/components/schemas/BaseModule'
+        - type: object
+          properties:
+            lessons:
+              type: array
+              items:
+                $ref: '#/components/schemas/CourseLesson'
+          required:
+            - lessons
+    FullCourse:
+      description: Полная информация о курсе
+      allOf:
+        - $ref: '#/components/schemas/BaseCourse'
+        - type: object
+          properties:
+            description:
+              type: string
+            price:
+              type: number
+            modules_amount:
+              type: number
+            is_purchased:
+              type: boolean
+            is_finished:
+              type: boolean
+            completed_lessons_amount:
+              type:
+                - number
+                - 'null'
+            modules:
+              type: array
+              items:
+                $ref: '#/components/schemas/ModuleWithLessons'
+          required:
+            - description
+            - price
+            - modules_amount
+            - is_purchased
+            - is_finished
+            - completed_lessons_amount
+            - modules
+    NotFoundError:
+      description: Not Found
+      allOf:
+        - $ref: '#/components/schemas/ErrorSchema'
+    CourseLessons:
+      description: Список уроков в курсе
+      allOf:
+        - $ref: '#/components/schemas/MyCourse'
+        - type: object
+          properties:
+            modules:
+              type: array
+              items:
+                $ref: '#/components/schemas/ModuleWithLessons'
+          required:
+            - modules
+    ForbiddenError:
+      description: Forbidden
+      allOf:
+        - $ref: '#/components/schemas/ErrorSchema'
+    BaseVideo:
+      description: Базовая схема видео в уроке
+      type: object
+      properties:
+        video_url:
+          type: string
+        poster_url:
+          type: string
+      required:
+        - video_url
+        - poster_url
+    BaseTest:
+      description: Базовая схема теста
+      type: object
+      properties:
+        id:
+          type: string
+        lesson_id:
+          type: string
+        title:
+          type: string
+        order:
+          type: number
+      required:
+        - id
+        - lesson_id
+        - title
+        - order
+    BaseTestVariant:
+      description: Базовая схема варианта ответа на тест
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        is_correct:
+          type: boolean
+        description:
+          type:
+            - string
+            - 'null'
+        order:
+          type: number
+      required:
+        - id
+        - title
+        - is_correct
+        - description
+        - order
+    TestWithVariants:
+      description: Тест с вариантами ответов
+      allOf:
+        - $ref: '#/components/schemas/BaseTest'
+        - type: object
+          properties:
+            variants:
+              type: array
+              items:
+                $ref: '#/components/schemas/BaseTestVariant'
+          required:
+            - variants
+    FullLesson:
+      description: Содержимое урока
+      allOf:
+        - $ref: '#/components/schemas/CourseLesson'
+        - type: object
+          properties:
+            video:
+              oneOf:
+                - $ref: '#/components/schemas/BaseVideo'
+                - type: 'null'
+            content:
+              type: string
+            tests:
+              type: array
+              items:
+                $ref: '#/components/schemas/TestWithVariants'
+          required:
+            - video
+            - content
+            - tests
+    AdminCourse:
+      description: Курс для админа в списке курсов
+      allOf:
+        - $ref: '#/components/schemas/BaseCourse'
+        - type: object
+          properties:
+            is_published:
+              type: boolean
+            modules_amount:
+              type: number
+            price:
+              type: number
+            users_amount:
+              type: number
+            finished_users_amount:
+              type: number
+      required:
+        - is_published
+        - modules_amount
+        - price
+        - users_amount
+        - finished_users_amount

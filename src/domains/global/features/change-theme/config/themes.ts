@@ -21,4 +21,4 @@ export const CHANGE_THEME_ITEMS: ChangeThemeItem[] = [
     id: 'system',
     label: msg`Системная`,
   },
-];
+] as const;

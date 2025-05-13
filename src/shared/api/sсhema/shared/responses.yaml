@@ -1,0 +1,31 @@
+schemas:
+  ErrorSchema:
+    type: object
+    properties:
+      message:
+        type: string
+      code:
+        type: string
+    required:
+      - message
+      - code
+
+  UnauthorizedError:
+    description: Unauthorized
+    allOf:
+      - $ref: '#/schemas/ErrorSchema'
+
+  NotFoundError:
+    description: Not Found
+    allOf:
+      - $ref: '#/schemas/ErrorSchema'
+
+  ForbiddenError:
+    description: Forbidden
+    allOf:
+      - $ref: '#/schemas/ErrorSchema'
+
+  BadRequestError:
+    description: Bad Request
+    allOf:
+      - $ref: '#/schemas/ErrorSchema'

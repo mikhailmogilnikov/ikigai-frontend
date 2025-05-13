@@ -1,0 +1,126 @@
+schemas:
+  ShopCourse:
+    description: "Курс в списке курсов для магазина"
+    allOf:
+      - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseCourse"
+      - type: object
+        properties:
+          price:
+            type: number
+          modules_amount:
+            type: number
+        required:
+          - price
+          - modules_amount
+
+  MyCourse:
+    description: "Курс в списке курсов, которые пользователь купил"
+    allOf:
+      - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseCourse"
+      - type: object
+        properties:
+          completed_lessons_amount:
+            type: number
+        required:
+          - completed_lessons_amount
+
+  FullCourse:
+    description: "Полная информация о курсе"
+    allOf:
+      - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseCourse"
+      - type: object
+        properties:
+          description:
+            type: string
+          price:
+            type: number
+          modules_amount:
+            type: number
+          is_purchased:
+            type: boolean
+          is_finished:
+            type: boolean
+          completed_lessons_amount:
+            type: [number, "null"]
+          modules:
+            type: array
+            items:
+              $ref: "#/schemas/ModuleWithLessons"
+        required:
+          - description
+          - price
+          - modules_amount
+          - is_purchased
+          - is_finished
+          - completed_lessons_amount
+          - modules
+  CourseLesson:
+    description: "Урок в курсе"
+    allOf:
+      - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseLesson"
+      - type: object
+        properties:
+          is_completed:
+            type: boolean
+        required:
+          - is_completed
+
+  ModuleWithLessons:
+    description: "Модуль с уроками"
+    allOf:
+      - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseModule"
+      - type: object
+        properties:
+          lessons:
+            type: array
+            items:
+              $ref: "#/schemas/CourseLesson"
+        required:
+          - lessons
+
+  CourseLessons:
+    description: "Список уроков в курсе"
+    allOf:
+      - $ref: "#/schemas/MyCourse"
+      - type: object
+        properties:
+          modules:
+            type: array
+            items:
+              $ref: "#/schemas/ModuleWithLessons"
+        required:
+          - modules
+
+  TestWithVariants:
+    description: "Тест с вариантами ответов"
+    allOf:
+      - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseTest"
+      - type: object
+        properties:
+          variants:
+            type: array
+            items:
+              $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseTestVariant"
+        required:
+          - variants
+
+  FullLesson:
+    description: "Содержимое урока"
+    allOf:
+      - $ref: "#/schemas/CourseLesson"
+      - type: object
+        properties:
+          video:
+              oneOf:
+                - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseVideo"
+                - type: "null"
+          content:
+            type: string
+          tests:
+            type: array
+            items:
+              $ref: "#/schemas/TestWithVariants"
+        required:
+          - video 
+          - content
+          - tests
