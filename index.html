@@ -5,6 +5,22 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#000000" />
+    <meta name="color-scheme" content="light dark" />
+
+    <style>
+      @layer base {
+        @media (prefers-color-scheme: dark) {
+          .bg-background {
+            background-color: #000000;
+          }
+        }
+        @media (prefers-color-scheme: light) {
+          .bg-background {
+            background-color: #000000;
+          }
+        }
+      }
+    </style>
 
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->

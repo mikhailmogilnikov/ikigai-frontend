@@ -39,6 +39,27 @@
   );
 
   --ease-snappy: var(--spring-easing);
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
 }
 
 @layer utilities {
@@ -59,6 +80,18 @@
 
 :root {
   --font-family-sans: 'Gilroy', sans-serif;
+
+  ::selection {
+    background: var(--theme-color-primary);
+    color: var(--theme-color-primary-foreground);
+    text-shadow: none;
+  }
+
+  ::-moz-selection {
+    background: var(--theme-color-primary);
+    color: var(--theme-color-primary-foreground);
+    text-shadow: none;
+  }
 }
 
 body {

@@ -45,7 +45,7 @@ export function DesktopLayout({ children, header }: DesktopLayoutProps) {
             sidebarVisible ? 'mr-2 w-60 translate-x-0 opacity-100' : 'mr-0 w-0 -translate-x-1/2 opacity-0',
           )}
         >
-          {sidebarVisible && <aside className='flex h-full w-60 shrink-0 flex-col px-2 py-4'>{sidebar}</aside>}
+          {sidebarVisible && <aside className='flex h-full w-60 shrink-0 flex-col px-0.5 py-px'>{sidebar}</aside>}
         </div>
         <main className={contentClassName}>
           <ScrollArea

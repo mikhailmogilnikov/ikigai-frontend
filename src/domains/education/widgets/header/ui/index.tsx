@@ -2,11 +2,9 @@ import { Link } from '@tanstack/react-router';
 
 import { LogoIcon } from '~/shared/assets/svg/logo';
 import { Flex } from '~/shared/ui/primitives/flex';
-import { Divider } from '~/shared/ui/primitives/divider';
-
-import { EducationMenu } from '../../menu';
 
 import { HeaderDesktopNavigation } from './desktop-navigation';
+import { EducationHeaderMenuButtons } from './menu-buttons';
 
 export function EducationHeader() {
   return (
@@ -23,10 +21,7 @@ export function EducationHeader() {
         <HeaderDesktopNavigation />
       </Flex>
 
-      <Flex align='center' gap='sm'>
-        <Divider vertical className='bg-divider -mr-1.5 h-5' />
-        <EducationMenu />
-      </Flex>
+      <EducationHeaderMenuButtons />
     </>
   );
 }

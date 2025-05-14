@@ -51,12 +51,16 @@ function RouteComponent() {
   const { data: lesson } = useSuspenseQuery(getLessonQuery(activeLessonId));
 
   useEffect(() => {
-    setSidebar(<CourseSidebar />);
+    if (courseLessons.data) {
+      setSidebar(
+        <CourseSidebar courseLessons={courseLessons.data} courseId={courseId} activeLessonId={activeLessonId} />,
+      );
+    }
 
     return () => {
       setSidebar(null);
     };
-  }, []);
+  }, [courseLessons, courseId, activeLessonId]);
 
   if (!lesson.data || !courseLessons.data) return null;
 
@@ -72,7 +76,7 @@ function RouteComponent() {
         </Suspense>
       )}
       <MarkdownRenderer content={lesson.data.content} />
-      <LessonTests tests={lesson.data.tests} modules={courseLessons.data.modules} lessonId={activeLessonId} />
+      <LessonTests tests={lesson.data.tests} modules={courseLessons.data.modules} />
     </Container>
   );
 }

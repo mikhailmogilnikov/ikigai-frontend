@@ -61,8 +61,8 @@ export function SheetHeader(props: SheetHeaderProps) {
   const { wrapperProps, restContent, ...rest } = props;
 
   return (
-    <div className='flex flex-col gap-6 p-6' {...wrapperProps}>
-      <Dialog.Title {...rest} className='text-2xl font-semibold' />
+    <div className='flex flex-col gap-4 p-4 md:gap-6 md:p-6' {...wrapperProps}>
+      <Dialog.Title {...rest} className='text-xl font-semibold md:text-2xl' />
       <VisuallyHidden asChild>
         <Dialog.Description />
       </VisuallyHidden>
@@ -76,7 +76,7 @@ export function SheetContent(props: ScrollAreaProps) {
 
   return (
     <ScrollArea
-      className='shrink-1 mb-6 flex h-full flex-col gap-6 overflow-y-auto px-6'
+      className='shrink-1 mb-4 flex h-full flex-col gap-4 overflow-y-auto px-4 md:mb-6 md:gap-6 md:px-6'
       classNames={{
         verticalScrollbar: 'w-2',
         horizontalScrollbar: 'h-2',
@@ -96,7 +96,7 @@ export function SheetFooter(props: SheetFooterProps) {
   const { showCancel = false, children, ...rest } = props;
 
   return (
-    <div className='flex shrink-0 gap-6 px-6 pb-6' {...rest}>
+    <div className='flex shrink-0 gap-6 px-4 pb-4 md:px-6 md:pb-6' {...rest}>
       {showCancel && (
         <Dialog.Close asChild>
           <button className='bg-default w-full cursor-pointer rounded-xl px-4 py-2.5 font-medium shadow'>Отмена</button>

@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/react/macro';
-import { useNavigate } from '@tanstack/react-router';
+import { useNavigate, useLoaderData } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { PiArrowRightBold } from 'react-icons/pi';
 
@@ -14,16 +14,18 @@ import { Typo } from '~/shared/ui/primitives/typo';
 interface LessonTestsProps {
   tests: ApiComponents['TestWithVariants'][];
   modules: ApiComponents['ModuleWithLessons'][];
-  lessonId: string;
 }
 
-export function LessonTests({ tests, modules, lessonId }: LessonTestsProps) {
+export function LessonTests({ tests, modules }: LessonTestsProps) {
   const navigate = useNavigate();
-  const [completedTestsIds, setCompletedTestsIds] = useState<string[]>([]);
-
+  const loaderData = useLoaderData({ from: '/(education)/_guard/courses_/$course_/lessons_/$lesson' });
   const { onOpenChange } = useCompletedCourseModal();
 
-  const currentLessonRef = useRef<string>(lessonId);
+  const activeLessonId = loaderData.activeLessonId;
+
+  const currentLessonRef = useRef<string>(activeLessonId);
+
+  const [completedTestsIds, setCompletedTestsIds] = useState<string[]>([]);
 
   const testsLength = tests.length;
   const completedTestsLength = completedTestsIds.length;
@@ -38,7 +40,7 @@ export function LessonTests({ tests, modules, lessonId }: LessonTestsProps) {
 
   const handleNextLesson = () => {
     if (isNextLessonDisabled) return;
-    const nextLesson = getNextUncompletedLesson(modules, lessonId);
+    const nextLesson = getNextUncompletedLesson(modules, activeLessonId);
 
     if (nextLesson === 'ENDED') {
       onOpenChange();
@@ -56,11 +58,11 @@ export function LessonTests({ tests, modules, lessonId }: LessonTestsProps) {
   };
 
   useEffect(() => {
-    if (currentLessonRef.current !== lessonId) {
+    if (currentLessonRef.current !== activeLessonId) {
       setCompletedTestsIds([]);
-      currentLessonRef.current = lessonId;
+      currentLessonRef.current = activeLessonId;
     }
-  }, [lessonId]);
+  }, [activeLessonId]);
 
   return (
     <Flex col gap='lg' className='mt-6'>
