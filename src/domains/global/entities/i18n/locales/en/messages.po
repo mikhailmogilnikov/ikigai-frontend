@@ -81,7 +81,7 @@ msgstr ""
 msgid "Анимации клавиатуры"
 msgstr ""
 
-#: src/routes/(education)/_guard/index.tsx:51
+#: src/routes/(education)/_guard/index.tsx:46
 msgid "В процессе изучения"
 msgstr ""
 
@@ -157,8 +157,12 @@ msgstr ""
 msgid "Доступность"
 msgstr ""
 
-#: src/routes/(education)/_guard/index.tsx:59
+#: src/routes/(education)/_guard/index.tsx:54
 msgid "Завершенные"
+msgstr ""
+
+#: src/domains/education/entities/course/ui/completed-course-modal/index.tsx:44
+msgid "Закрыть это окно"
 msgstr ""
 
 #: src/shared/ui/common/video-player/use-video.ts:49
@@ -178,7 +182,7 @@ msgstr ""
 msgid "Качество"
 msgstr ""
 
-#: src/domains/education/entities/test/ui/lesson-test/index.tsx:32
+#: src/domains/education/entities/test/ui/lesson-test/index.tsx:85
 msgid "Корректно"
 msgstr ""
 
@@ -194,7 +198,7 @@ msgstr ""
 #~ msgid "Магазин"
 #~ msgstr ""
 
-#: src/routes/(education)/_guard/shop.tsx:28
+#: src/routes/(education)/_guard/shop.tsx:25
 #: src/domains/education/widgets/menu/ui/navigation.tsx:18
 #: src/domains/education/widgets/header/ui/desktop-navigation.tsx:22
 msgid "Магазин курсов"
@@ -224,8 +228,16 @@ msgstr ""
 msgid "Начать"
 msgstr ""
 
-#: src/routes/(education)/_guard/index.tsx:55
+#: src/routes/(education)/_guard/index.tsx:50
 msgid "Не начатые"
+msgstr ""
+
+#: src/domains/education/entities/course/ui/completed-course-modal/index.tsx:29
+msgid "Не стоит останавливаться на достигнутом, продолжайте изучать новые темы или повторите ранее пройденные.<0/><1/>Завершенный курс будет доступен в вашем профиле в любое время."
+msgstr ""
+
+#: src/domains/education/entities/test/ui/lesson-test/index.tsx:91
+msgid "Некорректно"
 msgstr ""
 
 #: src/shared/ui/common/video-player/use-video.ts:53
@@ -287,6 +299,10 @@ msgstr ""
 msgid "Подробнее"
 msgstr ""
 
+#: src/domains/education/entities/course/ui/completed-course-modal/index.tsx:26
+msgid "Поздравляем с успешным завершением курса!"
+msgstr ""
+
 #: src/shared/ui/common/video-player/use-video.ts:61
 msgid "Поиск"
 msgstr ""
@@ -295,15 +311,19 @@ msgstr ""
 msgid "Полноэкранный режим"
 msgstr ""
 
-#: src/domains/education/widgets/lesson-tests/ui/index.tsx:38
+#: src/domains/education/entities/course/ui/completed-course-modal/index.tsx:41
+msgid "Посмотреть другие курсы"
+msgstr ""
+
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:73
 msgid "Прежде чем перейти к следующему уроку, пройдите тесты по усвоенному материалу."
 msgstr ""
 
-#: src/domains/education/entities/test/ui/lesson-test/index.tsx:35
+#: src/domains/education/entities/test/ui/lesson-test/index.tsx:81
 msgid "Проверить"
 msgstr ""
 
-#: src/domains/education/widgets/lesson-tests/ui/index.tsx:35
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:70
 msgid "Проверьте себя"
 msgstr ""
 
@@ -353,7 +373,7 @@ msgstr ""
 msgid "Скорость"
 msgstr ""
 
-#: src/domains/education/widgets/lesson-tests/ui/index.tsx:46
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:81
 msgid "Следующий урок"
 msgstr ""
 
