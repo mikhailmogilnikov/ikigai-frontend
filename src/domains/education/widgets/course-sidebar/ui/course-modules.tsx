@@ -31,7 +31,7 @@ export function CourseModules({ courseModules, courseId, activeLessonId }: Cours
             value={module.id}
             className='bg-default/50 md:bg-default/60 rounded-lg px-3 py-3 shadow'
           >
-            <AccordionTrigger className='gap-3 text-sm font-semibold'>{module.title}</AccordionTrigger>
+            <AccordionTrigger className='gap-3 text-base font-semibold md:text-sm'>{module.title}</AccordionTrigger>
             <AccordionContent className='mt-4'>
               <Flex col className='gap-0.5'>
                 {module.lessons.map((lesson) => (

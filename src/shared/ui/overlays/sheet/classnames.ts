@@ -7,7 +7,7 @@ export const sheetTV = tv({
     overlay:
       'data-[state=closed]:motion-opacity-out data-[state=open]:motion-opacity-in fixed inset-0 z-50 bg-black/50',
     content:
-      'bg-default-50 border-divider-100 motion-ease-spring-smooth motion-duration-300 fixed top-2 z-50 flex h-[calc(100vh-4*var(--spacing))] w-[calc(100vw-4*var(--spacing))] flex-col overflow-hidden rounded-2xl dark:border',
+      'bg-default-50 border-divider-100 motion-ease-spring-smooth motion-duration-300 fixed top-2 z-50 flex h-[calc(100dvh-4*var(--spacing))] w-[calc(100dvw-4*var(--spacing))] flex-col overflow-hidden rounded-2xl dark:border',
     close: 'bg-default absolute right-4 top-4 z-30 flex size-8 items-center justify-center rounded-full shadow',
     closeIcon: 'size-5 opacity-60',
   },

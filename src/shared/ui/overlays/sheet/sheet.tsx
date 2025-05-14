@@ -62,7 +62,7 @@ export function SheetHeader(props: SheetHeaderProps) {
 
   return (
     <div className='flex flex-col gap-4 p-4 md:gap-6 md:p-6' {...wrapperProps}>
-      <Dialog.Title {...rest} className='text-xl font-semibold md:text-2xl' />
+      <Dialog.Title {...rest} className='mr-10 text-xl font-semibold md:text-2xl' />
       <VisuallyHidden asChild>
         <Dialog.Description />
       </VisuallyHidden>
