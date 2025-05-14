@@ -1,15 +1,17 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { lazy, Suspense, useEffect } from 'react';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 import { getFirstUncompletedLesson } from '~/domains/education/entities/lesson';
+import { getCourseLessonsQuery } from '~/domains/education/entities/course/api';
 import { CourseSidebar } from '~/domains/education/widgets/course-sidebar';
 import { LessonTests } from '~/domains/education/widgets/lesson-tests';
 import { useAppLayout } from '~/domains/global/widgets/layout';
 import { MarkdownRenderer } from '~/domains/global/widgets/markdown-renderer';
-import { fetchClient } from '~/shared/api';
 import { PageLoader } from '~/shared/ui/common/page-loader';
 import { Container } from '~/shared/ui/primitives/container';
 import { Skeleton } from '~/shared/ui/primitives/skeleton';
+import { getLessonQuery } from '~/domains/education/entities/lesson/api';
 
 const VideoPlayer = lazy(() =>
   import('~/shared/ui/common/video-player').then((module) => ({ default: module.VideoPlayer })),
@@ -18,59 +20,59 @@ const VideoPlayer = lazy(() =>
 export const Route = createFileRoute('/(education)/_guard/courses_/$course_/lessons_/$lesson')({
   component: RouteComponent,
   pendingComponent: () => <PageLoader type='layout' />,
-  loader: async ({ params: { course, lesson } }) => {
-    const courseLessonsData = await fetchClient.GET('/courses/{courseId}/lessons', {
-      params: { path: { courseId: course } },
-    });
+  loader: async ({ context: { queryClient }, params: { course, lesson } }) => {
+    const courseLessonsData = await queryClient.ensureQueryData(getCourseLessonsQuery(course));
 
     if (lesson === 'current' && courseLessonsData.data) {
       const activeLesson = getFirstUncompletedLesson(courseLessonsData.data.modules);
-      const lessonData = await fetchClient.GET('/lessons/{lessonId}', {
-        params: { path: { lessonId: activeLesson.id } },
-      });
+
+      await queryClient.ensureQueryData(getLessonQuery(activeLesson.id));
 
       return {
-        courseLessons: courseLessonsData.data,
-        lesson: lessonData.data,
+        activeLessonId: activeLesson.id,
       };
     }
 
-    const lessonData = await fetchClient.GET('/lessons/{lessonId}', { params: { path: { lessonId: lesson } } });
+    await queryClient.ensureQueryData(getLessonQuery(lesson));
 
     return {
-      courseLessons: courseLessonsData.data,
-      lesson: lessonData.data,
+      activeLessonId: lesson,
     };
   },
 });
 
 function RouteComponent() {
-  const { sidebar, setSidebar } = useAppLayout();
-  const { lesson } = Route.useLoaderData();
+  const { setSidebar } = useAppLayout();
+
+  const { course: courseId } = Route.useParams();
+  const { activeLessonId } = Route.useLoaderData();
+
+  const { data: courseLessons } = useSuspenseQuery(getCourseLessonsQuery(courseId));
+  const { data: lesson } = useSuspenseQuery(getLessonQuery(activeLessonId));
 
   useEffect(() => {
-    if (!sidebar) {
-      setSidebar(<CourseSidebar />);
-    }
+    setSidebar(<CourseSidebar />);
 
     return () => {
       setSidebar(null);
     };
   }, []);
 
-  if (!lesson) {
-    return null;
-  }
+  if (!lesson.data || !courseLessons.data) return null;
 
   return (
-    <Container size='md' title={lesson.title}>
-      {lesson.video && (
+    <Container size='md' title={lesson.data.title}>
+      {lesson.data.video && (
         <Suspense fallback={<Skeleton className='aspect-video w-full rounded-md' />}>
-          <VideoPlayer title={lesson.title} src={lesson.video.video_url} poster={lesson.video.poster_url} />
+          <VideoPlayer
+            title={lesson.data.title}
+            src={lesson.data.video.video_url}
+            poster={lesson.data.video.poster_url}
+          />
         </Suspense>
       )}
-      <MarkdownRenderer content={lesson.content} />
-      <LessonTests tests={lesson.tests} />
+      <MarkdownRenderer content={lesson.data.content} />
+      <LessonTests tests={lesson.data.tests} modules={courseLessons.data.modules} lessonId={activeLessonId} />
     </Container>
   );
 }

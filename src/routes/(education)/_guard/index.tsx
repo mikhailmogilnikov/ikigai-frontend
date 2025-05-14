@@ -1,30 +1,25 @@
 import { useLingui } from '@lingui/react/macro';
 import { createFileRoute } from '@tanstack/react-router';
 import { msg } from '@lingui/core/macro';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 import { CourseCard, CourseCollectionStatus, sortCollectionCourses } from '~/domains/education/entities/course';
 import { CoursesSection } from '~/domains/education/widgets/course-section';
 import { PageLoader } from '~/shared/ui/common/page-loader';
 import { Container } from '~/shared/ui/primitives/container';
-import { fetchClient } from '~/shared/api';
+import { myCoursesQuery } from '~/domains/education/entities/course/api';
 
 export const Route = createFileRoute('/(education)/_guard/')({
   component: RouteComponent,
   pendingComponent: () => <PageLoader type='layout' />,
-  loader: async () => {
-    const data = await fetchClient.GET('/courses/my-courses');
-
-    return {
-      courses: data.data,
-    };
-  },
+  loader: ({ context: { queryClient } }) => queryClient.ensureQueryData(myCoursesQuery),
 });
 
 function RouteComponent() {
   const { i18n } = useLingui();
-  const { courses } = Route.useLoaderData();
+  const { data: courses } = useSuspenseQuery(myCoursesQuery);
 
-  const sortedCourses = sortCollectionCourses(courses ?? []);
+  const sortedCourses = sortCollectionCourses(courses.data ?? []);
 
   return (
     <Container gap='2xl'>

@@ -1,23 +1,22 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 import { Container } from '~/shared/ui/primitives/container';
-import { fetchClient } from '~/shared/api';
 import { Typo } from '~/shared/ui/primitives/typo';
 import { PageLoader } from '~/shared/ui/common/page-loader';
+import { getCourseQuery } from '~/domains/education/entities/course/api';
+
 export const Route = createFileRoute('/(education)/_guard/courses_/$course')({
   component: RouteComponent,
   pendingComponent: () => <PageLoader type='layout' />,
-  loader: async ({ params: { course } }) => {
-    const data = await fetchClient.GET('/courses/{courseId}', { params: { path: { courseId: course } } });
-
-    return {
-      course: data.data,
-    };
-  },
+  loader: ({ context: { queryClient }, params: { course } }) => queryClient.ensureQueryData(getCourseQuery(course)),
 });
 
 function RouteComponent() {
-  const { course } = Route.useLoaderData();
+  const { course: courseId } = Route.useParams();
+  const {
+    data: { data: course },
+  } = useSuspenseQuery(getCourseQuery(courseId));
 
   if (!course) {
     return null;

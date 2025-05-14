@@ -14,10 +14,9 @@ paths:
       tags:
         - public
       description: Получить список курсов, которые можно купить в магазине
-      security:
-        - BearerAuth: []
       responses:
         '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -25,6 +24,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ShopCourse'
         '401':
+          description: Unauthorized
           content:
             application/json:
               schema:
@@ -34,10 +34,9 @@ paths:
       tags:
         - public
       description: Получить список курсов, которые пользователь купил
-      security:
-        - BearerAuth: []
       responses:
         '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -45,6 +44,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/MyCourse'
         '401':
+          description: Unauthorized
           content:
             application/json:
               schema:
@@ -54,8 +54,6 @@ paths:
       tags:
         - public
       description: Получить информацию о курсе
-      security:
-        - BearerAuth: []
       parameters:
         - name: courseId
           in: path
@@ -64,16 +62,19 @@ paths:
             type: string
       responses:
         '200':
+          description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/FullCourse'
         '401':
+          description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedError'
         '404':
+          description: Not Found
           content:
             application/json:
               schema:
@@ -83,8 +84,6 @@ paths:
       tags:
         - public
       description: Получить список уроков в курсе
-      security:
-        - BearerAuth: []
       parameters:
         - name: courseId
           in: path
@@ -93,21 +92,25 @@ paths:
             type: string
       responses:
         '200':
+          description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/CourseLessons'
         '401':
+          description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedError'
         '403':
+          description: Forbidden
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
         '404':
+          description: Not Found
           content:
             application/json:
               schema:
@@ -117,8 +120,6 @@ paths:
       tags:
         - public
       description: Получить содержимое урока
-      security:
-        - BearerAuth: []
       parameters:
         - name: lessonId
           in: path
@@ -127,21 +128,25 @@ paths:
             type: string
       responses:
         '200':
+          description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/FullLesson'
         '401':
+          description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedError'
         '403':
+          description: Forbidden
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
         '404':
+          description: Not Found
           content:
             application/json:
               schema:
@@ -167,11 +172,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnauthorizedError'
 components:
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
   schemas:
     BaseCourse:
       description: Базовая схема курса

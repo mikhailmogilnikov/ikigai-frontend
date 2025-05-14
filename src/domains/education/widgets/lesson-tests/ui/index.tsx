@@ -1,7 +1,10 @@
 import { Trans } from '@lingui/react/macro';
-import { useState } from 'react';
+import { useNavigate } from '@tanstack/react-router';
+import { useEffect, useRef, useState } from 'react';
 import { PiArrowRightBold } from 'react-icons/pi';
 
+import { useCompletedCourseModal } from '~/domains/education/entities/course';
+import { getNextUncompletedLesson } from '~/domains/education/entities/lesson';
 import { LessonTest } from '~/domains/education/entities/test';
 import { ApiComponents } from '~/shared/api';
 import { Button } from '~/shared/ui/primitives/button/button';
@@ -10,10 +13,17 @@ import { Typo } from '~/shared/ui/primitives/typo';
 
 interface LessonTestsProps {
   tests: ApiComponents['TestWithVariants'][];
+  modules: ApiComponents['ModuleWithLessons'][];
+  lessonId: string;
 }
 
-export function LessonTests({ tests }: LessonTestsProps) {
+export function LessonTests({ tests, modules, lessonId }: LessonTestsProps) {
+  const navigate = useNavigate();
   const [completedTestsIds, setCompletedTestsIds] = useState<string[]>([]);
+
+  const { onOpenChange } = useCompletedCourseModal();
+
+  const currentLessonRef = useRef<string>(lessonId);
 
   const testsLength = tests.length;
   const completedTestsLength = completedTestsIds.length;
@@ -24,8 +34,33 @@ export function LessonTests({ tests }: LessonTestsProps) {
     setCompletedTestsIds((prev) => [...prev, testId]);
   };
 
-  // const handleNextLesson = () => {
-  // };
+  const isNextLessonDisabled = completedTestsLength !== testsLength;
+
+  const handleNextLesson = () => {
+    if (isNextLessonDisabled) return;
+    const nextLesson = getNextUncompletedLesson(modules, lessonId);
+
+    if (nextLesson === 'ENDED') {
+      onOpenChange();
+      void navigate({
+        to: '/',
+      });
+
+      return;
+    }
+
+    void navigate({
+      to: '/courses/$course/lessons/$lesson',
+      params: { course: '6', lesson: nextLesson.id },
+    });
+  };
+
+  useEffect(() => {
+    if (currentLessonRef.current !== lessonId) {
+      setCompletedTestsIds([]);
+      currentLessonRef.current = lessonId;
+    }
+  }, [lessonId]);
 
   return (
     <Flex col gap='lg' className='mt-6'>
@@ -42,9 +77,9 @@ export function LessonTests({ tests }: LessonTestsProps) {
           ))}
         </Flex>
       )}
-      <Button isDisabled={completedTestsLength !== testsLength} className='mb-5 gap-0' color='primary'>
+      <Button isDisabled={isNextLessonDisabled} onClick={handleNextLesson} className='mb-5' color='primary'>
         <Trans>Следующий урок</Trans>
-        <PiArrowRightBold className='ml-2' />
+        <PiArrowRightBold />
       </Button>
     </Flex>
   );

@@ -1,10 +1,8 @@
 /* eslint-disable lingui/no-unlocalized-strings */
 
 import Markdown from 'react-markdown';
-import React from 'react';
 
 import { cn } from '~/shared/lib/utils';
-import { Image } from '~/shared/ui/primitives/image';
 
 const markdownStyles = {
   container: 'text-foreground leading-relaxed',
@@ -18,7 +16,7 @@ const markdownStyles = {
   code: 'bg-default-100 px-1.5 py-0.5 rounded font-mono text-sm',
   pre: 'bg-default-100 p-4 rounded-md overflow-x-auto',
   preCode: 'bg-transparent p-0',
-  img: 'max-w-full rounded-lg overflow-hidden w-full aspect-video',
+  img: 'max-w-full rounded-lg overflow-hidden w-full aspect-video object-cover',
   hr: 'border-t border-divider my-8',
   table: 'w-full my-6 border-collapse overflow-hidden rounded-md',
   th: 'border border-divider p-2 bg-default-200 text-left',
@@ -43,11 +41,6 @@ export function MarkdownRenderer({ content }: { content: string }) {
           h2: ({ children }) => <h2 className={cn(markdownStyles.heading, markdownStyles.h2)}>{children}</h2>,
           h3: ({ children }) => <h3 className={cn(markdownStyles.heading, markdownStyles.h3)}>{children}</h3>,
           p: ({ children, ...props }) => {
-            // eslint-disable-next-line react-x/no-children-count
-            if (React.Children.count(children) === 1 && React.isValidElement(children) && children.type === 'img') {
-              return <>{children}</>;
-            }
-
             return (
               <p className={markdownStyles.p} {...props}>
                 {children}
@@ -67,7 +60,7 @@ export function MarkdownRenderer({ content }: { content: string }) {
             return <code className={isInPre ? markdownStyles.preCode : markdownStyles.code}>{children}</code>;
           },
           pre: ({ children }) => <pre className={markdownStyles.pre}>{children}</pre>,
-          img: ({ src, alt }) => <Image src={src} alt={alt} className={markdownStyles.img} />,
+          img: ({ src, alt }) => <img src={src} alt={alt} className={markdownStyles.img} />,
           hr: () => <hr className={markdownStyles.hr} />,
           table: ({ children }) => {
             rowIndex = 0; // Сбрасываем счетчик строк при создании новой таблицы

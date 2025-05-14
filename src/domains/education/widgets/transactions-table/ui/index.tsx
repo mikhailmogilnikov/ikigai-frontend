@@ -9,9 +9,9 @@ export function TransactionsTable() {
 
   return (
     <table>
-      <thead className='bg-default z-1 sticky top-16 h-10 rounded-lg shadow-lg md:top-4'>
+      <thead className='bg-default z-1 sticky top-16 rounded-lg shadow-lg md:top-4'>
         <tr>
-          <th className='w-min rounded-l-lg pl-4 text-start'>
+          <th className='w-min rounded-l-lg py-2 pl-4 text-start'>
             <Trans>Дата</Trans>
           </th>
           <th className='w-full px-4 text-start'>

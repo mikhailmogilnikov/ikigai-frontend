@@ -22,7 +22,7 @@ export const edu_courses_handlers = [
   http.get('/courses/{courseId}/lessons', () => {
     return HttpResponse.json(MOCK_COURSE_LESSONS);
   }),
-  http.get('/lessons/{lessonId}', () => {
-    return HttpResponse.json(MOCK_LESSON_FULL);
+  http.get('/lessons/{lessonId}', ({ params: { lessonId } }) => {
+    return HttpResponse.json(MOCK_LESSON_FULL.find((lesson) => lesson.id === lessonId));
   }),
 ];

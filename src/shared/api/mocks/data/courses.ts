@@ -156,16 +156,17 @@ export const MOCK_COURSE_LESSONS: ApiComponents['CourseLessons'] = {
   completed_lessons_amount: 24,
 };
 
-export const MOCK_LESSON_FULL: ApiComponents['FullLesson'] = {
-  id: '1',
-  title: 'Настройка окружения разработки',
-  order: 1,
-  is_completed: true,
-  video: {
-    video_url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-    poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
-  },
-  content: `
+export const MOCK_LESSON_FULL: ApiComponents['FullLesson'][] = [
+  {
+    id: '5',
+    title: 'Context API',
+    order: 2,
+    is_completed: true,
+    video: {
+      video_url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+      poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
+    },
+    content: `
 *Добро пожаловать* на курс **"Основы программирования"**! Этот курс поможет вам освоить базовые принципы разработки программного обеспечения.
 
 ### О чем этот курс?
@@ -208,64 +209,195 @@ def fibonacci(n):
 
 Если у вас возникли вопросы, [свяжитесь с нами](mailto:support@example.com).
 `,
-  tests: [
-    {
-      id: '1',
-      title: 'Тест 1',
-      order: 1,
-      lesson_id: '1',
-      variants: [
-        {
-          id: '1',
-          title: 'Вариант 1',
-          is_correct: true,
-          description: 'Описание варианта 1',
-          order: 1,
-        },
-        {
-          id: '2',
-          title: 'Вариант 2',
-          is_correct: false,
-          description: null,
-          order: 2,
-        },
-        {
-          id: '3',
-          title: 'Вариант 3',
-          is_correct: false,
-          description: null,
-          order: 3,
-        },
-      ],
+    tests: [
+      {
+        id: '1',
+        title: 'Тест 1',
+        order: 1,
+        lesson_id: '1',
+        variants: [
+          {
+            id: '1',
+            title: 'Вариант 1',
+            is_correct: true,
+            description: 'Описание варианта 1',
+            order: 1,
+          },
+          {
+            id: '2',
+            title: 'Вариант 2',
+            is_correct: false,
+            description: null,
+            order: 2,
+          },
+          {
+            id: '3',
+            title: 'Вариант 3',
+            is_correct: false,
+            description: null,
+            order: 3,
+          },
+        ],
+      },
+      {
+        id: '2',
+        title: 'Тест 2',
+        order: 2,
+        lesson_id: '1',
+        variants: [
+          {
+            id: '1',
+            title: 'Вариант 1',
+            is_correct: false,
+            description: null,
+            order: 1,
+          },
+          {
+            id: '2',
+            title: 'Вариант 2',
+            is_correct: false,
+            description: null,
+            order: 2,
+          },
+          {
+            id: '3',
+            title: 'Вариант 3',
+            is_correct: true,
+            description: 'Описание варианта 3',
+            order: 3,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: '6',
+    title: 'Redux Toolkit',
+    order: 3,
+    is_completed: false,
+    video: {
+      video_url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+      poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
     },
-    {
-      id: '2',
-      title: 'Тест 2',
-      order: 2,
-      lesson_id: '1',
-      variants: [
-        {
-          id: '1',
-          title: 'Вариант 1',
-          is_correct: false,
-          description: null,
-          order: 1,
-        },
-        {
-          id: '2',
-          title: 'Вариант 2',
-          is_correct: false,
-          description: null,
-          order: 2,
-        },
-        {
-          id: '3',
-          title: 'Вариант 3',
-          is_correct: true,
-          description: 'Описание варианта 3',
-          order: 3,
-        },
-      ],
+    content: `
+# Redux Toolkit: Современный подход к управлению состоянием
+
+## Введение
+
+Redux Toolkit — это официальный, рекомендуемый способ написания Redux логики. Он включает в себя несколько полезных утилит, которые помогают упростить многие общие случаи использования Redux.
+
+### Основные преимущества Redux Toolkit:
+
+1. Упрощенная настройка хранилища
+2. Встроенная поддержка Immer для иммутабельных обновлений
+3. Автоматическая генерация action creators
+4. Встроенная поддержка Redux Thunk
+
+## Пример использования
+
+\`\`\`typescript
+import { createSlice, configureStore } from '@reduxjs/toolkit';
+
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState: {
+    value: 0
+  },
+  reducers: {
+    increment: state => {
+      state.value += 1;
     },
-  ],
-};
+    decrement: state => {
+      state.value -= 1;
+    }
+  }
+});
+
+const store = configureStore({
+  reducer: counterSlice.reducer
+});
+\`\`\`
+
+## Лучшие практики
+
+1. Используйте \`createSlice\` вместо ручного создания редьюсеров
+2. Применяйте \`createAsyncThunk\` для асинхронных операций
+3. Организуйте код по функциональным модулям
+4. Используйте TypeScript для типизации
+
+> Redux Toolkit значительно упрощает работу с Redux, делая код более чистым и поддерживаемым.
+
+## Дополнительные ресурсы
+
+* [Официальная документация Redux Toolkit](https://redux-toolkit.js.org)
+* [Примеры использования на GitHub](https://github.com/reduxjs/redux-toolkit)
+* [Видео-курс по Redux Toolkit](https://example.com/redux-course)
+
+## Задание
+
+Попробуйте реализовать простое приложение со списком задач, используя Redux Toolkit для управления состоянием.
+
+Если у вас возникли вопросы, [напишите нам](mailto:support@example.com).
+`,
+    tests: [
+      {
+        id: '3',
+        title: 'Основы Redux Toolkit',
+        order: 1,
+        lesson_id: '6',
+        variants: [
+          {
+            id: '1',
+            title: 'createSlice автоматически генерирует action creators',
+            is_correct: true,
+            description: 'createSlice автоматически создает action creators на основе определенных reducers',
+            order: 1,
+          },
+          {
+            id: '2',
+            title: 'Redux Toolkit требует ручного создания action creators',
+            is_correct: false,
+            description: null,
+            order: 2,
+          },
+          {
+            id: '3',
+            title: 'Action creators нужно создавать отдельно от slice',
+            is_correct: false,
+            description: null,
+            order: 3,
+          },
+        ],
+      },
+      {
+        id: '4',
+        title: 'Асинхронные операции в Redux Toolkit',
+        order: 2,
+        lesson_id: '6',
+        variants: [
+          {
+            id: '1',
+            title: 'Используйте createAsyncThunk',
+            is_correct: true,
+            description: 'createAsyncThunk - рекомендуемый способ обработки асинхронных операций',
+            order: 1,
+          },
+          {
+            id: '2',
+            title: 'Всегда используйте обычные thunks',
+            is_correct: false,
+            description: null,
+            order: 2,
+          },
+          {
+            id: '3',
+            title: 'Асинхронные операции не поддерживаются',
+            is_correct: false,
+            description: null,
+            order: 3,
+          },
+        ],
+      },
+    ],
+  },
+];
