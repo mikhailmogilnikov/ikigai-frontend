@@ -34,8 +34,8 @@ msgid "AirPlay"
 msgstr "AirPlay"
 
 #: src/domains/education/widgets/course-sidebar/ui/course-sidebar.tsx:6
-msgid "CourseSidebar"
-msgstr "CourseSidebar"
+#~ msgid "CourseSidebar"
+#~ msgstr "CourseSidebar"
 
 #: src/shared/ui/common/video-player/use-video.ts:23
 msgid "Google Cast"
@@ -315,7 +315,7 @@ msgstr "Полноэкранный режим"
 msgid "Посмотреть другие курсы"
 msgstr "Посмотреть другие курсы"
 
-#: src/domains/education/widgets/lesson-tests/ui/index.tsx:73
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:75
 msgid "Прежде чем перейти к следующему уроку, пройдите тесты по усвоенному материалу."
 msgstr "Прежде чем перейти к следующему уроку, пройдите тесты по усвоенному материалу."
 
@@ -323,7 +323,7 @@ msgstr "Прежде чем перейти к следующему уроку, �
 msgid "Проверить"
 msgstr "Проверить"
 
-#: src/domains/education/widgets/lesson-tests/ui/index.tsx:70
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:72
 msgid "Проверьте себя"
 msgstr "Проверьте себя"
 
@@ -336,6 +336,7 @@ msgstr "Продолжить"
 msgid "Произошла неизвестная ошибка"
 msgstr "Произошла неизвестная ошибка"
 
+#: src/domains/education/widgets/course-sidebar/ui/course-progress.tsx:27
 #: src/domains/education/entities/course/ui/card/course-card.tsx:98
 msgid "Пройдено уроков: {completed_lessons_amount} / {lessons_amount}"
 msgstr "Пройдено уроков: {completed_lessons_amount} / {lessons_amount}"
@@ -373,7 +374,7 @@ msgstr "Скачать"
 msgid "Скорость"
 msgstr "Скорость"
 
-#: src/domains/education/widgets/lesson-tests/ui/index.tsx:81
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:83
 msgid "Следующий урок"
 msgstr "Следующий урок"
 
