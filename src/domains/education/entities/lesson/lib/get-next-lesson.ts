@@ -1,11 +1,8 @@
 import { ApiComponents } from '~/shared/api';
 
-import { getFirstUncompletedLesson } from './get-first-uncompleted-lesson';
-
-export const getNextUncompletedLesson = (modules: ApiComponents['ModuleWithLessons'][], lessonId: string) => {
+export const getNextLesson = (modules: ApiComponents['ModuleWithLessons'][], lessonId: string) => {
   const sortedModules = [...modules].sort((a, b) => a.order - b.order);
 
-  // Найти модуль и индекс текущего урока
   let currentModuleIndex = -1;
   let currentLessonIndex = -1;
 
@@ -22,39 +19,19 @@ export const getNextUncompletedLesson = (modules: ApiComponents['ModuleWithLesso
     }
   }
 
-  // Если текущий урок не найден, вернуть первый незавершенный
+  // Если текущий урок не найден, возвращаем первый урок первого модуля
   if (currentModuleIndex === -1) {
-    return getFirstUncompletedLesson(modules);
+    return sortedModules[0].lessons[0];
   }
 
-  // Поиск следующего незавершенного урока в текущем модуле
   const currentModule = sortedModules[currentModuleIndex];
   const sortedCurrentLessons = [...currentModule.lessons].sort((a, b) => a.order - b.order);
-
-  // Проверяем уроки в текущем модуле, начиная со следующего после текущего
-  for (let i = currentLessonIndex + 1; i < sortedCurrentLessons.length; i++) {
-    if (!sortedCurrentLessons[i].is_completed) {
-      return sortedCurrentLessons[i];
-    }
-  }
-
-  // Если в текущем модуле не найдено незавершенных уроков, ищем в следующих модулях
-  for (let i = currentModuleIndex + 1; i < sortedModules.length; i++) {
-    const nextModule = sortedModules[i];
-    const sortedNextLessons = [...nextModule.lessons].sort((a, b) => a.order - b.order);
-
-    const uncompletedLesson = sortedNextLessons.find((lesson) => !lesson.is_completed);
-
-    if (uncompletedLesson) {
-      return uncompletedLesson;
-    }
-  }
 
   // Проверяем, является ли текущий урок последним в курсе
   const isLastLesson =
     currentModuleIndex === sortedModules.length - 1 && currentLessonIndex === sortedCurrentLessons.length - 1;
 
-  // Если это последний урок и все уроки пройдены, возвращаем ENDED
+  // Если это последний урок, возвращаем ENDED
   if (isLastLesson) {
     return 'ENDED';
   }

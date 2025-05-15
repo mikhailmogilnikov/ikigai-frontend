@@ -1,0 +1,19 @@
+getTransactions:
+  description: "Получить список транзакций"
+  # security:
+  #   - BearerAuth: []
+  responses:
+    '200':
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../schemas/transaction-schemas.yaml#/schemas/Transaction'
+    '401':
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'

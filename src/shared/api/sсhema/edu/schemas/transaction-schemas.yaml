@@ -1,0 +1,18 @@
+schemas:
+  Transaction:
+    type: object
+    properties:
+      id:
+        type: string
+      date:
+        type: string
+        format: date-time
+      amount:
+        type: number
+      title:
+        type: string
+    required:
+      - id
+      - date
+      - amount
+      - title

@@ -11,443 +11,432 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/domains/education/entities/course/ui/card/course-card.tsx:66
 msgid "{lessons_amount, plural, one {урок} few {урока} many {уроков}}"
-msgstr ""
+msgstr "{lessons_amount, plural, one {lesson} other {lessons}}"
 
 #: src/domains/education/entities/course/ui/card/course-card.tsx:65
 msgid "{modules_amount, plural, one {модуль} few {модуля} many {модулей}}"
-msgstr ""
+msgstr "{modules_amount, plural, one {module} other {modules}}"
 
 #: src/domains/global/widgets/error-page/ui/default.tsx:19
 msgid "<0>Попробуйте</0> <1>обновить страницу</1> <2>или</2> <3>вернуться на главную</3>"
-msgstr ""
+msgstr "<0>Try to</0> <1>refresh the page</1> <2>or</2> <3>return to the home page</3>"
 
 #: src/domains/admin/widgets/header/ui/index.tsx:6
 msgid "AdminHeader"
-msgstr ""
+msgstr "Admin Header"
 
 #: src/shared/ui/common/video-player/use-video.ts:30
 msgid "AirPlay"
-msgstr ""
-
-#: src/domains/education/widgets/course-sidebar/ui/course-sidebar.tsx:6
-#~ msgid "CourseSidebar"
-#~ msgstr ""
+msgstr "AirPlay"
 
 #: src/shared/ui/common/video-player/use-video.ts:23
 msgid "Google Cast"
-msgstr ""
+msgstr "Google Cast"
 
 #: src/routes/auth/_guard/recover-password.tsx:11
 msgid "Hello \"/(auth)/recover-password\"!"
-msgstr ""
+msgstr "Hello \"/(auth)/recover-password\"!"
 
 #: src/routes/admin/_guard/dashboard.tsx:15
 msgid "Hello \"/admin/dashboard\"!"
-msgstr ""
+msgstr "Hello \"/admin/dashboard\"!"
 
 #: src/routes/auth/_guard/sign-up.tsx:11
 msgid "Hello \"/auth/sign-up\"!"
-msgstr ""
-
-#: src/routes/(education)/_guard/courses_/$course.tsx:15
-#~ msgid "Hello course {course}"
-#~ msgstr ""
+msgstr "Hello \"/auth/sign-up\"!"
 
 #: src/shared/ui/common/video-player/use-video.ts:48
 msgid "Live-трансляция"
-msgstr ""
+msgstr "Live Stream"
 
 #: src/routes/auth/_guard/sign-in.tsx:31
 msgid "Login as admin"
-msgstr ""
+msgstr "Login as admin"
 
 #: src/routes/auth/_guard/sign-in.tsx:38
 msgid "Login as student"
-msgstr ""
+msgstr "Login as student"
 
 #: src/routes/admin/_guard/dashboard.tsx:17
 msgid "Logout"
-msgstr ""
+msgstr "Logout"
 
 #: src/shared/ui/common/video-player/use-video.ts:33
 msgid "Авто"
-msgstr ""
+msgstr "Auto"
 
 #: src/shared/ui/common/video-player/use-video.ts:24
 msgid "Анимации клавиатуры"
-msgstr ""
+msgstr "Keyboard Animations"
 
-#: src/routes/(education)/_guard/index.tsx:46
+#: src/routes/(education)/_guard/index.tsx:21
 msgid "В процессе изучения"
-msgstr ""
+msgstr "In Progress"
 
 #: src/domains/global/widgets/not-found/ui/index.tsx:12
 msgid "Вернуться на главную"
-msgstr ""
+msgstr "Return to Home"
 
 #: src/shared/ui/common/video-player/use-video.ts:68
 msgid "Включить звук"
-msgstr ""
+msgstr "Unmute"
 
 #: src/shared/ui/common/video-player/use-video.ts:19
 msgid "Войти в полноэкранный режим"
-msgstr ""
+msgstr "Enter Fullscreen"
 
 #: src/shared/ui/common/video-player/use-video.ts:20
 msgid "Войти в режим Картинка-в-Картинке"
-msgstr ""
-
-#: src/shared/ui/common/video-player/use-video.ts:20
-#~ msgid "Войти в режим Картинка-в-Картинку"
-#~ msgstr ""
+msgstr "Enter Picture-in-Picture"
 
 #: src/shared/ui/common/video-player/use-video.ts:57
 msgid "Воспроизведение"
-msgstr ""
+msgstr "Playback"
 
 #: src/shared/ui/common/video-player/use-video.ts:56
 msgid "Воспроизвести"
-msgstr ""
+msgstr "Play"
 
 #: src/domains/global/features/logout/ui/button.tsx:13
 msgid "Выйти из аккаунта"
-msgstr ""
+msgstr "Sign Out"
 
 #: src/shared/ui/common/video-player/use-video.ts:21
 msgid "Выйти из полноэкранного режима"
-msgstr ""
-
-#: src/shared/ui/common/video-player/use-video.ts:22
-#~ msgid "Выйти из режима Картинка-в-Картинка"
-#~ msgstr ""
+msgstr "Exit Fullscreen"
 
 #: src/shared/ui/common/video-player/use-video.ts:22
 msgid "Выйти из режима Картинка-в-Картинке"
-msgstr ""
+msgstr "Exit Picture-in-Picture"
 
 #: src/shared/ui/common/video-player/use-video.ts:52
 msgid "Выключено"
-msgstr ""
+msgstr "Disabled"
 
 #: src/shared/ui/common/video-player/use-video.ts:50
 msgid "Выключить звук"
-msgstr ""
+msgstr "Mute"
 
 #: src/shared/ui/common/video-player/use-video.ts:36
 msgid "Главы"
-msgstr ""
+msgstr "Chapters"
 
 #: src/shared/ui/common/video-player/use-video.ts:69
 msgid "Громкость"
-msgstr ""
+msgstr "Volume"
 
 #: src/domains/education/widgets/transactions-table/ui/index.tsx:15
-msgid "Дата"
-msgstr ""
+#~ msgid "Дата"
+#~ msgstr "Date"
 
 #: src/shared/ui/common/video-player/use-video.ts:67
 msgid "Дорожка"
-msgstr ""
+msgstr "Track"
 
 #: src/shared/ui/common/video-player/use-video.ts:29
 msgid "Доступность"
-msgstr ""
+msgstr "Accessibility"
 
 #: src/domains/education/widgets/course-sidebar/ui/course-modules.tsx:62
 msgid "Завершен"
-msgstr ""
+msgstr "Completed"
 
-#: src/routes/(education)/_guard/index.tsx:54
+#: src/routes/(education)/_guard/index.tsx:29
 msgid "Завершенные"
-msgstr ""
+msgstr "Completed"
 
 #: src/domains/education/entities/course/ui/completed-course-modal/index.tsx:44
 msgid "Закрыть это окно"
-msgstr ""
+msgstr "Close this window"
 
 #: src/shared/ui/common/video-player/use-video.ts:49
 msgid "Зациклить видео"
-msgstr ""
+msgstr "Loop Video"
 
-#: src/routes/(education)/_guard/transactions.tsx:20
+#: src/routes/(education)/_guard/transactions.tsx:26
 #: src/domains/education/widgets/menu/ui/navigation.tsx:28
 msgid "История транзакций"
-msgstr ""
+msgstr "Transaction History"
 
 #: src/shared/ui/common/video-player/use-video.ts:55
 msgid "Картинка-в-Картинке"
-msgstr ""
+msgstr "Picture-in-Picture"
 
 #: src/shared/ui/common/video-player/use-video.ts:58
 msgid "Качество"
-msgstr ""
+msgstr "Quality"
 
 #: src/domains/education/entities/test/ui/lesson-test/index.tsx:85
 msgid "Корректно"
-msgstr ""
+msgstr "Correct"
 
 #: src/domains/education/entities/course/ui/card/course-card.tsx:78
 msgid "Купить"
-msgstr ""
+msgstr "Buy"
 
-#: src/domains/education/widgets/transactions-table/ui/index.tsx:18
+#: src/domains/education/widgets/transactions-table/ui/index.tsx:20
 msgid "Курс"
-msgstr ""
-
-#: src/routes/(education)/_guard/shop.tsx:17
-#~ msgid "Магазин"
-#~ msgstr ""
+msgstr "Course"
 
 #: src/routes/(education)/_guard/shop.tsx:25
 #: src/domains/education/widgets/menu/ui/navigation.tsx:18
 #: src/domains/education/widgets/header/ui/desktop-navigation.tsx:22
 msgid "Магазин курсов"
-msgstr ""
+msgstr "Course Store"
 
 #: src/domains/education/widgets/menu/ui/index.tsx:47
 msgid "Меню"
-msgstr ""
+msgstr "Menu"
 
 #: src/domains/education/widgets/menu/ui/navigation.tsx:13
 msgid "Мои курсы"
-msgstr ""
+msgstr "My Courses"
 
 #: src/domains/education/widgets/header/ui/desktop-navigation.tsx:17
 msgid "Моя коллекция"
+msgstr "My Collection"
+
+#: src/domains/education/widgets/menu/ui/navigation.tsx:43
+msgid "Навигация"
 msgstr ""
 
 #: src/shared/ui/common/video-player/use-video.ts:62
+#: src/domains/education/widgets/menu/ui/settings.tsx:11
 msgid "Настройки"
-msgstr ""
+msgstr "Settings"
 
 #: src/shared/ui/common/video-player/use-video.ts:32
 msgid "Настройки звука"
-msgstr ""
+msgstr "Audio Settings"
 
 #: src/domains/education/entities/course/ui/card/course-card.tsx:114
 msgid "Начать"
-msgstr ""
+msgstr "Start"
 
-#: src/routes/(education)/_guard/index.tsx:50
+#: src/routes/(education)/_guard/index.tsx:25
 msgid "Не начатые"
-msgstr ""
+msgstr "Not Started"
 
 #: src/domains/education/entities/course/ui/completed-course-modal/index.tsx:29
 msgid "Не стоит останавливаться на достигнутом – продолжайте изучать новые темы, или повторите ранее пройденные.<0/><1/>Завершенный курс будет доступен в вашем профиле в любое время."
-msgstr ""
-
-#: src/domains/education/entities/course/ui/completed-course-modal/index.tsx:29
-#~ msgid "Не стоит останавливаться на достигнутом, продолжайте изучать новые темы или повторите ранее пройденные.<0/><1/>Завершенный курс будет доступен в вашем профиле в любое время."
-#~ msgstr ""
+msgstr "Don't stop at what you've achieved – continue learning new topics or review previously completed ones.<0/><1/>The completed course will be available in your profile at any time."
 
 #: src/domains/education/entities/test/ui/lesson-test/index.tsx:91
 msgid "Некорректно"
-msgstr ""
+msgstr "Incorrect"
 
 #: src/shared/ui/common/video-player/use-video.ts:53
 msgid "Непрозрачность"
-msgstr ""
+msgstr "Opacity"
 
 #: src/shared/ui/common/video-player/use-video.ts:31
 msgid "Объявления"
-msgstr ""
+msgstr "Announcements"
 
 #: src/shared/ui/common/video-player/use-video.ts:51
 msgid "Обычная"
-msgstr ""
+msgstr "Normal"
 
 #: src/shared/ui/common/video-player/use-video.ts:42
 #: src/shared/ui/common/video-player/use-video.ts:43
 msgid "Отключено"
-msgstr ""
+msgstr "Disabled"
 
 #: src/shared/ui/common/video-player/use-video.ts:18
 msgid "Отображать фон"
-msgstr ""
+msgstr "Show Background"
 
 #: src/shared/ui/common/video-player/use-video.ts:54
 msgid "Пауза"
-msgstr ""
+msgstr "Pause"
 
 #: src/shared/ui/common/video-player/use-video.ts:26
 msgid "Перемотать вперед"
-msgstr ""
+msgstr "Fast Forward"
 
 #: src/shared/ui/common/video-player/use-video.ts:25
 msgid "Перемотать назад"
-msgstr ""
+msgstr "Rewind"
 
 #: src/shared/ui/common/video-player/use-video.ts:27
 msgid "Переход к Live-трансляциям"
-msgstr ""
+msgstr "Go to Live Streams"
 
 #: src/shared/ui/common/video-player/use-video.ts:41
 msgid "По умолчанию"
-msgstr ""
+msgstr "Default"
 
 #: src/shared/ui/common/video-player/use-video.ts:59
 #: src/domains/education/entities/course/ui/card/course-card.tsx:116
 msgid "Повторить"
-msgstr ""
+msgstr "Repeat"
 
 #: src/shared/ui/common/video-player/use-video.ts:39
 msgid "Подключение"
-msgstr ""
+msgstr "Connection"
 
 #: src/shared/ui/common/video-player/use-video.ts:38
 msgid "Подключено"
-msgstr ""
+msgstr "Connected"
 
 #: src/domains/education/entities/course/ui/card/course-card.tsx:75
 #: src/domains/education/entities/course/ui/card/course-card.tsx:106
 msgid "Подробнее"
-msgstr ""
+msgstr "Learn More"
 
 #: src/domains/education/entities/course/ui/completed-course-modal/index.tsx:26
 msgid "Поздравляем с успешным завершением курса!"
-msgstr ""
+msgstr "Congratulations on successfully completing the course!"
 
 #: src/shared/ui/common/video-player/use-video.ts:61
 msgid "Поиск"
-msgstr ""
+msgstr "Search"
 
 #: src/shared/ui/common/video-player/use-video.ts:47
 msgid "Полноэкранный режим"
-msgstr ""
+msgstr "Fullscreen Mode"
 
 #: src/domains/education/entities/course/ui/completed-course-modal/index.tsx:41
 msgid "Посмотреть другие курсы"
+msgstr "View Other Courses"
+
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:95
+msgid "Прежде чем завершить урок, пройдите тесты по усвоенному материалу."
 msgstr ""
 
 #: src/domains/education/widgets/lesson-tests/ui/index.tsx:95
-msgid "Прежде чем перейти к следующему уроку, пройдите тесты по усвоенному материалу."
-msgstr ""
+#~ msgid "Прежде чем перейти к следующему уроку, пройдите тесты по усвоенному материалу."
+#~ msgstr "Before moving to the next lesson, complete the tests on the material you've learned."
 
 #: src/domains/education/entities/test/ui/lesson-test/index.tsx:81
 msgid "Проверить"
-msgstr ""
+msgstr "Check"
 
 #: src/domains/education/widgets/lesson-tests/ui/index.tsx:92
 msgid "Проверьте себя"
-msgstr ""
+msgstr "Test Yourself"
 
 #: src/shared/ui/common/video-player/use-video.ts:40
 #: src/domains/education/entities/course/ui/card/course-card.tsx:115
 msgid "Продолжить"
-msgstr ""
+msgstr "Continue"
 
 #: src/domains/global/widgets/error-page/ui/default.tsx:15
 msgid "Произошла неизвестная ошибка"
-msgstr ""
+msgstr "An unknown error occurred"
 
 #: src/domains/education/widgets/course-sidebar/ui/course-progress.tsx:27
 #: src/domains/education/entities/course/ui/card/course-card.tsx:98
 msgid "Пройдено уроков: {completed_lessons_amount} / {lessons_amount}"
-msgstr ""
+msgstr "Lessons completed: {completed_lessons_amount} / {lessons_amount}"
 
 #: src/routes/(education)/_guard/profile.tsx:15
 #: src/domains/education/widgets/menu/ui/navigation.tsx:23
 msgid "Профиль"
-msgstr ""
+msgstr "Profile"
 
 #: src/shared/ui/common/video-player/use-video.ts:64
 msgid "Размер"
-msgstr ""
+msgstr "Size"
 
 #: src/shared/ui/common/video-player/use-video.ts:60
 msgid "Сбросить"
-msgstr ""
+msgstr "Reset"
 
 #: src/domains/global/features/change-theme/config/themes.ts:14
 msgid "Светлая"
-msgstr ""
+msgstr "Light"
 
 #: src/shared/ui/common/video-player/use-video.ts:45
 msgid "Семья"
-msgstr ""
+msgstr "Family"
 
 #: src/domains/global/features/change-theme/config/themes.ts:22
 msgid "Системная"
-msgstr ""
+msgstr "System"
 
 #: src/shared/ui/common/video-player/use-video.ts:44
 msgid "Скачать"
-msgstr ""
+msgstr "Download"
 
 #: src/shared/ui/common/video-player/use-video.ts:65
 msgid "Скорость"
-msgstr ""
+msgstr "Speed"
 
 #: src/domains/education/widgets/lesson-tests/ui/index.tsx:109
 msgid "Следующий урок"
-msgstr ""
+msgstr "Next Lesson"
 
 #: src/shared/ui/common/video-player/use-video.ts:14
 msgid "Стили субтитров"
-msgstr ""
+msgstr "Subtitle Styles"
 
 #: src/domains/global/widgets/not-found/ui/index.tsx:9
 msgid "Страница не найдена"
-msgstr ""
+msgstr "Page Not Found"
 
 #: src/shared/ui/common/video-player/use-video.ts:35
 msgid "Субтитры"
-msgstr ""
+msgstr "Subtitles"
 
 #: src/shared/ui/common/video-player/use-video.ts:17
 msgid "Субтитры включены"
-msgstr ""
+msgstr "Subtitles Enabled"
 
 #: src/shared/ui/common/video-player/use-video.ts:15
 msgid "Субтитры выглядят так"
-msgstr ""
+msgstr "Subtitles Look Like This"
 
 #: src/shared/ui/common/video-player/use-video.ts:16
 msgid "Субтитры выключены"
-msgstr ""
+msgstr "Subtitles Disabled"
 
 #: src/domains/education/widgets/transactions-table/ui/index.tsx:21
-msgid "Сумма"
+#~ msgid "Сумма"
+#~ msgstr "Amount"
+
+#: src/domains/education/widgets/transactions-table/ui/index.tsx:23
+msgid "Сумма / Дата"
 msgstr ""
 
 #: src/shared/ui/common/video-player/use-video.ts:66
 msgid "Текст"
-msgstr ""
+msgstr "Text"
 
 #: src/domains/global/features/change-theme/ui/change-theme-menu-button.tsx:53
 #: src/domains/global/features/change-theme/ui/change-theme-menu-button.tsx:60
 msgid "Тема оформления"
-msgstr ""
+msgstr "Theme"
 
 #: src/domains/global/features/change-theme/config/themes.ts:18
 msgid "Темная"
-msgstr ""
+msgstr "Dark"
 
 #: src/shared/ui/common/video-player/use-video.ts:63
 msgid "Тень"
-msgstr ""
-
-#: src/routes/(education)/_guard/courses_/$course_.lessons_.$lesson.tsx:40
-#: src/routes/(education)/_guard/courses_/$course_.lessons_.$lesson.tsx:43
-#~ msgid "Урок {lesson}"
-#~ msgstr ""
+msgstr "Shadow"
 
 #: src/shared/ui/common/video-player/use-video.ts:34
 msgid "Усиление"
-msgstr ""
+msgstr "Enhancement"
 
 #: src/shared/ui/common/video-player/use-video.ts:28
 msgid "Фон текста"
-msgstr ""
+msgstr "Text Background"
 
 #: src/shared/ui/common/video-player/use-video.ts:37
 msgid "Цвет"
-msgstr ""
+msgstr "Color"
 
 #: src/shared/ui/common/video-player/use-video.ts:46
 msgid "Шрифт"
-msgstr ""
+msgstr "Font"
+
+#: src/domains/global/features/change-language/ui/change-theme-menu-button.tsx:47
+#: src/domains/global/features/change-language/ui/change-theme-menu-button.tsx:54
+msgid "Язык интерфейса"
+msgstr "Interface Language"

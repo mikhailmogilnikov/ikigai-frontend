@@ -5,13 +5,13 @@ import { useEffect, useRef, useState } from 'react';
 import { PiArrowRightBold } from 'react-icons/pi';
 
 import { useCompletedCourseModal } from '~/domains/education/entities/course';
-import { getNextUncompletedLesson } from '~/domains/education/entities/lesson';
 import { LessonTest } from '~/domains/education/entities/test';
 import { ApiComponents, rqClient } from '~/shared/api';
 import { Button } from '~/shared/ui/primitives/button/button';
 import { Flex } from '~/shared/ui/primitives/flex';
 import { Typo } from '~/shared/ui/primitives/typo';
 import { useAppLayout } from '~/domains/global/widgets/layout';
+import { getNextLesson } from '~/domains/education/entities/lesson';
 
 interface LessonTestsProps {
   tests: ApiComponents['TestWithVariants'][];
@@ -59,7 +59,7 @@ export function LessonTests({ tests, modules }: LessonTestsProps) {
       await mutateAsync({ body: { lessonId: activeLessonId } });
     }
 
-    const nextLesson = getNextUncompletedLesson(modules, activeLessonId);
+    const nextLesson = getNextLesson(modules, activeLessonId);
 
     if (nextLesson === 'ENDED') {
       onOpenChange();
@@ -92,7 +92,7 @@ export function LessonTests({ tests, modules }: LessonTestsProps) {
             <Trans>Проверьте себя</Trans>
           </Typo>
           <Typo size='base' className='opacity-50' weight='normal'>
-            <Trans>Прежде чем перейти к следующему уроку, пройдите тесты по усвоенному материалу.</Trans>
+            <Trans>Прежде чем завершить урок, пройдите тесты по усвоенному материалу.</Trans>
           </Typo>
           {tests.map((test) => (
             <LessonTest key={test.id} test={test} onComplete={handleTestComplete} />

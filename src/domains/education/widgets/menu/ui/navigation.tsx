@@ -37,10 +37,10 @@ interface MenuNavigationProps {
 export function MenuNavigation(props: MenuNavigationProps) {
   const { closeMenu } = props;
 
-  const { i18n } = useLingui();
+  const { i18n, t } = useLingui();
 
   return (
-    <OptionList title='Навигация'>
+    <OptionList title={t`Навигация`}>
       {navigationItems.map((item) => (
         <Link
           to={item.to}

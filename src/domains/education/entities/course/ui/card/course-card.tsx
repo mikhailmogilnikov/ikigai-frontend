@@ -10,8 +10,10 @@ import { LinkButton } from '~/shared/ui/primitives/link-button';
 import { Progress } from '~/shared/ui/primitives/progress';
 import { Typo } from '~/shared/ui/primitives/typo';
 import { Button } from '~/shared/ui/primitives/button/button';
+import { ApiComponents } from '~/shared/api';
 
-import { CourseCollection, CourseShop } from '../../model/course.type';
+type CourseShop = ApiComponents['ShopCourse'];
+type CourseCollection = ApiComponents['MyCourse'];
 
 interface CourseCardContentShopProps extends CourseShop {
   variant: 'shop';

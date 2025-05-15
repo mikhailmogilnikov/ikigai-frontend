@@ -347,6 +347,51 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/transactions': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Получить список транзакций */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['Transaction'][];
+          };
+        };
+        /** @description Unauthorized */
+        401: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['UnauthorizedError'];
+          };
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/admin/courses': {
     parameters: {
       query?: never;
@@ -489,6 +534,13 @@ export interface components {
       video: components['schemas']['BaseVideo'] | null;
       content: string;
       tests: components['schemas']['TestWithVariants'][];
+    };
+    Transaction: {
+      id: string;
+      /** Format: date-time */
+      date: string;
+      amount: number;
+      title: string;
     };
     /** @description Курс для админа в списке курсов */
     AdminCourse: components['schemas']['BaseCourse'] & {

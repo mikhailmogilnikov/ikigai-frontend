@@ -15,6 +15,21 @@ export const Route = createFileRoute('/(education)/_guard/')({
   loader: ({ context: { queryClient } }) => queryClient.ensureQueryData(myCoursesQuery),
 });
 
+const COURSE_SECTIONS = [
+  {
+    id: CourseCollectionStatus.IN_PROGRESS,
+    title: msg`В процессе изучения`,
+  },
+  {
+    id: CourseCollectionStatus.NOT_STARTED,
+    title: msg`Не начатые`,
+  },
+  {
+    id: CourseCollectionStatus.COMPLETED,
+    title: msg`Завершенные`,
+  },
+] as const;
+
 function RouteComponent() {
   const { i18n } = useLingui();
   const { data: courses } = useSuspenseQuery(myCoursesQuery);
@@ -23,7 +38,7 @@ function RouteComponent() {
 
   return (
     <Container gap='2xl'>
-      {SECTIONS.map(({ id, title }) => {
+      {COURSE_SECTIONS.map(({ id, title }) => {
         const courses = sortedCourses[id];
 
         if (courses.length === 0) return null;
@@ -39,18 +54,3 @@ function RouteComponent() {
     </Container>
   );
 }
-
-const SECTIONS = [
-  {
-    id: CourseCollectionStatus.IN_PROGRESS,
-    title: msg`В процессе изучения`,
-  },
-  {
-    id: CourseCollectionStatus.NOT_STARTED,
-    title: msg`Не начатые`,
-  },
-  {
-    id: CourseCollectionStatus.COMPLETED,
-    title: msg`Завершенные`,
-  },
-];
