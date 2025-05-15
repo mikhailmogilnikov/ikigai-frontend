@@ -12,9 +12,18 @@ interface DesktopLayoutProps {
 }
 
 export function DesktopLayout({ children, header }: DesktopLayoutProps) {
-  const { sidebar } = useAppLayout();
+  const { sidebar, setScrollToTop } = useAppLayout();
 
+  const [scrollAreaRef, setScrollAreaRef] = useState<HTMLDivElement | null>(null);
   const [sidebarVisible, setSidebarVisible] = useState(!!sidebar);
+
+  useEffect(() => {
+    if (scrollAreaRef) {
+      setScrollToTop(() => {
+        scrollAreaRef.scrollTo({ top: 0 });
+      });
+    }
+  }, [scrollAreaRef]);
 
   useEffect(() => {
     const sidebarTimer = setTimeout(() => {
@@ -49,6 +58,7 @@ export function DesktopLayout({ children, header }: DesktopLayoutProps) {
         </div>
         <main className={contentClassName}>
           <ScrollArea
+            ref={setScrollAreaRef}
             className='shrink-1 flex h-full flex-col gap-4 overflow-y-auto'
             viewportProps={{ className: 'p-4' }}
             classNames={{

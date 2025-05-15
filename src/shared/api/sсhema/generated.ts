@@ -21,6 +21,7 @@ export interface paths {
       };
       requestBody?: never;
       responses: {
+        /** @description OK */
         200: {
           headers: {
             [name: string]: unknown;
@@ -29,6 +30,7 @@ export interface paths {
             'application/json': components['schemas']['ShopCourse'][];
           };
         };
+        /** @description Unauthorized */
         401: {
           headers: {
             [name: string]: unknown;
@@ -64,6 +66,7 @@ export interface paths {
       };
       requestBody?: never;
       responses: {
+        /** @description OK */
         200: {
           headers: {
             [name: string]: unknown;
@@ -72,6 +75,7 @@ export interface paths {
             'application/json': components['schemas']['MyCourse'][];
           };
         };
+        /** @description Unauthorized */
         401: {
           headers: {
             [name: string]: unknown;
@@ -109,6 +113,7 @@ export interface paths {
       };
       requestBody?: never;
       responses: {
+        /** @description OK */
         200: {
           headers: {
             [name: string]: unknown;
@@ -117,6 +122,7 @@ export interface paths {
             'application/json': components['schemas']['FullCourse'];
           };
         };
+        /** @description Unauthorized */
         401: {
           headers: {
             [name: string]: unknown;
@@ -125,6 +131,7 @@ export interface paths {
             'application/json': components['schemas']['UnauthorizedError'];
           };
         };
+        /** @description Not Found */
         404: {
           headers: {
             [name: string]: unknown;
@@ -162,6 +169,7 @@ export interface paths {
       };
       requestBody?: never;
       responses: {
+        /** @description OK */
         200: {
           headers: {
             [name: string]: unknown;
@@ -170,6 +178,7 @@ export interface paths {
             'application/json': components['schemas']['CourseLessons'];
           };
         };
+        /** @description Unauthorized */
         401: {
           headers: {
             [name: string]: unknown;
@@ -178,6 +187,7 @@ export interface paths {
             'application/json': components['schemas']['UnauthorizedError'];
           };
         };
+        /** @description Forbidden */
         403: {
           headers: {
             [name: string]: unknown;
@@ -186,6 +196,7 @@ export interface paths {
             'application/json': components['schemas']['ForbiddenError'];
           };
         };
+        /** @description Not Found */
         404: {
           headers: {
             [name: string]: unknown;
@@ -223,6 +234,7 @@ export interface paths {
       };
       requestBody?: never;
       responses: {
+        /** @description OK */
         200: {
           headers: {
             [name: string]: unknown;
@@ -231,6 +243,7 @@ export interface paths {
             'application/json': components['schemas']['FullLesson'];
           };
         };
+        /** @description Unauthorized */
         401: {
           headers: {
             [name: string]: unknown;
@@ -239,6 +252,7 @@ export interface paths {
             'application/json': components['schemas']['UnauthorizedError'];
           };
         };
+        /** @description Forbidden */
         403: {
           headers: {
             [name: string]: unknown;
@@ -247,6 +261,7 @@ export interface paths {
             'application/json': components['schemas']['ForbiddenError'];
           };
         };
+        /** @description Not Found */
         404: {
           headers: {
             [name: string]: unknown;
@@ -259,6 +274,73 @@ export interface paths {
     };
     put?: never;
     post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/lessons/{lessonId}/complete': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Отметить урок как пройденный */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody: {
+        content: {
+          'application/json': {
+            lessonId: string;
+          };
+        };
+      };
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        /** @description Unauthorized */
+        401: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['UnauthorizedError'];
+          };
+        };
+        /** @description Forbidden */
+        403: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['ForbiddenError'];
+          };
+        };
+        /** @description Not Found */
+        404: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['NotFoundError'];
+          };
+        };
+      };
+    };
     delete?: never;
     options?: never;
     head?: never;
@@ -330,8 +412,12 @@ export interface components {
       price: number;
       modules_amount: number;
     };
+    ErrorSchema: {
+      message: string;
+      code: string;
+    };
     /** @description Unauthorized */
-    UnauthorizedError: unknown;
+    UnauthorizedError: components['schemas']['ErrorSchema'];
     /** @description Курс в списке курсов, которые пользователь купил */
     MyCourse: components['schemas']['BaseCourse'] & {
       completed_lessons_amount: number;
@@ -367,13 +453,13 @@ export interface components {
       modules: components['schemas']['ModuleWithLessons'][];
     };
     /** @description Not Found */
-    NotFoundError: unknown;
+    NotFoundError: components['schemas']['ErrorSchema'];
     /** @description Список уроков в курсе */
     CourseLessons: components['schemas']['MyCourse'] & {
       modules: components['schemas']['ModuleWithLessons'][];
     };
     /** @description Forbidden */
-    ForbiddenError: unknown;
+    ForbiddenError: components['schemas']['ErrorSchema'];
     /** @description Базовая схема видео в уроке */
     BaseVideo: {
       video_url: string;

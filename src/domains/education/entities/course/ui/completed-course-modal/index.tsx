@@ -21,13 +21,13 @@ export function CompletedCourseModal() {
   return (
     <AdaptiveModal open={open} onOpenChange={onOpenChange}>
       <AdaptiveModalContent>
-        <Flex col gap='lg' className='mt-12 items-center px-6 text-center md:mb-2 md:mt-6'>
+        <Flex col gap='lg' className='mt-12 items-center px-7 text-center md:mb-2 md:mt-6'>
           <Typo size='xl' weight='semibold'>
             <Trans>Поздравляем с успешным завершением курса!</Trans>
           </Typo>
           <Typo size='base' weight='medium' className='opacity-50'>
             <Trans>
-              Не стоит останавливаться на достигнутом, продолжайте изучать новые темы или повторите ранее пройденные.
+              Не стоит останавливаться на достигнутом – продолжайте изучать новые темы, или повторите ранее пройденные.
               <br />
               <br />
               Завершенный курс будет доступен в вашем профиле в любое время.

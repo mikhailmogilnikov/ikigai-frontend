@@ -157,6 +157,10 @@ msgstr ""
 msgid "Доступность"
 msgstr ""
 
+#: src/domains/education/widgets/course-sidebar/ui/course-modules.tsx:62
+msgid "Завершен"
+msgstr ""
+
 #: src/routes/(education)/_guard/index.tsx:54
 msgid "Завершенные"
 msgstr ""
@@ -233,8 +237,12 @@ msgid "Не начатые"
 msgstr ""
 
 #: src/domains/education/entities/course/ui/completed-course-modal/index.tsx:29
-msgid "Не стоит останавливаться на достигнутом, продолжайте изучать новые темы или повторите ранее пройденные.<0/><1/>Завершенный курс будет доступен в вашем профиле в любое время."
+msgid "Не стоит останавливаться на достигнутом – продолжайте изучать новые темы, или повторите ранее пройденные.<0/><1/>Завершенный курс будет доступен в вашем профиле в любое время."
 msgstr ""
+
+#: src/domains/education/entities/course/ui/completed-course-modal/index.tsx:29
+#~ msgid "Не стоит останавливаться на достигнутом, продолжайте изучать новые темы или повторите ранее пройденные.<0/><1/>Завершенный курс будет доступен в вашем профиле в любое время."
+#~ msgstr ""
 
 #: src/domains/education/entities/test/ui/lesson-test/index.tsx:91
 msgid "Некорректно"
@@ -315,7 +323,7 @@ msgstr ""
 msgid "Посмотреть другие курсы"
 msgstr ""
 
-#: src/domains/education/widgets/lesson-tests/ui/index.tsx:75
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:95
 msgid "Прежде чем перейти к следующему уроку, пройдите тесты по усвоенному материалу."
 msgstr ""
 
@@ -323,7 +331,7 @@ msgstr ""
 msgid "Проверить"
 msgstr ""
 
-#: src/domains/education/widgets/lesson-tests/ui/index.tsx:72
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:92
 msgid "Проверьте себя"
 msgstr ""
 
@@ -374,7 +382,7 @@ msgstr ""
 msgid "Скорость"
 msgstr ""
 
-#: src/domains/education/widgets/lesson-tests/ui/index.tsx:83
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:109
 msgid "Следующий урок"
 msgstr ""
 

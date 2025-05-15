@@ -113,7 +113,7 @@ export const MOCK_COURSE_FULL: ApiComponents['FullCourse'] = {
           id: '2',
           title: 'Основы TypeScript',
           order: 2,
-          is_completed: true,
+          is_completed: false,
         },
         {
           id: '3',
@@ -156,83 +156,155 @@ export const MOCK_COURSE_LESSONS: ApiComponents['CourseLessons'] = {
   completed_lessons_amount: 24,
 };
 
-export const MOCK_LESSON_FULL: ApiComponents['FullLesson'][] = [
+export const MOCK_LESSONS_FULL: ApiComponents['FullLesson'][] = [
+  {
+    id: '1',
+    title: 'Настройка окружения разработки',
+    order: 1,
+    is_completed: true,
+    video: {
+      video_url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+      poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
+    },
+    content:
+      '# Настройка окружения разработки\n\nБазовое руководство по настройке окружения для разработки на React и TypeScript.',
+    tests: [],
+  },
+  {
+    id: '2',
+    title: 'Основы TypeScript',
+    order: 2,
+    is_completed: true,
+    video: {
+      video_url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+      poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
+    },
+    content: '',
+    tests: [],
+  },
+  {
+    id: '3',
+    title: 'Первые компоненты React',
+    order: 3,
+    is_completed: true,
+    video: {
+      video_url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+      poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
+    },
+    content: '# Первые компоненты React\n\nСоздание и использование компонентов в React.',
+    tests: [],
+  },
+  {
+    id: '4',
+    title: 'Хуки useState и useEffect',
+    order: 1,
+    is_completed: true,
+    video: {
+      video_url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+      poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
+    },
+    content:
+      '# Хуки useState и useEffect\n\nИзучение основных хуков React для управления состоянием и побочными эффектами.',
+    tests: [],
+  },
   {
     id: '5',
     title: 'Context API',
     order: 2,
-    is_completed: true,
+    is_completed: false,
     video: {
       video_url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
       poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
     },
     content: `
-*Добро пожаловать* на курс **"Основы программирования"**! Этот курс поможет вам освоить базовые принципы разработки программного обеспечения.
 
-### О чем этот курс?
+## Введение в Context API
 
-В этом курсе мы рассмотрим:
+Context API - это встроенный в React механизм для передачи данных через дерево компонентов без необходимости передавать пропсы на каждом уровне.
 
-1. Введение в алгоритмы
-2. Основы синтаксиса языков программирования
-3. Структуры данных
-   - Массивы
-   - Списки
-   - Словари
-4. Объектно-ориентированное программирование
+### Основные концепции:
 
-> Программирование — это искусство организации сложности.
-> 
-> — Эдсгер Дейкстра
+1. **Context Provider** - компонент, который предоставляет данные
+2. **Context Consumer** - компонент, который потребляет данные
+3. **useContext** - хук для доступа к контексту
 
----
+### Пример использования:
 
-## Модуль 1: Алгоритмы
+\`\`\`typescript
+import React, { createContext, useContext, useState } from 'react';
 
-![Схема алгоритма](https://placehold.co/600x400)
+const ThemeContext = createContext<{
+  theme: string;
+  toggleTheme: () => void;
+}>({
+  theme: 'light',
+  toggleTheme: () => {},
+});
 
-Алгоритм — это последовательность действий, решающая определенную задачу. Вот пример простого алгоритма:
+export const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState('light');
+  
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
 
-\`\`\`python
-def fibonacci(n):
-    if n <= 1:
-        return n
-    return fibonacci(n-1) + fibonacci(n-2)
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+// Использование в компоненте
+const Component = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  return (
+    <button onClick={toggleTheme}>
+      Текущая тема: {theme}
+    </button>
+  );
+};
 \`\`\`
 
-## Ссылки на дополнительные материалы
+## Когда использовать Context API?
 
-* [Курс алгоритмов на Coursera](https://www.coursera.org)
-* [Книга "Алгоритмы: построение и анализ"](https://example.com/book)
+- Для глобальных данных (тема, язык, авторизация)
+- Когда нужно избежать prop drilling
+- Для данных, которые редко меняются
 
-## Контактная информация
+> Context API отлично подходит для управления глобальным состоянием в небольших и средних приложениях.
 
-Если у вас возникли вопросы, [свяжитесь с нами](mailto:support@example.com).
-`,
+## Лучшие практики
+
+1. Разделяйте контексты по функциональности
+2. Используйте мемоизацию для оптимизации
+3. Избегайте частых обновлений контекста
+4. Создавайте отдельные провайдеры для разных частей приложения`,
     tests: [
       {
         id: '1',
-        title: 'Тест 1',
+        title: 'Основы Context API',
         order: 1,
-        lesson_id: '1',
+        lesson_id: '5',
         variants: [
           {
             id: '1',
-            title: 'Вариант 1',
+            title: 'Context API используется для передачи данных через дерево компонентов без prop drilling',
             is_correct: true,
-            description: 'Описание варианта 1',
+            description:
+              'Это основное предназначение Context API - избежать передачи пропсов через промежуточные компоненты',
             order: 1,
           },
           {
             id: '2',
-            title: 'Вариант 2',
+            title: 'Context API можно использовать только для передачи строковых значений',
             is_correct: false,
             description: null,
             order: 2,
           },
           {
             id: '3',
-            title: 'Вариант 3',
+            title: 'Context API работает только с функциональными компонентами',
             is_correct: false,
             description: null,
             order: 3,
@@ -241,29 +313,29 @@ def fibonacci(n):
       },
       {
         id: '2',
-        title: 'Тест 2',
+        title: 'Использование useContext',
         order: 2,
-        lesson_id: '1',
+        lesson_id: '5',
         variants: [
           {
             id: '1',
-            title: 'Вариант 1',
-            is_correct: false,
-            description: null,
+            title: 'useContext можно использовать только внутри Provider',
+            is_correct: true,
+            description: 'Хук useContext требует, чтобы компонент был обернут в соответствующий Provider',
             order: 1,
           },
           {
             id: '2',
-            title: 'Вариант 2',
+            title: 'useContext работает с любым объектом, не только с контекстом',
             is_correct: false,
             description: null,
             order: 2,
           },
           {
             id: '3',
-            title: 'Вариант 3',
-            is_correct: true,
-            description: 'Описание варианта 3',
+            title: 'useContext можно использовать вне React-компонентов',
+            is_correct: false,
+            description: null,
             order: 3,
           },
         ],
@@ -276,45 +348,110 @@ def fibonacci(n):
     order: 3,
     is_completed: false,
     video: {
-      video_url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+      video_url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
       poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
     },
-    content: `
-# Redux Toolkit: Современный подход к управлению состоянием
+    content: `# Redux Toolkit
 
-## Введение
+## Введение в Redux Toolkit
 
-Redux Toolkit — это официальный, рекомендуемый способ написания Redux логики. Он включает в себя несколько полезных утилит, которые помогают упростить многие общие случаи использования Redux.
+Redux Toolkit - это официальный, рекомендуемый способ написания Redux логики. Он включает в себя несколько полезных утилит, которые помогают упростить многие общие случаи использования Redux.
 
-### Основные преимущества Redux Toolkit:
+### Основные преимущества:
 
 1. Упрощенная настройка хранилища
 2. Встроенная поддержка Immer для иммутабельных обновлений
 3. Автоматическая генерация action creators
 4. Встроенная поддержка Redux Thunk
 
-## Пример использования
+### Пример использования:
 
 \`\`\`typescript
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 
+// Создание slice
 const counterSlice = createSlice({
   name: 'counter',
   initialState: {
-    value: 0
+    value: 0,
+    status: 'idle',
   },
   reducers: {
-    increment: state => {
+    increment: (state) => {
       state.value += 1;
     },
-    decrement: state => {
+    decrement: (state) => {
       state.value -= 1;
-    }
-  }
+    },
+  },
 });
 
+// Настройка store
 const store = configureStore({
-  reducer: counterSlice.reducer
+  reducer: {
+    counter: counterSlice.reducer,
+  },
+});
+
+// Использование в компоненте
+import { useSelector, useDispatch } from 'react-redux';
+
+const Counter = () => {
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
+
+  return (
+    <div>
+      <button onClick={() => dispatch(counterSlice.actions.increment())}>
+        Увеличить
+      </button>
+      <span>{count}</span>
+      <button onClick={() => dispatch(counterSlice.actions.decrement())}>
+        Уменьшить
+      </button>
+    </div>
+  );
+};
+\`\`\`
+
+## Асинхронные операции
+
+Для асинхронных операций используйте \`createAsyncThunk\`:
+
+\`\`\`typescript
+import { createAsyncThunk } from '@reduxjs/toolkit';
+
+export const fetchUserData = createAsyncThunk(
+  'users/fetchUserData',
+  async (userId: string) => {
+    const response = await fetch(\`/api/users/\${userId}\`);
+    return response.json();
+  }
+);
+
+// В slice
+const usersSlice = createSlice({
+  name: 'users',
+  initialState: {
+    data: null,
+    status: 'idle',
+    error: null,
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUserData.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchUserData.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.data = action.payload;
+      })
+      .addCase(fetchUserData.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      });
+  },
 });
 \`\`\`
 
@@ -325,20 +462,7 @@ const store = configureStore({
 3. Организуйте код по функциональным модулям
 4. Используйте TypeScript для типизации
 
-> Redux Toolkit значительно упрощает работу с Redux, делая код более чистым и поддерживаемым.
-
-## Дополнительные ресурсы
-
-* [Официальная документация Redux Toolkit](https://redux-toolkit.js.org)
-* [Примеры использования на GitHub](https://github.com/reduxjs/redux-toolkit)
-* [Видео-курс по Redux Toolkit](https://example.com/redux-course)
-
-## Задание
-
-Попробуйте реализовать простое приложение со списком задач, используя Redux Toolkit для управления состоянием.
-
-Если у вас возникли вопросы, [напишите нам](mailto:support@example.com).
-`,
+> Redux Toolkit значительно упрощает работу с Redux, делая код более чистым и поддерживаемым.`,
     tests: [
       {
         id: '3',
@@ -377,9 +501,9 @@ const store = configureStore({
         variants: [
           {
             id: '1',
-            title: 'Используйте createAsyncThunk',
+            title: 'Используйте createAsyncThunk для асинхронных операций',
             is_correct: true,
-            description: 'createAsyncThunk - рекомендуемый способ обработки асинхронных операций',
+            description: 'createAsyncThunk - рекомендуемый способ обработки асинхронных операций в Redux Toolkit',
             order: 1,
           },
           {
@@ -391,7 +515,7 @@ const store = configureStore({
           },
           {
             id: '3',
-            title: 'Асинхронные операции не поддерживаются',
+            title: 'Асинхронные операции не поддерживаются в Redux Toolkit',
             is_correct: false,
             description: null,
             order: 3,

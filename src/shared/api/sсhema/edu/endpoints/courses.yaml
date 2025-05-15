@@ -139,3 +139,43 @@ getLesson:
         application/json:
           schema:
             $ref: '../../shared/responses.yaml#/schemas/NotFoundError'
+
+completeLesson:
+  description: "Отметить урок как пройденный"
+  # security:
+  #   - BearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            lessonId:
+              type: string
+          required:
+            - lessonId
+  responses:
+    '200':
+      description: "OK"
+    '401':
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+    '403':
+      description: "Forbidden"
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/ForbiddenError'
+    '404':
+      description: "Not Found"
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/NotFoundError'
+            
+            
+            

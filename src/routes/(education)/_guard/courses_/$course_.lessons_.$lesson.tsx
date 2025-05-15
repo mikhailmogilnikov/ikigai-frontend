@@ -69,6 +69,7 @@ function RouteComponent() {
       {lesson.data.video && (
         <Suspense fallback={<Skeleton className='aspect-video w-full rounded-md' />}>
           <VideoPlayer
+            key={`${lesson.data.id}-${lesson.data.video.video_url}`}
             title={lesson.data.title}
             src={lesson.data.video.video_url}
             poster={lesson.data.video.poster_url}

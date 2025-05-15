@@ -5,7 +5,7 @@ import {
   MOCK_COURSE_LESSONS,
   MOCK_COURSES_MY_LIST,
   MOCK_COURSES_SHOP_LIST,
-  MOCK_LESSON_FULL,
+  MOCK_LESSONS_FULL,
 } from '../../data/courses';
 import { http } from '../../http';
 
@@ -23,6 +23,21 @@ export const edu_courses_handlers = [
     return HttpResponse.json(MOCK_COURSE_LESSONS);
   }),
   http.get('/lessons/{lessonId}', ({ params: { lessonId } }) => {
-    return HttpResponse.json(MOCK_LESSON_FULL.find((lesson) => lesson.id === lessonId));
+    return HttpResponse.json(MOCK_LESSONS_FULL.find((lesson) => lesson.id === lessonId));
+  }),
+  http.post('/lessons/{lessonId}/complete', async ({ request }) => {
+    const { lessonId } = await request.json();
+
+    const lesson = MOCK_COURSE_FULL.modules
+      .flatMap((module) => module.lessons)
+      .find((lesson) => lesson.id === lessonId);
+
+    if (!lesson) {
+      return HttpResponse.json(null, { status: 404 });
+    }
+
+    lesson.is_completed = true;
+
+    return HttpResponse.json(null);
   }),
 ];

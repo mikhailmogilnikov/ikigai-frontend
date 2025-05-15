@@ -1,15 +1,17 @@
 import { Trans } from '@lingui/react/macro';
-import { useNavigate, useLoaderData } from '@tanstack/react-router';
+import { useNavigate, useLoaderData, useParams } from '@tanstack/react-router';
+import { useQueryClient } from '@tanstack/react-query';
 import { useEffect, useRef, useState } from 'react';
 import { PiArrowRightBold } from 'react-icons/pi';
 
 import { useCompletedCourseModal } from '~/domains/education/entities/course';
 import { getNextUncompletedLesson } from '~/domains/education/entities/lesson';
 import { LessonTest } from '~/domains/education/entities/test';
-import { ApiComponents } from '~/shared/api';
+import { ApiComponents, rqClient } from '~/shared/api';
 import { Button } from '~/shared/ui/primitives/button/button';
 import { Flex } from '~/shared/ui/primitives/flex';
 import { Typo } from '~/shared/ui/primitives/typo';
+import { useAppLayout } from '~/domains/global/widgets/layout';
 
 interface LessonTestsProps {
   tests: ApiComponents['TestWithVariants'][];
@@ -18,8 +20,18 @@ interface LessonTestsProps {
 
 export function LessonTests({ tests, modules }: LessonTestsProps) {
   const navigate = useNavigate();
+  const { course } = useParams({ from: '/(education)/_guard/courses_/$course_/lessons_/$lesson' });
   const loaderData = useLoaderData({ from: '/(education)/_guard/courses_/$course_/lessons_/$lesson' });
+  const queryClient = useQueryClient();
+
   const { onOpenChange } = useCompletedCourseModal();
+  const { scrollToTop } = useAppLayout();
+
+  const { mutateAsync, isPending } = rqClient.useMutation('post', '/lessons/{lessonId}/complete', {
+    onSettled: async () => {
+      await queryClient.invalidateQueries({ queryKey: ['course-lessons', course] });
+    },
+  });
 
   const activeLessonId = loaderData.activeLessonId;
 
@@ -38,8 +50,15 @@ export function LessonTests({ tests, modules }: LessonTestsProps) {
 
   const isNextLessonDisabled = completedTestsLength !== testsLength;
 
-  const handleNextLesson = () => {
+  const handleNextLesson = async () => {
     if (isNextLessonDisabled) return;
+
+    const currentLesson = modules.flatMap((module) => module.lessons).find((lesson) => lesson.id === activeLessonId);
+
+    if (!currentLesson?.is_completed) {
+      await mutateAsync({ body: { lessonId: activeLessonId } });
+    }
+
     const nextLesson = getNextUncompletedLesson(modules, activeLessonId);
 
     if (nextLesson === 'ENDED') {
@@ -51,9 +70,10 @@ export function LessonTests({ tests, modules }: LessonTestsProps) {
       return;
     }
 
+    scrollToTop();
     void navigate({
       to: '/courses/$course/lessons/$lesson',
-      params: { course: '6', lesson: nextLesson.id },
+      params: { course: course, lesson: nextLesson.id },
     });
   };
 
@@ -79,7 +99,13 @@ export function LessonTests({ tests, modules }: LessonTestsProps) {
           ))}
         </Flex>
       )}
-      <Button isDisabled={isNextLessonDisabled} onClick={handleNextLesson} className='mb-5' color='primary'>
+      <Button
+        isDisabled={isNextLessonDisabled}
+        onClick={() => void handleNextLesson()}
+        isLoading={isPending}
+        className='mb-5'
+        color='primary'
+      >
         <Trans>Следующий урок</Trans>
         <PiArrowRightBold />
       </Button>

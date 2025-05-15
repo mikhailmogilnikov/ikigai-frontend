@@ -44,6 +44,11 @@ paths:
       tags:
         - public
       $ref: ./edu/endpoints/courses.yaml#/getLesson
+  /lessons/{lessonId}/complete:
+    post:
+      tags:
+        - public
+      $ref: ./edu/endpoints/courses.yaml#/completeLesson
 
   # Админ маршруты
   /admin/courses:
