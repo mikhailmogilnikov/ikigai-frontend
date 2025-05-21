@@ -1,0 +1,17 @@
+schemas:
+  Student:
+    description: Студент
+    allOf:
+      - $ref: "../../shared/schemas/base-user-schemas.yaml#/schemas/User"
+      - type: object
+        properties:
+          completed_courses_amount:
+            type: number
+          completed_lessons_amount:
+            type: number
+          bought_courses_amount:
+            type: number
+        required:
+          - completed_courses_amount
+          - completed_lessons_amount
+          - bought_courses_amount

@@ -26,11 +26,11 @@ export const edu_courses_handlers = [
     return HttpResponse.json(MOCK_LESSONS_FULL.find((lesson) => lesson.id === lessonId));
   }),
   http.post('/lessons/{lessonId}/complete', async ({ request }) => {
-    const { lessonId } = await request.json();
+    const { lesson_id } = await request.json();
 
     const lesson = MOCK_COURSE_FULL.modules
       .flatMap((module) => module.lessons)
-      .find((lesson) => lesson.id === lessonId);
+      .find((lesson) => lesson.id === lesson_id);
 
     if (!lesson) {
       return HttpResponse.json(null, { status: 404 });

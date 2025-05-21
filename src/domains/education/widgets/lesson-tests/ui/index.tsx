@@ -56,7 +56,7 @@ export function LessonTests({ tests, modules }: LessonTestsProps) {
     const currentLesson = modules.flatMap((module) => module.lessons).find((lesson) => lesson.id === activeLessonId);
 
     if (!currentLesson?.is_completed) {
-      await mutateAsync({ body: { lessonId: activeLessonId } });
+      await mutateAsync({ body: { lesson_id: activeLessonId } });
     }
 
     const nextLesson = getNextLesson(modules, activeLessonId);

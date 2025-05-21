@@ -1,6 +1,6 @@
 schemas:
   AdminCourse:
-    description: "Курс для админа в списке курсов"
+    description: Курс для админа в списке курсов
     allOf:
       - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseCourse"
       - type: object

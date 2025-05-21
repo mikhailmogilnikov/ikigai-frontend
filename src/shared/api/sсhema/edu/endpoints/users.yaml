@@ -1,0 +1,22 @@
+getMe:
+  description: Получает информацию о текущем пользователе
+  responses:
+    '200':
+      description: Информация о текущем пользователе
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/user-schemas.yaml#/schemas/Student'
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+    '404':
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/NotFoundError'
+    
+            
+            

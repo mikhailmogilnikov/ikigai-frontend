@@ -4,13 +4,36 @@ info:
   version: 1.0.0
   description: API to manage Ikigai
 tags:
+  - name: auth
+    description: Маршруты для авторизации
   - name: public
     description: Публичные маршруты
   - name: admin
     description: Административные маршруты
 paths:
+  /auth/login:
+    post:
+      summary: Вход в систему
+      tags:
+        - auth
+  /auth/register:
+    post:
+      summary: Регистрация в системе
+      tags:
+        - auth
+  /auth/logout:
+    post:
+      summary: Выход из системы
+      tags:
+        - auth
+  /auth/refresh:
+    post:
+      summary: Обновление токена
+      tags:
+        - auth
   /courses/store:
     get:
+      summary: Получить список курсов, которые можно купить в магазине
       tags:
         - public
       description: Получить список курсов, которые можно купить в магазине
@@ -31,6 +54,7 @@ paths:
                 $ref: '#/components/schemas/UnauthorizedError'
   /courses/my-courses:
     get:
+      summary: Получить список курсов, которые купил пользователь
       tags:
         - public
       description: Получить список курсов, которые пользователь купил
@@ -51,6 +75,7 @@ paths:
                 $ref: '#/components/schemas/UnauthorizedError'
   /courses/{courseId}:
     get:
+      summary: Получить курс по id
       tags:
         - public
       description: Получить информацию о курсе
@@ -81,6 +106,7 @@ paths:
                 $ref: '#/components/schemas/NotFoundError'
   /courses/{courseId}/lessons:
     get:
+      summary: Получить список уроков в курсе
       tags:
         - public
       description: Получить список уроков в курсе
@@ -117,6 +143,7 @@ paths:
                 $ref: '#/components/schemas/NotFoundError'
   /lessons/{lessonId}:
     get:
+      summary: Получить урок по id
       tags:
         - public
       description: Получить содержимое урока
@@ -151,10 +178,94 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFoundError'
+  /lessons/{lessonId}/complete:
+    post:
+      summary: Отметить урок как пройденный
+      tags:
+        - public
+      description: Отметить урок как пройденный
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lesson_id:
+                  type: string
+              required:
+                - lesson_id
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+  /transactions:
+    get:
+      summary: Получить список транзакций
+      tags:
+        - public
+      description: Получить список транзакций
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transaction'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+  /users/me:
+    get:
+      summary: Получить информацию о себе
+      tags:
+        - public
+      description: Получает информацию о текущем пользователе
+      responses:
+        '200':
+          description: Информация о текущем пользователе
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
   /admin/courses:
+    summary: Получить список курсов
     get:
       tags:
         - admin
+      summary: Получить список курсов для админа
       description: Получить список курсов для админа
       responses:
         '200':
@@ -171,9 +282,54 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedError'
+    post:
+      summary: Создать курс
+      tags:
+        - admin
+  /admin/courses/{courseId}:
+    get:
+      summary: Получить курс по id
+      tags:
+        - admin
+    put:
+      summary: Обновить курс по id
+      tags:
+        - admin
+    delete:
+      summary: Удалить курс по id
+      tags:
+        - admin
+  /admin/users:
+    get:
+      summary: Получить список пользователей
+      tags:
+        - admin
+    post:
+      summary: Создать пользователя
+      tags:
+        - admin
+  /admin/users/{userId}:
+    get:
+      summary: Получить пользователя по id
+      tags:
+        - admin
+    put:
+      summary: Обновить пользователя по id
+      tags:
+        - admin
+    delete:
+      summary: Удалить пользователя по id
+      tags:
+        - admin
+  /admin/transactions:
+    get:
+      summary: Получить список транзакций
+      tags:
+        - admin
 components:
   schemas:
     BaseCourse:
+      summary: Базовая схема курса
       description: Базовая схема курса
       type: object
       properties:
@@ -185,10 +341,10 @@ components:
           type: string
         lessons_amount:
           type: number
-        createdAt:
+        created_at:
           type: string
           format: date-time
-        updatedAt:
+        updated_at:
           type: string
           format: date-time
       required:
@@ -196,8 +352,8 @@ components:
         - title
         - image_url
         - lessons_amount
-        - createdAt
-        - updatedAt
+        - created_at
+        - updated_at
     ShopCourse:
       description: Курс в списке курсов для магазина
       allOf:
@@ -212,6 +368,7 @@ components:
             - price
             - modules_amount
     ErrorSchema:
+      description: Схема ошибки
       type: object
       properties:
         message:
@@ -222,7 +379,7 @@ components:
         - message
         - code
     UnauthorizedError:
-      description: Unauthorized
+      description: Ошибка авторизации
       allOf:
         - $ref: '#/components/schemas/ErrorSchema'
     MyCourse:
@@ -236,6 +393,7 @@ components:
           required:
             - completed_lessons_amount
     BaseModule:
+      summary: Базовая схема модуля в курсе
       description: Базовая схема модуля в курсе
       type: object
       properties:
@@ -250,6 +408,7 @@ components:
         - title
         - order
     BaseLesson:
+      summary: Базовая схема урока в курсе
       description: Базовая схема урока в курсе
       type: object
       properties:
@@ -274,6 +433,7 @@ components:
           required:
             - is_completed
     ModuleWithLessons:
+      summary: Модуль с уроками
       description: Модуль с уроками
       allOf:
         - $ref: '#/components/schemas/BaseModule'
@@ -318,7 +478,7 @@ components:
             - completed_lessons_amount
             - modules
     NotFoundError:
-      description: Not Found
+      description: Ошибка не найденного ресурса
       allOf:
         - $ref: '#/components/schemas/ErrorSchema'
     CourseLessons:
@@ -334,10 +494,11 @@ components:
           required:
             - modules
     ForbiddenError:
-      description: Forbidden
+      description: Ошибка доступа
       allOf:
         - $ref: '#/components/schemas/ErrorSchema'
     BaseVideo:
+      summary: Базовая схема видео в уроке
       description: Базовая схема видео в уроке
       type: object
       properties:
@@ -349,6 +510,7 @@ components:
         - video_url
         - poster_url
     BaseTest:
+      summary: Базовая схема теста
       description: Базовая схема теста
       type: object
       properties:
@@ -366,6 +528,7 @@ components:
         - title
         - order
     BaseTestVariant:
+      summary: Базовая схема варианта ответа на тест
       description: Базовая схема варианта ответа на тест
       type: object
       properties:
@@ -419,6 +582,72 @@ components:
             - video
             - content
             - tests
+    Transaction:
+      description: Транзакция в списке транзакций ученика
+      type: object
+      properties:
+        id:
+          type: string
+        date:
+          type: string
+          format: date-time
+        amount:
+          type: number
+        title:
+          type: string
+      required:
+        - id
+        - date
+        - amount
+        - title
+    UserRoles:
+      description: Роли пользователей
+      type: string
+      enum:
+        - student
+        - admin
+    User:
+      description: Базовая схема пользователя
+      type: object
+      properties:
+        id:
+          type: string
+        phone:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        avatar_url:
+          type: string
+        join_date:
+          type: string
+        role:
+          $ref: '#/components/schemas/UserRoles'
+      required:
+        - id
+        - phone
+        - first_name
+        - last_name
+        - avatar_url
+        - join_date
+        - role
+    Student:
+      description: Студент
+      allOf:
+        - $ref: '#/components/schemas/User'
+        - type: object
+          properties:
+            completed_courses_amount:
+              type: number
+            completed_lessons_amount:
+              type: number
+            bought_courses_amount:
+              type: number
+          required:
+            - completed_courses_amount
+            - completed_lessons_amount
+            - bought_courses_amount
     AdminCourse:
       description: Курс для админа в списке курсов
       allOf:

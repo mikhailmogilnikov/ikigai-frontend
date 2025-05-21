@@ -2,9 +2,9 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 import { Container } from '~/shared/ui/primitives/container';
-import { Typo } from '~/shared/ui/primitives/typo';
 import { PageLoader } from '~/shared/ui/common/page-loader';
 import { getCourseQuery } from '~/domains/education/entities/course/api';
+import { CourseFullInfo } from '~/domains/education/widgets/course-full-info';
 
 export const Route = createFileRoute('/(education)/_guard/courses_/$course')({
   component: RouteComponent,
@@ -23,10 +23,8 @@ function RouteComponent() {
   }
 
   return (
-    <Container title={course.title}>
-      <Typo as='p' size='base' weight='normal'>
-        {course.description}
-      </Typo>
+    <Container>
+      <CourseFullInfo course={course} />
     </Container>
   );
 }

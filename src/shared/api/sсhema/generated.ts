@@ -4,6 +4,110 @@
  */
 
 export interface paths {
+  '/auth/login': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Вход в систему */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: never;
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/auth/register': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Регистрация в системе */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: never;
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/auth/logout': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Выход из системы */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: never;
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/auth/refresh': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Обновление токена */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: never;
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/courses/store': {
     parameters: {
       query?: never;
@@ -11,7 +115,10 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** @description Получить список курсов, которые можно купить в магазине */
+    /**
+     * Получить список курсов, которые можно купить в магазине
+     * @description Получить список курсов, которые можно купить в магазине
+     */
     get: {
       parameters: {
         query?: never;
@@ -56,7 +163,10 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** @description Получить список курсов, которые пользователь купил */
+    /**
+     * Получить список курсов, которые купил пользователь
+     * @description Получить список курсов, которые пользователь купил
+     */
     get: {
       parameters: {
         query?: never;
@@ -101,7 +211,10 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** @description Получить информацию о курсе */
+    /**
+     * Получить курс по id
+     * @description Получить информацию о курсе
+     */
     get: {
       parameters: {
         query?: never;
@@ -157,7 +270,10 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** @description Получить список уроков в курсе */
+    /**
+     * Получить список уроков в курсе
+     * @description Получить список уроков в курсе
+     */
     get: {
       parameters: {
         query?: never;
@@ -222,7 +338,10 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** @description Получить содержимое урока */
+    /**
+     * Получить урок по id
+     * @description Получить содержимое урока
+     */
     get: {
       parameters: {
         query?: never;
@@ -289,7 +408,10 @@ export interface paths {
     };
     get?: never;
     put?: never;
-    /** @description Отметить урок как пройденный */
+    /**
+     * Отметить урок как пройденный
+     * @description Отметить урок как пройденный
+     */
     post: {
       parameters: {
         query?: never;
@@ -300,7 +422,7 @@ export interface paths {
       requestBody: {
         content: {
           'application/json': {
-            lessonId: string;
+            lesson_id: string;
           };
         };
       };
@@ -354,7 +476,10 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** @description Получить список транзакций */
+    /**
+     * Получить список транзакций
+     * @description Получить список транзакций
+     */
     get: {
       parameters: {
         query?: never;
@@ -392,6 +517,61 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/users/me': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Получить информацию о себе
+     * @description Получает информацию о текущем пользователе
+     */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Информация о текущем пользователе */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['Student'];
+          };
+        };
+        401: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['UnauthorizedError'];
+          };
+        };
+        404: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['NotFoundError'];
+          };
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/admin/courses': {
     parameters: {
       query?: never;
@@ -399,7 +579,10 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** @description Получить список курсов для админа */
+    /**
+     * Получить список курсов для админа
+     * @description Получить список курсов для админа
+     */
     get: {
       parameters: {
         query?: never;
@@ -430,6 +613,170 @@ export interface paths {
       };
     };
     put?: never;
+    /** Создать курс */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: never;
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/admin/courses/{courseId}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Получить курс по id */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: never;
+    };
+    /** Обновить курс по id */
+    put: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: never;
+    };
+    post?: never;
+    /** Удалить курс по id */
+    delete: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: never;
+    };
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/admin/users': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Получить список пользователей */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: never;
+    };
+    put?: never;
+    /** Создать пользователя */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: never;
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/admin/users/{userId}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Получить пользователя по id */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: never;
+    };
+    /** Обновить пользователя по id */
+    put: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: never;
+    };
+    post?: never;
+    /** Удалить пользователя по id */
+    delete: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: never;
+    };
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/admin/transactions': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Получить список транзакций */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: never;
+    };
+    put?: never;
     post?: never;
     delete?: never;
     options?: never;
@@ -441,39 +788,49 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
-    /** @description Базовая схема курса */
+    /**
+     * Базовая схема курса
+     * @description Базовая схема курса
+     */
     BaseCourse: {
       id: string;
       title: string;
       image_url: string;
       lessons_amount: number;
       /** Format: date-time */
-      createdAt: string;
+      created_at: string;
       /** Format: date-time */
-      updatedAt: string;
+      updated_at: string;
     };
     /** @description Курс в списке курсов для магазина */
     ShopCourse: components['schemas']['BaseCourse'] & {
       price: number;
       modules_amount: number;
     };
+    /** @description Схема ошибки */
     ErrorSchema: {
       message: string;
       code: string;
     };
-    /** @description Unauthorized */
+    /** @description Ошибка авторизации */
     UnauthorizedError: components['schemas']['ErrorSchema'];
     /** @description Курс в списке курсов, которые пользователь купил */
     MyCourse: components['schemas']['BaseCourse'] & {
       completed_lessons_amount: number;
     };
-    /** @description Базовая схема модуля в курсе */
+    /**
+     * Базовая схема модуля в курсе
+     * @description Базовая схема модуля в курсе
+     */
     BaseModule: {
       id: string;
       title: string;
       order: number;
     };
-    /** @description Базовая схема урока в курсе */
+    /**
+     * Базовая схема урока в курсе
+     * @description Базовая схема урока в курсе
+     */
     BaseLesson: {
       id: string;
       title: string;
@@ -483,7 +840,10 @@ export interface components {
     CourseLesson: components['schemas']['BaseLesson'] & {
       is_completed: boolean;
     };
-    /** @description Модуль с уроками */
+    /**
+     * Модуль с уроками
+     * @description Модуль с уроками
+     */
     ModuleWithLessons: components['schemas']['BaseModule'] & {
       lessons: components['schemas']['CourseLesson'][];
     };
@@ -492,32 +852,43 @@ export interface components {
       description: string;
       price: number;
       modules_amount: number;
+      videos_amount: number;
+      start_date: string | null;
       is_purchased: boolean;
       is_finished: boolean;
       completed_lessons_amount: number | null;
       modules: components['schemas']['ModuleWithLessons'][];
     };
-    /** @description Not Found */
+    /** @description Ошибка не найденного ресурса */
     NotFoundError: components['schemas']['ErrorSchema'];
     /** @description Список уроков в курсе */
     CourseLessons: components['schemas']['MyCourse'] & {
       modules: components['schemas']['ModuleWithLessons'][];
     };
-    /** @description Forbidden */
+    /** @description Ошибка доступа */
     ForbiddenError: components['schemas']['ErrorSchema'];
-    /** @description Базовая схема видео в уроке */
+    /**
+     * Базовая схема видео в уроке
+     * @description Базовая схема видео в уроке
+     */
     BaseVideo: {
       video_url: string;
       poster_url: string;
     };
-    /** @description Базовая схема теста */
+    /**
+     * Базовая схема теста
+     * @description Базовая схема теста
+     */
     BaseTest: {
       id: string;
       lesson_id: string;
       title: string;
       order: number;
     };
-    /** @description Базовая схема варианта ответа на тест */
+    /**
+     * Базовая схема варианта ответа на тест
+     * @description Базовая схема варианта ответа на тест
+     */
     BaseTestVariant: {
       id: string;
       title: string;
@@ -535,12 +906,34 @@ export interface components {
       content: string;
       tests: components['schemas']['TestWithVariants'][];
     };
+    /** @description Транзакция в списке транзакций ученика */
     Transaction: {
       id: string;
       /** Format: date-time */
       date: string;
       amount: number;
       title: string;
+    };
+    /**
+     * @description Роли пользователей
+     * @enum {string}
+     */
+    UserRoles: 'student' | 'admin';
+    /** @description Базовая схема пользователя */
+    User: {
+      id: string;
+      phone: string;
+      first_name: string;
+      last_name: string;
+      avatar_url: string;
+      join_date: string;
+      role: components['schemas']['UserRoles'];
+    };
+    /** @description Студент */
+    Student: components['schemas']['User'] & {
+      completed_courses_amount: number;
+      completed_lessons_amount: number;
+      bought_courses_amount: number;
     };
     /** @description Курс для админа в списке курсов */
     AdminCourse: components['schemas']['BaseCourse'] & {

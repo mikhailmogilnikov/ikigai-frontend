@@ -1,4 +1,5 @@
 getAdminCourses:
+  summary: "Получить список курсов для админа"
   description: "Получить список курсов для админа"
   responses:
     '200':

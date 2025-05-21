@@ -36,3 +36,12 @@ make lint
 -- `/shared` (Shared across the project) \
 -- `/routes` (Application routes) \
 -- `/domains` – Application business domains
+
+
+### Generate API Docs
+
+Install `@redocly/cli@latest` package globally, then execute
+
+```bash
+bunx @redocly/cli@latest bundle ./src/shared/api/sсhema/main.yaml -o api-docs.yaml
+```

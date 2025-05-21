@@ -1,5 +1,6 @@
 schemas:
   BaseCourse:
+    summary: Базовая схема курса
     description: Базовая схема курса
     type: object
     properties:
@@ -11,10 +12,10 @@ schemas:
         type: string
       lessons_amount:
         type: number
-      createdAt:
+      created_at:
         type: string
         format: date-time
-      updatedAt:
+      updated_at:
         type: string
         format: date-time
     required:
@@ -22,10 +23,11 @@ schemas:
       - title
       - image_url
       - lessons_amount
-      - createdAt
-      - updatedAt
+      - created_at
+      - updated_at
 
   BaseLesson:
+    summary: Базовая схема урока в курсе
     description: Базовая схема урока в курсе
     type: object
     properties:
@@ -41,6 +43,7 @@ schemas:
       - order
 
   BaseModule:
+    summary: Базовая схема модуля в курсе
     description: Базовая схема модуля в курсе
     type: object
     properties:
@@ -56,6 +59,7 @@ schemas:
       - order
 
   BaseVideo:
+    summary: Базовая схема видео в уроке
     description: Базовая схема видео в уроке
     type: object
     properties:
@@ -68,6 +72,7 @@ schemas:
       - poster_url
 
   BaseTest:
+    summary: Базовая схема теста
     description: Базовая схема теста
     type: object
     properties:
@@ -86,6 +91,7 @@ schemas:
       - order
 
   BaseTestVariant:
+    summary: Базовая схема варианта ответа на тест
     description: Базовая схема варианта ответа на тест
     type: object
     properties:

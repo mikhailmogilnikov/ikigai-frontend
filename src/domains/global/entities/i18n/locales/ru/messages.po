@@ -13,11 +13,28 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:66
+#. placeholder {0}: module.lessons.length
+#: src/domains/education/widgets/course-full-info/ui/modules.tsx:39
+msgid "{0, plural, one {урок} few {урока} many {уроков}}"
+msgstr "{0, plural, one {урок} few {урока} many {уроков}}"
+
+#: src/domains/education/widgets/course-full-info/ui/info.tsx:34
+msgid "{amount, plural, one {Видео} few {Видео} many {Видео}}"
+msgstr "{amount, plural, one {Видео} few {Видео} many {Видео}}"
+
+#: src/domains/education/widgets/course-full-info/ui/info.tsx:42
+msgid "{amount, plural, one {Модуль} few {Модуля} many {Модулей}}"
+msgstr "{amount, plural, one {Модуль} few {Модуля} many {Модулей}}"
+
+#: src/domains/education/widgets/course-full-info/ui/info.tsx:38
+msgid "{amount, plural, one {Урок} few {Урока} many {Уроков}}"
+msgstr "{amount, plural, one {Урок} few {Урока} many {Уроков}}"
+
+#: src/domains/education/entities/course/ui/card/course-card.tsx:68
 msgid "{lessons_amount, plural, one {урок} few {урока} many {уроков}}"
 msgstr "{lessons_amount, plural, one {урок} few {урока} many {уроков}}"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:65
+#: src/domains/education/entities/course/ui/card/course-card.tsx:67
 msgid "{modules_amount, plural, one {модуль} few {модуля} many {модулей}}"
 msgstr "{modules_amount, plural, one {модуль} few {модуля} many {модулей}}"
 
@@ -142,6 +159,7 @@ msgid "Доступность"
 msgstr "Доступность"
 
 #: src/domains/education/widgets/course-sidebar/ui/course-modules.tsx:62
+#: src/domains/education/widgets/course-full-info/ui/modules.tsx:47
 msgid "Завершен"
 msgstr "Завершен"
 
@@ -174,7 +192,7 @@ msgstr "Качество"
 msgid "Корректно"
 msgstr "Корректно"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:78
+#: src/domains/education/entities/course/ui/card/course-card.tsx:80
 msgid "Купить"
 msgstr "Купить"
 
@@ -213,9 +231,13 @@ msgstr "Настройки"
 msgid "Настройки звука"
 msgstr "Настройки звука"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:114
+#: src/domains/education/entities/course/ui/card/course-card.tsx:116
 msgid "Начать"
 msgstr "Начать"
+
+#: src/domains/education/widgets/course-full-info/ui/widget.tsx:66
+msgid "Начать курс"
+msgstr "Начать курс"
 
 #: src/routes/(education)/_guard/index.tsx:25
 msgid "Не начатые"
@@ -271,9 +293,13 @@ msgid "По умолчанию"
 msgstr "По умолчанию"
 
 #: src/shared/ui/common/video-player/use-video.ts:59
-#: src/domains/education/entities/course/ui/card/course-card.tsx:116
+#: src/domains/education/entities/course/ui/card/course-card.tsx:118
 msgid "Повторить"
 msgstr "Повторить"
+
+#: src/domains/education/widgets/course-full-info/ui/widget.tsx:68
+msgid "Повторить курс"
+msgstr "Повторить курс"
 
 #: src/shared/ui/common/video-player/use-video.ts:39
 msgid "Подключение"
@@ -283,8 +309,8 @@ msgstr "Подключение"
 msgid "Подключено"
 msgstr "Подключено"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:75
-#: src/domains/education/entities/course/ui/card/course-card.tsx:106
+#: src/domains/education/entities/course/ui/card/course-card.tsx:77
+#: src/domains/education/entities/course/ui/card/course-card.tsx:108
 msgid "Подробнее"
 msgstr "Подробнее"
 
@@ -320,17 +346,26 @@ msgstr "Проверить"
 msgid "Проверьте себя"
 msgstr "Проверьте себя"
 
+#: src/domains/education/widgets/course-full-info/ui/modules.tsx:17
+msgid "Программа курса"
+msgstr "Программа курса"
+
 #: src/shared/ui/common/video-player/use-video.ts:40
-#: src/domains/education/entities/course/ui/card/course-card.tsx:115
+#: src/domains/education/entities/course/ui/card/course-card.tsx:117
 msgid "Продолжить"
 msgstr "Продолжить"
+
+#: src/domains/education/widgets/course-full-info/ui/widget.tsx:67
+msgid "Продолжить обучение"
+msgstr "Продолжить обучение"
 
 #: src/domains/global/widgets/error-page/ui/default.tsx:15
 msgid "Произошла неизвестная ошибка"
 msgstr "Произошла неизвестная ошибка"
 
 #: src/domains/education/widgets/course-sidebar/ui/course-progress.tsx:27
-#: src/domains/education/entities/course/ui/card/course-card.tsx:98
+#: src/domains/education/widgets/course-full-info/ui/widget.tsx:53
+#: src/domains/education/entities/course/ui/card/course-card.tsx:100
 msgid "Пройдено уроков: {completed_lessons_amount} / {lessons_amount}"
 msgstr "Пройдено уроков: {completed_lessons_amount} / {lessons_amount}"
 

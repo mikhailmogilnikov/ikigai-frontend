@@ -12,64 +12,152 @@ info:
 #       bearerFormat: JWT
 
 tags:
+  - name: auth
+    description: Маршруты для авторизации
   - name: public
     description: Публичные маршруты
   - name: admin
     description: Административные маршруты
 
 paths:
+  # Маршруты для авторизации
+  /auth/login:
+    post:
+      summary: "Вход в систему"
+      tags:
+        - auth
+      # $ref: ./auth/endpoints/login.yaml#/login
+  /auth/register:
+    post:
+      summary: "Регистрация в системе"
+      tags:
+        - auth
+      # $ref: ./auth/endpoints/register.yaml#/register
+  /auth/logout:
+    post:
+      summary: "Выход из системы"
+      tags:
+        - auth
+      # $ref: ./auth/endpoints/logout.yaml#/logout
+  /auth/refresh:
+    post:
+      summary: "Обновление токена"
+      tags:
+        - auth
+      # $ref: ./auth/endpoints/refresh.yaml#/refresh
+
   # Публичные маршруты
   /courses/store:
     get:
+      summary: "Получить список курсов, которые можно купить в магазине"
       tags:
         - public
       $ref: ./edu/endpoints/courses.yaml#/getShopCourses
   /courses/my-courses:
     get:
+      summary: "Получить список курсов, которые купил пользователь"
       tags:
         - public
       $ref: ./edu/endpoints/courses.yaml#/getMyCourses
   /courses/{courseId}:
     get:
+      summary: "Получить курс по id"
       tags:
         - public
       $ref: ./edu/endpoints/courses.yaml#/getCourse
   /courses/{courseId}/lessons:
     get:
+      summary: "Получить список уроков в курсе"
       tags:
         - public
       $ref: ./edu/endpoints/courses.yaml#/getCourseLessons
   /lessons/{lessonId}:
     get:
+      summary: "Получить урок по id"
       tags:
         - public
       $ref: ./edu/endpoints/lessons.yaml#/getLesson
   /lessons/{lessonId}/complete:
     post:
+      summary: "Отметить урок как пройденный"
       tags:
         - public
       $ref: ./edu/endpoints/lessons.yaml#/completeLesson
   /transactions:
     get:
+      summary: "Получить список транзакций"
       tags:
         - public
       $ref: ./edu/endpoints/transactions.yaml#/getTransactions
+  /users/me:
+    get:
+      summary: "Получить информацию о себе"
+      tags:
+        - public
+      $ref: ./edu/endpoints/users.yaml#/getMe
 
   # Админ маршруты
   /admin/courses:
+    summary: "Получить список курсов"
     get:
       tags:
         - admin
       $ref: ./admin/endpoints/courses.yaml#/getAdminCourses
-    # post:
-    #   tags:
-    #     - admin
-    #   $ref: ./admin/endpoints/courses.yaml#/createAdminCourse
-    # put:
-    #   tags:
-    #     - admin
-    #   $ref: ./admin/endpoints/courses.yaml#/updateAdminCourse
-    # delete:
-    #   tags:
-    #     - admin
-    #   $ref: ./admin/endpoints/courses.yaml#/deleteAdminCourse
+    post:
+      summary: "Создать курс"
+      tags:
+        - admin
+      #   $ref: ./admin/endpoints/courses.yaml#/createAdminCourse
+
+  /admin/courses/{courseId}:
+    get:
+      summary: "Получить курс по id"
+      tags:
+        - admin
+      # $ref: ./admin/endpoints/courses.yaml#/getAdminCourse
+    put:
+      summary: "Обновить курс по id"
+      tags:
+        - admin
+      # $ref: ./admin/endpoints/courses.yaml#/updateAdminCourse
+    delete:
+      summary: "Удалить курс по id"
+      tags:
+        - admin
+      # $ref: ./admin/endpoints/courses.yaml#/deleteAdminCourse
+
+  /admin/users:
+    get:
+      summary: "Получить список пользователей"
+      tags:
+        - admin
+      # $ref: ./admin/endpoints/users.yaml#/getAdminUsers
+    post:
+      summary: "Создать пользователя"
+      tags:
+        - admin
+      # $ref: ./admin/endpoints/users.yaml#/createAdminUser
+      
+  /admin/users/{userId}:
+    get:
+      summary: "Получить пользователя по id"
+      tags:
+        - admin
+      # $ref: ./admin/endpoints/users.yaml#/getAdminUser
+    put:
+      summary: "Обновить пользователя по id"
+      tags:
+        - admin
+      # $ref: ./admin/endpoints/users.yaml#/updateAdminUser
+    delete:
+      summary: "Удалить пользователя по id"
+      tags:
+        - admin
+      # $ref: ./admin/endpoints/users.yaml#/deleteAdminUser
+
+  /admin/transactions:
+    get:
+      summary: "Получить список транзакций"
+      tags:
+        - admin
+      # $ref: ./admin/endpoints/transactions.yaml#/getAdminTransactions

@@ -1,0 +1,35 @@
+schemas:
+  UserRoles:
+    description: Роли пользователей
+    type: string
+    enum:
+      - student
+      - admin
+      
+  User:
+    description: Базовая схема пользователя
+    type: object
+    properties:
+      id:
+        type: string
+      phone:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      avatar_url:
+        type: string
+      join_date:
+        type: string
+      role:
+        $ref: '#/schemas/UserRoles'
+
+    required:
+      - id
+      - phone
+      - first_name
+      - last_name
+      - avatar_url
+      - join_date
+      - role

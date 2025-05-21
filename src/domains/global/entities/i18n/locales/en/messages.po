@@ -13,11 +13,28 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:66
+#. placeholder {0}: module.lessons.length
+#: src/domains/education/widgets/course-full-info/ui/modules.tsx:39
+msgid "{0, plural, one {урок} few {урока} many {уроков}}"
+msgstr ""
+
+#: src/domains/education/widgets/course-full-info/ui/info.tsx:34
+msgid "{amount, plural, one {Видео} few {Видео} many {Видео}}"
+msgstr ""
+
+#: src/domains/education/widgets/course-full-info/ui/info.tsx:42
+msgid "{amount, plural, one {Модуль} few {Модуля} many {Модулей}}"
+msgstr ""
+
+#: src/domains/education/widgets/course-full-info/ui/info.tsx:38
+msgid "{amount, plural, one {Урок} few {Урока} many {Уроков}}"
+msgstr ""
+
+#: src/domains/education/entities/course/ui/card/course-card.tsx:68
 msgid "{lessons_amount, plural, one {урок} few {урока} many {уроков}}"
 msgstr "{lessons_amount, plural, one {lesson} other {lessons}}"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:65
+#: src/domains/education/entities/course/ui/card/course-card.tsx:67
 msgid "{modules_amount, plural, one {модуль} few {модуля} many {модулей}}"
 msgstr "{modules_amount, plural, one {module} other {modules}}"
 
@@ -142,6 +159,7 @@ msgid "Доступность"
 msgstr "Accessibility"
 
 #: src/domains/education/widgets/course-sidebar/ui/course-modules.tsx:62
+#: src/domains/education/widgets/course-full-info/ui/modules.tsx:47
 msgid "Завершен"
 msgstr "Completed"
 
@@ -174,7 +192,7 @@ msgstr "Quality"
 msgid "Корректно"
 msgstr "Correct"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:78
+#: src/domains/education/entities/course/ui/card/course-card.tsx:80
 msgid "Купить"
 msgstr "Buy"
 
@@ -213,9 +231,13 @@ msgstr "Settings"
 msgid "Настройки звука"
 msgstr "Audio Settings"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:114
+#: src/domains/education/entities/course/ui/card/course-card.tsx:116
 msgid "Начать"
 msgstr "Start"
+
+#: src/domains/education/widgets/course-full-info/ui/widget.tsx:66
+msgid "Начать курс"
+msgstr ""
 
 #: src/routes/(education)/_guard/index.tsx:25
 msgid "Не начатые"
@@ -271,9 +293,13 @@ msgid "По умолчанию"
 msgstr "Default"
 
 #: src/shared/ui/common/video-player/use-video.ts:59
-#: src/domains/education/entities/course/ui/card/course-card.tsx:116
+#: src/domains/education/entities/course/ui/card/course-card.tsx:118
 msgid "Повторить"
 msgstr "Repeat"
+
+#: src/domains/education/widgets/course-full-info/ui/widget.tsx:68
+msgid "Повторить курс"
+msgstr ""
 
 #: src/shared/ui/common/video-player/use-video.ts:39
 msgid "Подключение"
@@ -283,8 +309,8 @@ msgstr "Connection"
 msgid "Подключено"
 msgstr "Connected"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:75
-#: src/domains/education/entities/course/ui/card/course-card.tsx:106
+#: src/domains/education/entities/course/ui/card/course-card.tsx:77
+#: src/domains/education/entities/course/ui/card/course-card.tsx:108
 msgid "Подробнее"
 msgstr "Learn More"
 
@@ -320,17 +346,26 @@ msgstr "Check"
 msgid "Проверьте себя"
 msgstr "Test Yourself"
 
+#: src/domains/education/widgets/course-full-info/ui/modules.tsx:17
+msgid "Программа курса"
+msgstr ""
+
 #: src/shared/ui/common/video-player/use-video.ts:40
-#: src/domains/education/entities/course/ui/card/course-card.tsx:115
+#: src/domains/education/entities/course/ui/card/course-card.tsx:117
 msgid "Продолжить"
 msgstr "Continue"
+
+#: src/domains/education/widgets/course-full-info/ui/widget.tsx:67
+msgid "Продолжить обучение"
+msgstr ""
 
 #: src/domains/global/widgets/error-page/ui/default.tsx:15
 msgid "Произошла неизвестная ошибка"
 msgstr "An unknown error occurred"
 
 #: src/domains/education/widgets/course-sidebar/ui/course-progress.tsx:27
-#: src/domains/education/entities/course/ui/card/course-card.tsx:98
+#: src/domains/education/widgets/course-full-info/ui/widget.tsx:53
+#: src/domains/education/entities/course/ui/card/course-card.tsx:100
 msgid "Пройдено уроков: {completed_lessons_amount} / {lessons_amount}"
 msgstr "Lessons completed: {completed_lessons_amount} / {lessons_amount}"
 

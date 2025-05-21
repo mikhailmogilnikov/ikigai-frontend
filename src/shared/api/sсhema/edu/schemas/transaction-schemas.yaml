@@ -1,5 +1,6 @@
 schemas:
   Transaction:
+    description: Транзакция в списке транзакций ученика
     type: object
     properties:
       id:

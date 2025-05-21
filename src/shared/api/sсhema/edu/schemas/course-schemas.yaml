@@ -1,6 +1,6 @@
 schemas:
   ShopCourse:
-    description: "Курс в списке курсов для магазина"
+    description: Курс в списке курсов для магазина
     allOf:
       - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseCourse"
       - type: object
@@ -14,7 +14,7 @@ schemas:
           - modules_amount
 
   MyCourse:
-    description: "Курс в списке курсов, которые пользователь купил"
+    description: Курс в списке курсов, которые пользователь купил
     allOf:
       - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseCourse"
       - type: object
@@ -25,7 +25,7 @@ schemas:
           - completed_lessons_amount
 
   FullCourse:
-    description: "Полная информация о курсе"
+    description: Полная информация о курсе
     allOf:
       - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseCourse"
       - type: object
@@ -36,6 +36,10 @@ schemas:
             type: number
           modules_amount:
             type: number
+          videos_amount:
+            type: number
+          start_date:
+            type: [string, "null"]
           is_purchased:
             type: boolean
           is_finished:
@@ -50,12 +54,14 @@ schemas:
           - description
           - price
           - modules_amount
+          - videos_amount
+          - start_date
           - is_purchased
           - is_finished
           - completed_lessons_amount
           - modules
   CourseLesson:
-    description: "Урок в курсе"
+    description: Урок в курсе
     allOf:
       - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseLesson"
       - type: object
@@ -66,7 +72,8 @@ schemas:
           - is_completed
 
   ModuleWithLessons:
-    description: "Модуль с уроками"
+    summary: Модуль с уроками
+    description: Модуль с уроками
     allOf:
       - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseModule"
       - type: object
@@ -79,7 +86,7 @@ schemas:
           - lessons
 
   CourseLessons:
-    description: "Список уроков в курсе"
+    description: Список уроков в курсе
     allOf:
       - $ref: "#/schemas/MyCourse"
       - type: object
@@ -92,7 +99,7 @@ schemas:
           - modules
 
   TestWithVariants:
-    description: "Тест с вариантами ответов"
+    description: Тест с вариантами ответов
     allOf:
       - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseTest"
       - type: object
@@ -105,7 +112,7 @@ schemas:
           - variants
 
   FullLesson:
-    description: "Содержимое урока"
+    description: Содержимое урока
     allOf:
       - $ref: "#/schemas/CourseLesson"
       - type: object

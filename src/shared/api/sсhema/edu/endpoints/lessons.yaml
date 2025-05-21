@@ -45,10 +45,10 @@ completeLesson:
         schema:
           type: object
           properties:
-            lessonId:
+            lesson_id:
               type: string
           required:
-            - lessonId
+            - lesson_id
   responses:
     '200':
       description: "OK"

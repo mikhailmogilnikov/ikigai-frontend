@@ -1,5 +1,6 @@
 schemas:
   ErrorSchema:
+    description: Схема ошибки
     type: object
     properties:
       message:
@@ -11,21 +12,21 @@ schemas:
       - code
 
   UnauthorizedError:
-    description: Unauthorized
+    description: Ошибка авторизации
     allOf:
       - $ref: '#/schemas/ErrorSchema'
 
   NotFoundError:
-    description: Not Found
+    description: Ошибка не найденного ресурса
     allOf:
       - $ref: '#/schemas/ErrorSchema'
 
   ForbiddenError:
-    description: Forbidden
+    description: Ошибка доступа
     allOf:
       - $ref: '#/schemas/ErrorSchema'
 
   BadRequestError:
-    description: Bad Request
+    description: Ошибка запроса
     allOf:
       - $ref: '#/schemas/ErrorSchema'

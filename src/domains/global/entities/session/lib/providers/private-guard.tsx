@@ -1,10 +1,11 @@
 import { Navigate } from '@tanstack/react-router';
 
+import { ApiComponents } from '~/shared/api';
+
 import { useSession } from '../hooks/use-session';
-import { UserRole } from '../../../user';
 
 interface PrivateGuardProps {
-  role: `${UserRole}`;
+  role: ApiComponents['UserRoles'];
   children: React.ReactNode;
 }
 
