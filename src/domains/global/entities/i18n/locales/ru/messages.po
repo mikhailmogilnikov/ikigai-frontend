@@ -43,8 +43,8 @@ msgid "<0>Попробуйте</0> <1>обновить страницу</1> <2>�
 msgstr "<0>Попробуйте</0> <1>обновить страницу</1> <2>или</2> <3>вернуться на главную</3>"
 
 #: src/domains/admin/widgets/header/ui/index.tsx:6
-msgid "AdminHeader"
-msgstr "AdminHeader"
+#~ msgid "AdminHeader"
+#~ msgstr "AdminHeader"
 
 #: src/shared/ui/common/video-player/use-video.ts:30
 msgid "AirPlay"
@@ -59,8 +59,8 @@ msgid "Hello \"/(auth)/recover-password\"!"
 msgstr "Hello \"/(auth)/recover-password\"!"
 
 #: src/routes/admin/_guard/dashboard.tsx:15
-msgid "Hello \"/admin/dashboard\"!"
-msgstr "Hello \"/admin/dashboard\"!"
+#~ msgid "Hello \"/admin/dashboard\"!"
+#~ msgstr "Hello \"/admin/dashboard\"!"
 
 #: src/routes/auth/_guard/sign-up.tsx:11
 msgid "Hello \"/auth/sign-up\"!"
@@ -79,8 +79,8 @@ msgid "Login as student"
 msgstr "Login as student"
 
 #: src/routes/admin/_guard/dashboard.tsx:17
-msgid "Logout"
-msgstr "Logout"
+#~ msgid "Logout"
+#~ msgstr "Logout"
 
 #: src/shared/ui/common/video-player/use-video.ts:33
 msgid "Авто"
@@ -175,6 +175,10 @@ msgstr "Закрыть это окно"
 msgid "Зациклить видео"
 msgstr "Зациклить видео"
 
+#: src/shared/ui/common/data-table/pagination.tsx:16
+msgid "из"
+msgstr "из"
+
 #: src/routes/(education)/_guard/transactions.tsx:26
 #: src/domains/education/widgets/menu/ui/navigation.tsx:28
 msgid "История транзакций"
@@ -199,6 +203,10 @@ msgstr "Купить"
 #: src/domains/education/widgets/transactions-table/ui/index.tsx:20
 msgid "Курс"
 msgstr "Курс"
+
+#: src/domains/admin/widgets/header/ui/desktop-navigation.tsx:17
+msgid "Курсы"
+msgstr "Курсы"
 
 #: src/routes/(education)/_guard/shop.tsx:25
 #: src/domains/education/widgets/menu/ui/navigation.tsx:18
@@ -255,6 +263,10 @@ msgstr "Некорректно"
 msgid "Непрозрачность"
 msgstr "Непрозрачность"
 
+#: src/shared/ui/common/data-table/data-table.tsx:70
+msgid "Ничего не найдено"
+msgstr "Ничего не найдено"
+
 #: src/shared/ui/common/video-player/use-video.ts:31
 msgid "Объявления"
 msgstr "Объявления"
@@ -276,6 +288,22 @@ msgstr "Отображать фон"
 msgid "Пауза"
 msgstr "Пауза"
 
+#: src/shared/ui/common/data-table/pagination.tsx:28
+msgid "Перейти на первую страницу"
+msgstr "Перейти на первую страницу"
+
+#: src/shared/ui/common/data-table/pagination.tsx:67
+msgid "Перейти на последнюю страницу"
+msgstr "Перейти на последнюю страницу"
+
+#: src/shared/ui/common/data-table/pagination.tsx:41
+msgid "Перейти на предыдущую страницу"
+msgstr "Перейти на предыдущую страницу"
+
+#: src/shared/ui/common/data-table/pagination.tsx:54
+msgid "Перейти на следующую страницу"
+msgstr "Перейти на следующую страницу"
+
 #: src/shared/ui/common/video-player/use-video.ts:26
 msgid "Перемотать вперед"
 msgstr "Перемотать вперед"
@@ -287,6 +315,14 @@ msgstr "Перемотать назад"
 #: src/shared/ui/common/video-player/use-video.ts:27
 msgid "Переход к Live-трансляциям"
 msgstr "Переход к Live-трансляциям"
+
+#: src/shared/ui/common/data-table/column-header.tsx:51
+msgid "По возрастанию"
+msgstr "По возрастанию"
+
+#: src/shared/ui/common/data-table/column-header.tsx:59
+msgid "По убыванию"
+msgstr "По убыванию"
 
 #: src/shared/ui/common/video-player/use-video.ts:41
 msgid "По умолчанию"
@@ -325,6 +361,10 @@ msgstr "Поиск"
 #: src/shared/ui/common/video-player/use-video.ts:47
 msgid "Полноэкранный режим"
 msgstr "Полноэкранный режим"
+
+#: src/domains/admin/widgets/header/ui/desktop-navigation.tsx:22
+msgid "Пользователи"
+msgstr "Пользователи"
 
 #: src/domains/education/entities/course/ui/completed-course-modal/index.tsx:41
 msgid "Посмотреть другие курсы"
@@ -454,6 +494,10 @@ msgstr "Темная"
 #: src/shared/ui/common/video-player/use-video.ts:63
 msgid "Тень"
 msgstr "Тень"
+
+#: src/domains/admin/widgets/header/ui/desktop-navigation.tsx:27
+msgid "Транзакции"
+msgstr "Транзакции"
 
 #: src/shared/ui/common/video-player/use-video.ts:34
 msgid "Усиление"
