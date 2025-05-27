@@ -26,25 +26,25 @@ paths:
       summary: "Вход в систему"
       tags:
         - auth
-      # $ref: ./auth/endpoints/login.yaml#/login
+      $ref: ./auth/endpoints/auth.yaml#/Login
   /auth/register:
     post:
       summary: "Регистрация в системе"
       tags:
         - auth
-      # $ref: ./auth/endpoints/register.yaml#/register
+      $ref: ./auth/endpoints/auth.yaml#/Register
   /auth/logout:
     post:
       summary: "Выход из системы"
       tags:
         - auth
-      # $ref: ./auth/endpoints/logout.yaml#/logout
+      $ref: ./auth/endpoints/auth.yaml#/Logout
   /auth/refresh:
     post:
       summary: "Обновление токена"
       tags:
         - auth
-      # $ref: ./auth/endpoints/refresh.yaml#/refresh
+      $ref: ./auth/endpoints/auth.yaml#/Refresh
 
   # Публичные маршруты
   /courses/store:

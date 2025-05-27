@@ -12,5 +12,5 @@ export const Route = createFileRoute('/(education)/_guard/profile')({
 function RouteComponent() {
   const { t } = useLingui();
 
-  return <Container title={t`Профиль`}></Container>;
+  return <Container size='md' title={t`Профиль`}></Container>;
 }

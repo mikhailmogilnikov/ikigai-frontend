@@ -12,7 +12,7 @@ schemas:
     properties:
       id:
         type: string
-      phone:
+      email:
         type: string
       first_name:
         type: string

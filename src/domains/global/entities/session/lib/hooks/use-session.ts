@@ -21,7 +21,7 @@ export const useSession = (): Session => {
 
     switch (tokenPayload.role) {
       case 'admin':
-        void navigate({ to: '/admin/dashboard' });
+        void navigate({ to: '/admin/courses' });
         break;
       case 'student':
         void navigate({ to: '/' });

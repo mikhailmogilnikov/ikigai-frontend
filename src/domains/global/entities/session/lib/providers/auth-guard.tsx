@@ -12,7 +12,7 @@ export function AuthGuard({ children }: AuthGuardProps) {
   if (isAuthenticated) {
     switch (payload?.role) {
       case 'admin':
-        return <Navigate to='/admin/dashboard' replace />;
+        return <Navigate to='/admin/courses' replace />;
       case 'student':
         return <Navigate to='/' replace />;
     }

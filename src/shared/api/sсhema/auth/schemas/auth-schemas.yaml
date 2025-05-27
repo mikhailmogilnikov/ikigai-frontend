@@ -1,0 +1,39 @@
+schemas:
+  AuthLogin:
+    description: Вход в систему
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+      - email
+      - password
+
+  AuthRegister:
+    description: Регистрация в системе
+    type: object
+    properties:
+      first_name:
+        type: string
+      last_name:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+    required:
+      - email
+      - password
+      - first_name
+      - last_name
+
+  AuthRefresh:
+    description: Обновление токена
+    type: object
+    properties:
+      access_token:
+        type: string
+    required:
+      - access_token

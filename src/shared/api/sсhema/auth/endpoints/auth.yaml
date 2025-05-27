@@ -1,0 +1,48 @@
+Login:
+  post:
+    summary: Вход в систему
+    tags:
+      - auth
+    requestBody:
+      $ref: '../schemas/auth-schemas.yaml#/schemas/AuthLogin'
+    responses:
+      '200':
+        $ref: '../../shared/responses.yaml#/schemas/SuccessResponse'
+      '404':
+        $ref: '../../shared/responses.yaml#/schemas/NotFoundError'
+
+Register:
+  post:
+    summary: Регистрация в системе
+    tags:
+      - auth
+    requestBody:
+      $ref: '../schemas/auth-schemas.yaml#/schemas/AuthRegister'
+    responses:
+      '200':
+        $ref: '../../shared/responses.yaml#/schemas/SuccessResponse'
+      '404':
+        $ref: '../../shared/responses.yaml#/schemas/NotFoundError'
+
+Refresh:
+  post:
+    summary: Обновление токена
+    tags:
+      - auth
+    responses:
+      '200':
+        $ref: '../schemas/auth-schemas.yaml#/schemas/AuthRefresh'
+      '401':
+        $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+
+Logout:
+  post:
+    summary: Выход из системы
+    tags:
+      - auth
+    responses:
+      '200':
+        $ref: '../../shared/responses.yaml#/schemas/SuccessResponse'
+      '401':
+        $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+        

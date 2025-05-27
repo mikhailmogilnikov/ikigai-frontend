@@ -19,7 +19,7 @@ export function PrivateGuard({ role, children }: PrivateGuardProps) {
   switch (role) {
     case 'student':
       if (payload?.role === 'admin') {
-        return <Navigate to='/admin/dashboard' replace />;
+        return <Navigate to='/admin/courses' replace />;
       }
       break;
     case 'admin':
