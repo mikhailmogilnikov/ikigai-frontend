@@ -70,7 +70,7 @@ export function ModalHeader(props: ModalHeaderProps) {
   const { wrapperProps, restContent, ...rest } = props;
 
   return (
-    <div className='flex shrink-0 flex-col gap-4 p-4' {...wrapperProps}>
+    <div className='flex shrink-0 flex-col gap-4 p-4 px-5' {...wrapperProps}>
       <Dialog.Title {...rest} className='shrink-0 text-2xl font-semibold' />
       <VisuallyHidden asChild>
         <Dialog.Description />
@@ -95,7 +95,7 @@ export function ModalContent(props: ModalContentProps) {
       }}
       {...rest}
     >
-      <div className='flex flex-col gap-4'>{children}</div>
+      <div className='flex flex-col gap-4 px-1'>{children}</div>
     </ScrollArea>
   );
 }
@@ -108,7 +108,7 @@ export function ModalFooter(props: ModalFooterProps) {
   const { cancelButton = false, children, ...rest } = props;
 
   return (
-    <div className='flex shrink-0 gap-4 px-4 pb-4' {...rest}>
+    <div className='flex shrink-0 items-center gap-4 px-5 pb-5' {...rest}>
       {cancelButton && (
         <Dialog.Close asChild>
           <button className='bg-default w-full cursor-pointer rounded-xl px-4 py-2 font-medium shadow'>Отмена</button>

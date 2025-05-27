@@ -3,8 +3,10 @@ import { Link } from '@tanstack/react-router';
 import { LogoIcon } from '~/shared/assets/svg/logo';
 import { Flex } from '~/shared/ui/primitives/flex';
 import { useSession } from '~/domains/global/entities/session';
+import { AdminSearch } from '~/domains/admin/features/search';
 
 import { HeaderDesktopNavigationAdmin } from './desktop-navigation';
+import { AdminHeaderPageActions } from './page-actions';
 
 export function AdminHeader() {
   const { logout } = useSession();
@@ -22,7 +24,11 @@ export function AdminHeader() {
 
         <HeaderDesktopNavigationAdmin />
       </Flex>
-      <button onClick={logout}>Выйти</button>
+      <Flex align='center'>
+        <AdminHeaderPageActions />
+        <AdminSearch />
+        <button onClick={logout}>Выйти</button>
+      </Flex>
     </>
   );
 }

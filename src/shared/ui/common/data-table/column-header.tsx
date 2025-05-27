@@ -14,7 +14,8 @@ import { Button } from '../../primitives/button/button';
 
 interface DataTableColumnHeaderProps<TData, TValue> extends React.HTMLAttributes<HTMLDivElement> {
   column: Column<TData, TValue>;
-  title: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  title: any;
 }
 
 export function DataTableColumnHeader<TData, TValue>({
@@ -37,7 +38,7 @@ export function DataTableColumnHeader<TData, TValue>({
             ) : column.getIsSorted() === 'asc' ? (
               <PiCaretUpBold />
             ) : (
-              <PiArrowsOutLineHorizontalBold />
+              <PiArrowsOutLineHorizontalBold className='opacity-50' />
             )}
           </Button>
         </DropdownMenuTrigger>

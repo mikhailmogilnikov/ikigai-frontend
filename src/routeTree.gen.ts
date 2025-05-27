@@ -22,10 +22,11 @@ import { Route as AuthGuardSignInImport } from './routes/auth/_guard/sign-in';
 import { Route as AuthGuardRecoverPasswordImport } from './routes/auth/_guard/recover-password';
 import { Route as AdminGuardUsersImport } from './routes/admin/_guard/users';
 import { Route as AdminGuardTransactionsImport } from './routes/admin/_guard/transactions';
-import { Route as AdminGuardCoursesImport } from './routes/admin/_guard/courses';
 import { Route as educationGuardTransactionsImport } from './routes/(education)/_guard/transactions';
 import { Route as educationGuardShopImport } from './routes/(education)/_guard/shop';
 import { Route as educationGuardProfileImport } from './routes/(education)/_guard/profile';
+import { Route as AdminGuardCoursesIndexImport } from './routes/admin/_guard/courses/index';
+import { Route as AdminGuardCoursesCourseImport } from './routes/admin/_guard/courses/$course_';
 import { Route as educationGuardCoursesCourseImport } from './routes/(education)/_guard/courses_/$course';
 import { Route as educationGuardCoursesCourseLessonsLessonImport } from './routes/(education)/_guard/courses_/$course_.lessons_.$lesson';
 
@@ -105,12 +106,6 @@ const AdminGuardTransactionsRoute = AdminGuardTransactionsImport.update({
   getParentRoute: () => AdminGuardRoute,
 } as any);
 
-const AdminGuardCoursesRoute = AdminGuardCoursesImport.update({
-  id: '/courses',
-  path: '/courses',
-  getParentRoute: () => AdminGuardRoute,
-} as any);
-
 const educationGuardTransactionsRoute = educationGuardTransactionsImport.update({
   id: '/transactions',
   path: '/transactions',
@@ -127,6 +122,18 @@ const educationGuardProfileRoute = educationGuardProfileImport.update({
   id: '/profile',
   path: '/profile',
   getParentRoute: () => educationGuardRoute,
+} as any);
+
+const AdminGuardCoursesIndexRoute = AdminGuardCoursesIndexImport.update({
+  id: '/courses/',
+  path: '/courses/',
+  getParentRoute: () => AdminGuardRoute,
+} as any);
+
+const AdminGuardCoursesCourseRoute = AdminGuardCoursesCourseImport.update({
+  id: '/courses/$course_',
+  path: '/courses/$course',
+  getParentRoute: () => AdminGuardRoute,
 } as any);
 
 const educationGuardCoursesCourseRoute = educationGuardCoursesCourseImport.update({
@@ -208,13 +215,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof educationGuardTransactionsImport;
       parentRoute: typeof educationGuardImport;
     };
-    '/admin/_guard/courses': {
-      id: '/admin/_guard/courses';
-      path: '/courses';
-      fullPath: '/admin/courses';
-      preLoaderRoute: typeof AdminGuardCoursesImport;
-      parentRoute: typeof AdminGuardImport;
-    };
     '/admin/_guard/transactions': {
       id: '/admin/_guard/transactions';
       path: '/transactions';
@@ -264,6 +264,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof educationGuardCoursesCourseImport;
       parentRoute: typeof educationGuardImport;
     };
+    '/admin/_guard/courses/$course_': {
+      id: '/admin/_guard/courses/$course_';
+      path: '/courses/$course';
+      fullPath: '/admin/courses/$course';
+      preLoaderRoute: typeof AdminGuardCoursesCourseImport;
+      parentRoute: typeof AdminGuardImport;
+    };
+    '/admin/_guard/courses/': {
+      id: '/admin/_guard/courses/';
+      path: '/courses';
+      fullPath: '/admin/courses';
+      preLoaderRoute: typeof AdminGuardCoursesIndexImport;
+      parentRoute: typeof AdminGuardImport;
+    };
     '/(education)/_guard/courses_/$course_/lessons_/$lesson': {
       id: '/(education)/_guard/courses_/$course_/lessons_/$lesson';
       path: '/courses/$course/lessons/$lesson';
@@ -307,15 +321,17 @@ const educationRouteChildren: educationRouteChildren = {
 const educationRouteWithChildren = educationRoute._addFileChildren(educationRouteChildren);
 
 interface AdminGuardRouteChildren {
-  AdminGuardCoursesRoute: typeof AdminGuardCoursesRoute;
   AdminGuardTransactionsRoute: typeof AdminGuardTransactionsRoute;
   AdminGuardUsersRoute: typeof AdminGuardUsersRoute;
+  AdminGuardCoursesCourseRoute: typeof AdminGuardCoursesCourseRoute;
+  AdminGuardCoursesIndexRoute: typeof AdminGuardCoursesIndexRoute;
 }
 
 const AdminGuardRouteChildren: AdminGuardRouteChildren = {
-  AdminGuardCoursesRoute: AdminGuardCoursesRoute,
   AdminGuardTransactionsRoute: AdminGuardTransactionsRoute,
   AdminGuardUsersRoute: AdminGuardUsersRoute,
+  AdminGuardCoursesCourseRoute: AdminGuardCoursesCourseRoute,
+  AdminGuardCoursesIndexRoute: AdminGuardCoursesIndexRoute,
 };
 
 const AdminGuardRouteWithChildren = AdminGuardRoute._addFileChildren(AdminGuardRouteChildren);
@@ -361,13 +377,14 @@ export interface FileRoutesByFullPath {
   '/profile': typeof educationGuardProfileRoute;
   '/shop': typeof educationGuardShopRoute;
   '/transactions': typeof educationGuardTransactionsRoute;
-  '/admin/courses': typeof AdminGuardCoursesRoute;
   '/admin/transactions': typeof AdminGuardTransactionsRoute;
   '/admin/users': typeof AdminGuardUsersRoute;
   '/auth/recover-password': typeof AuthGuardRecoverPasswordRoute;
   '/auth/sign-in': typeof AuthGuardSignInRoute;
   '/auth/sign-up': typeof AuthGuardSignUpRoute;
   '/courses/$course': typeof educationGuardCoursesCourseRoute;
+  '/admin/courses/$course': typeof AdminGuardCoursesCourseRoute;
+  '/admin/courses': typeof AdminGuardCoursesIndexRoute;
   '/courses/$course/lessons/$lesson': typeof educationGuardCoursesCourseLessonsLessonRoute;
 }
 
@@ -377,7 +394,6 @@ export interface FileRoutesByTo {
   '/profile': typeof educationGuardProfileRoute;
   '/shop': typeof educationGuardShopRoute;
   '/transactions': typeof educationGuardTransactionsRoute;
-  '/admin/courses': typeof AdminGuardCoursesRoute;
   '/admin/transactions': typeof AdminGuardTransactionsRoute;
   '/admin/users': typeof AdminGuardUsersRoute;
   '/auth/recover-password': typeof AuthGuardRecoverPasswordRoute;
@@ -385,6 +401,8 @@ export interface FileRoutesByTo {
   '/auth/sign-up': typeof AuthGuardSignUpRoute;
   '/': typeof educationGuardIndexRoute;
   '/courses/$course': typeof educationGuardCoursesCourseRoute;
+  '/admin/courses/$course': typeof AdminGuardCoursesCourseRoute;
+  '/admin/courses': typeof AdminGuardCoursesIndexRoute;
   '/courses/$course/lessons/$lesson': typeof educationGuardCoursesCourseLessonsLessonRoute;
 }
 
@@ -399,7 +417,6 @@ export interface FileRoutesById {
   '/(education)/_guard/profile': typeof educationGuardProfileRoute;
   '/(education)/_guard/shop': typeof educationGuardShopRoute;
   '/(education)/_guard/transactions': typeof educationGuardTransactionsRoute;
-  '/admin/_guard/courses': typeof AdminGuardCoursesRoute;
   '/admin/_guard/transactions': typeof AdminGuardTransactionsRoute;
   '/admin/_guard/users': typeof AdminGuardUsersRoute;
   '/auth/_guard/recover-password': typeof AuthGuardRecoverPasswordRoute;
@@ -407,6 +424,8 @@ export interface FileRoutesById {
   '/auth/_guard/sign-up': typeof AuthGuardSignUpRoute;
   '/(education)/_guard/': typeof educationGuardIndexRoute;
   '/(education)/_guard/courses_/$course': typeof educationGuardCoursesCourseRoute;
+  '/admin/_guard/courses/$course_': typeof AdminGuardCoursesCourseRoute;
+  '/admin/_guard/courses/': typeof AdminGuardCoursesIndexRoute;
   '/(education)/_guard/courses_/$course_/lessons_/$lesson': typeof educationGuardCoursesCourseLessonsLessonRoute;
 }
 
@@ -419,13 +438,14 @@ export interface FileRouteTypes {
     | '/profile'
     | '/shop'
     | '/transactions'
-    | '/admin/courses'
     | '/admin/transactions'
     | '/admin/users'
     | '/auth/recover-password'
     | '/auth/sign-in'
     | '/auth/sign-up'
     | '/courses/$course'
+    | '/admin/courses/$course'
+    | '/admin/courses'
     | '/courses/$course/lessons/$lesson';
   fileRoutesByTo: FileRoutesByTo;
   to:
@@ -434,7 +454,6 @@ export interface FileRouteTypes {
     | '/profile'
     | '/shop'
     | '/transactions'
-    | '/admin/courses'
     | '/admin/transactions'
     | '/admin/users'
     | '/auth/recover-password'
@@ -442,6 +461,8 @@ export interface FileRouteTypes {
     | '/auth/sign-up'
     | '/'
     | '/courses/$course'
+    | '/admin/courses/$course'
+    | '/admin/courses'
     | '/courses/$course/lessons/$lesson';
   id:
     | '__root__'
@@ -454,7 +475,6 @@ export interface FileRouteTypes {
     | '/(education)/_guard/profile'
     | '/(education)/_guard/shop'
     | '/(education)/_guard/transactions'
-    | '/admin/_guard/courses'
     | '/admin/_guard/transactions'
     | '/admin/_guard/users'
     | '/auth/_guard/recover-password'
@@ -462,6 +482,8 @@ export interface FileRouteTypes {
     | '/auth/_guard/sign-up'
     | '/(education)/_guard/'
     | '/(education)/_guard/courses_/$course'
+    | '/admin/_guard/courses/$course_'
+    | '/admin/_guard/courses/'
     | '/(education)/_guard/courses_/$course_/lessons_/$lesson';
   fileRoutesById: FileRoutesById;
 }
@@ -519,9 +541,10 @@ export const routeTree = rootRoute._addFileChildren(rootRouteChildren)._addFileT
       "filePath": "admin/_guard.tsx",
       "parent": "/admin",
       "children": [
-        "/admin/_guard/courses",
         "/admin/_guard/transactions",
-        "/admin/_guard/users"
+        "/admin/_guard/users",
+        "/admin/_guard/courses/$course_",
+        "/admin/_guard/courses/"
       ]
     },
     "/auth": {
@@ -551,10 +574,6 @@ export const routeTree = rootRoute._addFileChildren(rootRouteChildren)._addFileT
       "filePath": "(education)/_guard/transactions.tsx",
       "parent": "/(education)/_guard"
     },
-    "/admin/_guard/courses": {
-      "filePath": "admin/_guard/courses.tsx",
-      "parent": "/admin/_guard"
-    },
     "/admin/_guard/transactions": {
       "filePath": "admin/_guard/transactions.tsx",
       "parent": "/admin/_guard"
@@ -582,6 +601,14 @@ export const routeTree = rootRoute._addFileChildren(rootRouteChildren)._addFileT
     "/(education)/_guard/courses_/$course": {
       "filePath": "(education)/_guard/courses_/$course.tsx",
       "parent": "/(education)/_guard"
+    },
+    "/admin/_guard/courses/$course_": {
+      "filePath": "admin/_guard/courses/$course_.tsx",
+      "parent": "/admin/_guard"
+    },
+    "/admin/_guard/courses/": {
+      "filePath": "admin/_guard/courses/index.tsx",
+      "parent": "/admin/_guard"
     },
     "/(education)/_guard/courses_/$course_/lessons_/$lesson": {
       "filePath": "(education)/_guard/courses_/$course_.lessons_.$lesson.tsx",
