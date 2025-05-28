@@ -339,7 +339,7 @@ msgstr "Opacity"
 msgid "Нет"
 msgstr ""
 
-#: src/shared/ui/common/data-table/data-table.tsx:97
+#: src/shared/ui/common/data-table/data-table.tsx:93
 msgid "Ничего не найдено"
 msgstr ""
 
