@@ -1,0 +1,26 @@
+getAdminTransactions:
+  summary: Получить список всех транзакций
+  description: Получить список транзакций
+  tags:
+    - admin
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../schemas/transaction-schemas.yaml#/schemas/AdminTransaction'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/ForbiddenError'

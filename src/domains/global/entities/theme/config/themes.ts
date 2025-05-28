@@ -14,6 +14,7 @@ const LightColors = {
     focus: 'hsl(348, 93%, 60%)',
     danger: { color: 'hsl(0, 85%, 61%)', foreground: 'hsl(0, 0%, 100%)' },
     success: { color: 'hsl(108, 69%, 46%)', foreground: 'hsl(0, 0%, 100%)' },
+    warning: { color: 'hsl(36, 100%, 50%)', foreground: 'hsl(0, 0%, 100%)' },
   },
 } as const satisfies ThemeConfig['themes']['light'];
 
@@ -28,6 +29,7 @@ const DarkColors = {
     focus: 'hsl(348, 71%, 58%)',
     danger: { color: 'hsl(0, 85%, 61%)', foreground: 'hsl(0, 0%, 100%)' },
     success: { color: 'hsl(130, 73%, 41%)', foreground: 'hsl(0, 0%, 100%)' },
+    warning: { color: 'hsl(36, 100%, 50%)', foreground: 'hsl(0, 0%, 100%)' },
   },
 } as const satisfies ThemeConfig['themes']['dark'];
 

@@ -1,67 +1,83 @@
 import { Trans } from '@lingui/react/macro';
 import { ColumnDef } from '@tanstack/react-table';
+import Switch, { Case } from 'react-switch-case';
 
 import { ApiComponents } from '~/shared/api';
 import { formatLocaleDate } from '~/shared/lib/services/date';
 import { normalizePrice } from '~/shared/lib/utils/price/normalize-price';
 import { DataTableColumnHeader } from '~/shared/ui/common/data-table/column-header';
+import { Chip } from '~/shared/ui/primitives/chip';
 
-export const TRANSACTION_TABLE_COLUMNS: ColumnDef<ApiComponents['AdminCourse']>[] = [
+export const TRANSACTION_TABLE_COLUMNS: ColumnDef<ApiComponents['AdminTransaction']>[] = [
   {
-    accessorKey: 'title',
+    accessorKey: 'id',
     header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Название</Trans>} />;
+      return <DataTableColumnHeader column={column} title={<Trans>ID</Trans>} />;
     },
   },
   {
-    accessorKey: 'price',
+    accessorKey: 'user_id',
     header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Цена</Trans>} />;
-    },
-    cell: ({ row }) => {
-      return <span>{normalizePrice(row.original.price)}</span>;
+      return <DataTableColumnHeader column={column} title={<Trans>ID пользователя</Trans>} />;
     },
   },
   {
-    accessorKey: 'is_published',
+    accessorKey: 'course_id',
     header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Опубликован</Trans>} />;
+      return <DataTableColumnHeader column={column} title={<Trans>ID курса</Trans>} />;
+    },
+  },
+  {
+    accessorKey: 'invoice_id',
+    header: ({ column }) => {
+      return <DataTableColumnHeader column={column} title={<Trans>ID транзакции</Trans>} />;
+    },
+  },
+  {
+    accessorKey: 'amount',
+    header: ({ column }) => {
+      return <DataTableColumnHeader column={column} title={<Trans>Сумма</Trans>} />;
     },
     cell: ({ row }) => {
-      return <span>{row.original.is_published ? <Trans>Да</Trans> : <Trans>Нет</Trans>}</span>;
+      return <span>{normalizePrice(row.original.amount)}</span>;
     },
   },
   {
     accessorKey: 'created_at',
     header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Дата создания</Trans>} />;
+      return <DataTableColumnHeader column={column} title={<Trans>Дата</Trans>} />;
     },
     cell: ({ row }) => {
       return <span>{formatLocaleDate(row.original.created_at)}</span>;
     },
   },
   {
-    accessorKey: 'lessons_amount',
+    accessorKey: 'status',
     header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Уроков</Trans>} />;
+      return <DataTableColumnHeader column={column} title={<Trans>Статус</Trans>} />;
     },
-  },
-  {
-    accessorKey: 'modules_amount',
-    header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Модулей</Trans>} />;
-    },
-  },
-  {
-    accessorKey: 'users_amount',
-    header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Пользователей</Trans>} />;
-    },
-  },
-  {
-    accessorKey: 'finished_users_amount',
-    header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Закончили</Trans>} />;
+    cell: ({ row }) => {
+      return (
+        <span>
+          <Switch condition={row.original.status}>
+            <Case value='confirmed'>
+              <Chip size='sm' color='success'>
+                <Trans>Подтвержден</Trans>
+              </Chip>
+            </Case>
+            <Case value='pending'>
+              <Chip size='sm' color='warning'>
+                <Trans>Ожидает</Trans>
+              </Chip>
+            </Case>
+            <Case value='rejected'>
+              <Chip size='sm' color='danger'>
+                <Trans>Отклонен</Trans>
+              </Chip>
+            </Case>
+          </Switch>
+        </span>
+      );
     },
   },
 ];

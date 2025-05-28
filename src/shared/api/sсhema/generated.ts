@@ -796,7 +796,10 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** Получить список транзакций */
+    /**
+     * Получить список транзакций
+     * @description Получить список транзакций
+     */
     get: {
       parameters: {
         query?: never;
@@ -805,7 +808,35 @@ export interface paths {
         cookie?: never;
       };
       requestBody?: never;
-      responses: never;
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['AdminTransaction'][];
+          };
+        };
+        /** @description Unauthorized */
+        401: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['UnauthorizedError'];
+          };
+        };
+        /** @description Forbidden */
+        403: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['ForbiddenError'];
+          };
+        };
+      };
     };
     put?: never;
     post?: never;
@@ -977,6 +1008,21 @@ export interface components {
     /** @description Пользователи для админ панели */
     AdminUser: components['schemas']['BaseUser'] & {
       course_amount: number;
+    };
+    /**
+     * @description Статус транзакции
+     * @enum {string}
+     */
+    TransactionStatus: 'pending' | 'confirmed' | 'rejected';
+    /** @description Транзакция в списке транзакций ученика */
+    AdminTransaction: {
+      id: string;
+      invoice_id: string;
+      amount: number;
+      created_at: string;
+      status: components['schemas']['TransactionStatus'];
+      user_id: string;
+      course_id: string;
     };
   };
   responses: never;

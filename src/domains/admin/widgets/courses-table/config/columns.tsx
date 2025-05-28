@@ -35,7 +35,19 @@ export const COURSES_TABLE_COLUMNS: ColumnDef<ApiComponents['AdminCourse']>[] = 
       return <DataTableColumnHeader column={column} title={<Trans>Опубликован</Trans>} />;
     },
     cell: ({ row }) => {
-      return <span>{row.original.is_published ? <Trans>Да</Trans> : <Trans>Нет</Trans>}</span>;
+      return (
+        <span>
+          {row.original.is_published ? (
+            <span className='text-success'>
+              <Trans>Да</Trans>
+            </span>
+          ) : (
+            <span className='opacity-50'>
+              <Trans>Нет</Trans>
+            </span>
+          )}
+        </span>
+      );
     },
     enableGlobalFilter: false,
   },
@@ -47,7 +59,7 @@ export const COURSES_TABLE_COLUMNS: ColumnDef<ApiComponents['AdminCourse']>[] = 
     cell: ({ row }) => {
       return <span>{formatLocaleDate(row.original.created_at)}</span>;
     },
-    enableGlobalFilter: false,
+    enableGlobalFilter: true,
   },
   {
     accessorKey: 'lessons_amount',

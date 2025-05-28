@@ -1,0 +1,35 @@
+schemas:
+  TransactionStatus:
+    description: Статус транзакции
+    type: string
+    enum:
+      - pending
+      - confirmed
+      - rejected
+
+  AdminTransaction:
+    description: Транзакция в списке транзакций ученика
+    type: object
+    properties:
+      id:
+        type: string
+      invoice_id:
+        type: string
+      amount:
+        type: number
+      created_at:
+        type: string
+      status:
+        $ref: '#/schemas/TransactionStatus'
+      user_id:
+        type: string
+      course_id:
+        type: string
+    required:
+      - id
+      - invoice_id
+      - amount
+      - created_at
+      - status
+      - user_id
+      - course_id

@@ -160,4 +160,4 @@ paths:
       summary: "Получить список транзакций"
       tags:
         - admin
-      # $ref: ./admin/endpoints/transactions.yaml#/getAdminTransactions
+      $ref: ./admin/endpoints/transactions.yaml#/getAdminTransactions

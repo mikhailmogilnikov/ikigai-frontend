@@ -15,7 +15,7 @@ export const chipTV = tv({
       primary: 'bg-primary/20 border-primary/20 text-primary',
       success: 'bg-success/20 border-success/20 text-success',
       warning: 'bg-warning/20 border-warning/20 text-warning',
-      error: 'bg-error/20 border-error/20 text-error',
+      danger: 'bg-danger/20 border-danger/20 text-danger',
     },
     size: {
       sm: 'text-xs',
@@ -46,8 +46,8 @@ export const chipTV = tv({
     },
     {
       variant: 'filled',
-      color: 'error',
-      className: 'bg-error text-error-foreground',
+      color: 'danger',
+      className: 'bg-danger text-danger-foreground',
     },
     {
       variant: 'bordered',
@@ -71,8 +71,8 @@ export const chipTV = tv({
     },
     {
       variant: 'bordered',
-      color: 'error',
-      className: 'border-error text-error',
+      color: 'danger',
+      className: 'border-danger text-danger',
     },
   ],
   defaultVariants: {

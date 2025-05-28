@@ -1,16 +1,26 @@
 import { useLocation } from '@tanstack/react-router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLingui } from '@lingui/react/macro';
 
 import { Input } from '~/shared/ui/primitives/input';
 import { useSearch } from '~/domains/admin/features/search/lib/use-search';
+import { useDebounce } from '~/shared/lib/hooks/use-debounce';
 
 export function AdminSearch() {
-  const { search, setSearch } = useSearch();
   const location = useLocation();
   const { t } = useLingui();
 
+  const { setSearch } = useSearch();
+
+  const [inputValue, setInputValue] = useState('');
+  const debouncedSearchValue = useDebounce(inputValue, 300);
+
   useEffect(() => {
+    setSearch(debouncedSearchValue);
+  }, [debouncedSearchValue, setSearch]);
+
+  useEffect(() => {
+    setInputValue('');
     setSearch('');
   }, [location]);
 
@@ -20,10 +30,10 @@ export function AdminSearch() {
       placeholder={t`Поиск`}
       name='search'
       type='search'
-      value={search}
+      value={inputValue}
       className='h-9'
       onChange={(e) => {
-        setSearch(e.target.value);
+        setInputValue(e.target.value);
       }}
     />
   );
