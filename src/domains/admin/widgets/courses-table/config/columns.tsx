@@ -8,6 +8,12 @@ import { DataTableColumnHeader } from '~/shared/ui/common/data-table/column-head
 
 export const COURSES_TABLE_COLUMNS: ColumnDef<ApiComponents['AdminCourse']>[] = [
   {
+    accessorKey: 'id',
+    header: ({ column }) => {
+      return <DataTableColumnHeader column={column} title={<Trans>ID</Trans>} />;
+    },
+  },
+  {
     accessorKey: 'title',
     header: ({ column }) => {
       return <DataTableColumnHeader column={column} title={<Trans>Название</Trans>} />;
@@ -21,6 +27,7 @@ export const COURSES_TABLE_COLUMNS: ColumnDef<ApiComponents['AdminCourse']>[] = 
     cell: ({ row }) => {
       return <span>{normalizePrice(row.original.price)}</span>;
     },
+    enableGlobalFilter: false,
   },
   {
     accessorKey: 'is_published',
@@ -30,6 +37,7 @@ export const COURSES_TABLE_COLUMNS: ColumnDef<ApiComponents['AdminCourse']>[] = 
     cell: ({ row }) => {
       return <span>{row.original.is_published ? <Trans>Да</Trans> : <Trans>Нет</Trans>}</span>;
     },
+    enableGlobalFilter: false,
   },
   {
     accessorKey: 'created_at',
@@ -39,29 +47,34 @@ export const COURSES_TABLE_COLUMNS: ColumnDef<ApiComponents['AdminCourse']>[] = 
     cell: ({ row }) => {
       return <span>{formatLocaleDate(row.original.created_at)}</span>;
     },
+    enableGlobalFilter: false,
   },
   {
     accessorKey: 'lessons_amount',
     header: ({ column }) => {
       return <DataTableColumnHeader column={column} title={<Trans>Уроков</Trans>} />;
     },
+    enableGlobalFilter: false,
   },
   {
     accessorKey: 'modules_amount',
     header: ({ column }) => {
       return <DataTableColumnHeader column={column} title={<Trans>Модулей</Trans>} />;
     },
-  },
-  {
-    accessorKey: 'users_amount',
-    header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Пользователей</Trans>} />;
-    },
+    enableGlobalFilter: false,
   },
   {
     accessorKey: 'finished_users_amount',
     header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Закончили</Trans>} />;
+      return <DataTableColumnHeader column={column} title={<Trans>Кол-во прохождений</Trans>} />;
     },
+    enableGlobalFilter: false,
+  },
+  {
+    accessorKey: 'users_amount',
+    header: ({ column }) => {
+      return <DataTableColumnHeader column={column} title={<Trans>Кол-во продаж</Trans>} />;
+    },
+    enableGlobalFilter: false,
   },
 ];

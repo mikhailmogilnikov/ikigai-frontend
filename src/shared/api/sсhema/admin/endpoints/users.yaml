@@ -1,0 +1,24 @@
+getAdminUsers:
+  summary: "Получить список пользователей для админ панели"
+  description: "Получить список пользователей для админ панели"
+  responses:
+    '200':
+      description: "Список пользователей"
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../schemas/user-schemas.yaml#/schemas/AdminUser'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/ForbiddenError'

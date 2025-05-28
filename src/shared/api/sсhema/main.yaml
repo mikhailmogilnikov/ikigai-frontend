@@ -131,7 +131,7 @@ paths:
       summary: "Получить список пользователей"
       tags:
         - admin
-      # $ref: ./admin/endpoints/users.yaml#/getAdminUsers
+      $ref: ./admin/endpoints/users.yaml#/getAdminUsers
     post:
       summary: "Создать пользователя"
       tags:

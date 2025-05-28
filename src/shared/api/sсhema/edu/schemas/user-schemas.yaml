@@ -2,7 +2,7 @@ schemas:
   Student:
     description: Студент
     allOf:
-      - $ref: "../../shared/schemas/base-user-schemas.yaml#/schemas/User"
+      - $ref: "../../shared/schemas/base-user-schemas.yaml#/schemas/BaseUser"
       - type: object
         properties:
           completed_courses_amount:

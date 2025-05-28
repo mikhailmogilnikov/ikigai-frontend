@@ -6,7 +6,7 @@ schemas:
       - student
       - admin
       
-  User:
+  BaseUser:
     description: Базовая схема пользователя
     type: object
     properties:

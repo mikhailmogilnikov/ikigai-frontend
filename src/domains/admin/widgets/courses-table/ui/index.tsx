@@ -21,13 +21,5 @@ export function AdminCoursesTable({ courses }: AdminCoursesTableProps) {
     });
   };
 
-  return (
-    <DataTable
-      searchField='title'
-      searchValue={search}
-      columns={COURSES_TABLE_COLUMNS}
-      data={courses}
-      onRowClick={handleRowClick}
-    />
-  );
+  return <DataTable searchValue={search} columns={COURSES_TABLE_COLUMNS} data={courses} onRowClick={handleRowClick} />;
 }

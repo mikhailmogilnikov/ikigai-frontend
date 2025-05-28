@@ -1,0 +1,11 @@
+schemas:
+  AdminUser:
+    description: "Пользователи для админ панели"
+    allOf:
+      - $ref: "../../shared/schemas/base-user-schemas.yaml#/schemas/BaseUser"
+      - type: object
+        properties:
+          course_amount:
+            type: number
+        required:
+          - course_amount

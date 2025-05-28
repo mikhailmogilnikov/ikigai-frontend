@@ -683,7 +683,10 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** Получить список пользователей */
+    /**
+     * Получить список пользователей
+     * @description Получить список пользователей для админ панели
+     */
     get: {
       parameters: {
         query?: never;
@@ -692,7 +695,35 @@ export interface paths {
         cookie?: never;
       };
       requestBody?: never;
-      responses: never;
+      responses: {
+        /** @description Список пользователей */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['AdminUser'][];
+          };
+        };
+        /** @description Unauthorized */
+        401: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['UnauthorizedError'];
+          };
+        };
+        /** @description Forbidden */
+        403: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['ForbiddenError'];
+          };
+        };
+      };
     };
     put?: never;
     /** Создать пользователя */
@@ -920,9 +951,9 @@ export interface components {
      */
     UserRoles: 'student' | 'admin';
     /** @description Базовая схема пользователя */
-    User: {
+    BaseUser: {
       id: string;
-      phone: string;
+      email?: string;
       first_name: string;
       last_name: string;
       avatar_url: string;
@@ -930,7 +961,7 @@ export interface components {
       role: components['schemas']['UserRoles'];
     };
     /** @description Студент */
-    Student: components['schemas']['User'] & {
+    Student: components['schemas']['BaseUser'] & {
       completed_courses_amount: number;
       completed_lessons_amount: number;
       bought_courses_amount: number;
@@ -942,6 +973,10 @@ export interface components {
       price: number;
       users_amount: number;
       finished_users_amount: number;
+    };
+    /** @description Пользователи для админ панели */
+    AdminUser: components['schemas']['BaseUser'] & {
+      course_amount: number;
     };
   };
   responses: never;

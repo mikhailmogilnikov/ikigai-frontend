@@ -10,7 +10,7 @@ interface DataTablePaginationProps<TData> {
 
 export function DataTablePagination<TData>({ table }: DataTablePaginationProps<TData>) {
   return (
-    <div className='border-divider bg-default-50 sticky -bottom-4 left-0 right-0 flex h-11 items-center justify-between border-t px-2'>
+    <div className='border-divider bg-default-50 sticky bottom-0 left-0 right-0 flex h-11 items-center justify-between border-t px-2 md:-bottom-4'>
       <div className='flex items-center space-x-6 lg:space-x-8'>
         <div className='flex w-[100px] items-center justify-center text-sm font-medium'>
           {table.getState().pagination.pageIndex + 1} <Trans>из</Trans> {table.getPageCount()}

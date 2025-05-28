@@ -9,5 +9,5 @@ interface AdminTransactionsTableProps {
 export function AdminTransactionsTable({ transactions }: AdminTransactionsTableProps) {
   const { search } = useSearch();
 
-  return <DataTable searchField='title' searchValue={search} columns={[]} data={transactions} />;
+  return <DataTable searchValue={search} columns={[]} data={transactions} />;
 }

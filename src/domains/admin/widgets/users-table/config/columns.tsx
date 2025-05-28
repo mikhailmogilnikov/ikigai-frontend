@@ -3,65 +3,70 @@ import { ColumnDef } from '@tanstack/react-table';
 
 import { ApiComponents } from '~/shared/api';
 import { formatLocaleDate } from '~/shared/lib/services/date';
-import { normalizePrice } from '~/shared/lib/utils/price/normalize-price';
 import { DataTableColumnHeader } from '~/shared/ui/common/data-table/column-header';
+import { Chip } from '~/shared/ui/primitives/chip';
 
-export const USERS_TABLE_COLUMNS: ColumnDef<ApiComponents['AdminCourse']>[] = [
+export const USERS_TABLE_COLUMNS: ColumnDef<ApiComponents['AdminUser']>[] = [
   {
-    accessorKey: 'title',
+    accessorKey: 'id',
     header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Название</Trans>} />;
+      return <DataTableColumnHeader column={column} title={<Trans>ID</Trans>} />;
     },
   },
   {
-    accessorKey: 'price',
+    accessorKey: 'email',
     header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Цена</Trans>} />;
+      return <DataTableColumnHeader column={column} title={<Trans>Email</Trans>} />;
+    },
+  },
+  {
+    accessorKey: 'first_name',
+    header: ({ column }) => {
+      return <DataTableColumnHeader column={column} title={<Trans>Имя</Trans>} />;
+    },
+  },
+  {
+    accessorKey: 'last_name',
+    header: ({ column }) => {
+      return <DataTableColumnHeader column={column} title={<Trans>Фамилия</Trans>} />;
+    },
+  },
+  {
+    accessorKey: 'role',
+    header: ({ column }) => {
+      return <DataTableColumnHeader column={column} title={<Trans>Роль</Trans>} />;
     },
     cell: ({ row }) => {
-      return <span>{normalizePrice(row.original.price)}</span>;
+      return (
+        <div>
+          {row.original.role === 'admin' ? (
+            <Chip color='success' size='sm'>
+              <Trans>Админ</Trans>
+            </Chip>
+          ) : (
+            <Chip size='sm'>
+              <Trans>Студент</Trans>
+            </Chip>
+          )}
+        </div>
+      );
     },
   },
   {
-    accessorKey: 'is_published',
+    accessorKey: 'join_date',
     header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Опубликован</Trans>} />;
+      return <DataTableColumnHeader column={column} title={<Trans>Дата регистрации</Trans>} />;
     },
     cell: ({ row }) => {
-      return <span>{row.original.is_published ? <Trans>Да</Trans> : <Trans>Нет</Trans>}</span>;
+      return <div>{formatLocaleDate(row.original.join_date)}</div>;
     },
+    enableGlobalFilter: false,
   },
   {
-    accessorKey: 'created_at',
+    accessorKey: 'course_amount',
     header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Дата создания</Trans>} />;
+      return <DataTableColumnHeader column={column} title={<Trans>Кол-во курсов</Trans>} />;
     },
-    cell: ({ row }) => {
-      return <span>{formatLocaleDate(row.original.created_at)}</span>;
-    },
-  },
-  {
-    accessorKey: 'lessons_amount',
-    header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Уроков</Trans>} />;
-    },
-  },
-  {
-    accessorKey: 'modules_amount',
-    header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Модулей</Trans>} />;
-    },
-  },
-  {
-    accessorKey: 'users_amount',
-    header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Пользователей</Trans>} />;
-    },
-  },
-  {
-    accessorKey: 'finished_users_amount',
-    header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title={<Trans>Закончили</Trans>} />;
-    },
+    enableGlobalFilter: false,
   },
 ];

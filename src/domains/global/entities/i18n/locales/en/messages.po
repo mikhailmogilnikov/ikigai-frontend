@@ -50,6 +50,10 @@ msgstr "<0>Try to</0> <1>refresh the page</1> <2>or</2> <3>return to the home pa
 msgid "AirPlay"
 msgstr "AirPlay"
 
+#: src/domains/admin/widgets/users-table/config/columns.tsx:19
+msgid "Email"
+msgstr ""
+
 #: src/shared/ui/common/video-player/use-video.ts:23
 msgid "Google Cast"
 msgstr "Google Cast"
@@ -65,6 +69,11 @@ msgstr "Hello \"/(auth)/recover-password\"!"
 #: src/routes/auth/_guard/sign-up.tsx:11
 msgid "Hello \"/auth/sign-up\"!"
 msgstr "Hello \"/auth/sign-up\"!"
+
+#: src/domains/admin/widgets/users-table/config/columns.tsx:13
+#: src/domains/admin/widgets/courses-table/config/columns.tsx:13
+msgid "ID"
+msgstr ""
 
 #: src/shared/ui/common/video-player/use-video.ts:48
 msgid "Live-трансляция"
@@ -85,6 +94,10 @@ msgstr "Login as student"
 #: src/shared/ui/common/video-player/use-video.ts:33
 msgid "Авто"
 msgstr "Auto"
+
+#: src/domains/admin/widgets/users-table/config/columns.tsx:44
+msgid "Админ"
+msgstr ""
 
 #: src/shared/ui/common/video-player/use-video.ts:24
 msgid "Анимации клавиатуры"
@@ -146,9 +159,8 @@ msgstr "Chapters"
 msgid "Громкость"
 msgstr "Volume"
 
-#: src/domains/admin/widgets/users-table/config/columns.tsx:31
 #: src/domains/admin/widgets/transactions-table/config/columns.tsx:31
-#: src/domains/admin/widgets/courses-table/config/columns.tsx:31
+#: src/domains/admin/widgets/courses-table/config/columns.tsx:38
 msgid "Да"
 msgstr ""
 
@@ -156,9 +168,12 @@ msgstr ""
 #~ msgid "Дата"
 #~ msgstr "Date"
 
-#: src/domains/admin/widgets/users-table/config/columns.tsx:37
+#: src/domains/admin/widgets/users-table/config/columns.tsx:58
+msgid "Дата регистрации"
+msgstr ""
+
 #: src/domains/admin/widgets/transactions-table/config/columns.tsx:37
-#: src/domains/admin/widgets/courses-table/config/columns.tsx:37
+#: src/domains/admin/widgets/courses-table/config/columns.tsx:45
 msgid "Дата создания"
 msgstr ""
 
@@ -188,9 +203,7 @@ msgstr "Completed"
 msgid "Завершенные"
 msgstr "Completed"
 
-#: src/domains/admin/widgets/users-table/config/columns.tsx:64
 #: src/domains/admin/widgets/transactions-table/config/columns.tsx:64
-#: src/domains/admin/widgets/courses-table/config/columns.tsx:64
 msgid "Закончили"
 msgstr ""
 
@@ -206,6 +219,10 @@ msgstr "Loop Video"
 msgid "из"
 msgstr ""
 
+#: src/domains/admin/widgets/users-table/config/columns.tsx:25
+msgid "Имя"
+msgstr ""
+
 #: src/routes/(education)/_guard/transactions.tsx:26
 #: src/domains/education/widgets/menu/ui/navigation.tsx:28
 msgid "История транзакций"
@@ -218,6 +235,18 @@ msgstr "Picture-in-Picture"
 #: src/shared/ui/common/video-player/use-video.ts:58
 msgid "Качество"
 msgstr "Quality"
+
+#: src/domains/admin/widgets/users-table/config/columns.tsx:68
+msgid "Кол-во курсов"
+msgstr ""
+
+#: src/domains/admin/widgets/courses-table/config/columns.tsx:76
+msgid "Кол-во продаж"
+msgstr ""
+
+#: src/domains/admin/widgets/courses-table/config/columns.tsx:69
+msgid "Кол-во прохождений"
+msgstr ""
 
 #: src/domains/education/entities/test/ui/lesson-test/index.tsx:85
 msgid "Корректно"
@@ -245,9 +274,8 @@ msgstr "Course Store"
 msgid "Меню"
 msgstr "Menu"
 
-#: src/domains/admin/widgets/users-table/config/columns.tsx:52
 #: src/domains/admin/widgets/transactions-table/config/columns.tsx:52
-#: src/domains/admin/widgets/courses-table/config/columns.tsx:52
+#: src/domains/admin/widgets/courses-table/config/columns.tsx:62
 msgid "Модулей"
 msgstr ""
 
@@ -263,9 +291,8 @@ msgstr "My Collection"
 msgid "Навигация"
 msgstr ""
 
-#: src/domains/admin/widgets/users-table/config/columns.tsx:13
 #: src/domains/admin/widgets/transactions-table/config/columns.tsx:13
-#: src/domains/admin/widgets/courses-table/config/columns.tsx:13
+#: src/domains/admin/widgets/courses-table/config/columns.tsx:19
 msgid "Название"
 msgstr ""
 
@@ -307,13 +334,12 @@ msgstr "Incorrect"
 msgid "Непрозрачность"
 msgstr "Opacity"
 
-#: src/domains/admin/widgets/users-table/config/columns.tsx:31
 #: src/domains/admin/widgets/transactions-table/config/columns.tsx:31
-#: src/domains/admin/widgets/courses-table/config/columns.tsx:31
+#: src/domains/admin/widgets/courses-table/config/columns.tsx:38
 msgid "Нет"
 msgstr ""
 
-#: src/shared/ui/common/data-table/data-table.tsx:99
+#: src/shared/ui/common/data-table/data-table.tsx:97
 msgid "Ничего не найдено"
 msgstr ""
 
@@ -325,9 +351,8 @@ msgstr "Announcements"
 msgid "Обычная"
 msgstr "Normal"
 
-#: src/domains/admin/widgets/users-table/config/columns.tsx:28
 #: src/domains/admin/widgets/transactions-table/config/columns.tsx:28
-#: src/domains/admin/widgets/courses-table/config/columns.tsx:28
+#: src/domains/admin/widgets/courses-table/config/columns.tsx:35
 msgid "Опубликован"
 msgstr ""
 
@@ -420,9 +445,7 @@ msgstr "Search"
 msgid "Полноэкранный режим"
 msgstr "Fullscreen Mode"
 
-#: src/domains/admin/widgets/users-table/config/columns.tsx:58
 #: src/domains/admin/widgets/transactions-table/config/columns.tsx:58
-#: src/domains/admin/widgets/courses-table/config/columns.tsx:58
 msgid "Пользователей"
 msgstr ""
 
@@ -482,6 +505,10 @@ msgstr "Profile"
 msgid "Размер"
 msgstr "Size"
 
+#: src/domains/admin/widgets/users-table/config/columns.tsx:37
+msgid "Роль"
+msgstr ""
+
 #: src/shared/ui/common/video-player/use-video.ts:60
 msgid "Сбросить"
 msgstr "Reset"
@@ -517,6 +544,10 @@ msgstr "Subtitle Styles"
 #: src/domains/global/widgets/not-found/ui/index.tsx:9
 msgid "Страница не найдена"
 msgstr "Page Not Found"
+
+#: src/domains/admin/widgets/users-table/config/columns.tsx:48
+msgid "Студент"
+msgstr ""
 
 #: src/shared/ui/common/video-player/use-video.ts:35
 msgid "Субтитры"
@@ -563,15 +594,18 @@ msgstr "Shadow"
 msgid "Транзакции"
 msgstr ""
 
-#: src/domains/admin/widgets/users-table/config/columns.tsx:46
 #: src/domains/admin/widgets/transactions-table/config/columns.tsx:46
-#: src/domains/admin/widgets/courses-table/config/columns.tsx:46
+#: src/domains/admin/widgets/courses-table/config/columns.tsx:55
 msgid "Уроков"
 msgstr ""
 
 #: src/shared/ui/common/video-player/use-video.ts:34
 msgid "Усиление"
 msgstr "Enhancement"
+
+#: src/domains/admin/widgets/users-table/config/columns.tsx:31
+msgid "Фамилия"
+msgstr ""
 
 #: src/shared/ui/common/video-player/use-video.ts:28
 msgid "Фон текста"
@@ -581,9 +615,8 @@ msgstr "Text Background"
 msgid "Цвет"
 msgstr "Color"
 
-#: src/domains/admin/widgets/users-table/config/columns.tsx:19
 #: src/domains/admin/widgets/transactions-table/config/columns.tsx:19
-#: src/domains/admin/widgets/courses-table/config/columns.tsx:19
+#: src/domains/admin/widgets/courses-table/config/columns.tsx:25
 msgid "Цена"
 msgstr ""
 
