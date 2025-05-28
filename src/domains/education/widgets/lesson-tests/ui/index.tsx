@@ -35,7 +35,7 @@ export function LessonTests({ tests, modules }: LessonTestsProps) {
 
   const activeLessonId = loaderData.activeLessonId;
 
-  const currentLessonRef = useRef<string>(activeLessonId);
+  const currentLessonRef = useRef<string>(activeLessonId.toString());
 
   const [completedTestsIds, setCompletedTestsIds] = useState<string[]>([]);
 
@@ -56,10 +56,10 @@ export function LessonTests({ tests, modules }: LessonTestsProps) {
     const currentLesson = modules.flatMap((module) => module.lessons).find((lesson) => lesson.id === activeLessonId);
 
     if (!currentLesson?.is_completed) {
-      await mutateAsync({ body: { lesson_id: activeLessonId } });
+      await mutateAsync({ body: { lesson_id: activeLessonId.toString() } });
     }
 
-    const nextLesson = getNextLesson(modules, activeLessonId);
+    const nextLesson = getNextLesson(modules, activeLessonId.toString());
 
     if (nextLesson === 'ENDED') {
       onOpenChange();
@@ -73,14 +73,14 @@ export function LessonTests({ tests, modules }: LessonTestsProps) {
     scrollToTop();
     void navigate({
       to: '/courses/$course/lessons/$lesson',
-      params: { course: course, lesson: nextLesson.id },
+      params: { course: course, lesson: nextLesson.id.toString() },
     });
   };
 
   useEffect(() => {
     if (currentLessonRef.current !== activeLessonId) {
       setCompletedTestsIds([]);
-      currentLessonRef.current = activeLessonId;
+      currentLessonRef.current = activeLessonId.toString();
     }
   }, [activeLessonId]);
 

@@ -2,7 +2,7 @@ import { ApiComponents } from '../..';
 
 export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
   {
-    id: '1',
+    id: 1,
     title: 'Frontend Development',
     price: 120,
     image_url: 'https://via.placeholder.com/150?text=Frontend',
@@ -15,7 +15,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 80,
   },
   {
-    id: '2',
+    id: 2,
     title: 'Backend Basics',
     price: 150,
     image_url: 'https://via.placeholder.com/150?text=Backend',
@@ -28,7 +28,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 40,
   },
   {
-    id: '3',
+    id: 3,
     title: 'UI/UX Design',
     price: 100,
     image_url: 'https://via.placeholder.com/150?text=UIUX',
@@ -41,7 +41,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 30,
   },
   {
-    id: '4',
+    id: 4,
     title: 'DevOps Essentials',
     price: 180,
     image_url: 'https://via.placeholder.com/150?text=DevOps',
@@ -54,7 +54,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 25,
   },
   {
-    id: '5',
+    id: 5,
     title: 'React Advanced',
     price: 200,
     image_url: 'https://via.placeholder.com/150?text=React',
@@ -67,7 +67,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 60,
   },
   {
-    id: '6',
+    id: 6,
     title: 'Node.js in Practice',
     price: 170,
     image_url: 'https://via.placeholder.com/150?text=Nodejs',
@@ -80,7 +80,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 50,
   },
   {
-    id: '7',
+    id: 7,
     title: 'Python for Beginners',
     price: 90,
     image_url: 'https://via.placeholder.com/150?text=Python',
@@ -93,7 +93,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 100,
   },
   {
-    id: '8',
+    id: 8,
     title: 'Machine Learning Intro',
     price: 250,
     image_url: 'https://via.placeholder.com/150?text=ML',
@@ -106,7 +106,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 20,
   },
   {
-    id: '9',
+    id: 9,
     title: 'Project Management',
     price: 130,
     image_url: 'https://via.placeholder.com/150?text=PM',
@@ -119,7 +119,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 35,
   },
   {
-    id: '10',
+    id: 10,
     title: 'QA Automation',
     price: 110,
     image_url: 'https://via.placeholder.com/150?text=QA',
@@ -132,7 +132,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 45,
   },
   {
-    id: '11',
+    id: 11,
     title: 'TypeScript Mastery',
     price: 140,
     image_url: 'https://via.placeholder.com/150?text=TypeScript',
@@ -145,7 +145,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 55,
   },
   {
-    id: '12',
+    id: 12,
     title: 'Docker & Kubernetes',
     price: 210,
     image_url: 'https://via.placeholder.com/150?text=Docker',
@@ -158,7 +158,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 30,
   },
   {
-    id: '13',
+    id: 13,
     title: 'GraphQL in Action',
     price: 160,
     image_url: 'https://via.placeholder.com/150?text=GraphQL',
@@ -171,7 +171,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 25,
   },
   {
-    id: '14',
+    id: 14,
     title: 'Mobile App Dev',
     price: 230,
     image_url: 'https://via.placeholder.com/150?text=Mobile',
@@ -184,7 +184,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 60,
   },
   {
-    id: '15',
+    id: 15,
     title: 'C++ Fundamentals',
     price: 110,
     image_url: 'https://via.placeholder.com/150?text=C%2B%2B',
@@ -197,7 +197,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 10,
   },
   {
-    id: '16',
+    id: 16,
     title: 'Java Spring Boot',
     price: 195,
     image_url: 'https://via.placeholder.com/150?text=Spring',
@@ -210,7 +210,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 35,
   },
   {
-    id: '17',
+    id: 17,
     title: 'Go for Web',
     price: 170,
     image_url: 'https://via.placeholder.com/150?text=Go',
@@ -223,7 +223,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 20,
   },
   {
-    id: '18',
+    id: 18,
     title: 'Rust Programming',
     price: 180,
     image_url: 'https://via.placeholder.com/150?text=Rust',
@@ -236,7 +236,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 5,
   },
   {
-    id: '19',
+    id: 19,
     title: 'Swift for iOS',
     price: 200,
     image_url: 'https://via.placeholder.com/150?text=Swift',
@@ -249,7 +249,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 30,
   },
   {
-    id: '20',
+    id: 20,
     title: 'Angular Complete',
     price: 150,
     image_url: 'https://via.placeholder.com/150?text=Angular',
@@ -262,7 +262,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 40,
   },
   {
-    id: '21',
+    id: 21,
     title: 'Vue.js Essentials',
     price: 135,
     image_url: 'https://via.placeholder.com/150?text=Vue',
@@ -275,7 +275,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 15,
   },
   {
-    id: '22',
+    id: 22,
     title: 'Svelte Quickstart',
     price: 125,
     image_url: 'https://via.placeholder.com/150?text=Svelte',
@@ -288,7 +288,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 10,
   },
   {
-    id: '23',
+    id: 23,
     title: 'SQL & Databases',
     price: 145,
     image_url: 'https://via.placeholder.com/150?text=SQL',
@@ -301,7 +301,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 60,
   },
   {
-    id: '24',
+    id: 24,
     title: 'NoSQL in Practice',
     price: 155,
     image_url: 'https://via.placeholder.com/150?text=NoSQL',
@@ -314,7 +314,7 @@ export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = [
     finished_users_amount: 10,
   },
   {
-    id: '25',
+    id: 25,
     title: 'Cybersecurity Basics',
     price: 175,
     image_url: 'https://via.placeholder.com/150?text=Security',

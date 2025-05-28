@@ -2,7 +2,7 @@ import { ApiComponents } from '../..';
 
 export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
   {
-    id: '1',
+    id: 1,
     email: 'admin@example.com',
     first_name: 'Admin',
     last_name: 'Admin',
@@ -12,7 +12,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 10,
   },
   {
-    id: '2',
+    id: 2,
     email: 'moderator@example.com',
     first_name: 'Модератор',
     last_name: 'Петров',
@@ -22,7 +22,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 5,
   },
   {
-    id: '3',
+    id: 3,
     email: 'ivanov@example.com',
     first_name: 'Иван',
     last_name: 'Иванов',
@@ -32,7 +32,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 8,
   },
   {
-    id: '4',
+    id: 4,
     email: 'smirnova@example.com',
     first_name: 'Анна',
     last_name: 'Смирнова',
@@ -42,7 +42,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 12,
   },
   {
-    id: '5',
+    id: 5,
     email: 'support@example.com',
     first_name: 'Елена',
     last_name: 'Козлова',
@@ -52,7 +52,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 3,
   },
   {
-    id: '6',
+    id: 6,
     email: 'kuznetsov@example.com',
     first_name: 'Алексей',
     last_name: 'Кузнецов',
@@ -62,7 +62,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 7,
   },
   {
-    id: '7',
+    id: 7,
     email: 'popova@example.com',
     first_name: 'Мария',
     last_name: 'Попова',
@@ -72,7 +72,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 4,
   },
   {
-    id: '8',
+    id: 8,
     email: 'sokolov@example.com',
     first_name: 'Дмитрий',
     last_name: 'Соколов',
@@ -82,7 +82,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 15,
   },
   {
-    id: '9',
+    id: 9,
     email: 'novikova@example.com',
     first_name: 'Екатерина',
     last_name: 'Новикова',
@@ -92,7 +92,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 6,
   },
   {
-    id: '10',
+    id: 10,
     email: 'morozov@example.com',
     first_name: 'Сергей',
     last_name: 'Морозов',
@@ -102,7 +102,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 9,
   },
   {
-    id: '11',
+    id: 11,
     email: 'volkova@example.com',
     first_name: 'Ольга',
     last_name: 'Волкова',
@@ -112,7 +112,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 2,
   },
   {
-    id: '12',
+    id: 12,
     email: 'kozlov@example.com',
     first_name: 'Андрей',
     last_name: 'Козлов',
@@ -122,7 +122,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 11,
   },
   {
-    id: '13',
+    id: 13,
     email: 'lebedeva@example.com',
     first_name: 'Наталья',
     last_name: 'Лебедева',
@@ -132,7 +132,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 5,
   },
   {
-    id: '14',
+    id: 14,
     email: 'semenov@example.com',
     first_name: 'Игорь',
     last_name: 'Семенов',
@@ -142,7 +142,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 8,
   },
   {
-    id: '15',
+    id: 15,
     email: 'egorova@example.com',
     first_name: 'Татьяна',
     last_name: 'Егорова',
@@ -152,7 +152,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 3,
   },
   {
-    id: '16',
+    id: 16,
     email: 'pavlov@example.com',
     first_name: 'Павел',
     last_name: 'Павлов',
@@ -162,7 +162,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 13,
   },
   {
-    id: '17',
+    id: 17,
     email: 'nikolaeva@example.com',
     first_name: 'Юлия',
     last_name: 'Николаева',
@@ -172,7 +172,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 7,
   },
   {
-    id: '18',
+    id: 18,
     email: 'voronov@example.com',
     first_name: 'Артем',
     last_name: 'Воронов',
@@ -182,7 +182,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 4,
   },
   {
-    id: '19',
+    id: 19,
     email: 'orlova@example.com',
     first_name: 'Ангелина',
     last_name: 'Орлова',
@@ -192,7 +192,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 6,
   },
   {
-    id: '20',
+    id: 20,
     email: 'antonov@example.com',
     first_name: 'Максим',
     last_name: 'Антонов',
@@ -202,7 +202,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 9,
   },
   {
-    id: '21',
+    id: 21,
     email: 'titova@example.com',
     first_name: 'Вероника',
     last_name: 'Титова',
@@ -212,7 +212,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 2,
   },
   {
-    id: '22',
+    id: 22,
     email: 'kuzmin@example.com',
     first_name: 'Роман',
     last_name: 'Кузьмин',
@@ -222,7 +222,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 14,
   },
   {
-    id: '23',
+    id: 23,
     email: 'kudryavtseva@example.com',
     first_name: 'Дарья',
     last_name: 'Кудрявцева',
@@ -232,7 +232,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 5,
   },
   {
-    id: '24',
+    id: 24,
     email: 'kalinin@example.com',
     first_name: 'Владимир',
     last_name: 'Калинин',
@@ -242,7 +242,7 @@ export const MOCK_ADMIN_USERS: ApiComponents['AdminUser'][] = [
     course_amount: 8,
   },
   {
-    id: '25',
+    id: 25,
     email: 'maslova@example.com',
     first_name: 'София',
     last_name: 'Маслова',

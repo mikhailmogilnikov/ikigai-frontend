@@ -13,14 +13,14 @@ import { Flex } from '~/shared/ui/primitives/flex';
 import { Option } from '~/shared/ui/primitives/option';
 import { OptionListItem } from '~/shared/ui/primitives/option-list';
 import { Typo } from '~/shared/ui/primitives/typo';
-import { dynamicActivate } from '~/domains/global/entities/i18n';
+import { dynamicActivate, Locale } from '~/domains/global/entities/i18n';
 
 import { LANGUAGES } from '../config/languages';
 
 export function ChangeLanguageMenuButton() {
   const { i18n } = useLingui();
 
-  const handleChangeLanguage = (language: string) => {
+  const handleChangeLanguage = (language: `${Locale}`) => {
     void dynamicActivate(language);
   };
 

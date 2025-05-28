@@ -17,7 +17,7 @@ interface CourseModulesProps {
 }
 
 const getActiveModuleId = (sortedModules: ApiComponents['ModuleWithLessons'][], activeLessonId: string) => {
-  return sortedModules.find((module) => module.lessons.some((lesson) => lesson.id === activeLessonId))?.id;
+  return sortedModules.find((module) => module.lessons.some((lesson) => lesson.id === Number(activeLessonId)))?.id;
 };
 
 export function CourseModules({ courseModules, courseId, activeLessonId }: CourseModulesProps) {
@@ -28,10 +28,10 @@ export function CourseModules({ courseModules, courseId, activeLessonId }: Cours
     const currentActiveModuleId = getActiveModuleId(courseModules, activeLessonId);
     const uniqueActiveModuleIds = new Set(activeModuleIds);
 
-    const isCurrentModuleActive = uniqueActiveModuleIds.has(currentActiveModuleId ?? '');
+    const isCurrentModuleActive = uniqueActiveModuleIds.has(currentActiveModuleId?.toString() ?? '');
 
     if (currentActiveModuleId && !isCurrentModuleActive) {
-      setActiveModuleIds([...uniqueActiveModuleIds, currentActiveModuleId]);
+      setActiveModuleIds([...uniqueActiveModuleIds, currentActiveModuleId.toString()]);
     }
   }, [activeLessonId]);
 
@@ -49,7 +49,7 @@ export function CourseModules({ courseModules, courseId, activeLessonId }: Cours
           return (
             <AccordionItem
               key={module.id}
-              value={module.id}
+              value={module.id.toString()}
               className='bg-default/50 md:bg-default/60 rounded-lg px-3 py-3 shadow'
             >
               <AccordionTrigger className='gap-3'>
@@ -70,11 +70,11 @@ export function CourseModules({ courseModules, courseId, activeLessonId }: Cours
                   {module.lessons.map((lesson) => (
                     <Link
                       to={'/courses/$course/lessons/$lesson'}
-                      params={{ course: courseId, lesson: lesson.id }}
+                      params={{ course: courseId, lesson: lesson.id.toString() }}
                       key={lesson.id}
                       className={clsx(
                         'hover:bg-default flex items-center justify-between gap-2 rounded-md py-2 transition-all hover:px-2',
-                        lesson.id === activeLessonId && 'bg-default px-2',
+                        lesson.id === Number(activeLessonId) && 'bg-default px-2',
                       )}
                     >
                       {lesson.title}

@@ -26,7 +26,7 @@ export const Route = createFileRoute('/(education)/_guard/courses_/$course_/less
     if (lesson === 'current' && courseLessonsData.data) {
       const activeLesson = getFirstUncompletedLesson(courseLessonsData.data.modules);
 
-      await queryClient.ensureQueryData(getLessonQuery(activeLesson.id));
+      await queryClient.ensureQueryData(getLessonQuery(activeLesson.id.toString()));
 
       return {
         activeLessonId: activeLesson.id,
@@ -48,12 +48,16 @@ function RouteComponent() {
   const { activeLessonId } = Route.useLoaderData();
 
   const { data: courseLessons } = useSuspenseQuery(getCourseLessonsQuery(courseId));
-  const { data: lesson } = useSuspenseQuery(getLessonQuery(activeLessonId));
+  const { data: lesson } = useSuspenseQuery(getLessonQuery(activeLessonId.toString()));
 
   useEffect(() => {
     if (courseLessons.data) {
       setSidebar(
-        <CourseSidebar courseLessons={courseLessons.data} courseId={courseId} activeLessonId={activeLessonId} />,
+        <CourseSidebar
+          courseLessons={courseLessons.data}
+          courseId={courseId}
+          activeLessonId={activeLessonId.toString()}
+        />,
       );
     }
 
@@ -69,7 +73,7 @@ function RouteComponent() {
       {lesson.data.video && (
         <Suspense fallback={<Skeleton className='aspect-video w-full rounded-md' />}>
           <VideoPlayer
-            key={`${lesson.data.id}-${lesson.data.video.video_url}`}
+            key={`${lesson.data.id.toString()}-${lesson.data.video.video_url}`}
             title={lesson.data.title}
             src={lesson.data.video.video_url}
             poster={lesson.data.video.poster_url}

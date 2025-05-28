@@ -2,7 +2,7 @@ import { ApiComponents } from '../..';
 
 export const MOCK_COURSES_SHOP_LIST: ApiComponents['ShopCourse'][] = [
   {
-    id: '1',
+    id: 1,
     title: 'Основы программирования на Python',
     image_url: 'https://placehold.co/600x400',
     lessons_amount: 24,
@@ -12,7 +12,7 @@ export const MOCK_COURSES_SHOP_LIST: ApiComponents['ShopCourse'][] = [
     updated_at: '2024-03-01',
   },
   {
-    id: '2',
+    id: 2,
     title: 'Веб-разработка: React + TypeScript',
     image_url: 'https://placehold.co/600x400',
     lessons_amount: 32,
@@ -22,7 +22,7 @@ export const MOCK_COURSES_SHOP_LIST: ApiComponents['ShopCourse'][] = [
     updated_at: '2024-03-15',
   },
   {
-    id: '3',
+    id: 3,
     title: 'Анализ данных с помощью SQL',
     image_url: 'https://placehold.co/600x400',
     lessons_amount: 18,
@@ -32,7 +32,7 @@ export const MOCK_COURSES_SHOP_LIST: ApiComponents['ShopCourse'][] = [
     updated_at: '2024-02-28',
   },
   {
-    id: '4',
+    id: 4,
     title: 'DevOps практики для начинающих',
     image_url: 'https://placehold.co/600x400',
     lessons_amount: 28,
@@ -42,7 +42,7 @@ export const MOCK_COURSES_SHOP_LIST: ApiComponents['ShopCourse'][] = [
     updated_at: '2024-03-10',
   },
   {
-    id: '5',
+    id: 5,
     title: 'Мобильная разработка на Flutter',
     image_url: 'https://placehold.co/600x400',
     lessons_amount: 36,
@@ -55,7 +55,7 @@ export const MOCK_COURSES_SHOP_LIST: ApiComponents['ShopCourse'][] = [
 
 export const MOCK_COURSES_MY_LIST: ApiComponents['MyCourse'][] = [
   {
-    id: '6',
+    id: 6,
     title: 'Веб-разработка: React + TypeScript',
     image_url: 'https://placehold.co/600x400',
     lessons_amount: 32,
@@ -64,7 +64,7 @@ export const MOCK_COURSES_MY_LIST: ApiComponents['MyCourse'][] = [
     completed_lessons_amount: 24,
   },
   {
-    id: '7',
+    id: 7,
     title: 'Анализ данных с помощью SQL',
     image_url: 'https://placehold.co/600x400',
     lessons_amount: 18,
@@ -73,7 +73,7 @@ export const MOCK_COURSES_MY_LIST: ApiComponents['MyCourse'][] = [
     completed_lessons_amount: 18,
   },
   {
-    id: '8',
+    id: 8,
     title: 'Мобильная разработка на Flutter',
     image_url: 'https://placehold.co/600x400',
     lessons_amount: 36,
@@ -84,7 +84,7 @@ export const MOCK_COURSES_MY_LIST: ApiComponents['MyCourse'][] = [
 ];
 
 export const MOCK_COURSE_FULL: ApiComponents['FullCourse'] = {
-  id: '2',
+  id: 2,
   title: 'Веб-разработка: React + TypeScript',
   description:
     'Практический курс по разработке современных веб-приложений с использованием React и TypeScript. Изучите основы компонентного подхода, управление состоянием, работу с API и многое другое.',
@@ -101,24 +101,24 @@ export const MOCK_COURSE_FULL: ApiComponents['FullCourse'] = {
   completed_lessons_amount: 24,
   modules: [
     {
-      id: '1',
+      id: 1,
       title: 'Введение в React и TypeScript',
       order: 1,
       lessons: [
         {
-          id: '1',
+          id: 1,
           title: 'Настройка окружения разработки',
           order: 1,
           is_completed: true,
         },
         {
-          id: '2',
+          id: 2,
           title: 'Основы TypeScript',
           order: 2,
           is_completed: false,
         },
         {
-          id: '3',
+          id: 3,
           title: 'Первые компоненты React',
           order: 3,
           is_completed: true,
@@ -126,24 +126,24 @@ export const MOCK_COURSE_FULL: ApiComponents['FullCourse'] = {
       ],
     },
     {
-      id: '2',
+      id: 2,
       title: 'Управление состоянием',
       order: 2,
       lessons: [
         {
-          id: '4',
+          id: 4,
           title: 'Хуки useState и useEffect',
           order: 1,
           is_completed: true,
         },
         {
-          id: '5',
+          id: 5,
           title: 'Context API',
           order: 2,
           is_completed: false,
         },
         {
-          id: '6',
+          id: 6,
           title: 'Redux Toolkit',
           order: 3,
           is_completed: false,
@@ -160,7 +160,7 @@ export const MOCK_COURSE_LESSONS: ApiComponents['CourseLessons'] = {
 
 export const MOCK_LESSONS_FULL: ApiComponents['FullLesson'][] = [
   {
-    id: '1',
+    id: 1,
     title: 'Настройка окружения разработки',
     order: 1,
     is_completed: true,
@@ -173,7 +173,7 @@ export const MOCK_LESSONS_FULL: ApiComponents['FullLesson'][] = [
     tests: [],
   },
   {
-    id: '2',
+    id: 2,
     title: 'Основы TypeScript',
     order: 2,
     is_completed: true,
@@ -185,7 +185,7 @@ export const MOCK_LESSONS_FULL: ApiComponents['FullLesson'][] = [
     tests: [],
   },
   {
-    id: '3',
+    id: 3,
     title: 'Первые компоненты React',
     order: 3,
     is_completed: true,
@@ -197,7 +197,7 @@ export const MOCK_LESSONS_FULL: ApiComponents['FullLesson'][] = [
     tests: [],
   },
   {
-    id: '4',
+    id: 4,
     title: 'Хуки useState и useEffect',
     order: 1,
     is_completed: true,
@@ -210,7 +210,7 @@ export const MOCK_LESSONS_FULL: ApiComponents['FullLesson'][] = [
     tests: [],
   },
   {
-    id: '5',
+    id: 5,
     title: 'Context API',
     order: 2,
     is_completed: false,
@@ -284,13 +284,13 @@ const Component = () => {
 4. Создавайте отдельные провайдеры для разных частей приложения`,
     tests: [
       {
-        id: '1',
+        id: 1,
         title: 'Основы Context API',
         order: 1,
-        lesson_id: '5',
+        lesson_id: 5,
         variants: [
           {
-            id: '1',
+            id: 1,
             title: 'Context API используется для передачи данных через дерево компонентов без prop drilling',
             is_correct: true,
             description:
@@ -298,14 +298,14 @@ const Component = () => {
             order: 1,
           },
           {
-            id: '2',
+            id: 2,
             title: 'Context API можно использовать только для передачи строковых значений',
             is_correct: false,
             description: null,
             order: 2,
           },
           {
-            id: '3',
+            id: 3,
             title: 'Context API работает только с функциональными компонентами',
             is_correct: false,
             description: null,
@@ -314,27 +314,27 @@ const Component = () => {
         ],
       },
       {
-        id: '2',
+        id: 2,
         title: 'Использование useContext',
         order: 2,
-        lesson_id: '5',
+        lesson_id: 5,
         variants: [
           {
-            id: '1',
+            id: 1,
             title: 'useContext можно использовать только внутри Provider',
             is_correct: true,
             description: 'Хук useContext требует, чтобы компонент был обернут в соответствующий Provider',
             order: 1,
           },
           {
-            id: '2',
+            id: 2,
             title: 'useContext работает с любым объектом, не только с контекстом',
             is_correct: false,
             description: null,
             order: 2,
           },
           {
-            id: '3',
+            id: 3,
             title: 'useContext можно использовать вне React-компонентов',
             is_correct: false,
             description: null,
@@ -345,7 +345,7 @@ const Component = () => {
     ],
   },
   {
-    id: '6',
+    id: 6,
     title: 'Redux Toolkit',
     order: 3,
     is_completed: false,
@@ -467,27 +467,27 @@ const usersSlice = createSlice({
 > Redux Toolkit значительно упрощает работу с Redux, делая код более чистым и поддерживаемым.`,
     tests: [
       {
-        id: '3',
+        id: 3,
         title: 'Основы Redux Toolkit',
         order: 1,
-        lesson_id: '6',
+        lesson_id: 6,
         variants: [
           {
-            id: '1',
+            id: 1,
             title: 'createSlice автоматически генерирует action creators',
             is_correct: true,
             description: 'createSlice автоматически создает action creators на основе определенных reducers',
             order: 1,
           },
           {
-            id: '2',
+            id: 2,
             title: 'Redux Toolkit требует ручного создания action creators',
             is_correct: false,
             description: null,
             order: 2,
           },
           {
-            id: '3',
+            id: 3,
             title: 'Action creators нужно создавать отдельно от slice',
             is_correct: false,
             description: null,
@@ -496,27 +496,27 @@ const usersSlice = createSlice({
         ],
       },
       {
-        id: '4',
+        id: 4,
         title: 'Асинхронные операции в Redux Toolkit',
         order: 2,
-        lesson_id: '6',
+        lesson_id: 6,
         variants: [
           {
-            id: '1',
+            id: 1,
             title: 'Используйте createAsyncThunk для асинхронных операций',
             is_correct: true,
             description: 'createAsyncThunk - рекомендуемый способ обработки асинхронных операций в Redux Toolkit',
             order: 1,
           },
           {
-            id: '2',
+            id: 2,
             title: 'Всегда используйте обычные thunks',
             is_correct: false,
             description: null,
             order: 2,
           },
           {
-            id: '3',
+            id: 3,
             title: 'Асинхронные операции не поддерживаются в Redux Toolkit',
             is_correct: false,
             description: null,

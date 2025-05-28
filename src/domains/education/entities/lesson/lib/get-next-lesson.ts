@@ -10,7 +10,7 @@ export const getNextLesson = (modules: ApiComponents['ModuleWithLessons'][], les
     const module = sortedModules[i];
     const sortedLessons = [...module.lessons].sort((a, b) => a.order - b.order);
 
-    const lessonIndex = sortedLessons.findIndex((lesson) => lesson.id === lessonId);
+    const lessonIndex = sortedLessons.findIndex((lesson) => lesson.id === Number(lessonId));
 
     if (lessonIndex !== -1) {
       currentModuleIndex = i;

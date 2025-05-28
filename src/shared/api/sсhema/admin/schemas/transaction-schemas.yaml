@@ -12,7 +12,7 @@ schemas:
     type: object
     properties:
       id:
-        type: string
+        type: number
       invoice_id:
         type: string
       amount:
@@ -22,9 +22,9 @@ schemas:
       status:
         $ref: '#/schemas/TransactionStatus'
       user_id:
-        type: string
+        type: number
       course_id:
-        type: string
+        type: number
     required:
       - id
       - invoice_id

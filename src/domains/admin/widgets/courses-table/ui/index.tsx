@@ -17,7 +17,7 @@ export function AdminCoursesTable({ courses }: AdminCoursesTableProps) {
   const handleRowClick = (course: ApiComponents['AdminCourse']) => {
     void navigate({
       to: '/admin/courses/$course',
-      params: { course: course.id },
+      params: { course: course.id.toString() },
     });
   };
 

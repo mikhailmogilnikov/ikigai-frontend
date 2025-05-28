@@ -855,7 +855,7 @@ export interface components {
      * @description Базовая схема курса
      */
     BaseCourse: {
-      id: string;
+      id: number;
       title: string;
       image_url: string;
       lessons_amount: number;
@@ -885,7 +885,7 @@ export interface components {
      * @description Базовая схема модуля в курсе
      */
     BaseModule: {
-      id: string;
+      id: number;
       title: string;
       order: number;
     };
@@ -894,7 +894,7 @@ export interface components {
      * @description Базовая схема урока в курсе
      */
     BaseLesson: {
-      id: string;
+      id: number;
       title: string;
       order: number;
     };
@@ -942,8 +942,8 @@ export interface components {
      * @description Базовая схема теста
      */
     BaseTest: {
-      id: string;
-      lesson_id: string;
+      id: number;
+      lesson_id: number;
       title: string;
       order: number;
     };
@@ -952,7 +952,7 @@ export interface components {
      * @description Базовая схема варианта ответа на тест
      */
     BaseTestVariant: {
-      id: string;
+      id: number;
       title: string;
       is_correct: boolean;
       description: string | null;
@@ -970,7 +970,8 @@ export interface components {
     };
     /** @description Транзакция в списке транзакций ученика */
     Transaction: {
-      id: string;
+      id: number;
+      invoice_id: string;
       /** Format: date-time */
       date: string;
       amount: number;
@@ -983,7 +984,7 @@ export interface components {
     UserRoles: 'student' | 'admin';
     /** @description Базовая схема пользователя */
     BaseUser: {
-      id: string;
+      id: number;
       email?: string;
       first_name: string;
       last_name: string;
@@ -1016,13 +1017,13 @@ export interface components {
     TransactionStatus: 'pending' | 'confirmed' | 'rejected';
     /** @description Транзакция в списке транзакций ученика */
     AdminTransaction: {
-      id: string;
+      id: number;
       invoice_id: string;
       amount: number;
       created_at: string;
       status: components['schemas']['TransactionStatus'];
-      user_id: string;
-      course_id: string;
+      user_id: number;
+      course_id: number;
     };
   };
   responses: never;

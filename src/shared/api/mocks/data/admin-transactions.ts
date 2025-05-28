@@ -10,13 +10,13 @@ const generateRandomTransaction = (id: number): ApiComponents['AdminTransaction'
   };
 
   return {
-    id: id.toString(),
-    invoice_id: Math.floor(Math.random() * 1000).toString(),
+    id: id,
+    invoice_id: `INV-${Math.random().toString(36).substring(2, 15).toUpperCase()}`,
     amount: Math.floor(Math.random() * 10000) + 100,
     created_at: randomDate(),
     status: statuses[Math.floor(Math.random() * statuses.length)],
-    user_id: Math.floor(Math.random() * 50 + 1).toString(),
-    course_id: Math.floor(Math.random() * 10 + 1).toString(),
+    user_id: Math.floor(Math.random() * 50 + 1),
+    course_id: Math.floor(Math.random() * 10 + 1),
   };
 };
 

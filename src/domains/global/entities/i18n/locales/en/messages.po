@@ -243,7 +243,7 @@ msgstr "Number of Sales"
 msgid "Кол-во прохождений"
 msgstr "Number of Completions"
 
-#: src/domains/education/entities/test/ui/lesson-test/index.tsx:85
+#: src/domains/education/entities/test/ui/lesson-test/index.tsx:89
 msgid "Корректно"
 msgstr "Correct"
 
@@ -319,7 +319,7 @@ msgstr "Not Started"
 msgid "Не стоит останавливаться на достигнутом – продолжайте изучать новые темы, или повторите ранее пройденные.<0/><1/>Завершенный курс будет доступен в вашем профиле в любое время."
 msgstr "Don't stop at what you've achieved – continue learning new topics or review previously completed ones.<0/><1/>The completed course will be available in your profile at any time."
 
-#: src/domains/education/entities/test/ui/lesson-test/index.tsx:91
+#: src/domains/education/entities/test/ui/lesson-test/index.tsx:95
 msgid "Некорректно"
 msgstr "Incorrect"
 
@@ -460,7 +460,7 @@ msgstr "View Other Courses"
 msgid "Прежде чем завершить урок, пройдите тесты по усвоенному материалу."
 msgstr "Before completing the lesson, take tests on the learned material."
 
-#: src/domains/education/entities/test/ui/lesson-test/index.tsx:81
+#: src/domains/education/entities/test/ui/lesson-test/index.tsx:85
 msgid "Проверить"
 msgstr "Check"
 

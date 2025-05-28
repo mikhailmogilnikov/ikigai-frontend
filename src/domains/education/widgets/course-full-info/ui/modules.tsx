@@ -19,14 +19,18 @@ export function CourseFullInfoModules({ course }: CourseFullInfoProps) {
 
       <Accordion
         type='multiple'
-        defaultValue={sortedModules.map((module) => module.id)}
+        defaultValue={sortedModules.map((module) => module.id.toString())}
         className='flex flex-col gap-3'
       >
         {sortedModules.map((module) => {
           const isModuleCompleted = module.lessons.every((lesson) => lesson.is_completed);
 
           return (
-            <AccordionItem key={module.id} value={module.id} className='bg-default rounded-lg px-3 py-3 shadow'>
+            <AccordionItem
+              key={module.id}
+              value={module.id.toString()}
+              className='bg-default rounded-lg px-3 py-3 shadow'
+            >
               <AccordionTrigger>
                 <Flex col gap='sm'>
                   <Typo as='h4' size='lg' weight='medium'>

@@ -38,11 +38,11 @@ export function LessonTest({ test, onComplete }: LessonTestProps) {
   }, [state]);
 
   const handleCheck = () => {
-    const correctVariantId = test.variants.find((variant) => variant.is_correct)?.id;
+    const correctVariantId = test.variants.find((variant) => variant.is_correct)?.id.toString();
 
     if (selectedVariantId === correctVariantId) {
       setState('correct');
-      onComplete(test.id);
+      onComplete(test.id.toString());
     } else {
       setState('incorrect');
     }
@@ -58,8 +58,12 @@ export function LessonTest({ test, onComplete }: LessonTestProps) {
       <RadioGroup disabled={isCompleted} value={selectedVariantId} onValueChange={setSelectedVariantId}>
         {test.variants.map((variant) => (
           <Flex key={variant.id} className='gap-2'>
-            <RadioGroupItem value={variant.id} id={`${test.id}-${variant.id}`} className='mt-1' />
-            <label htmlFor={`${test.id}-${variant.id}`} className='flex flex-col gap-1'>
+            <RadioGroupItem
+              value={variant.id.toString()}
+              id={`${test.id.toString()}-${variant.id.toString()}`}
+              className='mt-1'
+            />
+            <label htmlFor={`${test.id.toString()}-${variant.id.toString()}`} className='flex flex-col gap-1'>
               <Typo size='base' weight='normal'>
                 {variant.title}
               </Typo>

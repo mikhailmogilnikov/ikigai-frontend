@@ -38,7 +38,8 @@ const generateTransactions = (): ApiComponents['Transaction'][] => {
     const title = COURSES[Math.floor(Math.random() * COURSES.length)];
 
     transactions.push({
-      id: (i + 1).toString(),
+      id: i + 1,
+      invoice_id: `INV-${Math.random().toString(36).substring(2, 15).toUpperCase()}`,
       date: date.toISOString().split('T')[0],
       amount,
       title,

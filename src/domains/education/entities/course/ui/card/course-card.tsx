@@ -73,7 +73,7 @@ function CourseCardContentShop(props: CourseCardProps) {
         {Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 }).format(price)}
       </Typo>
       <Flex>
-        <LinkButton to='/courses/$course' params={{ course: id }} className='dark:bg-foreground/5 w-full'>
+        <LinkButton to='/courses/$course' params={{ course: id.toString() }} className='dark:bg-foreground/5 w-full'>
           <Trans>Подробнее</Trans>
         </LinkButton>
         <Button className='w-full' color='primary'>
@@ -104,12 +104,12 @@ function CourseCardContentCollection(props: CourseCardProps) {
         <Progress className='h-2' value={progress} trackClassName={cn(isCompleted && 'bg-success')} />
       </Flex>
       <Flex>
-        <LinkButton to='/courses/$course' params={{ course: id }} className='dark:bg-foreground/5 w-full'>
+        <LinkButton to='/courses/$course' params={{ course: id.toString() }} className='dark:bg-foreground/5 w-full'>
           <Trans>Подробнее</Trans>
         </LinkButton>
         <LinkButton
           to='/courses/$course/lessons/$lesson'
-          params={{ course: id, lesson: 'current' }}
+          params={{ course: id.toString(), lesson: 'current' }}
           className='w-full'
           color={isCompleted ? 'success' : 'primary'}
         >
