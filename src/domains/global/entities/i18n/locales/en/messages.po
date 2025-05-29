@@ -104,7 +104,7 @@ msgstr "Admin"
 msgid "Анимации клавиатуры"
 msgstr "Keyboard Animations"
 
-#: src/routes/(education)/_guard/index.tsx:21
+#: src/routes/(education)/_guard/index.tsx:22
 msgid "В процессе изучения"
 msgstr "In Progress"
 
@@ -176,11 +176,11 @@ msgstr "Registration Date"
 msgid "Дата создания"
 msgstr "Creation Date"
 
-#: src/domains/admin/features/add-course/ui/modal.tsx:53
+#: src/domains/admin/features/add-course/ui/modal.tsx:74
 msgid "Добавить"
 msgstr "Add"
 
-#: src/domains/admin/features/add-course/ui/modal.tsx:32
+#: src/domains/admin/features/add-course/ui/modal.tsx:47
 #: src/domains/admin/features/add-course/ui/button.tsx:20
 msgid "Добавить курс"
 msgstr "Add Course"
@@ -198,7 +198,7 @@ msgstr "Accessibility"
 msgid "Завершен"
 msgstr "Completed"
 
-#: src/routes/(education)/_guard/index.tsx:29
+#: src/routes/(education)/_guard/index.tsx:30
 msgid "Завершенные"
 msgstr "Completed"
 
@@ -218,7 +218,7 @@ msgstr "of"
 msgid "Имя"
 msgstr "First Name"
 
-#: src/routes/(education)/_guard/transactions.tsx:26
+#: src/routes/(education)/_guard/transactions.tsx:23
 #: src/domains/education/widgets/menu/ui/navigation.tsx:28
 msgid "История транзакций"
 msgstr "Transaction History"
@@ -259,7 +259,7 @@ msgstr "Course"
 msgid "Курсы"
 msgstr "Courses"
 
-#: src/routes/(education)/_guard/shop.tsx:25
+#: src/routes/(education)/_guard/shop.tsx:23
 #: src/domains/education/widgets/menu/ui/navigation.tsx:18
 #: src/domains/education/widgets/header/ui/desktop-navigation.tsx:22
 msgid "Магазин курсов"
@@ -289,8 +289,8 @@ msgstr "Navigation"
 msgid "Название"
 msgstr "Title"
 
-#: src/domains/admin/features/add-course/ui/modal.tsx:36
-#: src/domains/admin/features/add-course/ui/modal.tsx:41
+#: src/domains/admin/features/add-course/ui/modal.tsx:51
+#: src/domains/admin/features/add-course/ui/modal.tsx:56
 msgid "Название курса"
 msgstr "Course Title"
 
@@ -311,7 +311,7 @@ msgstr "Start"
 msgid "Начать курс"
 msgstr "Start Course"
 
-#: src/routes/(education)/_guard/index.tsx:25
+#: src/routes/(education)/_guard/index.tsx:26
 msgid "Не начатые"
 msgstr "Not Started"
 
@@ -456,7 +456,7 @@ msgstr "Users"
 msgid "Посмотреть другие курсы"
 msgstr "View Other Courses"
 
-#: src/domains/education/widgets/lesson-tests/ui/index.tsx:95
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:97
 msgid "Прежде чем завершить урок, пройдите тесты по усвоенному материалу."
 msgstr "Before completing the lesson, take tests on the learned material."
 
@@ -464,7 +464,7 @@ msgstr "Before completing the lesson, take tests on the learned material."
 msgid "Проверить"
 msgstr "Check"
 
-#: src/domains/education/widgets/lesson-tests/ui/index.tsx:92
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:94
 msgid "Проверьте себя"
 msgstr "Test Yourself"
 
@@ -528,7 +528,7 @@ msgstr "Download"
 msgid "Скорость"
 msgstr "Speed"
 
-#: src/domains/education/widgets/lesson-tests/ui/index.tsx:109
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:111
 msgid "Следующий урок"
 msgstr "Next Lesson"
 
