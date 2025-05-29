@@ -1,0 +1,11 @@
+schemas:
+  AdminLesson:
+    description: Урок для админа
+    allOf:
+      - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseLesson"
+      - type: object
+        properties:
+          is_published:
+            type: boolean
+        required:
+          - is_published

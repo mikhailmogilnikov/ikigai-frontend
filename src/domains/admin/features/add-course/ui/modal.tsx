@@ -1,6 +1,7 @@
 import { Trans, useLingui } from '@lingui/react/macro';
 import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 import { rqClient } from '~/shared/api';
 import { Modal, ModalContent, ModalFooter, ModalHeader } from '~/shared/ui/overlays/modal';
@@ -19,30 +20,30 @@ export function AddCourseModal({ open, onOpenChange }: AddCourseModalProps) {
 
   const [title, setTitle] = useState('');
 
-  const { mutateAsync: createCourse, isPending } = rqClient.useMutation('post', '/admin/courses', {
-    onSettled: async () => {
+  const { mutate: createCourse, isPending } = rqClient.useMutation('post', '/admin/courses', {
+    onError: () => {
+      toast.error(t`Не удалось добавить курс "${title}"`);
+    },
+    onSuccess: async () => {
       await queryClient.invalidateQueries(rqClient.queryOptions('get', '/admin/courses'));
+
+      toast.success(t`Курс "${title}" успешно добавлен`);
+      setTitle('');
+      onOpenChange(false);
     },
   });
 
-  const handleCreateCourse = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleCreateCourse = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!title) return;
 
-    await createCourse({ body: { title } });
-
-    setTitle('');
-    onOpenChange(false);
+    createCourse({ body: { title } });
   };
 
   return (
     <Modal open={open} onOpenChange={onOpenChange}>
-      <form
-        onSubmit={(e) => {
-          void handleCreateCourse(e);
-        }}
-      >
+      <form onSubmit={handleCreateCourse}>
         <ModalHeader>
           <Trans>Добавить курс</Trans>
         </ModalHeader>

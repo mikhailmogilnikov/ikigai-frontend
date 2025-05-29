@@ -1,0 +1,16 @@
+schemas:
+  AdminModule:
+    description: Модуль для админа
+    allOf:
+      - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseModule"
+      - type: object
+        properties:
+          is_published:
+            type: boolean
+          lessons:
+            type: array
+            items:
+              $ref: "../schemas/lesson-schemas.yaml#/schemas/AdminLesson"
+        required:
+          - is_published
+          - lessons

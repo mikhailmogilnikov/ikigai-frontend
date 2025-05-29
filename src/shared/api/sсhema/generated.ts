@@ -672,16 +672,58 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** Получить курс по id */
+    /**
+     * Получить курс по id
+     * @description Получить курс для админа
+     */
     get: {
       parameters: {
         query?: never;
         header?: never;
-        path?: never;
+        path: {
+          courseId: string;
+        };
         cookie?: never;
       };
       requestBody?: never;
-      responses: never;
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['AdminCourseFull'];
+          };
+        };
+        /** @description Unauthorized */
+        401: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['UnauthorizedError'];
+          };
+        };
+        /** @description Forbidden */
+        403: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['ForbiddenError'];
+          };
+        };
+        /** @description Not Found */
+        404: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['NotFoundError'];
+          };
+        };
+      };
     };
     put?: never;
     post?: never;
@@ -984,6 +1026,22 @@ export interface components {
       price: number;
       users_amount: number;
       finished_users_amount: number;
+    };
+    /** @description Урок для админа */
+    AdminLesson: components['schemas']['BaseLesson'] & {
+      is_published: boolean;
+    };
+    /** @description Модуль для админа */
+    AdminModule: components['schemas']['BaseModule'] & {
+      is_published: boolean;
+      lessons: components['schemas']['AdminLesson'][];
+    };
+    /** @description Курс для админа в полном виде */
+    AdminCourseFull: components['schemas']['BaseCourse'] & {
+      is_published: boolean;
+      description: string;
+      price: number;
+      modules: components['schemas']['AdminModule'][];
     };
     /** @description Пользователи для админ панели */
     AdminUser: components['schemas']['BaseUser'] & {

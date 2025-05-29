@@ -176,11 +176,11 @@ msgstr "Дата регистрации"
 msgid "Дата создания"
 msgstr "Дата создания"
 
-#: src/domains/admin/features/add-course/ui/modal.tsx:74
+#: src/domains/admin/features/add-course/ui/modal.tsx:75
 msgid "Добавить"
 msgstr "Добавить"
 
-#: src/domains/admin/features/add-course/ui/modal.tsx:47
+#: src/domains/admin/features/add-course/ui/modal.tsx:48
 #: src/domains/admin/features/add-course/ui/button.tsx:20
 msgid "Добавить курс"
 msgstr "Добавить курс"
@@ -255,6 +255,10 @@ msgstr "Купить"
 msgid "Курс"
 msgstr "Курс"
 
+#: src/domains/admin/features/add-course/ui/modal.tsx:30
+msgid "Курс \"{title}\" успешно добавлен"
+msgstr "Курс \"{title}\" успешно добавлен"
+
 #: src/domains/admin/widgets/header/ui/desktop-navigation.tsx:17
 msgid "Курсы"
 msgstr "Курсы"
@@ -289,8 +293,8 @@ msgstr "Навигация"
 msgid "Название"
 msgstr "Название"
 
-#: src/domains/admin/features/add-course/ui/modal.tsx:51
-#: src/domains/admin/features/add-course/ui/modal.tsx:56
+#: src/domains/admin/features/add-course/ui/modal.tsx:52
+#: src/domains/admin/features/add-course/ui/modal.tsx:57
 msgid "Название курса"
 msgstr "Название курса"
 
@@ -318,6 +322,10 @@ msgstr "Не начатые"
 #: src/domains/education/entities/course/ui/completed-course-modal/index.tsx:29
 msgid "Не стоит останавливаться на достигнутом – продолжайте изучать новые темы, или повторите ранее пройденные.<0/><1/>Завершенный курс будет доступен в вашем профиле в любое время."
 msgstr "Не стоит останавливаться на достигнутом – продолжайте изучать новые темы, или повторите ранее пройденные.<0/><1/>Завершенный курс будет доступен в вашем профиле в любое время."
+
+#: src/domains/admin/features/add-course/ui/modal.tsx:25
+msgid "Не удалось добавить курс \"{title}\""
+msgstr "Не удалось добавить курс \"{title}\""
 
 #: src/domains/education/entities/test/ui/lesson-test/index.tsx:95
 msgid "Некорректно"

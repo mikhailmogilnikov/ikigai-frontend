@@ -236,7 +236,7 @@ paths:
               required:
                 - lesson_id
       responses:
-        '200':
+        '201':
           description: OK
         '401':
           description: Unauthorized
@@ -326,11 +326,64 @@ paths:
       summary: Создать курс
       tags:
         - admin
+      description: Создать курс
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+              required:
+                - title
+      responses:
+        '201':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
   /admin/courses/{courseId}:
     get:
       summary: Получить курс по id
       tags:
         - admin
+      description: Получить курс для админа
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminCourseFull'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
     patch:
       summary: Обновить курс по id
       tags:
@@ -748,6 +801,47 @@ components:
         - price
         - users_amount
         - finished_users_amount
+    AdminLesson:
+      description: Урок для админа
+      allOf:
+        - $ref: '#/components/schemas/BaseLesson'
+        - type: object
+          properties:
+            is_published:
+              type: boolean
+          required:
+            - is_published
+    AdminModule:
+      description: Модуль для админа
+      allOf:
+        - $ref: '#/components/schemas/BaseModule'
+        - type: object
+          properties:
+            is_published:
+              type: boolean
+            lessons:
+              type: array
+              items:
+                $ref: '#/components/schemas/AdminLesson'
+          required:
+            - is_published
+            - lessons
+    AdminCourseFull:
+      description: Курс для админа в полном виде
+      allOf:
+        - $ref: '#/components/schemas/BaseCourse'
+        - type: object
+          properties:
+            is_published:
+              type: boolean
+            description:
+              type: string
+            price:
+              type: number
+            modules:
+              type: array
+              items:
+                $ref: '#/components/schemas/AdminModule'
     AdminUser:
       description: Пользователи для админ панели
       allOf:

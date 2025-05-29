@@ -50,13 +50,19 @@ createAdminCourse:
 getAdminCourse:
   summary: "Получить курс для админа"
   description: "Получить курс для админа"
+  parameters:
+    - name: courseId
+      in: path
+      required: true
+      schema:
+        type: string
   responses:
     '200':
       description: OK
       content:
         application/json:
           schema:
-            $ref: '../schemas/course-schemas.yaml#/schemas/AdminCourse'
+            $ref: '../schemas/course-schemas.yaml#/schemas/AdminCourseFull'
     '401':
       description: Unauthorized
       content:
