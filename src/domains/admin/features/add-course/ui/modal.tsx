@@ -1,6 +1,8 @@
 import { Trans, useLingui } from '@lingui/react/macro';
+import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 
+import { rqClient } from '~/shared/api';
 import { Modal, ModalContent, ModalFooter, ModalHeader } from '~/shared/ui/overlays/modal';
 import { Button } from '~/shared/ui/primitives/button/button';
 import { Flex } from '~/shared/ui/primitives/flex';
@@ -13,13 +15,22 @@ interface AddCourseModalProps {
 
 export function AddCourseModal({ open, onOpenChange }: AddCourseModalProps) {
   const { t } = useLingui();
+  const queryClient = useQueryClient();
 
   const [title, setTitle] = useState('');
 
-  const handleCreateCourse = (e: React.FormEvent<HTMLFormElement>) => {
+  const { mutateAsync: createCourse, isPending } = rqClient.useMutation('post', '/admin/courses', {
+    onSettled: async () => {
+      await queryClient.invalidateQueries(rqClient.queryOptions('get', '/admin/courses'));
+    },
+  });
+
+  const handleCreateCourse = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!title) return;
+
+    await createCourse({ body: { title } });
 
     setTitle('');
     onOpenChange(false);
@@ -27,7 +38,11 @@ export function AddCourseModal({ open, onOpenChange }: AddCourseModalProps) {
 
   return (
     <Modal open={open} onOpenChange={onOpenChange}>
-      <form onSubmit={handleCreateCourse}>
+      <form
+        onSubmit={(e) => {
+          void handleCreateCourse(e);
+        }}
+      >
         <ModalHeader>
           <Trans>Добавить курс</Trans>
         </ModalHeader>
@@ -49,7 +64,13 @@ export function AddCourseModal({ open, onOpenChange }: AddCourseModalProps) {
           </Flex>
         </ModalContent>
         <ModalFooter cancelButton>
-          <Button color='primary' className='h-10 w-full rounded-xl' isDisabled={!title} type='submit'>
+          <Button
+            isLoading={isPending}
+            color='primary'
+            className='h-10 w-full rounded-xl'
+            isDisabled={!title}
+            type='submit'
+          >
             <Trans>Добавить</Trans>
           </Button>
         </ModalFooter>

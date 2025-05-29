@@ -428,7 +428,7 @@ export interface paths {
       };
       responses: {
         /** @description OK */
-        200: {
+        201: {
           headers: {
             [name: string]: unknown;
           };
@@ -613,7 +613,10 @@ export interface paths {
       };
     };
     put?: never;
-    /** Создать курс */
+    /**
+     * Создать курс
+     * @description Создать курс
+     */
     post: {
       parameters: {
         query?: never;
@@ -621,8 +624,40 @@ export interface paths {
         path?: never;
         cookie?: never;
       };
-      requestBody?: never;
-      responses: never;
+      requestBody: {
+        content: {
+          'application/json': {
+            title: string;
+          };
+        };
+      };
+      responses: {
+        /** @description OK */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        /** @description Unauthorized */
+        401: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['UnauthorizedError'];
+          };
+        };
+        /** @description Forbidden */
+        403: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['ForbiddenError'];
+          };
+        };
+      };
     };
     delete?: never;
     options?: never;
@@ -648,17 +683,7 @@ export interface paths {
       requestBody?: never;
       responses: never;
     };
-    /** Обновить курс по id */
-    put: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path?: never;
-        cookie?: never;
-      };
-      requestBody?: never;
-      responses: never;
-    };
+    put?: never;
     post?: never;
     /** Удалить курс по id */
     delete: {
@@ -673,7 +698,17 @@ export interface paths {
     };
     options?: never;
     head?: never;
-    patch?: never;
+    /** Обновить курс по id */
+    patch: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: never;
+    };
     trace?: never;
   };
   '/admin/users': {
@@ -726,64 +761,8 @@ export interface paths {
       };
     };
     put?: never;
-    /** Создать пользователя */
-    post: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path?: never;
-        cookie?: never;
-      };
-      requestBody?: never;
-      responses: never;
-    };
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/admin/users/{userId}': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** Получить пользователя по id */
-    get: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path?: never;
-        cookie?: never;
-      };
-      requestBody?: never;
-      responses: never;
-    };
-    /** Обновить пользователя по id */
-    put: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path?: never;
-        cookie?: never;
-      };
-      requestBody?: never;
-      responses: never;
-    };
     post?: never;
-    /** Удалить пользователя по id */
-    delete: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path?: never;
-        cookie?: never;
-      };
-      requestBody?: never;
-      responses: never;
-    };
+    delete?: never;
     options?: never;
     head?: never;
     patch?: never;

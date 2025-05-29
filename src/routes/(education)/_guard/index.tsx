@@ -7,12 +7,13 @@ import { CourseCard, CourseCollectionStatus, sortCollectionCourses } from '~/dom
 import { CoursesSection } from '~/domains/education/widgets/course-section';
 import { PageLoader } from '~/shared/ui/common/page-loader';
 import { Container } from '~/shared/ui/primitives/container';
-import { myCoursesQuery } from '~/domains/education/entities/course/api';
+import { rqClient } from '~/shared/api';
 
 export const Route = createFileRoute('/(education)/_guard/')({
   component: RouteComponent,
   pendingComponent: () => <PageLoader type='layout' />,
-  loader: ({ context: { queryClient } }) => queryClient.ensureQueryData(myCoursesQuery),
+  loader: ({ context: { queryClient } }) =>
+    queryClient.ensureQueryData(rqClient.queryOptions('get', '/courses/my-courses')),
 });
 
 const COURSE_SECTIONS = [
@@ -32,9 +33,9 @@ const COURSE_SECTIONS = [
 
 function RouteComponent() {
   const { i18n } = useLingui();
-  const { data: courses } = useSuspenseQuery(myCoursesQuery);
+  const { data } = useSuspenseQuery(rqClient.queryOptions('get', '/courses/my-courses'));
 
-  const sortedCourses = sortCollectionCourses(courses.data ?? []);
+  const sortedCourses = sortCollectionCourses(data);
 
   return (
     <Container gap='2xl'>

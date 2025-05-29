@@ -15,7 +15,7 @@ tags:
   - name: auth
     description: Маршруты для авторизации
   - name: public
-    description: Публичные маршруты
+    description: Маршруты для учащихся
   - name: admin
     description: Административные маршруты
 
@@ -107,7 +107,7 @@ paths:
       summary: "Создать курс"
       tags:
         - admin
-      #   $ref: ./admin/endpoints/courses.yaml#/createAdminCourse
+      $ref: ./admin/endpoints/courses.yaml#/createAdminCourse
 
   /admin/courses/{courseId}:
     get:
@@ -115,7 +115,7 @@ paths:
       tags:
         - admin
       # $ref: ./admin/endpoints/courses.yaml#/getAdminCourse
-    put:
+    patch:
       summary: "Обновить курс по id"
       tags:
         - admin
@@ -132,28 +132,28 @@ paths:
       tags:
         - admin
       $ref: ./admin/endpoints/users.yaml#/getAdminUsers
-    post:
-      summary: "Создать пользователя"
-      tags:
-        - admin
-      # $ref: ./admin/endpoints/users.yaml#/createAdminUser
+    # post:
+    #   summary: "Создать пользователя"
+    #   tags:
+    #     - admin
+    #   # $ref: ./admin/endpoints/users.yaml#/createAdminUser
       
-  /admin/users/{userId}:
-    get:
-      summary: "Получить пользователя по id"
-      tags:
-        - admin
-      # $ref: ./admin/endpoints/users.yaml#/getAdminUser
-    put:
-      summary: "Обновить пользователя по id"
-      tags:
-        - admin
-      # $ref: ./admin/endpoints/users.yaml#/updateAdminUser
-    delete:
-      summary: "Удалить пользователя по id"
-      tags:
-        - admin
-      # $ref: ./admin/endpoints/users.yaml#/deleteAdminUser
+  # /admin/users/{userId}:
+  #   get:
+  #     summary: "Получить пользователя по id"
+  #     tags:
+  #       - admin
+  #     # $ref: ./admin/endpoints/users.yaml#/getAdminUser
+  #   put:
+  #     summary: "Обновить пользователя по id"
+  #     tags:
+  #       - admin
+  #     # $ref: ./admin/endpoints/users.yaml#/updateAdminUser
+  #   delete:
+  #     summary: "Удалить пользователя по id"
+  #     tags:
+  #       - admin
+  #     # $ref: ./admin/endpoints/users.yaml#/deleteAdminUser
 
   /admin/transactions:
     get:

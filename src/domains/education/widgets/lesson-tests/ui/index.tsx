@@ -29,7 +29,9 @@ export function LessonTests({ tests, modules }: LessonTestsProps) {
 
   const { mutateAsync, isPending } = rqClient.useMutation('post', '/lessons/{lessonId}/complete', {
     onSettled: async () => {
-      await queryClient.invalidateQueries({ queryKey: ['course-lessons', course] });
+      await queryClient.invalidateQueries(
+        rqClient.queryOptions('get', '/courses/{courseId}/lessons', { params: { path: { courseId: course } } }),
+      );
     },
   });
 

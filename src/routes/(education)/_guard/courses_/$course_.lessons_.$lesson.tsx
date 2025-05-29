@@ -3,7 +3,6 @@ import { lazy, Suspense, useEffect } from 'react';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 import { getFirstUncompletedLesson } from '~/domains/education/entities/lesson';
-import { getCourseLessonsQuery } from '~/domains/education/entities/course/api';
 import { CourseSidebar } from '~/domains/education/widgets/course-sidebar';
 import { LessonTests } from '~/domains/education/widgets/lesson-tests';
 import { useAppLayout } from '~/domains/global/widgets/layout';
@@ -11,7 +10,7 @@ import { MarkdownRenderer } from '~/domains/global/widgets/markdown-renderer';
 import { PageLoader } from '~/shared/ui/common/page-loader';
 import { Container } from '~/shared/ui/primitives/container';
 import { Skeleton } from '~/shared/ui/primitives/skeleton';
-import { getLessonQuery } from '~/domains/education/entities/lesson/api';
+import { rqClient } from '~/shared/api';
 
 const VideoPlayer = lazy(() =>
   import('~/shared/ui/common/video-player').then((module) => ({ default: module.VideoPlayer })),
@@ -21,19 +20,27 @@ export const Route = createFileRoute('/(education)/_guard/courses_/$course_/less
   component: RouteComponent,
   pendingComponent: () => <PageLoader type='layout' />,
   loader: async ({ context: { queryClient }, params: { course, lesson } }) => {
-    const courseLessonsData = await queryClient.ensureQueryData(getCourseLessonsQuery(course));
+    const courseLessonsData = await queryClient.ensureQueryData(
+      rqClient.queryOptions('get', '/courses/{courseId}/lessons', { params: { path: { courseId: course } } }),
+    );
 
-    if (lesson === 'current' && courseLessonsData.data) {
-      const activeLesson = getFirstUncompletedLesson(courseLessonsData.data.modules);
+    if (lesson === 'current') {
+      const activeLesson = getFirstUncompletedLesson(courseLessonsData.modules);
 
-      await queryClient.ensureQueryData(getLessonQuery(activeLesson.id.toString()));
+      await queryClient.ensureQueryData(
+        rqClient.queryOptions('get', '/lessons/{lessonId}', {
+          params: { path: { lessonId: activeLesson.id.toString() } },
+        }),
+      );
 
       return {
         activeLessonId: activeLesson.id,
       };
     }
 
-    await queryClient.ensureQueryData(getLessonQuery(lesson));
+    await queryClient.ensureQueryData(
+      rqClient.queryOptions('get', '/lessons/{lessonId}', { params: { path: { lessonId: lesson } } }),
+    );
 
     return {
       activeLessonId: lesson,
@@ -47,41 +54,37 @@ function RouteComponent() {
   const { course: courseId } = Route.useParams();
   const { activeLessonId } = Route.useLoaderData();
 
-  const { data: courseLessons } = useSuspenseQuery(getCourseLessonsQuery(courseId));
-  const { data: lesson } = useSuspenseQuery(getLessonQuery(activeLessonId.toString()));
+  const { data: courseLessons } = useSuspenseQuery(
+    rqClient.queryOptions('get', '/courses/{courseId}/lessons', { params: { path: { courseId } } }),
+  );
+  const { data: lesson } = useSuspenseQuery(
+    rqClient.queryOptions('get', '/lessons/{lessonId}', { params: { path: { lessonId: activeLessonId.toString() } } }),
+  );
 
   useEffect(() => {
-    if (courseLessons.data) {
-      setSidebar(
-        <CourseSidebar
-          courseLessons={courseLessons.data}
-          courseId={courseId}
-          activeLessonId={activeLessonId.toString()}
-        />,
-      );
-    }
+    setSidebar(
+      <CourseSidebar courseLessons={courseLessons} courseId={courseId} activeLessonId={activeLessonId.toString()} />,
+    );
 
     return () => {
       setSidebar(null);
     };
   }, [courseLessons, courseId, activeLessonId]);
 
-  if (!lesson.data || !courseLessons.data) return null;
-
   return (
-    <Container size='md' title={lesson.data.title}>
-      {lesson.data.video && (
+    <Container size='md' title={lesson.title}>
+      {lesson.video && (
         <Suspense fallback={<Skeleton className='aspect-video w-full rounded-md' />}>
           <VideoPlayer
-            key={`${lesson.data.id.toString()}-${lesson.data.video.video_url}`}
-            title={lesson.data.title}
-            src={lesson.data.video.video_url}
-            poster={lesson.data.video.poster_url}
+            key={`${lesson.id.toString()}-${lesson.video.video_url}`}
+            title={lesson.title}
+            src={lesson.video.video_url}
+            poster={lesson.video.poster_url}
           />
         </Suspense>
       )}
-      <MarkdownRenderer content={lesson.data.content} />
-      <LessonTests tests={lesson.data.tests} modules={courseLessons.data.modules} />
+      <MarkdownRenderer content={lesson.content} />
+      <LessonTests tests={lesson.tests} modules={courseLessons.modules} />
     </Container>
   );
 }

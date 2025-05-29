@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. placeholder {0}: module.lessons.length
-#: src/domains/education/widgets/course-full-info/ui/modules.tsx:39
+#: src/domains/education/widgets/course-full-info/ui/modules.tsx:43
 msgid "{0, plural, one {урок} few {урока} many {уроков}}"
 msgstr "{0, plural, one {урок} few {урока} many {уроков}}"
 
@@ -194,7 +194,7 @@ msgid "Доступность"
 msgstr "Доступность"
 
 #: src/domains/education/widgets/course-sidebar/ui/course-modules.tsx:62
-#: src/domains/education/widgets/course-full-info/ui/modules.tsx:47
+#: src/domains/education/widgets/course-full-info/ui/modules.tsx:51
 msgid "Завершен"
 msgstr "Завершен"
 

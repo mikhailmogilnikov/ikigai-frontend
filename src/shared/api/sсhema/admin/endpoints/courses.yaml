@@ -17,4 +17,41 @@ getAdminCourses:
           schema:
             $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
 
-
+createAdminCourse:
+  summary: "Создать курс"
+  description: "Создать курс"
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+          required:
+            - title
+  responses:
+    '201':
+      description: OK
+      # content:
+      #   application/json:
+      #     schema:
+      #       type: object
+      #       properties:
+      #         name:
+      #           type: string
+      #       required:
+      #         - name
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/ForbiddenError'

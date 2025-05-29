@@ -7,7 +7,7 @@ tags:
   - name: auth
     description: Маршруты для авторизации
   - name: public
-    description: Публичные маршруты
+    description: Маршруты для учащихся
   - name: admin
     description: Административные маршруты
 paths:
@@ -16,21 +16,61 @@ paths:
       summary: Вход в систему
       tags:
         - auth
+      post:
+        summary: Вход в систему
+        tags:
+          - auth
+        requestBody:
+          $ref: ../schemas/auth-schemas.yaml#/schemas/AuthLogin
+        responses:
+          '200':
+            $ref: ../../shared/responses.yaml#/schemas/SuccessResponse
+          '404':
+            $ref: ../../shared/responses.yaml#/schemas/NotFoundError
   /auth/register:
     post:
       summary: Регистрация в системе
       tags:
         - auth
+      post:
+        summary: Регистрация в системе
+        tags:
+          - auth
+        requestBody:
+          $ref: ../schemas/auth-schemas.yaml#/schemas/AuthRegister
+        responses:
+          '200':
+            $ref: ../../shared/responses.yaml#/schemas/SuccessResponse
+          '404':
+            $ref: ../../shared/responses.yaml#/schemas/NotFoundError
   /auth/logout:
     post:
       summary: Выход из системы
       tags:
         - auth
+      post:
+        summary: Выход из системы
+        tags:
+          - auth
+        responses:
+          '200':
+            $ref: ../../shared/responses.yaml#/schemas/SuccessResponse
+          '401':
+            $ref: ../../shared/responses.yaml#/schemas/UnauthorizedError
   /auth/refresh:
     post:
       summary: Обновление токена
       tags:
         - auth
+      post:
+        summary: Обновление токена
+        tags:
+          - auth
+        responses:
+          '200':
+            $ref: ../schemas/auth-schemas.yaml#/schemas/AuthRefresh
+          '401':
+            $ref: ../../shared/responses.yaml#/schemas/UnauthorizedError
   /courses/store:
     get:
       summary: Получить список курсов, которые можно купить в магазине
@@ -291,7 +331,7 @@ paths:
       summary: Получить курс по id
       tags:
         - admin
-    put:
+    patch:
       summary: Обновить курс по id
       tags:
         - admin
@@ -304,28 +344,55 @@ paths:
       summary: Получить список пользователей
       tags:
         - admin
-    post:
-      summary: Создать пользователя
-      tags:
-        - admin
-  /admin/users/{userId}:
-    get:
-      summary: Получить пользователя по id
-      tags:
-        - admin
-    put:
-      summary: Обновить пользователя по id
-      tags:
-        - admin
-    delete:
-      summary: Удалить пользователя по id
-      tags:
-        - admin
+      description: Получить список пользователей для админ панели
+      responses:
+        '200':
+          description: Список пользователей
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AdminUser'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
   /admin/transactions:
     get:
       summary: Получить список транзакций
       tags:
         - admin
+      description: Получить список транзакций
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AdminTransaction'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
 components:
   schemas:
     BaseCourse:
@@ -334,7 +401,7 @@ components:
       type: object
       properties:
         id:
-          type: string
+          type: number
         title:
           type: string
         image_url:
@@ -398,7 +465,7 @@ components:
       type: object
       properties:
         id:
-          type: string
+          type: number
         title:
           type: string
         order:
@@ -413,7 +480,7 @@ components:
       type: object
       properties:
         id:
-          type: string
+          type: number
         title:
           type: string
         order:
@@ -457,6 +524,12 @@ components:
               type: number
             modules_amount:
               type: number
+            videos_amount:
+              type: number
+            start_date:
+              type:
+                - string
+                - 'null'
             is_purchased:
               type: boolean
             is_finished:
@@ -473,6 +546,8 @@ components:
             - description
             - price
             - modules_amount
+            - videos_amount
+            - start_date
             - is_purchased
             - is_finished
             - completed_lessons_amount
@@ -515,9 +590,9 @@ components:
       type: object
       properties:
         id:
-          type: string
+          type: number
         lesson_id:
-          type: string
+          type: number
         title:
           type: string
         order:
@@ -533,7 +608,7 @@ components:
       type: object
       properties:
         id:
-          type: string
+          type: number
         title:
           type: string
         is_correct:
@@ -587,6 +662,8 @@ components:
       type: object
       properties:
         id:
+          type: number
+        invoice_id:
           type: string
         date:
           type: string
@@ -597,6 +674,7 @@ components:
           type: string
       required:
         - id
+        - invoice_id
         - date
         - amount
         - title
@@ -606,13 +684,13 @@ components:
       enum:
         - student
         - admin
-    User:
+    BaseUser:
       description: Базовая схема пользователя
       type: object
       properties:
         id:
-          type: string
-        phone:
+          type: number
+        email:
           type: string
         first_name:
           type: string
@@ -635,7 +713,7 @@ components:
     Student:
       description: Студент
       allOf:
-        - $ref: '#/components/schemas/User'
+        - $ref: '#/components/schemas/BaseUser'
         - type: object
           properties:
             completed_courses_amount:
@@ -670,3 +748,46 @@ components:
         - price
         - users_amount
         - finished_users_amount
+    AdminUser:
+      description: Пользователи для админ панели
+      allOf:
+        - $ref: '#/components/schemas/BaseUser'
+        - type: object
+          properties:
+            course_amount:
+              type: number
+          required:
+            - course_amount
+    TransactionStatus:
+      description: Статус транзакции
+      type: string
+      enum:
+        - pending
+        - confirmed
+        - rejected
+    AdminTransaction:
+      description: Транзакция в списке транзакций ученика
+      type: object
+      properties:
+        id:
+          type: number
+        invoice_id:
+          type: string
+        amount:
+          type: number
+        created_at:
+          type: string
+        status:
+          $ref: '#/components/schemas/TransactionStatus'
+        user_id:
+          type: number
+        course_id:
+          type: number
+      required:
+        - id
+        - invoice_id
+        - amount
+        - created_at
+        - status
+        - user_id
+        - course_id
