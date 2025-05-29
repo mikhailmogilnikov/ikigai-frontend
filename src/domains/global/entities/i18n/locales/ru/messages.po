@@ -104,7 +104,7 @@ msgstr "Админ"
 msgid "Анимации клавиатуры"
 msgstr "Анимации клавиатуры"
 
-#: src/routes/(education)/_guard/index.tsx:22
+#: src/routes/(education)/_guard/index.tsx:21
 msgid "В процессе изучения"
 msgstr "В процессе изучения"
 
@@ -198,7 +198,7 @@ msgstr "Доступность"
 msgid "Завершен"
 msgstr "Завершен"
 
-#: src/routes/(education)/_guard/index.tsx:30
+#: src/routes/(education)/_guard/index.tsx:29
 msgid "Завершенные"
 msgstr "Завершенные"
 
@@ -218,7 +218,7 @@ msgstr "из"
 msgid "Имя"
 msgstr "Имя"
 
-#: src/routes/(education)/_guard/transactions.tsx:23
+#: src/routes/(education)/_guard/transactions.tsx:22
 #: src/domains/education/widgets/menu/ui/navigation.tsx:28
 msgid "История транзакций"
 msgstr "История транзакций"
@@ -259,7 +259,7 @@ msgstr "Курс"
 msgid "Курсы"
 msgstr "Курсы"
 
-#: src/routes/(education)/_guard/shop.tsx:23
+#: src/routes/(education)/_guard/shop.tsx:22
 #: src/domains/education/widgets/menu/ui/navigation.tsx:18
 #: src/domains/education/widgets/header/ui/desktop-navigation.tsx:22
 msgid "Магазин курсов"
@@ -311,7 +311,7 @@ msgstr "Начать"
 msgid "Начать курс"
 msgstr "Начать курс"
 
-#: src/routes/(education)/_guard/index.tsx:26
+#: src/routes/(education)/_guard/index.tsx:25
 msgid "Не начатые"
 msgstr "Не начатые"
 

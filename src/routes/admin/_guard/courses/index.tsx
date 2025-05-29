@@ -1,4 +1,3 @@
-import { useSuspenseQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 
 import { AdminCoursesTable } from '~/domains/admin/widgets/courses-table';
@@ -12,7 +11,7 @@ export const Route = createFileRoute('/admin/_guard/courses/')({
 });
 
 function RouteComponent() {
-  const { data } = useSuspenseQuery(rqClient.queryOptions('get', '/admin/courses'));
+  const { data } = rqClient.useSuspenseQuery('get', '/admin/courses');
 
   return (
     <div className='-m-4'>

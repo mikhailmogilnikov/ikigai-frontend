@@ -1,6 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { lazy, Suspense, useEffect } from 'react';
-import { useSuspenseQuery } from '@tanstack/react-query';
 
 import { getFirstUncompletedLesson } from '~/domains/education/entities/lesson';
 import { CourseSidebar } from '~/domains/education/widgets/course-sidebar';
@@ -54,12 +53,12 @@ function RouteComponent() {
   const { course: courseId } = Route.useParams();
   const { activeLessonId } = Route.useLoaderData();
 
-  const { data: courseLessons } = useSuspenseQuery(
-    rqClient.queryOptions('get', '/courses/{courseId}/lessons', { params: { path: { courseId } } }),
-  );
-  const { data: lesson } = useSuspenseQuery(
-    rqClient.queryOptions('get', '/lessons/{lessonId}', { params: { path: { lessonId: activeLessonId.toString() } } }),
-  );
+  const { data: courseLessons } = rqClient.useSuspenseQuery('get', '/courses/{courseId}/lessons', {
+    params: { path: { courseId } },
+  });
+  const { data: lesson } = rqClient.useSuspenseQuery('get', '/lessons/{lessonId}', {
+    params: { path: { lessonId: activeLessonId.toString() } },
+  });
 
   useEffect(() => {
     setSidebar(

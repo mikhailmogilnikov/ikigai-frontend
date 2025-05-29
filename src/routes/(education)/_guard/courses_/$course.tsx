@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { useSuspenseQuery } from '@tanstack/react-query';
 
 import { Container } from '~/shared/ui/primitives/container';
 import { PageLoader } from '~/shared/ui/common/page-loader';
@@ -17,9 +16,7 @@ export const Route = createFileRoute('/(education)/_guard/courses_/$course')({
 
 function RouteComponent() {
   const { course: courseId } = Route.useParams();
-  const { data } = useSuspenseQuery(
-    rqClient.queryOptions('get', '/courses/{courseId}', { params: { path: { courseId } } }),
-  );
+  const { data } = rqClient.useSuspenseQuery('get', '/courses/{courseId}', { params: { path: { courseId } } });
 
   return (
     <Container>

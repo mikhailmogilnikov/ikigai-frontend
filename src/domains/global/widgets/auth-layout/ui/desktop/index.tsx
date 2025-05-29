@@ -1,5 +1,5 @@
 import { Flex } from '~/shared/ui/primitives/flex';
-import noise from '~/shared/assets/images/noise.webp';
+import noise from '~/shared/assets/images/Noise.avif';
 import { LogoIcon } from '~/shared/assets/svg/logo';
 
 interface AuthLayoutDesktopProps {

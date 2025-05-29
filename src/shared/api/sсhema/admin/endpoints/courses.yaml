@@ -34,15 +34,6 @@ createAdminCourse:
   responses:
     '201':
       description: OK
-      # content:
-      #   application/json:
-      #     schema:
-      #       type: object
-      #       properties:
-      #         name:
-      #           type: string
-      #       required:
-      #         - name
     '401':
       description: Unauthorized
       content:
@@ -55,3 +46,32 @@ createAdminCourse:
         application/json:
           schema:
             $ref: '../../shared/responses.yaml#/schemas/ForbiddenError'
+
+getAdminCourse:
+  summary: "Получить курс для админа"
+  description: "Получить курс для админа"
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/course-schemas.yaml#/schemas/AdminCourse'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/ForbiddenError'
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../../shared/responses.yaml#/schemas/NotFoundError'

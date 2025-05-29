@@ -1,7 +1,6 @@
 import { useLingui } from '@lingui/react/macro';
 import { createFileRoute } from '@tanstack/react-router';
 import { msg } from '@lingui/core/macro';
-import { useSuspenseQuery } from '@tanstack/react-query';
 
 import { CourseCard, CourseCollectionStatus, sortCollectionCourses } from '~/domains/education/entities/course';
 import { CoursesSection } from '~/domains/education/widgets/course-section';
@@ -33,7 +32,7 @@ const COURSE_SECTIONS = [
 
 function RouteComponent() {
   const { i18n } = useLingui();
-  const { data } = useSuspenseQuery(rqClient.queryOptions('get', '/courses/my-courses'));
+  const { data } = rqClient.useSuspenseQuery('get', '/courses/my-courses');
 
   const sortedCourses = sortCollectionCourses(data);
 

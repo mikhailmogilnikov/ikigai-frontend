@@ -1,5 +1,4 @@
 import { useLingui } from '@lingui/react/macro';
-import { useSuspenseQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 
 import { CourseCard } from '~/domains/education/entities/course';
@@ -16,7 +15,7 @@ export const Route = createFileRoute('/(education)/_guard/shop')({
 
 function RouteComponent() {
   const { t } = useLingui();
-  const { data } = useSuspenseQuery(rqClient.queryOptions('get', '/courses/store'));
+  const { data } = rqClient.useSuspenseQuery('get', '/courses/store');
 
   return (
     <Container>

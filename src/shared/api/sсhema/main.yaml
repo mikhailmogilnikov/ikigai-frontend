@@ -114,7 +114,7 @@ paths:
       summary: "Получить курс по id"
       tags:
         - admin
-      # $ref: ./admin/endpoints/courses.yaml#/getAdminCourse
+      $ref: ./admin/endpoints/courses.yaml#/getAdminCourse
     patch:
       summary: "Обновить курс по id"
       tags:
