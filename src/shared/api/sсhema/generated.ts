@@ -1027,14 +1027,10 @@ export interface components {
       users_amount: number;
       finished_users_amount: number;
     };
-    /** @description Урок для админа */
-    AdminLesson: components['schemas']['BaseLesson'] & {
-      is_published: boolean;
-    };
     /** @description Модуль для админа */
     AdminModule: components['schemas']['BaseModule'] & {
       is_published: boolean;
-      lessons: components['schemas']['AdminLesson'][];
+      lessons_count: number;
     };
     /** @description Курс для админа в полном виде */
     AdminCourseFull: components['schemas']['BaseCourse'] & {

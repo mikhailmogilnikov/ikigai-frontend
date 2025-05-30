@@ -7,7 +7,7 @@ interface InputLabelProps extends LabelProps {
 
 export function InputLabel({ children, label, ...props }: InputLabelProps) {
   return (
-    <Flex col>
+    <Flex col gap='sm'>
       <Label {...props}>{label}</Label>
       {children}
     </Flex>

@@ -1,0 +1,1 @@
+export { EditCourseInfo } from './ui';

@@ -42,6 +42,10 @@ msgstr "{modules_amount, plural, one {модуль} few {модуля} many {м�
 msgid "<0>Попробуйте</0> <1>обновить страницу</1> <2>или</2> <3>вернуться на главную</3>"
 msgstr "<0>Попробуйте</0> <1>обновить страницу</1> <2>или</2> <3>вернуться на главную</3>"
 
+#: src/domains/admin/entities/module/ui/course-modules/index.tsx:34
+msgid "3 урока"
+msgstr "3 урока"
+
 #: src/shared/ui/common/video-player/use-video.ts:30
 msgid "AirPlay"
 msgstr "AirPlay"
@@ -176,6 +180,7 @@ msgstr "Дата регистрации"
 msgid "Дата создания"
 msgstr "Дата создания"
 
+#: src/domains/admin/features/add-module/ui/ui/modal.tsx:75
 #: src/domains/admin/features/add-course/ui/modal.tsx:75
 msgid "Добавить"
 msgstr "Добавить"
@@ -184,6 +189,11 @@ msgstr "Добавить"
 #: src/domains/admin/features/add-course/ui/button.tsx:20
 msgid "Добавить курс"
 msgstr "Добавить курс"
+
+#: src/domains/admin/features/add-module/ui/ui/modal.tsx:48
+#: src/domains/admin/features/add-module/ui/ui/button.tsx:20
+msgid "Добавить модуль"
+msgstr "Добавить модуль"
 
 #: src/shared/ui/common/video-player/use-video.ts:67
 msgid "Дорожка"
@@ -213,6 +223,10 @@ msgstr "Зациклить видео"
 #: src/shared/ui/common/data-table/pagination.tsx:16
 msgid "из"
 msgstr "из"
+
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:26
+msgid "Изображение не может быть пустым"
+msgstr "Изображение не может быть пустым"
 
 #: src/domains/admin/widgets/users-table/config/columns.tsx:25
 msgid "Имя"
@@ -251,6 +265,7 @@ msgstr "Корректно"
 msgid "Купить"
 msgstr "Купить"
 
+#: src/routes/admin/_guard/courses_/$course.tsx:31
 #: src/domains/education/widgets/transactions-table/ui/index.tsx:20
 msgid "Курс"
 msgstr "Курс"
@@ -277,6 +292,14 @@ msgstr "Меню"
 msgid "Модулей"
 msgstr "Модулей"
 
+#: src/routes/admin/_guard/courses_/$course.tsx:38
+msgid "Модули курса"
+msgstr "Модули курса"
+
+#: src/domains/admin/features/add-module/ui/ui/modal.tsx:30
+msgid "Модуль \"{title}\" успешно добавлен"
+msgstr "Модуль \"{title}\" успешно добавлен"
+
 #: src/domains/education/widgets/menu/ui/navigation.tsx:13
 msgid "Мои курсы"
 msgstr "Мои курсы"
@@ -290,6 +313,7 @@ msgid "Навигация"
 msgstr "Навигация"
 
 #: src/domains/admin/widgets/courses-table/config/columns.tsx:19
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:59
 msgid "Название"
 msgstr "Название"
 
@@ -297,6 +321,15 @@ msgstr "Название"
 #: src/domains/admin/features/add-course/ui/modal.tsx:57
 msgid "Название курса"
 msgstr "Название курса"
+
+#: src/domains/admin/features/add-module/ui/ui/modal.tsx:52
+#: src/domains/admin/features/add-module/ui/ui/modal.tsx:57
+msgid "Название модуля"
+msgstr "Название модуля"
+
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:21
+msgid "Название не может быть пустым"
+msgstr "Название не может быть пустым"
 
 #: src/shared/ui/common/video-player/use-video.ts:62
 #: src/domains/education/widgets/menu/ui/settings.tsx:11
@@ -319,6 +352,10 @@ msgstr "Начать курс"
 msgid "Не начатые"
 msgstr "Не начатые"
 
+#: src/domains/admin/entities/module/ui/course-modules/index.tsx:30
+msgid "Не опубликован"
+msgstr "Не опубликован"
+
 #: src/domains/education/entities/course/ui/completed-course-modal/index.tsx:29
 msgid "Не стоит останавливаться на достигнутом – продолжайте изучать новые темы, или повторите ранее пройденные.<0/><1/>Завершенный курс будет доступен в вашем профиле в любое время."
 msgstr "Не стоит останавливаться на достигнутом – продолжайте изучать новые темы, или повторите ранее пройденные.<0/><1/>Завершенный курс будет доступен в вашем профиле в любое время."
@@ -326,6 +363,14 @@ msgstr "Не стоит останавливаться на достигнуто
 #: src/domains/admin/features/add-course/ui/modal.tsx:25
 msgid "Не удалось добавить курс \"{title}\""
 msgstr "Не удалось добавить курс \"{title}\""
+
+#: src/domains/admin/features/add-module/ui/ui/modal.tsx:25
+msgid "Не удалось добавить модуль \"{title}\""
+msgstr "Не удалось добавить модуль \"{title}\""
+
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:27
+msgid "Неверный URL"
+msgstr "Неверный URL"
 
 #: src/domains/education/entities/test/ui/lesson-test/index.tsx:95
 msgid "Некорректно"
@@ -355,9 +400,26 @@ msgstr "Обычная"
 msgid "Ожидает"
 msgstr "Ожидает"
 
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:104
+msgid "Описание"
+msgstr "Описание"
+
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:23
+msgid "Описание не может быть пустым"
+msgstr "Описание не может быть пустым"
+
 #: src/domains/admin/widgets/courses-table/config/columns.tsx:35
+#: src/domains/admin/entities/module/ui/course-modules/index.tsx:30
 msgid "Опубликован"
 msgstr "Опубликован"
+
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:122
+msgid "Опубликовать курс"
+msgstr "Опубликовать курс"
+
+#: src/routes/admin/_guard/courses_/$course.tsx:33
+msgid "Основная информация"
+msgstr "Основная информация"
 
 #: src/domains/admin/widgets/transactions-table/config/columns.tsx:75
 msgid "Отклонен"
@@ -540,6 +602,14 @@ msgstr "Скорость"
 msgid "Следующий урок"
 msgstr "Следующий урок"
 
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:129
+msgid "Сохранить"
+msgstr "Сохранить"
+
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:89
+msgid "Ссылка на изображение"
+msgstr "Ссылка на изображение"
+
 #: src/domains/admin/widgets/transactions-table/config/columns.tsx:57
 msgid "Статус"
 msgstr "Статус"
@@ -622,8 +692,13 @@ msgid "Цвет"
 msgstr "Цвет"
 
 #: src/domains/admin/widgets/courses-table/config/columns.tsx:25
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:74
 msgid "Цена"
 msgstr "Цена"
+
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:22
+msgid "Цена не может быть отрицательной"
+msgstr "Цена не может быть отрицательной"
 
 #: src/shared/ui/common/video-player/use-video.ts:46
 msgid "Шрифт"
