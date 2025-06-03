@@ -6,7 +6,7 @@ schemas:
       message:
         type: string
       code:
-        type: string
+        type: number
     required:
       - message
       - code
@@ -30,3 +30,71 @@ schemas:
     description: Ошибка запроса
     allOf:
       - $ref: '#/schemas/ErrorSchema'
+
+# Переиспользуемые ответы
+responses:
+  UnauthorizedResponse:
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          $ref: '#/schemas/UnauthorizedError'
+  
+  ForbiddenResponse:
+    description: Forbidden
+    content:
+      application/json:
+        schema:
+          $ref: '#/schemas/ForbiddenError'
+  
+  NotFoundResponse:
+    description: Not Found
+    content:
+      application/json:
+        schema:
+          $ref: '#/schemas/NotFoundError'
+  
+  BadRequestResponse:
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          $ref: '#/schemas/BadRequestError'
+
+  
+
+# Группы общих ответов для частых комбинаций
+responseGroups:
+  # Для простых админских операций без параметров
+  AdminBasicErrors:
+    '401':
+      $ref: '#/responses/UnauthorizedResponse'
+    '403':
+      $ref: '#/responses/ForbiddenResponse'
+  
+  # Для операций с конкретными ресурсами (CRUD)
+  AdminResourceErrors:
+    '401':
+      $ref: '#/responses/UnauthorizedResponse'
+    '403':
+      $ref: '#/responses/ForbiddenResponse'
+    '404':
+      $ref: '#/responses/NotFoundResponse'
+  
+  # Для операций создания/обновления с валидацией
+  AdminCRUDErrors:
+    '400':
+      $ref: '#/responses/BadRequestResponse'
+    '401':
+      $ref: '#/responses/UnauthorizedResponse'
+    '403':
+      $ref: '#/responses/ForbiddenResponse'
+    '404':
+      $ref: '#/responses/NotFoundResponse'
+  
+  # Для публичных операций
+  PublicErrors:
+    '401':
+      $ref: '#/responses/UnauthorizedResponse'
+    '404':
+      $ref: '#/responses/NotFoundResponse'

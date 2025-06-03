@@ -1,3 +1,8 @@
+# Макросы для переиспользования ошибок
+authErrors: &authErrors
+  '401':
+    $ref: '../../shared/responses.yaml#/responses/UnauthorizedResponse'
+
 getTransactions:
   description: "Получить список транзакций"
   # security:
@@ -11,9 +16,4 @@ getTransactions:
             type: array
             items:
               $ref: '../schemas/transaction-schemas.yaml#/schemas/Transaction'
-    '401':
-      description: "Unauthorized"
-      content:
-        application/json:
-          schema:
-            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+    <<: *authErrors

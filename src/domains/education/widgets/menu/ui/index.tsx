@@ -50,7 +50,7 @@ export function EducationMenu() {
         <AdaptiveModalContent>
           <Flex col className='mt-4 gap-8 max-md:mt-12 md:mb-4'>
             {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
-            <UserInfo name='Михаил Могильников' phone='+7 (999) 999-99-99' />
+            <UserInfo name='Михаил Могильников' email='mikhail@mogilnikov.ru' avatar_url='https://i.pravatar.cc/300' />
             <MenuNavigation closeMenu={handleCloseMenu} />
             <MenuSettings />
           </Flex>

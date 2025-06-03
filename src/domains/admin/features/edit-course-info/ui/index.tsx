@@ -1,34 +1,72 @@
 import { Trans, useLingui } from '@lingui/react/macro';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { useForm, UseFormWatch } from 'react-hook-form';
 import { z } from 'zod';
+import { useMemo } from 'react';
+import { toast } from 'sonner';
+import { useQueryClient } from '@tanstack/react-query';
+import { useParams } from '@tanstack/react-router';
 
-import { ApiComponents } from '~/shared/api';
+import { ApiComponents, rqClient } from '~/shared/api';
 import { Input } from '~/shared/ui/primitives/input';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '~/shared/ui/primitives/form';
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '~/shared/ui/primitives/form';
 import { Textarea } from '~/shared/ui/primitives/textarea';
 import { Button } from '~/shared/ui/primitives/button/button';
 import { Switch } from '~/shared/ui/primitives/switch';
 
 interface EditCourseInfoProps {
-  course: ApiComponents['AdminCourseFull'];
+  course: ApiComponents['AdminCourseMainInfo'];
+}
+
+interface EditCourseInfoSchema {
+  title: string;
+  price: number;
+  description: string;
+  image_url: string;
+  is_published: boolean;
 }
 
 export function EditCourseInfo({ course }: EditCourseInfoProps) {
   const { t } = useLingui();
+  const queryClient = useQueryClient();
+  const { course: courseId } = useParams({ from: '/admin/_guard/courses_/$course' });
 
-  const editCourseInfoSchema = z.object({
-    title: z.string().min(1, { message: t`Название не может быть пустым` }),
-    price: z.coerce.number().min(0, { message: t`Цена не может быть отрицательной` }),
-    description: z.string().min(1, { message: t`Описание не может быть пустым` }),
-    image_url: z
-      .string()
-      .min(1, { message: t`Изображение не может быть пустым` })
-      .url({ message: t`Неверный URL` }),
-    is_published: z.boolean(),
+  const { mutate: editCourseInfo } = rqClient.useMutation('patch', '/admin/courses/{courseId}', {
+    onError: () => {
+      toast.error(t`Не удалось изменить информацию о курсе`);
+    },
+    onSuccess: async () => {
+      await queryClient.invalidateQueries(
+        rqClient.queryOptions('get', '/admin/courses/{courseId}', {
+          params: { path: { courseId } },
+        }),
+      );
+      toast.success(t`Информация о курсе успешно изменена`);
+    },
   });
 
-  type EditCourseInfoSchema = z.infer<typeof editCourseInfoSchema>;
+  const editCourseInfoSchema = useMemo(
+    () =>
+      z.object({
+        title: z.string().min(1, { message: t`Название не может быть пустым` }),
+        price: z.coerce.number().min(0, { message: t`Цена не может быть отрицательной` }),
+        description: z.string().min(1, { message: t`Описание не может быть пустым` }),
+        image_url: z
+          .string()
+          .min(1, { message: t`Изображение не может быть пустым` })
+          .url({ message: t`Неверный URL` }),
+        is_published: z.boolean(),
+      }),
+    [t],
+  );
 
   const form = useForm<EditCourseInfoSchema>({
     resolver: zodResolver(editCourseInfoSchema),
@@ -42,9 +80,10 @@ export function EditCourseInfo({ course }: EditCourseInfoProps) {
   });
 
   function onSubmit(values: EditCourseInfoSchema) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+    editCourseInfo({
+      body: values,
+      params: { path: { courseId } },
+    });
   }
 
   return (
@@ -71,7 +110,7 @@ export function EditCourseInfo({ course }: EditCourseInfoProps) {
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                <Trans>Цена</Trans>
+                <Trans>Цена за курс (₽)</Trans>
               </FormLabel>
               <FormControl>
                 <Input className='bg-default' {...field} />
@@ -91,6 +130,12 @@ export function EditCourseInfo({ course }: EditCourseInfoProps) {
               <FormControl>
                 <Input className='bg-default' {...field} />
               </FormControl>
+              <FormDescription className='opacity-50'>
+                <Trans>
+                  Ссылка на изображение должна быть в формате URL. Например, https://example.com/image.jpg. Соотношение
+                  сторон 3x2 (например: валидный размер картинки, чтобы ничего не обрезалось - 600x400 или 1200x800)
+                </Trans>
+              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -125,10 +170,36 @@ export function EditCourseInfo({ course }: EditCourseInfoProps) {
             </FormItem>
           )}
         />
-        <Button type='submit' color='success' className='mt-4'>
-          <Trans>Сохранить</Trans>
-        </Button>
+        <EditCourseSaveButton watch={form.watch} course={course} />
       </form>
     </Form>
   );
 }
+
+const EditCourseSaveButton = ({
+  watch,
+  course,
+}: {
+  watch: UseFormWatch<EditCourseInfoSchema>;
+  course: ApiComponents['AdminCourseMainInfo'];
+}) => {
+  const formValues = watch();
+
+  const { title, price, description, image_url, is_published } = course;
+
+  const isDirty = useMemo(() => {
+    return (
+      title !== formValues.title ||
+      price !== formValues.price ||
+      description !== formValues.description ||
+      image_url !== formValues.image_url ||
+      is_published !== formValues.is_published
+    );
+  }, [title, price, description, image_url, is_published, formValues]);
+
+  return (
+    <Button type='submit' isDisabled={!isDirty} color='success' className='mt-4'>
+      <Trans>Сохранить</Trans>
+    </Button>
+  );
+};

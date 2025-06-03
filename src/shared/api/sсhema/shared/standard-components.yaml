@@ -1,0 +1,310 @@
+# 🧩 Стандартные переиспользуемые компоненты API
+
+# Стандартные параметры
+parameters:
+  # Параметры пагинации
+  PageParam:
+    name: page
+    in: query
+    schema:
+      type: integer
+      minimum: 1
+      default: 1
+    description: "Номер страницы (начинается с 1)"
+    example: 1
+
+  LimitParam:
+    name: limit
+    in: query
+    schema:
+      type: integer
+      minimum: 1
+      maximum: 100
+      default: 15
+    description: "Количество элементов на странице (макс. 100)"
+    example: 15
+
+  # Параметры поиска
+  SearchParam:
+    name: search
+    in: query
+    schema:
+      type: string
+      minLength: 1
+      maxLength: 100
+    description: "Поисковый запрос по названию или содержимому"
+    example: "программирование"
+
+  # Параметры сортировки
+  SortParam:
+    name: sort
+    in: query
+    schema:
+      type: string
+      enum: 
+        - title_asc
+        - title_desc
+        - price_asc
+        - price_desc
+        - created_asc
+        - created_desc
+        - rating_asc
+        - rating_desc
+      default: created_desc
+    description: "Поле и направление сортировки"
+    example: "title_asc"
+
+  # Стандартные path параметры
+  CourseIdParam:
+    name: courseId
+    in: path
+    required: true
+    schema:
+      type: string
+      format: uuid
+    description: "Уникальный идентификатор курса"
+    example: "123e4567-e89b-12d3-a456-426614174000"
+
+  LessonIdParam:
+    name: lessonId
+    in: path
+    required: true
+    schema:
+      type: string
+      format: uuid
+    description: "Уникальный идентификатор урока"
+    example: "987fcdeb-51a2-43d1-9f4e-123456789abc"
+
+  ModuleIdParam:
+    name: moduleId
+    in: path
+    required: true
+    schema:
+      type: string
+      format: uuid
+    description: "Уникальный идентификатор модуля"
+    example: "456789ab-cdef-1234-5678-90abcdef1234"
+
+# Стандартные заголовки
+headers:
+  X-RateLimit-Limit:
+    description: "Лимит запросов в час для текущего пользователя"
+    schema:
+      type: integer
+    example: 1000
+
+  X-RateLimit-Remaining:
+    description: "Оставшееся количество запросов в текущем окне"
+    schema:
+      type: integer
+    example: 999
+
+  X-RateLimit-Reset:
+    description: "Время сброса лимита (Unix timestamp)"
+    schema:
+      type: integer
+    example: 1735689600
+
+  X-Request-ID:
+    description: "Уникальный идентификатор запроса для отладки"
+    schema:
+      type: string
+      format: uuid
+    example: "req_123e4567e89b12d3a456426614174000"
+
+# Стандартные схемы данных
+schemas:
+  # Базовые форматы ответов
+  StandardSuccessResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+        description: "Индикатор успешного выполнения запроса"
+      message:
+        type: string
+        example: "Операция выполнена успешно"
+        description: "Человекочитаемое сообщение о результате"
+      data:
+        type: object
+        description: "Полезная нагрузка ответа"
+      meta:
+        $ref: '#/schemas/ResponseMeta'
+    required:
+      - success
+
+  ResponseMeta:
+    type: object
+    properties:
+      timestamp:
+        type: string
+        format: date-time
+        example: "2024-01-15T10:30:00Z"
+        description: "Время выполнения запроса"
+      request_id:
+        type: string
+        format: uuid
+        example: "req_123e4567e89b12d3a456426614174000"
+        description: "Идентификатор запроса для отладки"
+      api_version:
+        type: string
+        example: "2.0.0"
+        description: "Версия API"
+
+  # Пагинация
+  PaginationMeta:
+    type: object
+    properties:
+      current_page:
+        type: integer
+        minimum: 1
+        example: 1
+        description: "Текущая страница"
+      total_pages:
+        type: integer
+        minimum: 0
+        example: 10
+        description: "Общее количество страниц"
+      total_items:
+        type: integer
+        minimum: 0
+        example: 150
+        description: "Общее количество элементов"
+      items_per_page:
+        type: integer
+        minimum: 1
+        example: 15
+        description: "Количество элементов на странице"
+      has_next:
+        type: boolean
+        example: true
+        description: "Есть ли следующая страница"
+      has_prev:
+        type: boolean
+        example: false
+        description: "Есть ли предыдущая страница"
+
+  PaginatedResponse:
+    allOf:
+      - $ref: '#/schemas/StandardSuccessResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              items:
+                type: array
+                description: "Массив элементов текущей страницы"
+              pagination:
+                $ref: '#/schemas/PaginationMeta'
+
+  # Временные метки
+  Timestamps:
+    type: object
+    properties:
+      created_at:
+        type: string
+        format: date-time
+        example: "2024-01-15T10:30:00Z"
+        description: "Дата и время создания"
+      updated_at:
+        type: string
+        format: date-time
+        example: "2024-01-15T10:30:00Z"
+        description: "Дата и время последнего обновления"
+
+  # Базовая сущность
+  BaseEntity:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+        example: "123e4567-e89b-12d3-a456-426614174000"
+        description: "Уникальный идентификатор"
+    allOf:
+      - $ref: '#/schemas/Timestamps'
+    required:
+      - id
+
+# Стандартные ответы
+responses:
+  # Успешные ответы
+  SuccessResponse:
+    description: "Операция выполнена успешно"
+    headers:
+      X-Request-ID:
+        $ref: '#/headers/X-Request-ID'
+    content:
+      application/json:
+        schema:
+          $ref: '#/schemas/StandardSuccessResponse'
+
+  CreatedResponse:
+    description: "Ресурс успешно создан"
+    headers:
+      X-Request-ID:
+        $ref: '#/headers/X-Request-ID'
+      Location:
+        description: "URL созданного ресурса"
+        schema:
+          type: string
+          format: uri
+    content:
+      application/json:
+        schema:
+          $ref: '#/schemas/StandardSuccessResponse'
+
+  # Ответы с пагинацией
+  PaginatedListResponse:
+    description: "Список элементов с пагинацией"
+    headers:
+      X-Request-ID:
+        $ref: '#/headers/X-Request-ID'
+      X-RateLimit-Limit:
+        $ref: '#/headers/X-RateLimit-Limit'
+      X-RateLimit-Remaining:
+        $ref: '#/headers/X-RateLimit-Remaining'
+    content:
+      application/json:
+        schema:
+          $ref: '#/schemas/PaginatedResponse'
+
+  # Rate limiting
+  RateLimitExceededResponse:
+    description: "Превышен лимит запросов"
+    headers:
+      X-RateLimit-Limit:
+        $ref: '#/headers/X-RateLimit-Limit'
+      X-RateLimit-Reset:
+        $ref: '#/headers/X-RateLimit-Reset'
+      X-Request-ID:
+        $ref: '#/headers/X-Request-ID'
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../responses.yaml#/schemas/ErrorSchema'
+            - type: object
+              properties:
+                message:
+                  example: "Превышен лимит запросов. Попробуйте позже."
+                code:
+                  example: "RATE_LIMIT_EXCEEDED"
+
+# Группы параметров для частых комбинаций
+parameterGroups:
+  PaginationParams:
+    - $ref: '#/parameters/PageParam'
+    - $ref: '#/parameters/LimitParam'
+
+  SearchAndSortParams:
+    - $ref: '#/parameters/SearchParam'
+    - $ref: '#/parameters/SortParam'
+
+  FullListParams:
+    - $ref: '#/parameters/PageParam'
+    - $ref: '#/parameters/LimitParam'
+    - $ref: '#/parameters/SearchParam'
+    - $ref: '#/parameters/SortParam' 

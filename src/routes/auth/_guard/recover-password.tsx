@@ -1,14 +1,11 @@
-import { Trans } from '@lingui/react/macro';
 import { createFileRoute } from '@tanstack/react-router';
+
+import { RecoverPasswordForm } from '~/domains/global/features/auth/ui/recover-password-form';
 
 export const Route = createFileRoute('/auth/_guard/recover-password')({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  return (
-    <div>
-      <Trans>Hello "/(auth)/recover-password"!</Trans>
-    </div>
-  );
+  return <RecoverPasswordForm className='w-full max-w-md' />;
 }

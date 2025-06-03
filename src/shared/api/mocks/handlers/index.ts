@@ -4,6 +4,8 @@ import { CONFIG } from '~/shared/config';
 
 import { educationHandlers } from './education';
 import { admin_handlers } from './admin';
+import { authHandlers } from './auth';
+import { userHandlers } from './user';
 
 export const handlers = [
   http.all(`${CONFIG.API_BASE_URL}/*`, async () => {
@@ -11,4 +13,6 @@ export const handlers = [
   }),
   ...educationHandlers,
   ...admin_handlers,
+  ...authHandlers,
+  ...userHandlers,
 ];

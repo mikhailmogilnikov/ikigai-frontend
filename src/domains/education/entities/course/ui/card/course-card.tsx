@@ -11,6 +11,7 @@ import { Progress } from '~/shared/ui/primitives/progress';
 import { Typo } from '~/shared/ui/primitives/typo';
 import { Button } from '~/shared/ui/primitives/button/button';
 import { ApiComponents } from '~/shared/api';
+import { useBuyCourseModal } from '~/domains/education/features/buy-course';
 
 type CourseShop = ApiComponents['ShopCourse'];
 type CourseCollection = ApiComponents['MyCourse'];
@@ -56,7 +57,9 @@ export function CourseCard(props: CourseCardProps) {
 }
 
 function CourseCardContentShop(props: CourseCardProps) {
-  const { price, id, modules_amount, lessons_amount } = props as CourseCardProps & CourseCardContentShopProps;
+  const { price, id, modules_amount, lessons_amount, title } = props as CourseCardProps & CourseCardContentShopProps;
+
+  const { open } = useBuyCourseModal();
 
   return (
     <>
@@ -76,7 +79,13 @@ function CourseCardContentShop(props: CourseCardProps) {
         <LinkButton to='/courses/$course' params={{ course: id.toString() }} className='dark:bg-foreground/5 w-full'>
           <Trans>Подробнее</Trans>
         </LinkButton>
-        <Button className='w-full' color='primary'>
+        <Button
+          className='w-full'
+          color='primary'
+          onClick={() => {
+            open({ id, title, price });
+          }}
+        >
           <Trans>Купить</Trans>
         </Button>
       </Flex>

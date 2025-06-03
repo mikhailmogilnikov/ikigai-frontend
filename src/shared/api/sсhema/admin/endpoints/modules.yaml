@@ -1,0 +1,169 @@
+# Макросы для переиспользования ошибок
+adminResourceErrors: &adminResourceErrors
+  '401':
+    $ref: '../../shared/responses.yaml#/responses/UnauthorizedResponse'
+  '403':
+    $ref: '../../shared/responses.yaml#/responses/ForbiddenResponse'
+  '404':
+    $ref: '../../shared/responses.yaml#/responses/NotFoundResponse'
+
+getAdminCourseModules:
+  summary: "Получить список модулей курса"
+  parameters:
+    - name: courseId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: "Модули успешно получены"
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../schemas/module-schemas.yaml#/schemas/AdminModule'
+    <<: *adminResourceErrors
+
+createAdminModule:
+  summary: "Создать модуль"
+  tags:
+    - admin
+  parameters:
+    - name: courseId
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../shared/schemas/common-schemas.yaml#/schemas/CreateEntityPayload'
+  responses:
+    '201':
+      description: "Модуль успешно создан"
+    <<: *adminResourceErrors
+
+getAdminModule:
+  summary: "Получить основную информацию о модуле"
+  description: "Получить основную информацию о модуле"
+  parameters:
+    - name: moduleId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/module-schemas.yaml#/schemas/AdminModule'
+    <<: *adminResourceErrors
+
+updateAdminModule:
+  summary: "Обновить основную информацию о модуле"
+  description: "Обновить основную информацию о модуле"
+  parameters:
+    - name: moduleId
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+            is_published:
+              type: boolean
+          required:
+            - title
+            - is_published
+  responses:
+    '201':
+      description: OK
+    <<: *adminResourceErrors
+
+deleteAdminModule:
+  summary: "Удалить модуль"
+  description: "Удалить модуль"
+  parameters:
+    - name: moduleId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '201':
+      description: OK
+    <<: *adminResourceErrors
+
+getAdminModuleLessons:
+  summary: "Получить список уроков модуля"
+  description: "Получить список уроков модуля"
+  parameters:
+    - name: moduleId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../schemas/lesson-schemas.yaml#/schemas/AdminLesson'
+    <<: *adminResourceErrors
+
+createAdminModuleLesson:
+  summary: "Создать урок в модуле"
+  description: "Создать урок в модуле"
+  parameters:
+    - name: moduleId
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../shared/schemas/common-schemas.yaml#/schemas/CreateEntityPayload'
+  responses:
+    '201':
+      description: OK
+    <<: *adminResourceErrors
+            
+reorderAdminModules:
+  summary: "Переупорядочить модули курса"
+  tags:
+    - admin
+  parameters:
+    - name: courseId
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '../../shared/schemas/common-schemas.yaml#/schemas/ReorderPayload'
+  responses:
+    '201':
+      description: "Модули успешно переупорядочены"
+    <<: *adminResourceErrors

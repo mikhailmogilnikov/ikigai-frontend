@@ -1,11 +1,28 @@
 schemas:
   AdminLesson:
-    description: Урок для админа
+    description: Урок для админа с полным контентом
     allOf:
       - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseLesson"
       - type: object
         properties:
           is_published:
             type: boolean
+          video:
+            oneOf:
+              - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseVideo"
+              - type: "null"
+          content:
+            type: string
+          tests:
+            type: array
+            items:
+              $ref: "../../edu/schemas/course-schemas.yaml#/schemas/TestWithVariants"
+          is_completed:
+            type: boolean
+            description: "Статус завершения урока (для административной статистики)"
         required:
           - is_published
+          - video
+          - content
+          - tests
+          - is_completed

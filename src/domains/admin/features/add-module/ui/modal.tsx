@@ -1,5 +1,6 @@
 import { Trans, useLingui } from '@lingui/react/macro';
 import { useQueryClient } from '@tanstack/react-query';
+import { useParams } from '@tanstack/react-router';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
@@ -17,15 +18,20 @@ interface AddModuleModalProps {
 export function AddModuleModal({ open, onOpenChange }: AddModuleModalProps) {
   const { t } = useLingui();
   const queryClient = useQueryClient();
+  const { course } = useParams({ from: '/admin/_guard/courses_/$course' });
 
   const [title, setTitle] = useState('');
 
-  const { mutate: createCourse, isPending } = rqClient.useMutation('post', '/admin/courses', {
+  const { mutate: createCourse, isPending } = rqClient.useMutation('post', '/admin/courses/{courseId}/modules', {
     onError: () => {
       toast.error(t`Не удалось добавить модуль "${title}"`);
     },
     onSuccess: async () => {
-      await queryClient.invalidateQueries(rqClient.queryOptions('get', '/admin/courses'));
+      await queryClient.invalidateQueries(
+        rqClient.queryOptions('get', '/admin/courses/{courseId}/modules', {
+          params: { path: { courseId: course } },
+        }),
+      );
 
       toast.success(t`Модуль "${title}" успешно добавлен`);
       setTitle('');
@@ -33,17 +39,17 @@ export function AddModuleModal({ open, onOpenChange }: AddModuleModalProps) {
     },
   });
 
-  const handleCreateCourse = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleCreateModule = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!title) return;
 
-    createCourse({ body: { title } });
+    createCourse({ body: { title }, params: { path: { courseId: course } } });
   };
 
   return (
     <Modal open={open} onOpenChange={onOpenChange}>
-      <form onSubmit={handleCreateCourse}>
+      <form onSubmit={handleCreateModule}>
         <ModalHeader>
           <Trans>Добавить модуль</Trans>
         </ModalHeader>

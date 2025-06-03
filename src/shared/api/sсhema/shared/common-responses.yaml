@@ -1,0 +1,40 @@
+# Утилитарные макросы для быстрого переиспользования ответов
+# Используйте через allOf или merge в ваших эндпоинтах
+
+# Базовые ошибки авторизации для любых защищенных эндпоинтов
+AuthErrors: &authErrors
+  '401':
+    $ref: '../responses.yaml#/responses/UnauthorizedResponse'
+
+# Ошибки для админских операций со списками
+AdminListErrors: &adminListErrors
+  <<: *authErrors
+  '403':
+    $ref: '../responses.yaml#/responses/ForbiddenResponse'
+
+# Ошибки для админских CRUD операций с конкретными ресурсами
+AdminResourceErrors: &adminResourceErrors
+  <<: *adminListErrors
+  '404':
+    $ref: '../responses.yaml#/responses/NotFoundResponse'
+
+# Полный набор ошибок для создания/обновления с валидацией
+AdminFullErrors: &adminFullErrors
+  '400':
+    $ref: '../responses.yaml#/responses/BadRequestResponse'
+  <<: *adminResourceErrors
+
+# Ошибки для публичных эндпоинтов
+PublicErrors: &publicErrors
+  '401':
+    $ref: '../responses.yaml#/responses/UnauthorizedResponse'
+  '404':
+    $ref: '../responses.yaml#/responses/NotFoundResponse'
+
+# Экспорт для использования
+exports:
+  AuthErrors: *authErrors
+  AdminListErrors: *adminListErrors  
+  AdminResourceErrors: *adminResourceErrors
+  AdminFullErrors: *adminFullErrors
+  PublicErrors: *publicErrors 

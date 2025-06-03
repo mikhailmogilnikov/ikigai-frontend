@@ -6,7 +6,7 @@ import { Image } from '../image';
 import { avatarTV, AvatarTvProps } from './classnames';
 
 interface AvatarProps extends AvatarTvProps, HTMLAttributes<HTMLDivElement> {
-  src: string;
+  src?: string;
   alt: string;
 }
 
@@ -25,7 +25,7 @@ export function Avatar(props: AvatarProps) {
 
   return (
     <div className={avatarClassName} {...rest}>
-      {isError ? (
+      {isError || !src ? (
         <PiUserBold className='size-1/2 opacity-50' />
       ) : (
         <Image src={src} alt={alt} onError={handleLoad} className='h-full w-full' />

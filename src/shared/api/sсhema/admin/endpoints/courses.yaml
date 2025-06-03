@@ -11,11 +11,7 @@ getAdminCourses:
             items:
               $ref: '../schemas/course-schemas.yaml#/schemas/AdminCourse'
     '401':
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+      $ref: '../../shared/responses.yaml#/responses/UnauthorizedResponse'
 
 createAdminCourse:
   summary: "Создать курс"
@@ -25,27 +21,14 @@ createAdminCourse:
     content:
       application/json:
         schema:
-          type: object
-          properties:
-            title:
-              type: string
-          required:
-            - title
+          $ref: '../../shared/schemas/common-schemas.yaml#/schemas/CreateEntityPayload'
   responses:
     '201':
       description: OK
     '401':
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+      $ref: '../../shared/responses.yaml#/responses/UnauthorizedResponse'
     '403':
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '../../shared/responses.yaml#/schemas/ForbiddenError'
+      $ref: '../../shared/responses.yaml#/responses/ForbiddenResponse'
 
 getAdminCourse:
   summary: "Получить курс для админа"
@@ -62,22 +45,64 @@ getAdminCourse:
       content:
         application/json:
           schema:
-            $ref: '../schemas/course-schemas.yaml#/schemas/AdminCourseFull'
+            $ref: '../schemas/course-schemas.yaml#/schemas/AdminCourseMainInfo'
     '401':
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+      $ref: '../../shared/responses.yaml#/responses/UnauthorizedResponse'
     '403':
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '../../shared/responses.yaml#/schemas/ForbiddenError'
+      $ref: '../../shared/responses.yaml#/responses/ForbiddenResponse'
     '404':
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: '../../shared/responses.yaml#/schemas/NotFoundError'
+      $ref: '../../shared/responses.yaml#/responses/NotFoundResponse'
+
+updateAdminCourse:
+  summary: "Обновить основную информацию о курсе"
+  description: "Обновить основную информацию о курсе"
+  parameters:
+    - name: courseId
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    required: true
+    content:
+      application/json:
+        type: object
+        properties:
+          title:
+            type: string
+          description:
+            type: string
+          price:
+            type: number
+          image_url:
+            type: string
+          is_published:
+            type: boolean
+  responses:
+    '201':
+      description: OK
+    '401':
+      $ref: '../../shared/responses.yaml#/responses/UnauthorizedResponse'
+    '403':
+      $ref: '../../shared/responses.yaml#/responses/ForbiddenResponse'
+    '404':
+      $ref: '../../shared/responses.yaml#/responses/NotFoundResponse'
+            
+deleteAdminCourse:
+  summary: "Удалить курс"
+  description: "Удалить курс"
+  parameters:
+    - name: courseId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '201':
+      description: OK
+    '401':
+      $ref: '../../shared/responses.yaml#/responses/UnauthorizedResponse'
+    '403':
+      $ref: '../../shared/responses.yaml#/responses/ForbiddenResponse'
+    '404':
+      $ref: '../../shared/responses.yaml#/responses/NotFoundResponse'

@@ -3,7 +3,6 @@ import { createFileRoute } from '@tanstack/react-router';
 
 import { Container } from '~/shared/ui/primitives/container';
 import { TransactionsTable } from '~/domains/education/widgets/transactions-table';
-import { PageLoader } from '~/shared/ui/common/page-loader';
 import { rqClient } from '~/shared/api';
 
 export const Route = createFileRoute('/(education)/_guard/transactions')({
@@ -11,7 +10,6 @@ export const Route = createFileRoute('/(education)/_guard/transactions')({
   loader: ({ context: { queryClient } }) => {
     return queryClient.ensureQueryData(rqClient.queryOptions('get', '/transactions'));
   },
-  pendingComponent: () => <PageLoader type='layout' />,
 });
 
 function RouteComponent() {

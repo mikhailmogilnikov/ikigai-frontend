@@ -22,8 +22,8 @@ schemas:
       - users_amount
       - finished_users_amount
 
-  AdminCourseFull:
-    description: Курс для админа в полном виде
+  AdminCourseMainInfo:
+    description: Основная информация о курсе
     allOf:
       - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseCourse"
       - type: object
@@ -34,12 +34,13 @@ schemas:
             type: string
           price:
             type: number
-          modules:
-            type: array
-            items:
-              $ref: "../schemas/module-schemas.yaml#/schemas/AdminModule"
+          users_amount:
+            type: number
+          finished_users_amount:
+            type: number
         required:
           - is_published
           - description
           - price
-          - modules
+          - users_amount
+          - finished_users_amount

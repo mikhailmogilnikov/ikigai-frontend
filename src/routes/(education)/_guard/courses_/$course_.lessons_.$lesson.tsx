@@ -6,7 +6,6 @@ import { CourseSidebar } from '~/domains/education/widgets/course-sidebar';
 import { LessonTests } from '~/domains/education/widgets/lesson-tests';
 import { useAppLayout } from '~/domains/global/widgets/layout';
 import { MarkdownRenderer } from '~/domains/global/widgets/markdown-renderer';
-import { PageLoader } from '~/shared/ui/common/page-loader';
 import { Container } from '~/shared/ui/primitives/container';
 import { Skeleton } from '~/shared/ui/primitives/skeleton';
 import { rqClient } from '~/shared/api';
@@ -17,7 +16,6 @@ const VideoPlayer = lazy(() =>
 
 export const Route = createFileRoute('/(education)/_guard/courses_/$course_/lessons_/$lesson')({
   component: RouteComponent,
-  pendingComponent: () => <PageLoader type='layout' />,
   loader: async ({ context: { queryClient }, params: { course, lesson } }) => {
     const courseLessonsData = await queryClient.ensureQueryData(
       rqClient.queryOptions('get', '/courses/{courseId}/lessons', { params: { path: { courseId: course } } }),

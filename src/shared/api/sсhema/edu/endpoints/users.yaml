@@ -1,3 +1,10 @@
+# Макросы для переиспользования ошибок
+publicErrors: &publicErrors
+  '401':
+    $ref: '../../shared/responses.yaml#/responses/UnauthorizedResponse'
+  '404':
+    $ref: '../../shared/responses.yaml#/responses/NotFoundResponse'
+
 getMe:
   description: Получает информацию о текущем пользователе
   responses:
@@ -7,16 +14,7 @@ getMe:
         application/json:
           schema:
             $ref: '../schemas/user-schemas.yaml#/schemas/Student'
-    '401':
-      content:
-        application/json:
-          schema:
-            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
-    '404':
-      content:
-        application/json:
-          schema:
-            $ref: '../../shared/responses.yaml#/schemas/NotFoundError'
+    <<: *publicErrors
     
             
             

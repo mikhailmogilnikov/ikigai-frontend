@@ -37,10 +37,16 @@ schemas:
         type: string
       order:
         type: number
+      module_id:
+        type: number
+      course_id:
+        type: number
     required:
       - id
       - title
       - order
+      - module_id
+      - course_id
 
   BaseModule:
     summary: Базовая схема модуля в курсе
@@ -53,10 +59,13 @@ schemas:
         type: string
       order:
         type: number
+      course_id:
+        type: number
     required:
       - id
       - title
       - order
+      - course_id
 
   BaseVideo:
     summary: Базовая схема видео в уроке

@@ -1,82 +1,170 @@
 openapi: 3.1.0
 info:
   title: Ikigai API
-  version: 1.0.0
-  description: API to manage Ikigai
+  version: 2.0.0
+  description: |
+    # 🎓 Ikigai Learning Platform API
+
+    Документация для API платформы онлайн обучения Ikigai.
+
+    ## 📋 Основные возможности
+    - 🔐 Аутентификация и управление пользователями
+    - 📚 Управление курсами и уроками
+    - 💳 Система платежей и транзакций
+    - 📊 Административная панель
+security:
+  - BearerAuth: []
 tags:
   - name: auth
-    description: Маршруты для авторизации
+    description: 🔐 Аутентификация и авторизация
   - name: public
-    description: Маршруты для учащихся
+    description: 🎓 API для студентов
   - name: admin
-    description: Административные маршруты
+    description: ⚙️ Административный API
 paths:
   /auth/login:
     post:
       summary: Вход в систему
+      description: |
+        Аутентификация пользователя по email и паролю.
+        Возвращает JWT токен для дальнейших запросов.
       tags:
         - auth
-      post:
-        summary: Вход в систему
-        tags:
-          - auth
-        requestBody:
-          $ref: ../schemas/auth-schemas.yaml#/schemas/AuthLogin
-        responses:
-          '200':
-            $ref: ../../shared/responses.yaml#/schemas/SuccessResponse
-          '404':
-            $ref: ../../shared/responses.yaml#/schemas/NotFoundError
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthLogin'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                required:
+                  - access_token
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
   /auth/register:
     post:
       summary: Регистрация в системе
+      description: |
+        Создание нового аккаунта пользователя.
+        После регистрации отправляется письмо для подтверждения email.
       tags:
         - auth
-      post:
-        summary: Регистрация в системе
-        tags:
-          - auth
-        requestBody:
-          $ref: ../schemas/auth-schemas.yaml#/schemas/AuthRegister
-        responses:
-          '200':
-            $ref: ../../shared/responses.yaml#/schemas/SuccessResponse
-          '404':
-            $ref: ../../shared/responses.yaml#/schemas/NotFoundError
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthRegister'
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+  /auth/register/confirm:
+    post:
+      summary: Подтверждение регистрации
+      description: |
+        Подтверждение email пользователя.
+      tags:
+        - auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmCodePayload'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+  /auth/recover-password:
+    post:
+      summary: Восстановление пароля
+      description: |
+        Отправка письма для восстановления пароля.
+      tags:
+        - auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+              required:
+                - email
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+  /auth/recover-password/confirm:
+    post:
+      summary: Подтверждение восстановления пароля
+      description: |
+        Подтверждение кода из письма для восстановления пароля.
+      tags:
+        - auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmCodePayload'
   /auth/logout:
     post:
       summary: Выход из системы
+      description: |
+        Инвалидация текущего JWT токена.
+        После logout токен становится недействительным.
       tags:
         - auth
-      post:
-        summary: Выход из системы
-        tags:
-          - auth
-        responses:
-          '200':
-            $ref: ../../shared/responses.yaml#/schemas/SuccessResponse
-          '401':
-            $ref: ../../shared/responses.yaml#/schemas/UnauthorizedError
+      responses:
+        '200':
+          description: OK
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
   /auth/refresh:
     post:
       summary: Обновление токена
+      description: |
+        Получение нового JWT токена при помощи refresh token.
+        Используется для продления сессии без повторного ввода пароля.
       tags:
         - auth
-      post:
-        summary: Обновление токена
-        tags:
-          - auth
-        responses:
-          '200':
-            $ref: ../schemas/auth-schemas.yaml#/schemas/AuthRefresh
-          '401':
-            $ref: ../../shared/responses.yaml#/schemas/UnauthorizedError
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthRefresh'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
   /courses/store:
     get:
-      summary: Получить список курсов, которые можно купить в магазине
+      summary: Получить каталог курсов
+      description: |
+        Возвращает список всех доступных для покупки курсов.
       tags:
         - public
-      description: Получить список курсов, которые можно купить в магазине
       responses:
         '200':
           description: OK
@@ -87,17 +175,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/ShopCourse'
         '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedResponse'
   /courses/my-courses:
     get:
-      summary: Получить список курсов, которые купил пользователь
+      summary: Мои приобретенные курсы
+      description: |
+        Список курсов, которые купил авторизованный пользователь.
+        Показывает прогресс изучения и последние активности.
       tags:
         - public
-      description: Получить список курсов, которые пользователь купил
       responses:
         '200':
           description: OK
@@ -108,17 +194,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/MyCourse'
         '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedResponse'
   /courses/{courseId}:
     get:
-      summary: Получить курс по id
+      summary: Детальная информация о курсе
+      description: |
+        Полная информация о курсе включая описание, программу обучения,
+        отзывы и прогресс пользователя (если курс приобретен).
       tags:
         - public
-      description: Получить информацию о курсе
       parameters:
         - name: courseId
           in: path
@@ -133,23 +217,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/FullCourse'
         '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedResponse'
         '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotFoundError'
+          $ref: '#/components/responses/NotFoundResponse'
   /courses/{courseId}/lessons:
     get:
-      summary: Получить список уроков в курсе
+      summary: Список уроков курса
+      description: |
+        Получить структуру курса с модулями и уроками.
+        Доступ к контенту зависит от статуса покупки курса.
       tags:
         - public
-      description: Получить список уроков в курсе
       parameters:
         - name: courseId
           in: path
@@ -164,29 +242,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/CourseLessons'
         '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedResponse'
         '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ForbiddenError'
+          $ref: '#/components/responses/ForbiddenResponse'
         '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotFoundError'
+          $ref: '#/components/responses/NotFoundResponse'
   /lessons/{lessonId}:
     get:
-      summary: Получить урок по id
+      summary: Содержимое урока
+      description: |
+        Получить полное содержимое урока: видео, текст, задания.
+        Доступно только для приобретенных курсов.
       tags:
         - public
-      description: Получить содержимое урока
       parameters:
         - name: lessonId
           in: path
@@ -201,29 +269,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/FullLesson'
         '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedResponse'
         '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ForbiddenError'
+          $ref: '#/components/responses/ForbiddenResponse'
         '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotFoundError'
+          $ref: '#/components/responses/NotFoundResponse'
   /lessons/{lessonId}/complete:
     post:
-      summary: Отметить урок как пройденный
+      summary: Отметить урок как завершенный
+      description: |
+        Фиксация прохождения урока пользователем.
+        Обновляет общий прогресс по курсу и может разблокировать следующие уроки.
       tags:
         - public
-      description: Отметить урок как пройденный
       requestBody:
         required: true
         content:
@@ -239,29 +297,19 @@ paths:
         '201':
           description: OK
         '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedResponse'
         '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ForbiddenError'
+          $ref: '#/components/responses/ForbiddenResponse'
         '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotFoundError'
+          $ref: '#/components/responses/NotFoundResponse'
   /transactions:
     get:
-      summary: Получить список транзакций
+      summary: История транзакций
+      description: |
+        Список всех платежных операций пользователя:
+        покупки курсов, возвраты, подписки.
       tags:
         - public
-      description: Получить список транзакций
       responses:
         '200':
           description: OK
@@ -272,17 +320,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/Transaction'
         '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedResponse'
   /users/me:
     get:
-      summary: Получить информацию о себе
+      summary: Профиль пользователя
+      description: |
+        Информация о текущем авторизованном пользователе:
+        персональные данные, статистика обучения, настройки.
       tags:
         - public
-      description: Получает информацию о текущем пользователе
       responses:
         '200':
           description: Информация о текущем пользователе
@@ -291,22 +337,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/Student'
         '401':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedResponse'
         '404':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotFoundError'
+          $ref: '#/components/responses/NotFoundResponse'
   /admin/courses:
-    summary: Получить список курсов
     get:
+      summary: Административный список курсов
+      description: |
+        Получить все курсы в системе с расширенной информацией
+        для администрирования: статистика, финансы, модерация.
       tags:
         - admin
-      summary: Получить список курсов для админа
-      description: Получить список курсов для админа
       responses:
         '200':
           description: OK
@@ -317,81 +358,425 @@ paths:
                 items:
                   $ref: '#/components/schemas/AdminCourse'
         '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedResponse'
     post:
-      summary: Создать курс
+      summary: Создать новый курс
+      description: |
+        Создание курса в системе с базовой информацией.
+        После создания можно добавлять модули и уроки.
       tags:
         - admin
-      description: Создать курс
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                title:
-                  type: string
-              required:
-                - title
+              $ref: '#/components/schemas/CreateEntityPayload'
       responses:
         '201':
           description: OK
         '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedResponse'
         '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ForbiddenError'
+          $ref: '#/components/responses/ForbiddenResponse'
   /admin/courses/{courseId}:
     get:
-      summary: Получить курс по id
+      summary: Детали курса для администратора
+      description: |
+        Полная административная информация о курсе:
+        статистика продаж, аналитика, настройки доступа.
       tags:
         - admin
-      description: Получить курс для админа
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AdminCourseFull'
+                $ref: '#/components/schemas/AdminCourseMainInfo'
         '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedResponse'
         '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ForbiddenError'
+          $ref: '#/components/responses/ForbiddenResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/NotFoundResponse'
+    patch:
+      summary: Обновить информацию о курсе
+      description: |
+        Изменение метаданных курса: название, описание,
+        цена, статус публикации, настройки доступа.
+      tags:
+        - admin
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            type: object
+            properties:
+              title:
+                type: string
+              description:
+                type: string
+              price:
+                type: number
+              image_url:
+                type: string
+              is_published:
+                type: boolean
+      responses:
+        '201':
+          description: OK
+        '401':
+          $ref: '#/components/responses/UnauthorizedResponse'
+        '403':
+          $ref: '#/components/responses/ForbiddenResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+    delete:
+      summary: Удалить курс
+      description: |
+        ⚠️ **Необратимая операция!**
+        Полное удаление курса со всем контентом и статистикой.
+      tags:
+        - admin
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: OK
+        '401':
+          $ref: '#/components/responses/UnauthorizedResponse'
+        '403':
+          $ref: '#/components/responses/ForbiddenResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+  /admin/courses/{courseId}/modules:
+    get:
+      summary: Модули курса
+      description: |
+        Структура курса: список всех модулей с уроками
+        и настройками доступа для администрирования.
+      tags:
+        - admin
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Модули успешно получены
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundError'
+                type: array
+                items:
+                  $ref: '#/components/schemas/AdminModule'
+        '401':
+          $ref: '#/components/responses/UnauthorizedResponse'
+        '403':
+          $ref: '#/components/responses/ForbiddenResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+    post:
+      summary: Создать модуль
+      description: |
+        Добавление нового тематического модуля в курс.
+        Модули группируют связанные по теме уроки.
+      tags:
+        - admin
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEntityPayload'
+      responses:
+        '201':
+          description: Модуль успешно создан
+        '401':
+          $ref: '#/components/responses/UnauthorizedResponse'
+        '403':
+          $ref: '#/components/responses/ForbiddenResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+  /admin/courses/{courseId}/modules/reorder:
+    put:
+      summary: Изменить порядок модулей
+      description: |
+        Переупорядочивание модулей в курсе.
+        Влияет на последовательность изучения для студентов.
+      tags:
+        - admin
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ReorderPayload'
+      responses:
+        '201':
+          description: Модули успешно переупорядочены
+        '401':
+          $ref: '#/components/responses/UnauthorizedResponse'
+        '403':
+          $ref: '#/components/responses/ForbiddenResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+  /admin/modules/{moduleId}:
+    get:
+      summary: Получить основную информацию о модуле
+      tags:
+        - admin
+      description: Получить основную информацию о модуле
+      parameters:
+        - name: moduleId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminModule'
+        '401':
+          $ref: '#/components/responses/UnauthorizedResponse'
+        '403':
+          $ref: '#/components/responses/ForbiddenResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
     patch:
-      summary: Обновить курс по id
+      summary: Обновить основную информацию о модуле
       tags:
         - admin
+      description: Обновить основную информацию о модуле
+      parameters:
+        - name: moduleId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminModule'
+      responses:
+        '201':
+          description: OK
+        '401':
+          $ref: '#/components/responses/UnauthorizedResponse'
+        '403':
+          $ref: '#/components/responses/ForbiddenResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
     delete:
-      summary: Удалить курс по id
+      summary: Удалить модуль по id
       tags:
         - admin
+      description: Удалить модуль
+      parameters:
+        - name: moduleId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: OK
+        '401':
+          $ref: '#/components/responses/UnauthorizedResponse'
+        '403':
+          $ref: '#/components/responses/ForbiddenResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+  /admin/modules/{moduleId}/lessons:
+    get:
+      summary: Получить список уроков модуля
+      tags:
+        - admin
+      description: Получить список уроков модуля
+      parameters:
+        - name: moduleId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AdminLesson'
+        '401':
+          $ref: '#/components/responses/UnauthorizedResponse'
+        '403':
+          $ref: '#/components/responses/ForbiddenResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+    post:
+      summary: Создать урок
+      tags:
+        - admin
+      description: Создать урок в модуле
+      parameters:
+        - name: moduleId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEntityPayload'
+      responses:
+        '201':
+          description: OK
+        '401':
+          $ref: '#/components/responses/UnauthorizedResponse'
+        '403':
+          $ref: '#/components/responses/ForbiddenResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+  /admin/modules/{moduleId}/lessons/reorder:
+    put:
+      summary: Изменить порядок уроков в модуле
+      description: |
+        Переупорядочивание уроков внутри модуля.
+        Определяет логическую последовательность обучения.
+      tags:
+        - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ReorderPayload'
+      responses:
+        '201':
+          description: Уроки успешно переупорядочены
+        '401':
+          $ref: '#/components/responses/UnauthorizedResponse'
+        '403':
+          $ref: '#/components/responses/ForbiddenResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+  /admin/lessons/{lessonId}:
+    get:
+      summary: Содержимое урока для администратора
+      description: |
+        Получить полное содержимое урока: видео, текст, задания.
+        Административная версия с дополнительными возможностями редактирования.
+      tags:
+        - admin
+      parameters:
+        - name: lessonId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminLesson'
+        '401':
+          $ref: '#/components/responses/UnauthorizedResponse'
+        '403':
+          $ref: '#/components/responses/ForbiddenResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+    patch:
+      summary: Обновить содержимое урока
+      description: |
+        Изменение контента урока: видео, текст, задания, настройки доступа.
+        Полное редактирование всех элементов урока.
+      tags:
+        - admin
+      parameters:
+        - name: lessonId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminLesson'
+      responses:
+        '201':
+          description: OK
+        '401':
+          $ref: '#/components/responses/UnauthorizedResponse'
+        '403':
+          $ref: '#/components/responses/ForbiddenResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+    delete:
+      summary: Удалить урок по id
+      description: |
+        ⚠️ **Необратимая операция!**
+        Полное удаление урока со всем контентом.
+      tags:
+        - admin
+      parameters:
+        - name: lessonId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: OK
+        '401':
+          $ref: '#/components/responses/UnauthorizedResponse'
+        '403':
+          $ref: '#/components/responses/ForbiddenResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
   /admin/users:
     get:
       summary: Получить список пользователей
@@ -408,17 +793,9 @@ paths:
                 items:
                   $ref: '#/components/schemas/AdminUser'
         '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedResponse'
         '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ForbiddenError'
+          $ref: '#/components/responses/ForbiddenResponse'
   /admin/transactions:
     get:
       summary: Получить список транзакций
@@ -435,19 +812,57 @@ paths:
                 items:
                   $ref: '#/components/schemas/AdminTransaction'
         '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedResponse'
         '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ForbiddenError'
+          $ref: '#/components/responses/ForbiddenResponse'
 components:
   schemas:
+    AuthLogin:
+      description: Вход в систему
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      required:
+        - email
+        - password
+    AuthRegister:
+      description: Регистрация в системе
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        repeat_password:
+          type: string
+      required:
+        - email
+        - password
+        - first_name
+        - last_name
+        - repeat_password
+    ConfirmCodePayload:
+      type: object
+      properties:
+        code:
+          type: string
+      required:
+        - code
+    AuthRefresh:
+      description: Обновление токена
+      type: object
+      properties:
+        access_token:
+          type: string
+      required:
+        - access_token
     BaseCourse:
       summary: Базовая схема курса
       description: Базовая схема курса
@@ -494,7 +909,7 @@ components:
         message:
           type: string
         code:
-          type: string
+          type: number
       required:
         - message
         - code
@@ -523,10 +938,13 @@ components:
           type: string
         order:
           type: number
+        course_id:
+          type: number
       required:
         - id
         - title
         - order
+        - course_id
     BaseLesson:
       summary: Базовая схема урока в курсе
       description: Базовая схема урока в курсе
@@ -538,10 +956,16 @@ components:
           type: string
         order:
           type: number
+        module_id:
+          type: number
+        course_id:
+          type: number
       required:
         - id
         - title
         - order
+        - module_id
+        - course_id
     CourseLesson:
       description: Урок в курсе
       allOf:
@@ -801,33 +1225,15 @@ components:
         - price
         - users_amount
         - finished_users_amount
-    AdminLesson:
-      description: Урок для админа
-      allOf:
-        - $ref: '#/components/schemas/BaseLesson'
-        - type: object
-          properties:
-            is_published:
-              type: boolean
-          required:
-            - is_published
-    AdminModule:
-      description: Модуль для админа
-      allOf:
-        - $ref: '#/components/schemas/BaseModule'
-        - type: object
-          properties:
-            is_published:
-              type: boolean
-            lessons:
-              type: array
-              items:
-                $ref: '#/components/schemas/AdminLesson'
-          required:
-            - is_published
-            - lessons
-    AdminCourseFull:
-      description: Курс для админа в полном виде
+    CreateEntityPayload:
+      type: object
+      properties:
+        title:
+          type: string
+      required:
+        - title
+    AdminCourseMainInfo:
+      description: Основная информация о курсе
       allOf:
         - $ref: '#/components/schemas/BaseCourse'
         - type: object
@@ -838,10 +1244,66 @@ components:
               type: string
             price:
               type: number
-            modules:
+            users_amount:
+              type: number
+            finished_users_amount:
+              type: number
+          required:
+            - is_published
+            - description
+            - price
+            - users_amount
+            - finished_users_amount
+    AdminModule:
+      description: Модуль для админа
+      allOf:
+        - $ref: '#/components/schemas/BaseModule'
+        - type: object
+          properties:
+            is_published:
+              type: boolean
+            lessons_count:
+              type: number
+          required:
+            - is_published
+            - lessons_count
+    ReorderPayload:
+      type: object
+      properties:
+        id:
+          type: number
+        order:
+          type: number
+      required:
+        - id
+        - order
+    AdminLesson:
+      description: Урок для админа с полным контентом
+      allOf:
+        - $ref: '#/components/schemas/BaseLesson'
+        - type: object
+          properties:
+            is_published:
+              type: boolean
+            video:
+              oneOf:
+                - $ref: '#/components/schemas/BaseVideo'
+                - type: 'null'
+            content:
+              type: string
+            tests:
               type: array
               items:
-                $ref: '#/components/schemas/AdminModule'
+                $ref: '#/components/schemas/TestWithVariants'
+            is_completed:
+              type: boolean
+              description: Статус завершения урока (для административной статистики)
+          required:
+            - is_published
+            - video
+            - content
+            - tests
+            - is_completed
     AdminUser:
       description: Пользователи для админ панели
       allOf:
@@ -885,3 +1347,34 @@ components:
         - status
         - user_id
         - course_id
+  responses:
+    UnauthorizedError:
+      description: Ошибка авторизации
+      allOf:
+        - $ref: '#/components/schemas/ErrorSchema'
+    NotFoundError:
+      description: Ошибка не найденного ресурса
+      allOf:
+        - $ref: '#/components/schemas/ErrorSchema'
+    BadRequestError:
+      description: Ошибка запроса
+      allOf:
+        - $ref: '#/schemas/ErrorSchema'
+    UnauthorizedResponse:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedError'
+    NotFoundResponse:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
+    ForbiddenResponse:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ForbiddenError'

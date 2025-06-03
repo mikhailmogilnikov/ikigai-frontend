@@ -13,7 +13,12 @@ export interface paths {
     };
     get?: never;
     put?: never;
-    /** Вход в систему */
+    /**
+     * Вход в систему
+     * @description Аутентификация пользователя по email и паролю.
+     *     Возвращает JWT токен для дальнейших запросов.
+     *
+     */
     post: {
       parameters: {
         query?: never;
@@ -21,8 +26,25 @@ export interface paths {
         path?: never;
         cookie?: never;
       };
-      requestBody?: never;
-      responses: never;
+      requestBody: {
+        content: {
+          'application/json': components['schemas']['AuthLogin'];
+        };
+      };
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': {
+              access_token: string;
+            };
+          };
+        };
+        401: components['responses']['UnauthorizedError'];
+      };
     };
     delete?: never;
     options?: never;
@@ -39,7 +61,12 @@ export interface paths {
     };
     get?: never;
     put?: never;
-    /** Регистрация в системе */
+    /**
+     * Регистрация в системе
+     * @description Создание нового аккаунта пользователя.
+     *     После регистрации отправляется письмо для подтверждения email.
+     *
+     */
     post: {
       parameters: {
         query?: never;
@@ -47,7 +74,144 @@ export interface paths {
         path?: never;
         cookie?: never;
       };
-      requestBody?: never;
+      requestBody: {
+        content: {
+          'application/json': components['schemas']['AuthRegister'];
+        };
+      };
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        404: components['responses']['NotFoundError'];
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/auth/register/confirm': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Подтверждение регистрации
+     * @description Подтверждение email пользователя.
+     *
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody: {
+        content: {
+          'application/json': components['schemas']['ConfirmCodePayload'];
+        };
+      };
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        400: components['responses']['BadRequestError'];
+        401: components['responses']['UnauthorizedError'];
+        404: components['responses']['NotFoundError'];
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/auth/recover-password': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Восстановление пароля
+     * @description Отправка письма для восстановления пароля.
+     *
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody: {
+        content: {
+          'application/json': {
+            email: string;
+          };
+        };
+      };
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        404: components['responses']['NotFoundError'];
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/auth/recover-password/confirm': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Подтверждение восстановления пароля
+     * @description Подтверждение кода из письма для восстановления пароля.
+     *
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody: {
+        content: {
+          'application/json': components['schemas']['ConfirmCodePayload'];
+        };
+      };
       responses: never;
     };
     delete?: never;
@@ -65,7 +229,12 @@ export interface paths {
     };
     get?: never;
     put?: never;
-    /** Выход из системы */
+    /**
+     * Выход из системы
+     * @description Инвалидация текущего JWT токена.
+     *     После logout токен становится недействительным.
+     *
+     */
     post: {
       parameters: {
         query?: never;
@@ -74,7 +243,16 @@ export interface paths {
         cookie?: never;
       };
       requestBody?: never;
-      responses: never;
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        401: components['responses']['UnauthorizedError'];
+      };
     };
     delete?: never;
     options?: never;
@@ -91,7 +269,12 @@ export interface paths {
     };
     get?: never;
     put?: never;
-    /** Обновление токена */
+    /**
+     * Обновление токена
+     * @description Получение нового JWT токена при помощи refresh token.
+     *     Используется для продления сессии без повторного ввода пароля.
+     *
+     */
     post: {
       parameters: {
         query?: never;
@@ -100,7 +283,17 @@ export interface paths {
         cookie?: never;
       };
       requestBody?: never;
-      responses: never;
+      responses: {
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['AuthRefresh'];
+          };
+        };
+        401: components['responses']['UnauthorizedError'];
+      };
     };
     delete?: never;
     options?: never;
@@ -116,8 +309,9 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * Получить список курсов, которые можно купить в магазине
-     * @description Получить список курсов, которые можно купить в магазине
+     * Получить каталог курсов
+     * @description Возвращает список всех доступных для покупки курсов.
+     *
      */
     get: {
       parameters: {
@@ -137,15 +331,7 @@ export interface paths {
             'application/json': components['schemas']['ShopCourse'][];
           };
         };
-        /** @description Unauthorized */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['UnauthorizedError'];
-          };
-        };
+        401: components['responses']['UnauthorizedResponse'];
       };
     };
     put?: never;
@@ -164,8 +350,10 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * Получить список курсов, которые купил пользователь
-     * @description Получить список курсов, которые пользователь купил
+     * Мои приобретенные курсы
+     * @description Список курсов, которые купил авторизованный пользователь.
+     *     Показывает прогресс изучения и последние активности.
+     *
      */
     get: {
       parameters: {
@@ -185,15 +373,7 @@ export interface paths {
             'application/json': components['schemas']['MyCourse'][];
           };
         };
-        /** @description Unauthorized */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['UnauthorizedError'];
-          };
-        };
+        401: components['responses']['UnauthorizedResponse'];
       };
     };
     put?: never;
@@ -212,8 +392,10 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * Получить курс по id
-     * @description Получить информацию о курсе
+     * Детальная информация о курсе
+     * @description Полная информация о курсе включая описание, программу обучения,
+     *     отзывы и прогресс пользователя (если курс приобретен).
+     *
      */
     get: {
       parameters: {
@@ -235,24 +417,8 @@ export interface paths {
             'application/json': components['schemas']['FullCourse'];
           };
         };
-        /** @description Unauthorized */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['UnauthorizedError'];
-          };
-        };
-        /** @description Not Found */
-        404: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['NotFoundError'];
-          };
-        };
+        401: components['responses']['UnauthorizedResponse'];
+        404: components['responses']['NotFoundResponse'];
       };
     };
     put?: never;
@@ -271,8 +437,10 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * Получить список уроков в курсе
-     * @description Получить список уроков в курсе
+     * Список уроков курса
+     * @description Получить структуру курса с модулями и уроками.
+     *     Доступ к контенту зависит от статуса покупки курса.
+     *
      */
     get: {
       parameters: {
@@ -294,33 +462,9 @@ export interface paths {
             'application/json': components['schemas']['CourseLessons'];
           };
         };
-        /** @description Unauthorized */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['UnauthorizedError'];
-          };
-        };
-        /** @description Forbidden */
-        403: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['ForbiddenError'];
-          };
-        };
-        /** @description Not Found */
-        404: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['NotFoundError'];
-          };
-        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
       };
     };
     put?: never;
@@ -339,8 +483,10 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * Получить урок по id
-     * @description Получить содержимое урока
+     * Содержимое урока
+     * @description Получить полное содержимое урока: видео, текст, задания.
+     *     Доступно только для приобретенных курсов.
+     *
      */
     get: {
       parameters: {
@@ -362,33 +508,9 @@ export interface paths {
             'application/json': components['schemas']['FullLesson'];
           };
         };
-        /** @description Unauthorized */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['UnauthorizedError'];
-          };
-        };
-        /** @description Forbidden */
-        403: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['ForbiddenError'];
-          };
-        };
-        /** @description Not Found */
-        404: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['NotFoundError'];
-          };
-        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
       };
     };
     put?: never;
@@ -409,8 +531,10 @@ export interface paths {
     get?: never;
     put?: never;
     /**
-     * Отметить урок как пройденный
-     * @description Отметить урок как пройденный
+     * Отметить урок как завершенный
+     * @description Фиксация прохождения урока пользователем.
+     *     Обновляет общий прогресс по курсу и может разблокировать следующие уроки.
+     *
      */
     post: {
       parameters: {
@@ -434,33 +558,9 @@ export interface paths {
           };
           content?: never;
         };
-        /** @description Unauthorized */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['UnauthorizedError'];
-          };
-        };
-        /** @description Forbidden */
-        403: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['ForbiddenError'];
-          };
-        };
-        /** @description Not Found */
-        404: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['NotFoundError'];
-          };
-        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
       };
     };
     delete?: never;
@@ -477,8 +577,10 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * Получить список транзакций
-     * @description Получить список транзакций
+     * История транзакций
+     * @description Список всех платежных операций пользователя:
+     *     покупки курсов, возвраты, подписки.
+     *
      */
     get: {
       parameters: {
@@ -498,15 +600,7 @@ export interface paths {
             'application/json': components['schemas']['Transaction'][];
           };
         };
-        /** @description Unauthorized */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['UnauthorizedError'];
-          };
-        };
+        401: components['responses']['UnauthorizedResponse'];
       };
     };
     put?: never;
@@ -525,8 +619,10 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * Получить информацию о себе
-     * @description Получает информацию о текущем пользователе
+     * Профиль пользователя
+     * @description Информация о текущем авторизованном пользователе:
+     *     персональные данные, статистика обучения, настройки.
+     *
      */
     get: {
       parameters: {
@@ -546,22 +642,8 @@ export interface paths {
             'application/json': components['schemas']['Student'];
           };
         };
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['UnauthorizedError'];
-          };
-        };
-        404: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['NotFoundError'];
-          };
-        };
+        401: components['responses']['UnauthorizedResponse'];
+        404: components['responses']['NotFoundResponse'];
       };
     };
     put?: never;
@@ -580,8 +662,10 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * Получить список курсов для админа
-     * @description Получить список курсов для админа
+     * Административный список курсов
+     * @description Получить все курсы в системе с расширенной информацией
+     *     для администрирования: статистика, финансы, модерация.
+     *
      */
     get: {
       parameters: {
@@ -601,21 +685,15 @@ export interface paths {
             'application/json': components['schemas']['AdminCourse'][];
           };
         };
-        /** @description Unauthorized */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['UnauthorizedError'];
-          };
-        };
+        401: components['responses']['UnauthorizedResponse'];
       };
     };
     put?: never;
     /**
-     * Создать курс
-     * @description Создать курс
+     * Создать новый курс
+     * @description Создание курса в системе с базовой информацией.
+     *     После создания можно добавлять модули и уроки.
+     *
      */
     post: {
       parameters: {
@@ -626,9 +704,7 @@ export interface paths {
       };
       requestBody: {
         content: {
-          'application/json': {
-            title: string;
-          };
+          'application/json': components['schemas']['CreateEntityPayload'];
         };
       };
       responses: {
@@ -639,24 +715,8 @@ export interface paths {
           };
           content?: never;
         };
-        /** @description Unauthorized */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['UnauthorizedError'];
-          };
-        };
-        /** @description Forbidden */
-        403: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['ForbiddenError'];
-          };
-        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
       };
     };
     delete?: never;
@@ -673,8 +733,10 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * Получить курс по id
-     * @description Получить курс для админа
+     * Детали курса для администратора
+     * @description Полная административная информация о курсе:
+     *     статистика продаж, аналитика, настройки доступа.
+     *
      */
     get: {
       parameters: {
@@ -693,63 +755,536 @@ export interface paths {
             [name: string]: unknown;
           };
           content: {
-            'application/json': components['schemas']['AdminCourseFull'];
+            'application/json': components['schemas']['AdminCourseMainInfo'];
           };
         };
-        /** @description Unauthorized */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['UnauthorizedError'];
-          };
-        };
-        /** @description Forbidden */
-        403: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['ForbiddenError'];
-          };
-        };
-        /** @description Not Found */
-        404: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['NotFoundError'];
-          };
-        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
       };
     };
     put?: never;
     post?: never;
-    /** Удалить курс по id */
+    /**
+     * Удалить курс
+     * @description ⚠️ **Необратимая операция!**
+     *     Полное удаление курса со всем контентом и статистикой.
+     *
+     */
     delete: {
       parameters: {
         query?: never;
         header?: never;
-        path?: never;
+        path: {
+          courseId: string;
+        };
         cookie?: never;
       };
       requestBody?: never;
-      responses: never;
+      responses: {
+        /** @description OK */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
+      };
     };
     options?: never;
     head?: never;
-    /** Обновить курс по id */
+    /**
+     * Обновить информацию о курсе
+     * @description Изменение метаданных курса: название, описание,
+     *     цена, статус публикации, настройки доступа.
+     *
+     */
     patch: {
       parameters: {
         query?: never;
         header?: never;
-        path?: never;
+        path: {
+          courseId: string;
+        };
+        cookie?: never;
+      };
+      requestBody: {
+        content: {
+          'application/json': unknown;
+        };
+      };
+      responses: {
+        /** @description OK */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
+      };
+    };
+    trace?: never;
+  };
+  '/admin/courses/{courseId}/modules': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Модули курса
+     * @description Структура курса: список всех модулей с уроками
+     *     и настройками доступа для администрирования.
+     *
+     */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          courseId: string;
+        };
         cookie?: never;
       };
       requestBody?: never;
-      responses: never;
+      responses: {
+        /** @description Модули успешно получены */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['AdminModule'][];
+          };
+        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
+      };
+    };
+    put?: never;
+    /**
+     * Создать модуль
+     * @description Добавление нового тематического модуля в курс.
+     *     Модули группируют связанные по теме уроки.
+     *
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          courseId: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          'application/json': components['schemas']['CreateEntityPayload'];
+        };
+      };
+      responses: {
+        /** @description Модуль успешно создан */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/admin/courses/{courseId}/modules/reorder': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    /**
+     * Изменить порядок модулей
+     * @description Переупорядочивание модулей в курсе.
+     *     Влияет на последовательность изучения для студентов.
+     *
+     */
+    put: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          courseId: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          'application/json': components['schemas']['ReorderPayload'][];
+        };
+      };
+      responses: {
+        /** @description Модули успешно переупорядочены */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
+      };
+    };
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/admin/modules/{moduleId}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Получить основную информацию о модуле
+     * @description Получить основную информацию о модуле
+     */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          moduleId: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['AdminModule'];
+          };
+        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
+      };
+    };
+    put?: never;
+    post?: never;
+    /**
+     * Удалить модуль по id
+     * @description Удалить модуль
+     */
+    delete: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          moduleId: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description OK */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
+      };
+    };
+    options?: never;
+    head?: never;
+    /**
+     * Обновить основную информацию о модуле
+     * @description Обновить основную информацию о модуле
+     */
+    patch: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          moduleId: string;
+        };
+        cookie?: never;
+      };
+      requestBody: {
+        content: {
+          'application/json': {
+            title: string;
+            is_published: boolean;
+          };
+        };
+      };
+      responses: {
+        /** @description OK */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
+      };
+    };
+    trace?: never;
+  };
+  '/admin/modules/{moduleId}/lessons': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Получить список уроков модуля
+     * @description Получить список уроков модуля
+     */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          moduleId: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['AdminLesson'][];
+          };
+        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
+      };
+    };
+    put?: never;
+    /**
+     * Создать урок
+     * @description Создать урок в модуле
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          moduleId: string;
+        };
+        cookie?: never;
+      };
+      requestBody: {
+        content: {
+          'application/json': components['schemas']['CreateEntityPayload'];
+        };
+      };
+      responses: {
+        /** @description OK */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/admin/modules/{moduleId}/lessons/reorder': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    /**
+     * Изменить порядок уроков в модуле
+     * @description Переупорядочивание уроков внутри модуля.
+     *     Определяет логическую последовательность обучения.
+     *
+     */
+    put: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          moduleId: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          'application/json': components['schemas']['ReorderPayload'][];
+        };
+      };
+      responses: {
+        /** @description Уроки успешно переупорядочены */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
+      };
+    };
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/admin/lessons/{lessonId}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Содержимое урока для администратора
+     * @description Получить полное содержимое урока: видео, текст, задания.
+     *     Административная версия с дополнительными возможностями редактирования.
+     *
+     */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          lessonId: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['AdminLesson'];
+          };
+        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
+      };
+    };
+    put?: never;
+    post?: never;
+    /**
+     * Удалить урок по id
+     * @description ⚠️ **Необратимая операция!**
+     *     Полное удаление урока со всем контентом.
+     *
+     */
+    delete: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          lessonId: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description OK */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
+      };
+    };
+    options?: never;
+    head?: never;
+    /**
+     * Обновить содержимое урока
+     * @description Изменение контента урока: видео, текст, задания, настройки доступа.
+     *     Полное редактирование всех элементов урока.
+     *
+     */
+    patch: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          lessonId: string;
+        };
+        cookie?: never;
+      };
+      requestBody: {
+        content: {
+          'application/json': components['schemas']['AdminLesson'];
+        };
+      };
+      responses: {
+        /** @description OK */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
+        404: components['responses']['NotFoundResponse'];
+      };
     };
     trace?: never;
   };
@@ -782,24 +1317,8 @@ export interface paths {
             'application/json': components['schemas']['AdminUser'][];
           };
         };
-        /** @description Unauthorized */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['UnauthorizedError'];
-          };
-        };
-        /** @description Forbidden */
-        403: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['ForbiddenError'];
-          };
-        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
       };
     };
     put?: never;
@@ -839,24 +1358,8 @@ export interface paths {
             'application/json': components['schemas']['AdminTransaction'][];
           };
         };
-        /** @description Unauthorized */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['UnauthorizedError'];
-          };
-        };
-        /** @description Forbidden */
-        403: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': components['schemas']['ForbiddenError'];
-          };
-        };
+        401: components['responses']['UnauthorizedResponse'];
+        403: components['responses']['ForbiddenResponse'];
       };
     };
     put?: never;
@@ -871,6 +1374,26 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
+    /** @description Вход в систему */
+    AuthLogin: {
+      email: string;
+      password: string;
+    };
+    /** @description Регистрация в системе */
+    AuthRegister: {
+      first_name: string;
+      last_name: string;
+      email: string;
+      password: string;
+      repeat_password: string;
+    };
+    ConfirmCodePayload: {
+      code: string;
+    };
+    /** @description Обновление токена */
+    AuthRefresh: {
+      access_token: string;
+    };
     /**
      * Базовая схема курса
      * @description Базовая схема курса
@@ -893,7 +1416,7 @@ export interface components {
     /** @description Схема ошибки */
     ErrorSchema: {
       message: string;
-      code: string;
+      code: number;
     };
     /** @description Ошибка авторизации */
     UnauthorizedError: components['schemas']['ErrorSchema'];
@@ -909,6 +1432,7 @@ export interface components {
       id: number;
       title: string;
       order: number;
+      course_id: number;
     };
     /**
      * Базовая схема урока в курсе
@@ -918,6 +1442,8 @@ export interface components {
       id: number;
       title: string;
       order: number;
+      module_id: number;
+      course_id: number;
     };
     /** @description Урок в курсе */
     CourseLesson: components['schemas']['BaseLesson'] & {
@@ -1027,17 +1553,34 @@ export interface components {
       users_amount: number;
       finished_users_amount: number;
     };
+    CreateEntityPayload: {
+      title: string;
+    };
+    /** @description Основная информация о курсе */
+    AdminCourseMainInfo: components['schemas']['BaseCourse'] & {
+      is_published: boolean;
+      description: string;
+      price: number;
+      users_amount: number;
+      finished_users_amount: number;
+    };
     /** @description Модуль для админа */
     AdminModule: components['schemas']['BaseModule'] & {
       is_published: boolean;
       lessons_count: number;
     };
-    /** @description Курс для админа в полном виде */
-    AdminCourseFull: components['schemas']['BaseCourse'] & {
+    ReorderPayload: {
+      id: number;
+      order: number;
+    };
+    /** @description Урок для админа с полным контентом */
+    AdminLesson: components['schemas']['BaseLesson'] & {
       is_published: boolean;
-      description: string;
-      price: number;
-      modules: components['schemas']['AdminModule'][];
+      video: components['schemas']['BaseVideo'] | null;
+      content: string;
+      tests: components['schemas']['TestWithVariants'][];
+      /** @description Статус завершения урока (для административной статистики) */
+      is_completed: boolean;
     };
     /** @description Пользователи для админ панели */
     AdminUser: components['schemas']['BaseUser'] & {
@@ -1059,7 +1602,56 @@ export interface components {
       course_id: number;
     };
   };
-  responses: never;
+  responses: {
+    /** @description Ошибка авторизации */
+    UnauthorizedError: {
+      headers: {
+        [name: string]: unknown;
+      };
+      content?: never;
+    };
+    /** @description Ошибка не найденного ресурса */
+    NotFoundError: {
+      headers: {
+        [name: string]: unknown;
+      };
+      content?: never;
+    };
+    /** @description Ошибка запроса */
+    BadRequestError: {
+      headers: {
+        [name: string]: unknown;
+      };
+      content?: never;
+    };
+    /** @description Unauthorized */
+    UnauthorizedResponse: {
+      headers: {
+        [name: string]: unknown;
+      };
+      content: {
+        'application/json': components['schemas']['UnauthorizedError'];
+      };
+    };
+    /** @description Not Found */
+    NotFoundResponse: {
+      headers: {
+        [name: string]: unknown;
+      };
+      content: {
+        'application/json': components['schemas']['NotFoundError'];
+      };
+    };
+    /** @description Forbidden */
+    ForbiddenResponse: {
+      headers: {
+        [name: string]: unknown;
+      };
+      content: {
+        'application/json': components['schemas']['ForbiddenError'];
+      };
+    };
+  };
   parameters: never;
   requestBodies: never;
   headers: never;

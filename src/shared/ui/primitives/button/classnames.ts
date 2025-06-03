@@ -3,7 +3,7 @@ import { VariantProps } from 'tailwind-variants';
 import { tv } from '~/shared/lib/utils';
 
 export const buttonTV = tv({
-  base: 'inline-flex gap-2 items-center justify-center font-medium transition-[scale,color,background,filter] cursor-pointer active:scale-95 shadow-sm',
+  base: 'inline-flex gap-2 items-center justify-center font-medium transition-[scale,color,background,filter,opacity] cursor-pointer active:scale-95 shadow-sm',
   variants: {
     variant: {
       default: 'bg-default text-default-foreground',

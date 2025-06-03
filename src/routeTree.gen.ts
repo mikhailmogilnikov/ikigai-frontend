@@ -30,6 +30,7 @@ import { Route as AdminGuardCoursesCourseImport } from './routes/admin/_guard/co
 import { Route as educationGuardCoursesCourseImport } from './routes/(education)/_guard/courses_/$course';
 import { Route as AdminGuardCoursesCourseModulesModuleImport } from './routes/admin/_guard/courses_/$course_.modules_.$module';
 import { Route as educationGuardCoursesCourseLessonsLessonImport } from './routes/(education)/_guard/courses_/$course_.lessons_.$lesson';
+import { Route as AdminGuardCoursesCourseModulesModuleLessonsLessonImport } from './routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson';
 
 // Create Virtual Routes
 
@@ -154,6 +155,13 @@ const educationGuardCoursesCourseLessonsLessonRoute = educationGuardCoursesCours
   path: '/courses/$course/lessons/$lesson',
   getParentRoute: () => educationGuardRoute,
 } as any);
+
+const AdminGuardCoursesCourseModulesModuleLessonsLessonRoute =
+  AdminGuardCoursesCourseModulesModuleLessonsLessonImport.update({
+    id: '/courses_/$course_/modules_/$module_/lessons_/$lesson',
+    path: '/courses/$course/modules/$module/lessons/$lesson',
+    getParentRoute: () => AdminGuardRoute,
+  } as any);
 
 // Populate the FileRoutesByPath interface
 
@@ -299,6 +307,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminGuardCoursesCourseModulesModuleImport;
       parentRoute: typeof AdminGuardImport;
     };
+    '/admin/_guard/courses_/$course_/modules_/$module_/lessons_/$lesson': {
+      id: '/admin/_guard/courses_/$course_/modules_/$module_/lessons_/$lesson';
+      path: '/courses/$course/modules/$module/lessons/$lesson';
+      fullPath: '/admin/courses/$course/modules/$module/lessons/$lesson';
+      preLoaderRoute: typeof AdminGuardCoursesCourseModulesModuleLessonsLessonImport;
+      parentRoute: typeof AdminGuardImport;
+    };
   }
 }
 
@@ -340,6 +355,7 @@ interface AdminGuardRouteChildren {
   AdminGuardCoursesCourseRoute: typeof AdminGuardCoursesCourseRoute;
   AdminGuardCoursesIndexRoute: typeof AdminGuardCoursesIndexRoute;
   AdminGuardCoursesCourseModulesModuleRoute: typeof AdminGuardCoursesCourseModulesModuleRoute;
+  AdminGuardCoursesCourseModulesModuleLessonsLessonRoute: typeof AdminGuardCoursesCourseModulesModuleLessonsLessonRoute;
 }
 
 const AdminGuardRouteChildren: AdminGuardRouteChildren = {
@@ -348,6 +364,7 @@ const AdminGuardRouteChildren: AdminGuardRouteChildren = {
   AdminGuardCoursesCourseRoute: AdminGuardCoursesCourseRoute,
   AdminGuardCoursesIndexRoute: AdminGuardCoursesIndexRoute,
   AdminGuardCoursesCourseModulesModuleRoute: AdminGuardCoursesCourseModulesModuleRoute,
+  AdminGuardCoursesCourseModulesModuleLessonsLessonRoute: AdminGuardCoursesCourseModulesModuleLessonsLessonRoute,
 };
 
 const AdminGuardRouteWithChildren = AdminGuardRoute._addFileChildren(AdminGuardRouteChildren);
@@ -403,6 +420,7 @@ export interface FileRoutesByFullPath {
   '/admin/courses': typeof AdminGuardCoursesIndexRoute;
   '/courses/$course/lessons/$lesson': typeof educationGuardCoursesCourseLessonsLessonRoute;
   '/admin/courses/$course/modules/$module': typeof AdminGuardCoursesCourseModulesModuleRoute;
+  '/admin/courses/$course/modules/$module/lessons/$lesson': typeof AdminGuardCoursesCourseModulesModuleLessonsLessonRoute;
 }
 
 export interface FileRoutesByTo {
@@ -422,6 +440,7 @@ export interface FileRoutesByTo {
   '/admin/courses': typeof AdminGuardCoursesIndexRoute;
   '/courses/$course/lessons/$lesson': typeof educationGuardCoursesCourseLessonsLessonRoute;
   '/admin/courses/$course/modules/$module': typeof AdminGuardCoursesCourseModulesModuleRoute;
+  '/admin/courses/$course/modules/$module/lessons/$lesson': typeof AdminGuardCoursesCourseModulesModuleLessonsLessonRoute;
 }
 
 export interface FileRoutesById {
@@ -446,6 +465,7 @@ export interface FileRoutesById {
   '/admin/_guard/courses_/': typeof AdminGuardCoursesIndexRoute;
   '/(education)/_guard/courses_/$course_/lessons_/$lesson': typeof educationGuardCoursesCourseLessonsLessonRoute;
   '/admin/_guard/courses_/$course_/modules_/$module': typeof AdminGuardCoursesCourseModulesModuleRoute;
+  '/admin/_guard/courses_/$course_/modules_/$module_/lessons_/$lesson': typeof AdminGuardCoursesCourseModulesModuleLessonsLessonRoute;
 }
 
 export interface FileRouteTypes {
@@ -466,7 +486,8 @@ export interface FileRouteTypes {
     | '/admin/courses/$course'
     | '/admin/courses'
     | '/courses/$course/lessons/$lesson'
-    | '/admin/courses/$course/modules/$module';
+    | '/admin/courses/$course/modules/$module'
+    | '/admin/courses/$course/modules/$module/lessons/$lesson';
   fileRoutesByTo: FileRoutesByTo;
   to:
     | '/admin'
@@ -484,7 +505,8 @@ export interface FileRouteTypes {
     | '/admin/courses/$course'
     | '/admin/courses'
     | '/courses/$course/lessons/$lesson'
-    | '/admin/courses/$course/modules/$module';
+    | '/admin/courses/$course/modules/$module'
+    | '/admin/courses/$course/modules/$module/lessons/$lesson';
   id:
     | '__root__'
     | '/(education)'
@@ -506,7 +528,8 @@ export interface FileRouteTypes {
     | '/admin/_guard/courses_/$course'
     | '/admin/_guard/courses_/'
     | '/(education)/_guard/courses_/$course_/lessons_/$lesson'
-    | '/admin/_guard/courses_/$course_/modules_/$module';
+    | '/admin/_guard/courses_/$course_/modules_/$module'
+    | '/admin/_guard/courses_/$course_/modules_/$module_/lessons_/$lesson';
   fileRoutesById: FileRoutesById;
 }
 
@@ -567,7 +590,8 @@ export const routeTree = rootRoute._addFileChildren(rootRouteChildren)._addFileT
         "/admin/_guard/users",
         "/admin/_guard/courses_/$course",
         "/admin/_guard/courses_/",
-        "/admin/_guard/courses_/$course_/modules_/$module"
+        "/admin/_guard/courses_/$course_/modules_/$module",
+        "/admin/_guard/courses_/$course_/modules_/$module_/lessons_/$lesson"
       ]
     },
     "/auth": {
@@ -639,6 +663,10 @@ export const routeTree = rootRoute._addFileChildren(rootRouteChildren)._addFileT
     },
     "/admin/_guard/courses_/$course_/modules_/$module": {
       "filePath": "admin/_guard/courses_/$course_.modules_.$module.tsx",
+      "parent": "/admin/_guard"
+    },
+    "/admin/_guard/courses_/$course_/modules_/$module_/lessons_/$lesson": {
+      "filePath": "admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx",
       "parent": "/admin/_guard"
     }
   }

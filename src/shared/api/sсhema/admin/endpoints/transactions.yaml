@@ -1,3 +1,10 @@
+# Макросы для переиспользования ошибок
+adminListErrors: &adminListErrors
+  '401':
+    $ref: '../../shared/responses.yaml#/responses/UnauthorizedResponse'
+  '403':
+    $ref: '../../shared/responses.yaml#/responses/ForbiddenResponse'
+
 getAdminTransactions:
   summary: Получить список всех транзакций
   description: Получить список транзакций
@@ -12,15 +19,4 @@ getAdminTransactions:
             type: array
             items:
               $ref: '../schemas/transaction-schemas.yaml#/schemas/AdminTransaction'
-    '401':
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
-    '403':
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '../../shared/responses.yaml#/schemas/ForbiddenError'
+    <<: *adminListErrors

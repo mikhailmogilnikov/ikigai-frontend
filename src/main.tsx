@@ -23,7 +23,7 @@ const router = createRouter({
   // This will ensure that the loader is always called when the route is preloaded or visited
   defaultPreloadStaleTime: 0,
   scrollRestoration: true,
-  defaultPendingComponent: () => <PageLoader type='fullscreen' />,
+  defaultPendingComponent: () => <PageLoader type='layout' />,
   defaultNotFoundComponent: () => <NotFoundPage />,
   defaultErrorComponent: ({ error, reset }) => <DefaultErrorPage error={error} reset={reset} />,
   defaultPendingMinMs: 0,

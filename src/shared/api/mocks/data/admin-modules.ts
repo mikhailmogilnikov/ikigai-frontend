@@ -2,12 +2,24 @@ import { faker } from '@faker-js/faker';
 
 import { ApiComponents } from '../..';
 
-export const generateAdminMockModule = (): ApiComponents['AdminModule'] => {
+import { MOCK_ADMIN_COURSES_INFO } from './admin-courses';
+
+export const generateAdminMockModule = (
+  courseId: number,
+  order: number | undefined = undefined,
+): ApiComponents['AdminModule'] => {
   return {
     id: faker.number.int({ min: 1, max: 1000 }),
     title: faker.lorem.sentence(),
-    order: faker.number.int({ min: 1, max: 100 }),
+    course_id: courseId,
+    order: order ?? faker.number.int({ min: 1, max: 100 }),
     is_published: faker.datatype.boolean(),
     lessons_count: faker.number.int({ min: 1, max: 10 }),
   };
 };
+
+export const MOCK_ADMIN_MODULES: ApiComponents['AdminModule'][] = MOCK_ADMIN_COURSES_INFO.flatMap((course) =>
+  Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, index) =>
+    generateAdminMockModule(course.id, index),
+  ),
+);

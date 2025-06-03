@@ -2,8 +2,6 @@ import { faker } from '@faker-js/faker';
 
 import { ApiComponents } from '../..';
 
-import { generateAdminMockModule } from './admin-modules';
-
 export const generateMockCourse = (title: string | undefined = undefined): ApiComponents['AdminCourse'] => {
   return {
     id: Math.floor(Math.random() * 100000),
@@ -20,11 +18,7 @@ export const generateMockCourse = (title: string | undefined = undefined): ApiCo
   };
 };
 
-export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = Array.from({ length: 40 }, () =>
-  generateMockCourse(),
-);
-
-export const generateAdminMockCourseFull = (id: number): ApiComponents['AdminCourseFull'] => {
+export const generateAdminMockCourseInfo = (id: number): ApiComponents['AdminCourseMainInfo'] => {
   return {
     id,
     title: faker.lorem.sentence(),
@@ -35,6 +29,15 @@ export const generateAdminMockCourseFull = (id: number): ApiComponents['AdminCou
     is_published: faker.datatype.boolean(),
     description: faker.lorem.paragraph(),
     price: faker.number.int({ min: 100, max: 1000 }),
-    modules: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, () => generateAdminMockModule()),
+    users_amount: faker.number.int({ min: 10, max: 1000 }),
+    finished_users_amount: faker.number.int({ min: 0, max: 1000 }),
   };
 };
+
+export const MOCK_ADMIN_COURSES: ApiComponents['AdminCourse'][] = Array.from({ length: 40 }, () =>
+  generateMockCourse(),
+);
+
+export const MOCK_ADMIN_COURSES_INFO: ApiComponents['AdminCourseMainInfo'][] = MOCK_ADMIN_COURSES.map((course) =>
+  generateAdminMockCourseInfo(course.id),
+);

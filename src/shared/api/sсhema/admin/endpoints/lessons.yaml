@@ -1,0 +1,83 @@
+# Импортируем макросы для переиспользования
+adminResourceErrors: &adminResourceErrors
+  '401':
+    $ref: '../../shared/responses.yaml#/responses/UnauthorizedResponse'
+  '403':
+    $ref: '../../shared/responses.yaml#/responses/ForbiddenResponse'
+  '404':
+    $ref: '../../shared/responses.yaml#/responses/NotFoundResponse'
+
+getAdminLesson:
+  summary: "Получить основную информацию о уроке"
+  description: "Получить основную информацию о уроке"
+  parameters:
+    - name: lessonId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/lesson-schemas.yaml#/schemas/AdminLesson'
+    <<: *adminResourceErrors
+
+updateAdminLesson:
+  summary: "Обновить основную информацию о уроке"
+  description: "Обновить основную информацию о уроке"
+  parameters:
+    - name: lessonId
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/lesson-schemas.yaml#/schemas/AdminLesson'
+  responses:
+    '201':
+      description: OK
+    <<: *adminResourceErrors
+
+deleteAdminLesson:
+  summary: "Удалить урок"
+  description: "Удалить урок"
+  parameters:
+    - name: lessonId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '201':
+      description: OK
+    <<: *adminResourceErrors
+
+reorderAdminLessons:
+  summary: "Переупорядочить уроки модуля"
+  tags:
+    - admin
+  parameters:
+    - name: moduleId
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '../../shared/schemas/common-schemas.yaml#/schemas/ReorderPayload'
+  responses:
+    '201':
+      description: "Уроки успешно переупорядочены"
+    # Используем переиспользуемые ответы с ошибками
+    <<: *adminResourceErrors

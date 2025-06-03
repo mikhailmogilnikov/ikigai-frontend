@@ -19,7 +19,7 @@ export function AuthLayoutDesktop({ children }: AuthLayoutDesktopProps) {
         </div>
       </Flex>
       <Flex className='h-full w-1/2 p-2 pl-1'>
-        <Flex className='bg-default-50 border-foreground/5 h-full w-full rounded-xl shadow-lg dark:border'>
+        <Flex className='bg-default-50 border-foreground/5 h-full w-full flex-col items-center justify-center rounded-xl shadow-lg dark:border'>
           {children}
         </Flex>
       </Flex>

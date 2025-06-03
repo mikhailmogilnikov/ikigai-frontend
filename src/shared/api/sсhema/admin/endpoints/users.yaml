@@ -1,3 +1,10 @@
+# Макросы для переиспользования ошибок
+adminListErrors: &adminListErrors
+  '401':
+    $ref: '../../shared/responses.yaml#/responses/UnauthorizedResponse'
+  '403':
+    $ref: '../../shared/responses.yaml#/responses/ForbiddenResponse'
+
 getAdminUsers:
   summary: "Получить список пользователей для админ панели"
   description: "Получить список пользователей для админ панели"
@@ -10,15 +17,4 @@ getAdminUsers:
             type: array
             items:
               $ref: '../schemas/user-schemas.yaml#/schemas/AdminUser'
-    '401':
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
-    '403':
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '../../shared/responses.yaml#/schemas/ForbiddenError'
+    <<: *adminListErrors

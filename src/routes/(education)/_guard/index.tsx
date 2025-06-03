@@ -4,13 +4,11 @@ import { msg } from '@lingui/core/macro';
 
 import { CourseCard, CourseCollectionStatus, sortCollectionCourses } from '~/domains/education/entities/course';
 import { CoursesSection } from '~/domains/education/widgets/course-section';
-import { PageLoader } from '~/shared/ui/common/page-loader';
 import { Container } from '~/shared/ui/primitives/container';
 import { rqClient } from '~/shared/api';
 
 export const Route = createFileRoute('/(education)/_guard/')({
   component: RouteComponent,
-  pendingComponent: () => <PageLoader type='layout' />,
   loader: ({ context: { queryClient } }) =>
     queryClient.ensureQueryData(rqClient.queryOptions('get', '/courses/my-courses')),
 });

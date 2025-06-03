@@ -5,7 +5,7 @@ export function NotFoundPage() {
   return (
     <div className='flex h-screen flex-col items-center justify-center gap-2'>
       <h1 className='text-2xl font-bold'>404</h1>
-      <p className='text-base'>
+      <p className='text-base opacity-50'>
         <Trans>Страница не найдена</Trans>
       </p>
       <Link to='/' className='mt-2 text-sm underline'>

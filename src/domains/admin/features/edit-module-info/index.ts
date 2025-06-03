@@ -1,0 +1,1 @@
+export { EditModuleInfo } from './ui';
