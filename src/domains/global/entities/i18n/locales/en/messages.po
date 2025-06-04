@@ -177,7 +177,7 @@ msgstr "Reset Password"
 msgid "Восстановление пароля"
 msgstr "Password Recovery"
 
-#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson_.edit.tsx:38
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson_.edit.tsx:56
 msgid "Вы уверены, что хотите покинуть страницу? Несохраненные изменения будут потеряны."
 msgstr "Are you sure you want to leave the page? Unsaved changes will be lost."
 
@@ -295,6 +295,10 @@ msgstr "Loop Video"
 msgid "из"
 msgstr "of"
 
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson_.edit.tsx:48
+msgid "Изменения сохранены"
+msgstr ""
+
 #: src/routes/(education)/_guard/profile.tsx:28
 msgid "Изменить аватар"
 msgstr "Change avatar"
@@ -338,7 +342,7 @@ msgstr "To course"
 msgid "К модулю"
 msgstr "To module"
 
-#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson_.edit.tsx:54
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson_.edit.tsx:83
 msgid "К уроку"
 msgstr "To lesson"
 
@@ -531,6 +535,10 @@ msgstr "Failed to move modules"
 #: src/domains/admin/entities/lesson/ui/module-lessons/index.tsx:25
 msgid "Не удалось переместить уроки"
 msgstr "Failed to move lessons"
+
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson_.edit.tsx:39
+msgid "Не удалось сохранить изменения"
+msgstr ""
 
 #: src/domains/global/features/auth/model/useRegistration.ts:47
 #: src/domains/global/features/auth/model/useLogin.ts:31
@@ -804,7 +812,7 @@ msgstr "Size"
 msgid "Регистрация"
 msgstr "Registration"
 
-#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson_.edit.tsx:45
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson_.edit.tsx:74
 msgid "Редактирование контента урока "
 msgstr "Editing lesson content"
 
@@ -867,7 +875,7 @@ msgstr "16:9 aspect ratio"
 msgid "Сохранить"
 msgstr "Save"
 
-#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson_.edit.tsx:59
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson_.edit.tsx:95
 msgid "Сохранить изменения"
 msgstr "Save changes"
 

@@ -1,7 +1,9 @@
 import { Trans, useLingui } from '@lingui/react/macro';
+import { useQueryClient } from '@tanstack/react-query';
 import { createFileRoute, useBlocker } from '@tanstack/react-router';
 import { useState } from 'react';
 import { PiCaretLeftBold, PiFloppyDiskBackBold } from 'react-icons/pi';
+import { toast } from 'sonner';
 
 import { EditLessonContent } from '~/domains/admin/features/edit-lesson/ui/edit-lesson-content';
 import { rqClient } from '~/shared/api';
@@ -24,12 +26,28 @@ export const Route = createFileRoute('/admin/_guard/courses_/$course_/modules_/$
 function RouteComponent() {
   const { t } = useLingui();
   const { course, module, lesson } = Route.useParams();
+  const queryClient = useQueryClient();
 
   const { data: lessonData } = rqClient.useSuspenseQuery('get', '/admin/lessons/{lessonId}', {
     params: { path: { lessonId: lesson } },
   });
 
   const [content, setContent] = useState<string | undefined>(lessonData.content);
+
+  const { mutate: updateLesson, isPending } = rqClient.useMutation('patch', '/admin/lessons/{lessonId}', {
+    onError: () => {
+      toast.error(t`Не удалось сохранить изменения`);
+    },
+    onSuccess: () => {
+      void queryClient.invalidateQueries(
+        rqClient.queryOptions('get', '/admin/lessons/{lessonId}', {
+          params: { path: { lessonId: lesson } },
+        }),
+      );
+
+      toast.success(t`Изменения сохранены`);
+    },
+  });
 
   useBlocker({
     shouldBlockFn: () => {
@@ -40,6 +58,17 @@ function RouteComponent() {
       return !shouldLeave;
     },
   });
+
+  const handleSave = () => {
+    updateLesson({
+      params: {
+        path: { lessonId: lesson },
+      },
+      body: {
+        content: content ?? '',
+      },
+    });
+  };
 
   return (
     <Container size='lg' title={t`Редактирование контента урока ` + `"${lessonData.title}"`}>
@@ -54,7 +83,14 @@ function RouteComponent() {
           <Trans>К уроку</Trans>
         </LinkButton>
 
-        <Button className='w-fit' size='sm' color='success' isDisabled={content === lessonData.content}>
+        <Button
+          className='min-w-50 w-fit'
+          size='sm'
+          color='success'
+          isDisabled={content === lessonData.content}
+          onClick={handleSave}
+          isLoading={isPending}
+        >
           <PiFloppyDiskBackBold />
           <Trans>Сохранить изменения</Trans>
         </Button>
