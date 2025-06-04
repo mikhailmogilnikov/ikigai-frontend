@@ -39,7 +39,18 @@ updateAdminLesson:
     content:
       application/json:
         schema:
-          $ref: '../schemas/lesson-schemas.yaml#/schemas/AdminLesson'
+          type: object
+          properties:
+            title:
+              type: string
+            video_url:
+              type: [string, 'null']
+            poster_url:
+              type: [string, 'null']
+            is_published:
+              type: boolean
+            content:
+              type: string
   responses:
     '201':
       description: OK

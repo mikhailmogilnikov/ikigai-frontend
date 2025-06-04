@@ -593,7 +593,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AdminModule'
+              type: object
+              properties:
+                title:
+                  type: string
+                is_published:
+                  type: boolean
+              required:
+                - title
+                - is_published
       responses:
         '201':
           description: OK
@@ -684,6 +692,12 @@ paths:
         Определяет логическую последовательность обучения.
       tags:
         - admin
+      parameters:
+        - name: moduleId
+          in: path
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -1049,18 +1063,6 @@ components:
       description: Ошибка доступа
       allOf:
         - $ref: '#/components/schemas/ErrorSchema'
-    BaseVideo:
-      summary: Базовая схема видео в уроке
-      description: Базовая схема видео в уроке
-      type: object
-      properties:
-        video_url:
-          type: string
-        poster_url:
-          type: string
-      required:
-        - video_url
-        - poster_url
     BaseTest:
       summary: Базовая схема теста
       description: Базовая схема теста
@@ -1120,10 +1122,14 @@ components:
         - $ref: '#/components/schemas/CourseLesson'
         - type: object
           properties:
-            video:
-              oneOf:
-                - $ref: '#/components/schemas/BaseVideo'
-                - type: 'null'
+            video_url:
+              type:
+                - string
+                - 'null'
+            poster_url:
+              type:
+                - string
+                - 'null'
             content:
               type: string
             tests:
@@ -1134,6 +1140,8 @@ components:
             - video
             - content
             - tests
+            - video_url
+            - poster_url
     Transaction:
       description: Транзакция в списке транзакций ученика
       type: object
@@ -1285,10 +1293,14 @@ components:
           properties:
             is_published:
               type: boolean
-            video:
-              oneOf:
-                - $ref: '#/components/schemas/BaseVideo'
-                - type: 'null'
+            video_url:
+              type:
+                - string
+                - 'null'
+            poster_url:
+              type:
+                - string
+                - 'null'
             content:
               type: string
             tests:
@@ -1304,6 +1316,8 @@ components:
             - content
             - tests
             - is_completed
+            - video_url
+            - poster_url
     AdminUser:
       description: Пользователи для админ панели
       allOf:

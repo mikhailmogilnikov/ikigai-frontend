@@ -1,10 +1,11 @@
 import { Trans, useLingui } from '@lingui/react/macro';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { useForm, UseFormWatch } from 'react-hook-form';
 import { z } from 'zod';
-import { PiFloppyDiskBold } from 'react-icons/pi';
 import { toast } from 'sonner';
 import { useQueryClient } from '@tanstack/react-query';
+import { useMemo } from 'react';
+import { PiFloppyDiskBold } from 'react-icons/pi';
 
 import { ApiComponents, rqClient } from '~/shared/api';
 import { Input } from '~/shared/ui/primitives/input';
@@ -16,6 +17,11 @@ interface EditModuleInfoProps {
   module: ApiComponents['AdminModule'];
 }
 
+interface EditModuleInfoSchema {
+  title: string;
+  is_published: boolean;
+}
+
 export function EditModuleInfo({ module }: EditModuleInfoProps) {
   const { t } = useLingui();
   const queryClient = useQueryClient();
@@ -25,8 +31,6 @@ export function EditModuleInfo({ module }: EditModuleInfoProps) {
     is_published: z.boolean(),
   });
 
-  type EditModuleInfoSchema = z.infer<typeof editModuleInfoSchema>;
-
   const form = useForm<EditModuleInfoSchema>({
     resolver: zodResolver(editModuleInfoSchema),
     defaultValues: {
@@ -35,7 +39,7 @@ export function EditModuleInfo({ module }: EditModuleInfoProps) {
     },
   });
 
-  const { mutate: updateModule } = rqClient.useMutation('patch', '/admin/modules/{moduleId}', {
+  const { mutate: updateModule, isPending } = rqClient.useMutation('patch', '/admin/modules/{moduleId}', {
     onError: () => {
       toast.error(t`Не удалось обновить информацию о модуле`);
     },
@@ -43,6 +47,11 @@ export function EditModuleInfo({ module }: EditModuleInfoProps) {
       await queryClient.invalidateQueries(
         rqClient.queryOptions('get', '/admin/modules/{moduleId}', {
           params: { path: { moduleId: module.id.toString() } },
+        }),
+      );
+      await queryClient.invalidateQueries(
+        rqClient.queryOptions('get', '/admin/courses/{courseId}/modules', {
+          params: { path: { courseId: module.course_id.toString() } },
         }),
       );
       toast.success(t`Информация о модуле успешно обновлена`);
@@ -87,11 +96,33 @@ export function EditModuleInfo({ module }: EditModuleInfoProps) {
             </FormItem>
           )}
         />
-        <Button type='submit' color='success' className='mt-4'>
-          <PiFloppyDiskBold />
-          <Trans>Сохранить</Trans>
-        </Button>
+        <EditModuleSaveButton watch={form.watch} module={module} isPending={isPending} />
       </form>
     </Form>
   );
 }
+
+const EditModuleSaveButton = ({
+  watch,
+  module,
+  isPending,
+}: {
+  watch: UseFormWatch<EditModuleInfoSchema>;
+  module: ApiComponents['AdminModule'];
+  isPending: boolean;
+}) => {
+  const formValues = watch();
+
+  const { title, is_published } = module;
+
+  const isDirty = useMemo(() => {
+    return title !== formValues.title || is_published !== formValues.is_published;
+  }, [title, is_published, formValues]);
+
+  return (
+    <Button type='submit' isDisabled={!isDirty} color='success' className='mt-4' isLoading={isPending}>
+      <PiFloppyDiskBold />
+      <Trans>Сохранить</Trans>
+    </Button>
+  );
+};

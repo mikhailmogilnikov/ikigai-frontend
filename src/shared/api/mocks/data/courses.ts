@@ -178,10 +178,8 @@ export const MOCK_LESSONS_FULL: ApiComponents['FullLesson'][] = [
     title: 'Настройка окружения разработки',
     order: 1,
     is_completed: true,
-    video: {
-      video_url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-      poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
-    },
+    video_url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
     content:
       '# Настройка окружения разработки\n\nБазовое руководство по настройке окружения для разработки на React и TypeScript.',
     module_id: 1,
@@ -193,10 +191,8 @@ export const MOCK_LESSONS_FULL: ApiComponents['FullLesson'][] = [
     title: 'Основы TypeScript',
     order: 2,
     is_completed: true,
-    video: {
-      video_url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-      poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
-    },
+    video_url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+    poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
     content: '',
     module_id: 1,
     course_id: 1,
@@ -207,10 +203,8 @@ export const MOCK_LESSONS_FULL: ApiComponents['FullLesson'][] = [
     title: 'Первые компоненты React',
     order: 3,
     is_completed: true,
-    video: {
-      video_url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
-      poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
-    },
+    video_url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+    poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
     content: '# Первые компоненты React\n\nСоздание и использование компонентов в React.',
     module_id: 1,
     course_id: 1,
@@ -221,10 +215,8 @@ export const MOCK_LESSONS_FULL: ApiComponents['FullLesson'][] = [
     title: 'Хуки useState и useEffect',
     order: 1,
     is_completed: true,
-    video: {
-      video_url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
-      poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
-    },
+    video_url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+    poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
     content:
       '# Хуки useState и useEffect\n\nИзучение основных хуков React для управления состоянием и побочными эффектами.',
     module_id: 1,
@@ -236,10 +228,8 @@ export const MOCK_LESSONS_FULL: ApiComponents['FullLesson'][] = [
     title: 'Context API',
     order: 2,
     is_completed: false,
-    video: {
-      video_url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-      poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
-    },
+    video_url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+    poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
     module_id: 1,
     course_id: 1,
     content: `
@@ -373,10 +363,8 @@ const Component = () => {
     title: 'Redux Toolkit',
     order: 3,
     is_completed: false,
-    video: {
-      video_url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
-      poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
-    },
+    video_url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
+    poster_url: 'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg',
     module_id: 1,
     course_id: 1,
     content: `# Redux Toolkit

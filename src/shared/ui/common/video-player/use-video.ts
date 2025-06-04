@@ -95,6 +95,10 @@ export const useVideo = ({ chapters }: { chapters?: Chapter[] }) => {
   useEffect(() => {
     if (!playerRef.current) return;
 
+    playerRef.current.addEventListener('abort', () => {
+      playerRef.current?.destroy();
+    });
+
     // Отключаем контекстное меню
     const handleContextMenu = (e: Event) => {
       e.preventDefault();

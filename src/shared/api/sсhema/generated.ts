@@ -1270,7 +1270,13 @@ export interface paths {
       };
       requestBody: {
         content: {
-          'application/json': components['schemas']['AdminLesson'];
+          'application/json': {
+            title?: string;
+            video_url?: string | null;
+            poster_url?: string | null;
+            is_published?: boolean;
+            content?: string;
+          };
         };
       };
       responses: {
@@ -1477,14 +1483,6 @@ export interface components {
     /** @description Ошибка доступа */
     ForbiddenError: components['schemas']['ErrorSchema'];
     /**
-     * Базовая схема видео в уроке
-     * @description Базовая схема видео в уроке
-     */
-    BaseVideo: {
-      video_url: string;
-      poster_url: string;
-    };
-    /**
      * Базовая схема теста
      * @description Базовая схема теста
      */
@@ -1511,7 +1509,8 @@ export interface components {
     };
     /** @description Содержимое урока */
     FullLesson: components['schemas']['CourseLesson'] & {
-      video: components['schemas']['BaseVideo'] | null;
+      video_url: string | null;
+      poster_url: string | null;
       content: string;
       tests: components['schemas']['TestWithVariants'][];
     };
@@ -1576,7 +1575,8 @@ export interface components {
     /** @description Урок для админа с полным контентом */
     AdminLesson: components['schemas']['BaseLesson'] & {
       is_published: boolean;
-      video: components['schemas']['BaseVideo'] | null;
+      video_url: string | null;
+      poster_url: string | null;
       content: string;
       tests: components['schemas']['TestWithVariants'][];
       /** @description Статус завершения урока (для административной статистики) */

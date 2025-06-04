@@ -7,5 +7,5 @@ export const Route = createFileRoute('/auth/_guard/sign-in')({
 });
 
 function RouteComponent() {
-  return <LoginForm className='w-full max-w-md' />;
+  return <LoginForm className='mx-auto w-full max-w-md' />;
 }

@@ -70,16 +70,17 @@ function RouteComponent() {
 
   return (
     <Container size='md' title={lesson.title}>
-      {lesson.video && (
+      {lesson.video_url && (
         <Suspense fallback={<Skeleton className='aspect-video w-full rounded-md' />}>
           <VideoPlayer
-            key={`${lesson.id.toString()}-${lesson.video.video_url}`}
+            key={`${lesson.id.toString()}-${lesson.video_url}`}
             title={lesson.title}
-            src={lesson.video.video_url}
-            poster={lesson.video.poster_url}
+            src={lesson.video_url}
+            poster={lesson.poster_url ?? undefined}
           />
         </Suspense>
       )}
+
       <MarkdownRenderer content={lesson.content} />
       <LessonTests tests={lesson.tests} modules={courseLessons.modules} />
     </Container>

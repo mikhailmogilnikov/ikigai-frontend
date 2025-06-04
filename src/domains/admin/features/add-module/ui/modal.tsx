@@ -32,6 +32,7 @@ export function AddModuleModal({ open, onOpenChange }: AddModuleModalProps) {
           params: { path: { courseId: course } },
         }),
       );
+      await queryClient.invalidateQueries(rqClient.queryOptions('get', '/admin/courses'));
 
       toast.success(t`Модуль "${title}" успешно добавлен`);
       setTitle('');

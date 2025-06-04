@@ -7,5 +7,5 @@ export const Route = createFileRoute('/auth/_guard/recover-password')({
 });
 
 function RouteComponent() {
-  return <RecoverPasswordForm className='w-full max-w-md' />;
+  return <RecoverPasswordForm className='mx-auto w-full max-w-md' />;
 }

@@ -6,6 +6,7 @@ import { useMemo } from 'react';
 import { toast } from 'sonner';
 import { useQueryClient } from '@tanstack/react-query';
 import { useParams } from '@tanstack/react-router';
+import { PiFloppyDiskBold } from 'react-icons/pi';
 
 import { ApiComponents, rqClient } from '~/shared/api';
 import { Input } from '~/shared/ui/primitives/input';
@@ -39,7 +40,7 @@ export function EditCourseInfo({ course }: EditCourseInfoProps) {
   const queryClient = useQueryClient();
   const { course: courseId } = useParams({ from: '/admin/_guard/courses_/$course' });
 
-  const { mutate: editCourseInfo } = rqClient.useMutation('patch', '/admin/courses/{courseId}', {
+  const { mutate: editCourseInfo, isPending } = rqClient.useMutation('patch', '/admin/courses/{courseId}', {
     onError: () => {
       toast.error(t`Не удалось изменить информацию о курсе`);
     },
@@ -49,6 +50,8 @@ export function EditCourseInfo({ course }: EditCourseInfoProps) {
           params: { path: { courseId } },
         }),
       );
+      await queryClient.invalidateQueries(rqClient.queryOptions('get', '/admin/courses'));
+
       toast.success(t`Информация о курсе успешно изменена`);
     },
   });
@@ -170,7 +173,7 @@ export function EditCourseInfo({ course }: EditCourseInfoProps) {
             </FormItem>
           )}
         />
-        <EditCourseSaveButton watch={form.watch} course={course} />
+        <EditCourseSaveButton watch={form.watch} course={course} isPending={isPending} />
       </form>
     </Form>
   );
@@ -179,9 +182,11 @@ export function EditCourseInfo({ course }: EditCourseInfoProps) {
 const EditCourseSaveButton = ({
   watch,
   course,
+  isPending,
 }: {
   watch: UseFormWatch<EditCourseInfoSchema>;
   course: ApiComponents['AdminCourseMainInfo'];
+  isPending: boolean;
 }) => {
   const formValues = watch();
 
@@ -190,7 +195,7 @@ const EditCourseSaveButton = ({
   const isDirty = useMemo(() => {
     return (
       title !== formValues.title ||
-      price !== formValues.price ||
+      price !== Number(formValues.price) ||
       description !== formValues.description ||
       image_url !== formValues.image_url ||
       is_published !== formValues.is_published
@@ -198,7 +203,8 @@ const EditCourseSaveButton = ({
   }, [title, price, description, image_url, is_published, formValues]);
 
   return (
-    <Button type='submit' isDisabled={!isDirty} color='success' className='mt-4'>
+    <Button type='submit' isDisabled={!isDirty} color='success' className='mt-4' isLoading={isPending}>
+      <PiFloppyDiskBold />
       <Trans>Сохранить</Trans>
     </Button>
   );

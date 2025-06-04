@@ -7,10 +7,10 @@ schemas:
         properties:
           is_published:
             type: boolean
-          video:
-            oneOf:
-              - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseVideo"
-              - type: "null"
+          video_url:
+            type: [string, 'null']
+          poster_url:
+            type: [string, 'null']
           content:
             type: string
           tests:
@@ -26,3 +26,5 @@ schemas:
           - content
           - tests
           - is_completed
+          - video_url
+          - poster_url

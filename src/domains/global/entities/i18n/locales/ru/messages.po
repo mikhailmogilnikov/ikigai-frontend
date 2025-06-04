@@ -74,6 +74,14 @@ msgstr "Google Cast"
 #~ msgid "Hello \"/auth/sign-up\"!"
 #~ msgstr "Hello \"/auth/sign-up\"!"
 
+#: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:151
+msgid "https://example.com/poster.jpg"
+msgstr "https://example.com/poster.jpg"
+
+#: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:124
+msgid "https://example.com/video.mp4"
+msgstr "https://example.com/video.mp4"
+
 #: src/domains/admin/widgets/users-table/config/columns.tsx:13
 #: src/domains/admin/widgets/transactions-table/config/columns.tsx:15
 #: src/domains/admin/widgets/courses-table/config/columns.tsx:13
@@ -120,6 +128,11 @@ msgstr "Анимации клавиатуры"
 msgid "В процессе изучения"
 msgstr "В процессе изучения"
 
+#: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:45
+#: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:51
+msgid "Введите корректную ссылку"
+msgstr "Введите корректную ссылку"
+
 #: src/domains/global/widgets/not-found/ui/index.tsx:12
 msgid "Вернуться на главную"
 msgstr "Вернуться на главную"
@@ -163,6 +176,10 @@ msgstr "Восстановить пароль"
 #: src/domains/global/features/auth/ui/recover-password-form.tsx:19
 msgid "Восстановление пароля"
 msgstr "Восстановление пароля"
+
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson_.edit.tsx:38
+msgid "Вы уверены, что хотите покинуть страницу? Несохраненные изменения будут потеряны."
+msgstr "Вы уверены, что хотите покинуть страницу? Несохраненные изменения будут потеряны."
 
 #: src/domains/global/features/logout/ui/button.tsx:13
 msgid "Выйти из аккаунта"
@@ -208,8 +225,8 @@ msgstr "Дата регистрации"
 msgid "Дата создания"
 msgstr "Дата создания"
 
-#: src/domains/admin/features/add-module/ui/modal.tsx:81
-#: src/domains/admin/features/add-lesson/ui/modal.tsx:81
+#: src/domains/admin/features/add-module/ui/modal.tsx:82
+#: src/domains/admin/features/add-lesson/ui/modal.tsx:82
 #: src/domains/admin/features/add-course/ui/modal.tsx:75
 msgid "Добавить"
 msgstr "Добавить"
@@ -219,15 +236,23 @@ msgstr "Добавить"
 msgid "Добавить курс"
 msgstr "Добавить курс"
 
-#: src/domains/admin/features/add-module/ui/modal.tsx:54
+#: src/domains/admin/features/add-module/ui/modal.tsx:55
 #: src/domains/admin/features/add-module/ui/button.tsx:20
 msgid "Добавить модуль"
 msgstr "Добавить модуль"
 
-#: src/domains/admin/features/add-lesson/ui/modal.tsx:54
+#: src/domains/admin/features/add-lesson/ui/modal.tsx:55
 #: src/domains/admin/features/add-lesson/ui/button.tsx:20
 msgid "Добавить урок"
 msgstr "Добавить урок"
+
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:59
+msgid "Добавьте ссылку на видео"
+msgstr "Добавьте ссылку на видео"
+
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:73
+msgid "Добавьте ссылку на постер к видео"
+msgstr "Добавьте ссылку на постер к видео"
 
 #: src/shared/ui/common/video-player/use-video.ts:67
 msgid "Дорожка"
@@ -270,11 +295,11 @@ msgstr "Зациклить видео"
 msgid "из"
 msgstr "из"
 
-#: src/routes/(education)/_guard/profile.tsx:33
+#: src/routes/(education)/_guard/profile.tsx:28
 msgid "Изменить аватар"
 msgstr "Изменить аватар"
 
-#: src/domains/admin/features/edit-course-info/ui/index.tsx:64
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:67
 msgid "Изображение не может быть пустым"
 msgstr "Изображение не может быть пустым"
 
@@ -288,18 +313,34 @@ msgstr "Имя"
 msgid "Имя должно быть не менее 1 символа"
 msgstr "Имя должно быть не менее 1 символа"
 
-#: src/domains/admin/features/edit-course-info/ui/index.tsx:52
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:55
 msgid "Информация о курсе успешно изменена"
 msgstr "Информация о курсе успешно изменена"
 
-#: src/domains/admin/features/edit-module-info/ui/index.tsx:48
+#: src/domains/admin/features/edit-module-info/ui/index.tsx:57
 msgid "Информация о модуле успешно обновлена"
 msgstr "Информация о модуле успешно обновлена"
+
+#: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:84
+msgid "Информация о уроке успешно обновлена"
+msgstr "Информация о уроке успешно обновлена"
 
 #: src/routes/(education)/_guard/transactions.tsx:20
 #: src/domains/education/widgets/menu/ui/navigation.tsx:28
 msgid "История транзакций"
 msgstr "История транзакций"
+
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:40
+msgid "К курсу"
+msgstr "К курсу"
+
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:44
+msgid "К модулю"
+msgstr "К модулю"
+
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson_.edit.tsx:54
+msgid "К уроку"
+msgstr "К уроку"
 
 #: src/shared/ui/common/video-player/use-video.ts:55
 msgid "Картинка-в-Картинке"
@@ -320,6 +361,10 @@ msgstr "Кол-во продаж"
 #: src/domains/admin/widgets/courses-table/config/columns.tsx:81
 msgid "Кол-во прохождений"
 msgstr "Кол-во прохождений"
+
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:80
+msgid "Количество тестов:"
+msgstr "Количество тестов:"
 
 #: src/domains/education/entities/test/ui/lesson-test/index.tsx:89
 msgid "Корректно"
@@ -364,7 +409,7 @@ msgstr "Модули курса"
 msgid "Модули успешно перемещены"
 msgstr "Модули успешно перемещены"
 
-#: src/domains/admin/features/add-module/ui/modal.tsx:36
+#: src/domains/admin/features/add-module/ui/modal.tsx:37
 msgid "Модуль \"{title}\" успешно добавлен"
 msgstr "Модуль \"{title}\" успешно добавлен"
 
@@ -389,12 +434,12 @@ msgid "Назад к курсу"
 msgstr "Назад к курсу"
 
 #: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:20
-msgid "Назад к модулю"
-msgstr "Назад к модулю"
+#~ msgid "Назад к модулю"
+#~ msgstr "Назад к модулю"
 
 #: src/domains/admin/widgets/courses-table/config/columns.tsx:19
-#: src/domains/admin/features/edit-module-info/ui/index.tsx:65
-#: src/domains/admin/features/edit-course-info/ui/index.tsx:98
+#: src/domains/admin/features/edit-module-info/ui/index.tsx:74
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:101
 msgid "Название"
 msgstr "Название"
 
@@ -403,18 +448,21 @@ msgstr "Название"
 msgid "Название курса"
 msgstr "Название курса"
 
-#: src/domains/admin/features/add-module/ui/modal.tsx:58
-#: src/domains/admin/features/add-module/ui/modal.tsx:63
+#: src/domains/admin/features/add-module/ui/modal.tsx:59
+#: src/domains/admin/features/add-module/ui/modal.tsx:64
 msgid "Название модуля"
 msgstr "Название модуля"
 
-#: src/domains/admin/features/edit-module-info/ui/index.tsx:24
-#: src/domains/admin/features/edit-course-info/ui/index.tsx:59
+#: src/domains/admin/features/edit-module-info/ui/index.tsx:30
+#: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:42
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:62
 msgid "Название не может быть пустым"
 msgstr "Название не может быть пустым"
 
-#: src/domains/admin/features/add-lesson/ui/modal.tsx:58
-#: src/domains/admin/features/add-lesson/ui/modal.tsx:63
+#: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:101
+#: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:104
+#: src/domains/admin/features/add-lesson/ui/modal.tsx:59
+#: src/domains/admin/features/add-lesson/ui/modal.tsx:64
 msgid "Название урока"
 msgstr "Название урока"
 
@@ -464,13 +512,17 @@ msgstr "Не удалось добавить модуль \"{title}\""
 msgid "Не удалось добавить урок \"{title}\""
 msgstr "Не удалось добавить урок \"{title}\""
 
-#: src/domains/admin/features/edit-course-info/ui/index.tsx:44
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:45
 msgid "Не удалось изменить информацию о курсе"
 msgstr "Не удалось изменить информацию о курсе"
 
-#: src/domains/admin/features/edit-module-info/ui/index.tsx:40
+#: src/domains/admin/features/edit-module-info/ui/index.tsx:44
 msgid "Не удалось обновить информацию о модуле"
 msgstr "Не удалось обновить информацию о модуле"
+
+#: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:70
+msgid "Не удалось обновить информацию о уроке"
+msgstr "Не удалось обновить информацию о уроке"
 
 #: src/domains/admin/entities/module/ui/course-modules/index.tsx:25
 msgid "Не удалось переместить модули"
@@ -485,7 +537,7 @@ msgstr "Не удалось переместить уроки"
 msgid "Неверный email или пароль"
 msgstr "Неверный email или пароль"
 
-#: src/domains/admin/features/edit-course-info/ui/index.tsx:65
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:68
 msgid "Неверный URL"
 msgstr "Неверный URL"
 
@@ -523,11 +575,11 @@ msgstr "Обычная"
 msgid "Ожидает"
 msgstr "Ожидает"
 
-#: src/domains/admin/features/edit-course-info/ui/index.tsx:149
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:152
 msgid "Описание"
 msgstr "Описание"
 
-#: src/domains/admin/features/edit-course-info/ui/index.tsx:61
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:64
 msgid "Описание не может быть пустым"
 msgstr "Описание не может быть пустым"
 
@@ -537,14 +589,19 @@ msgstr "Описание не может быть пустым"
 msgid "Опубликован"
 msgstr "Опубликован"
 
-#: src/domains/admin/features/edit-course-info/ui/index.tsx:167
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:170
 msgid "Опубликовать курс"
 msgstr "Опубликовать курс"
 
-#: src/domains/admin/features/edit-module-info/ui/index.tsx:84
+#: src/domains/admin/features/edit-module-info/ui/index.tsx:93
 msgid "Опубликовать модуль"
 msgstr "Опубликовать модуль"
 
+#: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:174
+msgid "Опубликовать урок"
+msgstr "Опубликовать урок"
+
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:84
 #: src/routes/admin/_guard/courses_/$course_.modules_.$module.tsx:48
 #: src/routes/admin/_guard/courses_/$course.tsx:54
 msgid "Основная информация"
@@ -747,7 +804,15 @@ msgstr "Размер"
 msgid "Регистрация"
 msgstr "Регистрация"
 
-#: src/routes/(education)/_guard/profile.tsx:28
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson_.edit.tsx:45
+msgid "Редактирование контента урока "
+msgstr "Редактирование контента урока "
+
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:100
+msgid "Редактировать"
+msgstr "Редактировать"
+
+#: src/routes/(education)/_guard/profile.tsx:23
 msgid "Редактировать основные данные"
 msgstr "Редактировать основные данные"
 
@@ -783,18 +848,28 @@ msgstr "Скорость"
 msgid "Следующий урок"
 msgstr "Следующий урок"
 
-#: src/routes/(education)/_guard/profile.tsx:38
+#: src/routes/(education)/_guard/profile.tsx:33
 msgid "Сменить email"
 msgstr "Сменить email"
 
-#: src/routes/(education)/_guard/profile.tsx:43
+#: src/routes/(education)/_guard/profile.tsx:38
 msgid "Сменить пароль"
 msgstr "Сменить пароль"
 
-#: src/domains/admin/features/edit-module-info/ui/index.tsx:92
-#: src/domains/admin/features/edit-course-info/ui/index.tsx:202
+#: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:131
+#: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:158
+msgid "Соотношение сторон 16x9"
+msgstr "Соотношение сторон 16x9"
+
+#: src/domains/admin/features/edit-module-info/ui/index.tsx:125
+#: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:211
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:208
 msgid "Сохранить"
 msgstr "Сохранить"
+
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson_.edit.tsx:59
+msgid "Сохранить изменения"
+msgstr "Сохранить изменения"
 
 #: src/domains/admin/entities/module/ui/course-modules/index.tsx:124
 msgid "Сохранить расположение модулей"
@@ -804,13 +879,21 @@ msgstr "Сохранить расположение модулей"
 msgid "Сохранить расположение уроков"
 msgstr "Сохранить расположение уроков"
 
-#: src/domains/admin/features/edit-course-info/ui/index.tsx:128
+#: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:117
+msgid "Ссылка на видео (необязательно)"
+msgstr "Ссылка на видео (необязательно)"
+
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:131
 msgid "Ссылка на изображение"
 msgstr "Ссылка на изображение"
 
-#: src/domains/admin/features/edit-course-info/ui/index.tsx:134
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:137
 msgid "Ссылка на изображение должна быть в формате URL. Например, https://example.com/image.jpg. Соотношение сторон 3x2 (например: валидный размер картинки, чтобы ничего не обрезалось - 600x400 или 1200x800)"
 msgstr "Ссылка на изображение должна быть в формате URL. Например, https://example.com/image.jpg. Соотношение сторон 3x2 (например: валидный размер картинки, чтобы ничего не обрезалось - 600x400 или 1200x800)"
+
+#: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:144
+msgid "Ссылка на постер (необязательно)"
+msgstr "Ссылка на постер (необязательно)"
 
 #: src/domains/admin/widgets/transactions-table/config/columns.tsx:57
 msgid "Статус"
@@ -860,6 +943,10 @@ msgstr "Такой email не зарегистрирован"
 msgid "Текст"
 msgstr "Текст"
 
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:91
+msgid "Текстовый контент урока"
+msgstr "Текстовый контент урока"
+
 #: src/domains/global/features/change-theme/ui/change-theme-menu-button.tsx:53
 #: src/domains/global/features/change-theme/ui/change-theme-menu-button.tsx:60
 msgid "Тема оформления"
@@ -877,13 +964,17 @@ msgstr "Тень"
 msgid "Транзакции"
 msgstr "Транзакции"
 
-#: src/domains/admin/features/add-lesson/ui/modal.tsx:36
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:36
+msgid "Урок "
+msgstr "Урок "
+
+#: src/domains/admin/features/add-lesson/ui/modal.tsx:37
 msgid "Урок \"{title}\" успешно добавлен"
 msgstr "Урок \"{title}\" успешно добавлен"
 
 #: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:17
-msgid "Урок {lesson}"
-msgstr "Урок {lesson}"
+#~ msgid "Урок {lesson}"
+#~ msgstr "Урок {lesson}"
 
 #: src/routes/admin/_guard/courses_/$course_.modules_.$module.tsx:53
 msgid "Уроки модуля"
@@ -923,11 +1014,11 @@ msgstr "Цвет"
 msgid "Цена"
 msgstr "Цена"
 
-#: src/domains/admin/features/edit-course-info/ui/index.tsx:113
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:116
 msgid "Цена за курс (₽)"
 msgstr "Цена за курс (₽)"
 
-#: src/domains/admin/features/edit-course-info/ui/index.tsx:60
+#: src/domains/admin/features/edit-course-info/ui/index.tsx:63
 msgid "Цена не может быть отрицательной"
 msgstr "Цена не может быть отрицательной"
 

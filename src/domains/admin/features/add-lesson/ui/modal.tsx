@@ -32,6 +32,7 @@ export function AddLessonModal({ open, onOpenChange }: AddLessonModalProps) {
           params: { path: { moduleId: module } },
         }),
       );
+      await queryClient.invalidateQueries(rqClient.queryOptions('get', '/admin/courses'));
 
       toast.success(t`Урок "${title}" успешно добавлен`);
       setTitle('');

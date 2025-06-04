@@ -67,19 +67,6 @@ schemas:
       - order
       - course_id
 
-  BaseVideo:
-    summary: Базовая схема видео в уроке
-    description: Базовая схема видео в уроке
-    type: object
-    properties:
-      video_url:
-        type: string
-      poster_url:
-        type: string
-    required:
-      - video_url
-      - poster_url
-
   BaseTest:
     summary: Базовая схема теста
     description: Базовая схема теста
