@@ -38,7 +38,7 @@ msgstr "{lessons_amount, plural, one {lesson} other {lessons}}"
 msgid "{modules_amount, plural, one {модуль} few {модуля} many {модулей}}"
 msgstr "{modules_amount, plural, one {module} other {modules}}"
 
-#: src/domains/global/features/auth/ui/login-form.tsx:68
+#: src/domains/global/features/auth/ui/login-form.tsx:63
 msgid "<0>Нет аккаунта? </0><1>Зарегистрироваться</1> "
 msgstr "<0>Don't have an account? </0><1>Sign Up</1> "
 
@@ -46,11 +46,11 @@ msgstr "<0>Don't have an account? </0><1>Sign Up</1> "
 msgid "<0>Попробуйте</0> <1>обновить страницу</1> <2>или</2> <3>вернуться на главную</3>"
 msgstr "<0>Try to</0> <1>refresh the page</1> <2>or</2> <3>return to the home page</3>"
 
-#: src/domains/global/features/auth/ui/registration-form.tsx:124
+#: src/domains/global/features/auth/ui/registration-form.tsx:131
 msgid "<0>Уже есть аккаунт? </0><1>Войти</1> "
 msgstr "<0>Already have an account? </0><1>Sign In</1> "
 
-#: src/domains/admin/entities/module/ui/course-modules/index.tsx:90
+#: src/domains/admin/entities/module/ui/course-modules/index.tsx:96
 msgid "3 урока"
 msgstr "3 lessons"
 
@@ -128,6 +128,22 @@ msgstr "Keyboard Animations"
 msgid "В процессе изучения"
 msgstr "In Progress"
 
+#: src/domains/admin/features/configure-lesson-tests/ui/test.tsx:164
+msgid "Варианты ответа"
+msgstr ""
+
+#: src/domains/admin/features/configure-lesson-tests/ui/test.tsx:186
+msgid "Введите вариант ответа"
+msgstr ""
+
+#: src/domains/admin/features/configure-lesson-tests/ui/test.tsx:149
+msgid "Введите вопрос"
+msgstr ""
+
+#: src/shared/ui/overlays/otp-input-modal/index.tsx:46
+msgid "Введите код"
+msgstr ""
+
 #: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:45
 #: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:51
 msgid "Введите корректную ссылку"
@@ -145,11 +161,11 @@ msgstr "Return to login page"
 msgid "Включить звук"
 msgstr "Unmute"
 
-#: src/domains/global/features/auth/ui/login-form.tsx:64
+#: src/domains/global/features/auth/ui/login-form.tsx:59
 msgid "Войти"
 msgstr "Sign In"
 
-#: src/domains/global/features/auth/ui/login-form.tsx:20
+#: src/domains/global/features/auth/ui/login-form.tsx:21
 msgid "Войти в аккаунт"
 msgstr "Sign in to account"
 
@@ -160,6 +176,10 @@ msgstr "Enter Fullscreen"
 #: src/shared/ui/common/video-player/use-video.ts:20
 msgid "Войти в режим Картинка-в-Картинке"
 msgstr "Enter Picture-in-Picture"
+
+#: src/domains/admin/features/configure-lesson-tests/ui/test.tsx:143
+msgid "Вопрос"
+msgstr ""
 
 #: src/shared/ui/common/video-player/use-video.ts:57
 msgid "Воспроизведение"
@@ -180,6 +200,22 @@ msgstr "Password Recovery"
 #: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson_.edit.tsx:56
 msgid "Вы уверены, что хотите покинуть страницу? Несохраненные изменения будут потеряны."
 msgstr "Are you sure you want to leave the page? Unsaved changes will be lost."
+
+#: src/domains/admin/features/configure-lesson-tests/ui/index.tsx:51
+msgid "Вы уверены, что хотите покинуть страницу? Несохраненные изменения в тестах будут потеряны."
+msgstr ""
+
+#: src/domains/admin/features/delete-module/ui/button.tsx:74
+msgid "Вы уверены, что хотите удалить модуль? Все уроки, которые входят в этот модуль, также будут удалены. Это действие необратимо."
+msgstr ""
+
+#: src/domains/admin/features/delete-lesson/ui/button.tsx:76
+msgid "Вы уверены, что хотите удалить урок? Это действие необратимо."
+msgstr ""
+
+#: src/domains/admin/features/configure-lesson-tests/ui/test.tsx:135
+msgid "Вы уверены, что хотите удалить этот тест?"
+msgstr ""
 
 #: src/domains/global/features/logout/ui/button.tsx:13
 msgid "Выйти из аккаунта"
@@ -231,6 +267,10 @@ msgstr "Creation Date"
 msgid "Добавить"
 msgstr "Add"
 
+#: src/domains/admin/features/configure-lesson-tests/ui/test.tsx:202
+msgid "Добавить вариант"
+msgstr ""
+
 #: src/domains/admin/features/add-course/ui/modal.tsx:48
 #: src/domains/admin/features/add-course/ui/button.tsx:20
 msgid "Добавить курс"
@@ -241,16 +281,20 @@ msgstr "Add Course"
 msgid "Добавить модуль"
 msgstr "Add Module"
 
+#: src/domains/admin/features/configure-lesson-tests/ui/index.tsx:147
+msgid "Добавить тест"
+msgstr ""
+
 #: src/domains/admin/features/add-lesson/ui/modal.tsx:55
 #: src/domains/admin/features/add-lesson/ui/button.tsx:20
 msgid "Добавить урок"
 msgstr "Add Lesson"
 
-#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:59
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:61
 msgid "Добавьте ссылку на видео"
 msgstr "Add video link"
 
-#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:73
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:75
 msgid "Добавьте ссылку на постер к видео"
 msgstr "Add video poster link"
 
@@ -266,7 +310,7 @@ msgstr "Access to material: "
 msgid "Доступность"
 msgstr "Accessibility"
 
-#: src/domains/global/features/auth/ui/login-form.tsx:46
+#: src/domains/global/features/auth/ui/login-form.tsx:47
 msgid "Забыли пароль?"
 msgstr "Forgot password?"
 
@@ -283,7 +327,7 @@ msgstr "Completed"
 msgid "Закрыть это окно"
 msgstr "Close this window"
 
-#: src/domains/global/features/auth/ui/registration-form.tsx:120
+#: src/domains/global/features/auth/ui/registration-form.tsx:127
 msgid "Зарегистрироваться"
 msgstr "Sign Up"
 
@@ -307,13 +351,13 @@ msgstr "Change avatar"
 msgid "Изображение не может быть пустым"
 msgstr "Image cannot be empty"
 
-#: src/domains/global/features/auth/ui/registration-form.tsx:30
-#: src/domains/global/features/auth/ui/registration-form.tsx:33
+#: src/domains/global/features/auth/ui/registration-form.tsx:49
+#: src/domains/global/features/auth/ui/registration-form.tsx:52
 #: src/domains/admin/widgets/users-table/config/columns.tsx:25
 msgid "Имя"
 msgstr "First Name"
 
-#: src/domains/global/features/auth/model/useRegistration.ts:20
+#: src/domains/global/features/auth/model/useRegistration.ts:27
 msgid "Имя должно быть не менее 1 символа"
 msgstr "Name must be at least 1 character"
 
@@ -334,11 +378,11 @@ msgstr "Lesson information successfully updated"
 msgid "История транзакций"
 msgstr "Transaction History"
 
-#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:40
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:42
 msgid "К курсу"
 msgstr "To course"
 
-#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:44
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:46
 msgid "К модулю"
 msgstr "To module"
 
@@ -366,7 +410,7 @@ msgstr "Number of Sales"
 msgid "Кол-во прохождений"
 msgstr "Number of Completions"
 
-#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:80
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:82
 msgid "Количество тестов:"
 msgstr "Number of tests:"
 
@@ -417,9 +461,13 @@ msgstr ""
 msgid "Модуль \"{title}\" успешно добавлен"
 msgstr "Module \"{title}\" successfully added"
 
-#: src/routes/admin/_guard/courses_/$course_.modules_.$module.tsx:42
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module.tsx:43
 msgid "Модуль {module} курса {course}"
 msgstr "Module {module} of course {course}"
+
+#: src/domains/admin/features/delete-module/ui/button.tsx:38
+msgid "Модуль удален"
+msgstr ""
 
 #: src/domains/education/widgets/menu/ui/navigation.tsx:13
 msgid "Мои курсы"
@@ -429,11 +477,15 @@ msgstr "My Courses"
 msgid "Моя коллекция"
 msgstr "My Collection"
 
+#: src/shared/ui/overlays/otp-input-modal/index.tsx:88
+msgid "Мы отправили проверочный код на вашу почту. Если код не приходит, проверьте папку \"Спам\"."
+msgstr ""
+
 #: src/domains/education/widgets/menu/ui/navigation.tsx:43
 msgid "Навигация"
 msgstr "Navigation"
 
-#: src/routes/admin/_guard/courses_/$course_.modules_.$module.tsx:45
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module.tsx:46
 msgid "Назад к курсу"
 msgstr "Back to course"
 
@@ -495,7 +547,7 @@ msgstr "Start Course"
 msgid "Не начатые"
 msgstr "Not Started"
 
-#: src/domains/admin/entities/module/ui/course-modules/index.tsx:86
+#: src/domains/admin/entities/module/ui/course-modules/index.tsx:92
 #: src/domains/admin/entities/lesson/ui/module-lessons/index.tsx:86
 msgid "Не опубликован"
 msgstr "Not published"
@@ -540,7 +592,7 @@ msgstr "Failed to move lessons"
 msgid "Не удалось сохранить изменения"
 msgstr ""
 
-#: src/domains/global/features/auth/model/useRegistration.ts:47
+#: src/domains/global/features/auth/model/useRegistration.ts:54
 #: src/domains/global/features/auth/model/useLogin.ts:31
 msgid "Неверный email или пароль"
 msgstr "Invalid email or password"
@@ -549,8 +601,12 @@ msgstr "Invalid email or password"
 msgid "Неверный URL"
 msgstr "Invalid URL"
 
-#: src/domains/global/features/auth/model/useRegistration.ts:22
-#: src/domains/global/features/auth/model/useRecoverPassword.ts:12
+#: src/shared/ui/overlays/otp-input-modal/index.tsx:81
+msgid "Неверный код. Попробуйте еще раз."
+msgstr ""
+
+#: src/domains/global/features/auth/model/useRegistration.ts:29
+#: src/domains/global/features/auth/model/useRecoverPassword.ts:15
 #: src/domains/global/features/auth/model/useLogin.ts:14
 msgid "Неверный формат почты"
 msgstr "Invalid email format"
@@ -591,8 +647,16 @@ msgstr "Description"
 msgid "Описание не может быть пустым"
 msgstr "Description cannot be empty"
 
+#: src/domains/admin/features/configure-lesson-tests/ui/test.tsx:153
+msgid "Описание правильного варианта"
+msgstr ""
+
+#: src/domains/admin/features/configure-lesson-tests/ui/test.tsx:159
+msgid "Описание правильного ответа"
+msgstr ""
+
 #: src/domains/admin/widgets/courses-table/config/columns.tsx:35
-#: src/domains/admin/entities/module/ui/course-modules/index.tsx:86
+#: src/domains/admin/entities/module/ui/course-modules/index.tsx:92
 #: src/domains/admin/entities/lesson/ui/module-lessons/index.tsx:86
 msgid "Опубликован"
 msgstr "Published"
@@ -609,8 +673,8 @@ msgstr "Publish module"
 msgid "Опубликовать урок"
 msgstr "Publish lesson"
 
-#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:84
-#: src/routes/admin/_guard/courses_/$course_.modules_.$module.tsx:48
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:86
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module.tsx:49
 #: src/routes/admin/_guard/courses_/$course.tsx:54
 msgid "Основная информация"
 msgstr "Basic information"
@@ -624,33 +688,40 @@ msgstr "Rejected"
 msgid "Отключено"
 msgstr "Disabled"
 
+#: src/shared/ui/overlays/otp-input-modal/index.tsx:94
+#: src/shared/ui/overlays/drawer/drawer.tsx:108
+#: src/shared/ui/overlays/alert-modal/index.tsx:42
+msgid "Отмена"
+msgstr ""
+
 #: src/shared/ui/common/video-player/use-video.ts:18
 msgid "Отображать фон"
 msgstr "Show Background"
 
-#: src/domains/global/features/auth/model/useRegistration.ts:28
+#: src/domains/global/features/auth/model/useRegistration.ts:35
 msgid "Пароли не совпадают"
 msgstr "Passwords do not match"
 
-#: src/domains/global/features/auth/ui/registration-form.tsx:81
-#: src/domains/global/features/auth/ui/login-form.tsx:43
+#: src/shared/ui/primitives/input/input-password.tsx:17
+#: src/domains/global/features/auth/ui/registration-form.tsx:100
+#: src/domains/global/features/auth/ui/login-form.tsx:44
 msgid "Пароль"
 msgstr "Password"
 
-#: src/domains/global/features/auth/model/useRegistration.ts:13
+#: src/domains/global/features/auth/model/useRegistration.ts:20
 #: src/domains/global/features/auth/model/useLogin.ts:15
 msgid "Пароль должен быть не менее 8 символов"
 msgstr "Password must be at least 8 characters"
 
-#: src/domains/global/features/auth/model/useRegistration.ts:14
+#: src/domains/global/features/auth/model/useRegistration.ts:21
 msgid "Пароль должен содержать хотя бы одну заглавную букву"
 msgstr "Password must contain at least one uppercase letter"
 
-#: src/domains/global/features/auth/model/useRegistration.ts:15
+#: src/domains/global/features/auth/model/useRegistration.ts:22
 msgid "Пароль должен содержать хотя бы одну строчную букву"
 msgstr "Password must contain at least one lowercase letter"
 
-#: src/domains/global/features/auth/model/useRegistration.ts:16
+#: src/domains/global/features/auth/model/useRegistration.ts:23
 msgid "Пароль должен содержать хотя бы одну цифру"
 msgstr "Password must contain at least one number"
 
@@ -690,6 +761,10 @@ msgstr "Rewind"
 msgid "Переход к Live-трансляциям"
 msgstr "Go to Live Streams"
 
+#: src/domains/global/features/auth/model/useRecoverPassword.ts:34
+msgid "Письмо для восстановления пароля отправлено на указанную почту"
+msgstr ""
+
 #: src/shared/ui/common/data-table/column-header.tsx:52
 msgid "По возрастанию"
 msgstr "Ascending"
@@ -702,7 +777,7 @@ msgstr "Descending"
 msgid "По умолчанию"
 msgstr "Default"
 
-#: src/domains/global/features/auth/ui/registration-form.tsx:103
+#: src/domains/global/features/auth/ui/registration-form.tsx:116
 msgid "Повторите пароль"
 msgstr "Repeat password"
 
@@ -728,6 +803,14 @@ msgstr "Connected"
 msgid "Подробнее"
 msgstr "Learn More"
 
+#: src/shared/ui/overlays/alert-modal/index.tsx:34
+msgid "Подтвердите действие"
+msgstr ""
+
+#: src/shared/ui/overlays/alert-modal/index.tsx:45
+msgid "Подтвердить"
+msgstr ""
+
 #: src/domains/admin/widgets/transactions-table/config/columns.tsx:65
 msgid "Подтвержден"
 msgstr "Confirmed"
@@ -741,6 +824,10 @@ msgstr "Congratulations on successfully completing the course!"
 #: src/domains/admin/features/search/ui/index.tsx:30
 msgid "Поиск"
 msgstr "Search"
+
+#: src/shared/ui/primitives/input/input-password.tsx:22
+msgid "Показать пароль"
+msgstr ""
 
 #: src/domains/education/features/buy-course/ui/index.tsx:22
 msgid "Покупка курса"
@@ -758,9 +845,9 @@ msgstr "Users"
 msgid "Посмотреть другие курсы"
 msgstr "View Other Courses"
 
-#: src/domains/global/features/auth/ui/registration-form.tsx:66
+#: src/domains/global/features/auth/ui/registration-form.tsx:85
 #: src/domains/global/features/auth/ui/recover-password-form.tsx:26
-#: src/domains/global/features/auth/ui/login-form.tsx:27
+#: src/domains/global/features/auth/ui/login-form.tsx:28
 msgid "Почта"
 msgstr "Email"
 
@@ -775,6 +862,10 @@ msgstr "Check"
 #: src/domains/education/widgets/lesson-tests/ui/index.tsx:94
 msgid "Проверьте себя"
 msgstr "Test Yourself"
+
+#: src/shared/ui/overlays/otp-input-modal/index.tsx:76
+msgid "Проверяем код..."
+msgstr ""
 
 #: src/domains/education/widgets/course-full-info/ui/modules.tsx:17
 msgid "Программа курса"
@@ -808,15 +899,19 @@ msgstr "Profile"
 msgid "Размер"
 msgstr "Size"
 
-#: src/domains/global/features/auth/ui/registration-form.tsx:21
+#: src/domains/global/features/auth/ui/registration-form.tsx:40
 msgid "Регистрация"
 msgstr "Registration"
+
+#: src/domains/global/features/auth/model/useRegistration.ts:70
+msgid "Регистрация пройдена успешно! Используйте вашу почту и пароль для входа в систему."
+msgstr ""
 
 #: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson_.edit.tsx:74
 msgid "Редактирование контента урока "
 msgstr "Editing lesson content"
 
-#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:100
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:102
 msgid "Редактировать"
 msgstr "Edit"
 
@@ -852,6 +947,10 @@ msgstr "Download"
 msgid "Скорость"
 msgstr "Speed"
 
+#: src/shared/ui/primitives/input/input-password.tsx:22
+msgid "Скрыть пароль"
+msgstr ""
+
 #: src/domains/education/widgets/lesson-tests/ui/index.tsx:111
 msgid "Следующий урок"
 msgstr "Next Lesson"
@@ -879,13 +978,17 @@ msgstr "Save"
 msgid "Сохранить изменения"
 msgstr "Save changes"
 
-#: src/domains/admin/entities/module/ui/course-modules/index.tsx:124
+#: src/domains/admin/entities/module/ui/course-modules/index.tsx:130
 msgid "Сохранить расположение модулей"
 msgstr "Save module arrangement"
 
 #: src/domains/admin/entities/lesson/ui/module-lessons/index.tsx:120
 msgid "Сохранить расположение уроков"
 msgstr "Save lesson arrangement"
+
+#: src/domains/admin/features/configure-lesson-tests/ui/index.tsx:167
+msgid "Сохранить тесты"
+msgstr ""
 
 #: src/domains/admin/features/edit-lesson/ui/edit-lesson-info/index.tsx:117
 msgid "Ссылка на видео (необязательно)"
@@ -943,7 +1046,7 @@ msgstr "Amount"
 msgid "Сумма / Дата"
 msgstr "Amount / Date"
 
-#: src/domains/global/features/auth/model/useRecoverPassword.ts:27
+#: src/domains/global/features/auth/model/useRecoverPassword.ts:30
 msgid "Такой email не зарегистрирован"
 msgstr "This email is not registered"
 
@@ -951,7 +1054,7 @@ msgstr "This email is not registered"
 msgid "Текст"
 msgstr "Text"
 
-#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:91
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:93
 msgid "Текстовый контент урока"
 msgstr "Lesson text content"
 
@@ -968,11 +1071,27 @@ msgstr "Dark"
 msgid "Тень"
 msgstr "Shadow"
 
+#: src/domains/admin/features/configure-lesson-tests/ui/index.tsx:143
+msgid "Тесты"
+msgstr ""
+
+#: src/domains/admin/features/configure-lesson-tests/ui/index.tsx:37
+msgid "Тесты сохранены"
+msgstr ""
+
 #: src/domains/admin/widgets/header/ui/desktop-navigation.tsx:27
 msgid "Транзакции"
 msgstr "Transactions"
 
-#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:36
+#: src/domains/admin/features/delete-module/ui/button.tsx:69
+msgid "Удалить модуль"
+msgstr ""
+
+#: src/domains/admin/features/delete-lesson/ui/button.tsx:71
+msgid "Удалить урок"
+msgstr ""
+
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson.tsx:38
 msgid "Урок "
 msgstr "Lesson "
 
@@ -984,7 +1103,11 @@ msgstr "Lesson \"{title}\" successfully added"
 #~ msgid "Урок {lesson}"
 #~ msgstr ""
 
-#: src/routes/admin/_guard/courses_/$course_.modules_.$module.tsx:53
+#: src/domains/admin/features/delete-lesson/ui/button.tsx:40
+msgid "Урок удален"
+msgstr ""
+
+#: src/routes/admin/_guard/courses_/$course_.modules_.$module.tsx:54
 msgid "Уроки модуля"
 msgstr "Module lessons"
 
@@ -1000,13 +1123,13 @@ msgstr "Lessons"
 msgid "Усиление"
 msgstr "Enhancement"
 
-#: src/domains/global/features/auth/ui/registration-form.tsx:45
-#: src/domains/global/features/auth/ui/registration-form.tsx:52
+#: src/domains/global/features/auth/ui/registration-form.tsx:64
+#: src/domains/global/features/auth/ui/registration-form.tsx:71
 #: src/domains/admin/widgets/users-table/config/columns.tsx:31
 msgid "Фамилия"
 msgstr "Last Name"
 
-#: src/domains/global/features/auth/model/useRegistration.ts:21
+#: src/domains/global/features/auth/model/useRegistration.ts:28
 msgid "Фамилия должна быть не менее 1 символа"
 msgstr "Last name must be at least 1 character"
 

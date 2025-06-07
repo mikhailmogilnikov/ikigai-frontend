@@ -3,12 +3,11 @@ import { RefCallBack } from 'react-hook-form';
 
 import { cn } from '~/shared/lib/utils';
 
-const Input = ({
-  ref,
-  className,
-  type,
-  ...props
-}: React.ComponentProps<'input'> & { ref?: React.RefObject<HTMLInputElement | null> | RefCallBack }) => {
+export type InputProps = React.ComponentProps<'input'> & {
+  ref?: React.RefObject<HTMLInputElement | null> | RefCallBack;
+};
+
+const Input = ({ ref, className, type, ...props }: InputProps) => {
   return (
     <input
       type={type}

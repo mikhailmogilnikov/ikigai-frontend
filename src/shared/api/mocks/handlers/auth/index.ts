@@ -30,6 +30,10 @@ export const authHandlers = [
   http.post('/auth/register/confirm', async ({ request }) => {
     const body = await request.json();
 
+    if (Math.random() > 0.8) {
+      return HttpResponse.json(null, { status: 400 });
+    }
+
     if (body.code && body.code.length === 6) {
       // Пример простой проверки кода
       return HttpResponse.json(null, { status: 200 });
@@ -50,17 +54,17 @@ export const authHandlers = [
     return HttpResponse.json(null, { status: 200 });
   }),
 
-  // POST /auth/recover-password/confirm
-  http.post('/auth/recover-password/confirm', async ({ request }) => {
-    const body = await request.json();
+  // // POST /auth/recover-password/confirm
+  // http.post('/auth/recover-password/confirm', async ({ request }) => {
+  //   const body = await request.json();
 
-    if (body.code && body.code.length === 6) {
-      // Пример простой проверки кода
-      return HttpResponse.json(null, { status: 200 }); // Или 204 No Content
-    }
+  //   if (body.code && body.code.length === 6) {
+  //     // Пример простой проверки кода
+  //     return HttpResponse.json(null, { status: 200 }); // Или 204 No Content
+  //   }
 
-    return HttpResponse.json(null, { status: 400 });
-  }),
+  //   return HttpResponse.json(null, { status: 400 });
+  // }),
 
   // POST /auth/logout
   http.post('/auth/logout', () => {

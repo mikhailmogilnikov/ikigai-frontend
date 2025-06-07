@@ -119,7 +119,10 @@ export interface paths {
       };
       requestBody: {
         content: {
-          'application/json': components['schemas']['ConfirmCodePayload'];
+          'application/json': {
+            code: string;
+            email: string;
+          };
         };
       };
       responses: {
@@ -179,40 +182,6 @@ export interface paths {
         };
         404: components['responses']['NotFoundError'];
       };
-    };
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/auth/recover-password/confirm': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get?: never;
-    put?: never;
-    /**
-     * Подтверждение восстановления пароля
-     * @description Подтверждение кода из письма для восстановления пароля.
-     *
-     */
-    post: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path?: never;
-        cookie?: never;
-      };
-      requestBody: {
-        content: {
-          'application/json': components['schemas']['ConfirmCodePayload'];
-        };
-      };
-      responses: never;
     };
     delete?: never;
     options?: never;
@@ -1041,7 +1010,7 @@ export interface paths {
         content: {
           'application/json': {
             title: string;
-            is_published: boolean;
+            published: boolean;
           };
         };
       };
@@ -1274,7 +1243,7 @@ export interface paths {
             title?: string;
             video_url?: string | null;
             poster_url?: string | null;
-            is_published?: boolean;
+            published?: boolean;
             content?: string;
           };
         };
@@ -1392,9 +1361,6 @@ export interface components {
       email: string;
       password: string;
       repeat_password: string;
-    };
-    ConfirmCodePayload: {
-      code: string;
     };
     /** @description Обновление токена */
     AuthRefresh: {
@@ -1546,7 +1512,7 @@ export interface components {
     };
     /** @description Курс для админа в списке курсов */
     AdminCourse: components['schemas']['BaseCourse'] & {
-      is_published: boolean;
+      published: boolean;
       modules_amount: number;
       price: number;
       users_amount: number;
@@ -1557,7 +1523,7 @@ export interface components {
     };
     /** @description Основная информация о курсе */
     AdminCourseMainInfo: components['schemas']['BaseCourse'] & {
-      is_published: boolean;
+      published: boolean;
       description: string;
       price: number;
       users_amount: number;
@@ -1565,7 +1531,7 @@ export interface components {
     };
     /** @description Модуль для админа */
     AdminModule: components['schemas']['BaseModule'] & {
-      is_published: boolean;
+      published: boolean;
       lessons_count: number;
     };
     ReorderPayload: {
@@ -1574,7 +1540,7 @@ export interface components {
     };
     /** @description Урок для админа с полным контентом */
     AdminLesson: components['schemas']['BaseLesson'] & {
-      is_published: boolean;
+      published: boolean;
       video_url: string | null;
       poster_url: string | null;
       content: string;

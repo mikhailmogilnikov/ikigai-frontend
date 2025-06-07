@@ -82,8 +82,8 @@ export function ModuleLessons({ lessons }: ModuleLessonsProps) {
               <Flex col className='w-full items-start'>
                 <Typo>{lesson.title}</Typo>
                 <Flex className='items-center gap-2'>
-                  <Chip size='sm' color={lesson.is_published ? 'success' : 'warning'}>
-                    {lesson.is_published ? <Trans>Опубликован</Trans> : <Trans>Не опубликован</Trans>}
+                  <Chip size='sm' color={lesson.published ? 'success' : 'warning'}>
+                    {lesson.published ? <Trans>Опубликован</Trans> : <Trans>Не опубликован</Trans>}
                   </Chip>
                 </Flex>
               </Flex>

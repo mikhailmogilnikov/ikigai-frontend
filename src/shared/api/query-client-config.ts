@@ -7,11 +7,11 @@ export const queryClientConfig: QueryClientConfig = {
       refetchOnMount: true,
       refetchOnReconnect: true,
       staleTime: 5 * 60 * 1000,
-      retry: 3,
+      retry: 0,
       retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
     },
     mutations: {
-      retry: 3,
+      retry: 0,
     },
   },
 };

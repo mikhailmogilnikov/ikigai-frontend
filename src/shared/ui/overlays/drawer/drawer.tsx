@@ -2,6 +2,9 @@ import { Drawer as VaulDrawer, DialogProps } from 'vaul';
 import { PiXBold } from 'react-icons/pi';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { DialogTitleProps } from '@radix-ui/react-dialog';
+import { Trans } from '@lingui/react/macro';
+
+import { cn } from '~/shared/lib/utils';
 
 import { ScrollArea } from '../../primitives/scrollarea';
 import { ScrollAreaProps } from '../../primitives/scrollarea';
@@ -57,10 +60,10 @@ export interface DrawerHeaderProps extends DialogTitleProps {
 }
 
 export function DrawerHeader(props: DrawerHeaderProps) {
-  const { wrapperProps, restContent, ...rest } = props;
+  const { wrapperProps, restContent, className, ...rest } = props;
 
   return (
-    <div className='flex shrink-0 flex-col gap-4 p-4' {...wrapperProps}>
+    <div className={cn('flex shrink-0 flex-col gap-4 p-4', className)} {...wrapperProps}>
       <VaulDrawer.Title {...rest} className='shrink-0 text-2xl font-semibold' />
       <VisuallyHidden asChild>
         <VaulDrawer.Description />
@@ -101,7 +104,9 @@ export function DrawerFooter(props: DrawerFooterProps) {
     <div className='flex shrink-0 gap-4 px-4' {...rest}>
       {cancelButton && (
         <VaulDrawer.Close asChild>
-          <button className='bg-default w-full cursor-pointer rounded-xl px-4 py-2 font-medium shadow'>Отмена</button>
+          <button className='bg-default w-full cursor-pointer rounded-xl px-4 py-2 font-medium shadow'>
+            <Trans>Отмена</Trans>
+          </button>
         </VaulDrawer.Close>
       )}
       {children}

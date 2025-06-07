@@ -51,13 +51,17 @@ interface AdaptiveModalHeaderProps {
   modalProps?: ModalHeaderProps;
 }
 
-export const AdaptiveModalHeader = ({ children, ...props }: AdaptiveModalHeaderProps) => {
+export const AdaptiveModalHeader = ({ children, drawerProps, modalProps, ...props }: AdaptiveModalHeaderProps) => {
   const isMobile = useMediaQuery(BREAKPOINT_MOBILE);
 
   return isMobile ? (
-    <DrawerHeader {...props}>{children}</DrawerHeader>
+    <DrawerHeader {...drawerProps} {...props}>
+      {children}
+    </DrawerHeader>
   ) : (
-    <ModalHeader {...props}>{children}</ModalHeader>
+    <ModalHeader {...modalProps} {...props}>
+      {children}
+    </ModalHeader>
   );
 };
 

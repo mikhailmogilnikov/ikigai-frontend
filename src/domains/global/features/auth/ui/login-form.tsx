@@ -7,6 +7,7 @@ import { Form, FormField, FormLabel, FormControl, FormItem, FormMessage } from '
 import { cn } from '~/shared/lib/utils';
 import { Flex } from '~/shared/ui/primitives/flex';
 import { Typo } from '~/shared/ui/primitives/typo';
+import { InputPassword } from '~/shared/ui/primitives/input';
 
 import { useLogin } from '../model/useLogin';
 
@@ -48,13 +49,7 @@ export function LoginForm({ className }: { className?: string }) {
               </Flex>
 
               <FormControl>
-                <Input
-                  {...field}
-                  type='password'
-                  autoComplete='current-password'
-                  className='bg-default'
-                  placeholder={`********`}
-                />
+                <InputPassword {...field} autoComplete='current-password' className='bg-default' />
               </FormControl>
               <FormMessage />
             </FormItem>

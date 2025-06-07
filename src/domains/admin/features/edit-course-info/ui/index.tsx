@@ -32,7 +32,7 @@ interface EditCourseInfoSchema {
   price: number;
   description: string;
   image_url: string;
-  is_published: boolean;
+  published: boolean;
 }
 
 export function EditCourseInfo({ course }: EditCourseInfoProps) {
@@ -66,7 +66,7 @@ export function EditCourseInfo({ course }: EditCourseInfoProps) {
           .string()
           .min(1, { message: t`Изображение не может быть пустым` })
           .url({ message: t`Неверный URL` }),
-        is_published: z.boolean(),
+        published: z.boolean(),
       }),
     [t],
   );
@@ -76,9 +76,9 @@ export function EditCourseInfo({ course }: EditCourseInfoProps) {
     defaultValues: {
       title: course.title,
       price: course.price,
-      description: course.description,
-      image_url: course.image_url,
-      is_published: course.is_published,
+      description: course.description || '',
+      image_url: course.image_url || '',
+      published: course.published,
     },
   });
 
@@ -160,7 +160,7 @@ export function EditCourseInfo({ course }: EditCourseInfoProps) {
         />
         <FormField
           control={form.control}
-          name='is_published'
+          name='published'
           render={({ field }) => (
             <FormItem className='flex items-center gap-2'>
               <FormControl className=''>
@@ -190,7 +190,7 @@ const EditCourseSaveButton = ({
 }) => {
   const formValues = watch();
 
-  const { title, price, description, image_url, is_published } = course;
+  const { title, price, description, image_url, published } = course;
 
   const isDirty = useMemo(() => {
     return (
@@ -198,9 +198,9 @@ const EditCourseSaveButton = ({
       price !== Number(formValues.price) ||
       description !== formValues.description ||
       image_url !== formValues.image_url ||
-      is_published !== formValues.is_published
+      published !== formValues.published
     );
-  }, [title, price, description, image_url, is_published, formValues]);
+  }, [title, price, description, image_url, published, formValues]);
 
   return (
     <Button type='submit' isDisabled={!isDirty} color='success' className='mt-4' isLoading={isPending}>

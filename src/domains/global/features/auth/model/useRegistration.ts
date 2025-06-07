@@ -1,12 +1,19 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useLingui } from '@lingui/react/macro';
+import { useNavigate } from '@tanstack/react-router';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import { z } from 'zod';
 
 import { publicRqClient } from '~/shared/api/instance';
 
 export const useRegistration = () => {
   const { t } = useLingui();
+  const navigate = useNavigate();
+
+  const [isOtpInputModalOpen, setIsOtpInputModalOpen] = useState(false);
+  const [otpErrorsCount, setOtpErrorsCount] = useState(0);
 
   const passwordSchema = z
     .string()
@@ -47,7 +54,27 @@ export const useRegistration = () => {
         message: t`Неверный email или пароль`,
       });
     },
+    onSuccess: () => {
+      setIsOtpInputModalOpen(true);
+    },
   });
+
+  const { mutate: verifyOtpMutation, isPending: isVerifyOtpPending } = publicRqClient.useMutation(
+    'post',
+    '/auth/register/confirm',
+    {
+      onError: () => {
+        setOtpErrorsCount((prev) => prev + 1);
+      },
+      onSuccess: () => {
+        toast.success(t`Регистрация пройдена успешно! Используйте вашу почту и пароль для входа в систему.`, {
+          duration: 5000,
+        });
+        setIsOtpInputModalOpen(false);
+        void navigate({ to: '/auth/sign-in' });
+      },
+    },
+  );
 
   function onSubmit(values: RegistrationFormSchema) {
     registrationMutation({
@@ -55,9 +82,27 @@ export const useRegistration = () => {
     });
   }
 
+  function onOtpInputModalOpenChange() {
+    setIsOtpInputModalOpen(!isOtpInputModalOpen);
+  }
+
+  function onOtpInputModalSubmit(code: string) {
+    verifyOtpMutation({
+      body: {
+        code,
+        email: form.getValues('email'),
+      },
+    });
+  }
+
   return {
     form,
     onSubmit,
     isPending,
+    isOtpInputModalOpen,
+    onOtpInputModalOpenChange,
+    onOtpInputModalSubmit,
+    isVerifyOtpPending,
+    otpErrorsCount,
   };
 };

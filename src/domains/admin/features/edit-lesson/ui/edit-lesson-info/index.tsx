@@ -31,7 +31,7 @@ interface EditLessonInfoSchema {
   title: string;
   video_url: string | null;
   poster_url: string | null;
-  is_published: boolean;
+  published: boolean;
 }
 
 export function EditLessonInfo({ lesson }: EditLessonInfoProps) {
@@ -52,7 +52,7 @@ export function EditLessonInfo({ lesson }: EditLessonInfoProps) {
       .or(z.literal(''))
       .transform((val) => (val === '' ? null : val))
       .nullable(),
-    is_published: z.boolean(),
+    published: z.boolean(),
   });
 
   const form = useForm<EditLessonInfoSchema>({
@@ -61,7 +61,7 @@ export function EditLessonInfo({ lesson }: EditLessonInfoProps) {
       title: lesson.title,
       video_url: lesson.video_url ?? '',
       poster_url: lesson.poster_url ?? '',
-      is_published: lesson.is_published,
+      published: lesson.published,
     },
   });
 
@@ -164,7 +164,7 @@ export function EditLessonInfo({ lesson }: EditLessonInfoProps) {
 
         <FormField
           control={form.control}
-          name='is_published'
+          name='published'
           render={({ field }) => (
             <FormItem className='flex items-center gap-2'>
               <FormControl className=''>
@@ -194,16 +194,16 @@ const EditLessonSaveButton = ({
 }) => {
   const formValues = watch();
 
-  const { title, is_published, video_url, poster_url } = lesson;
+  const { title, published, video_url, poster_url } = lesson;
 
   const isDirty = useMemo(() => {
     return (
       title !== formValues.title ||
-      is_published !== formValues.is_published ||
+      published !== formValues.published ||
       video_url !== (formValues.video_url || null) ||
       poster_url !== (formValues.poster_url || null)
     );
-  }, [title, is_published, formValues, video_url, poster_url]);
+  }, [title, published, formValues, video_url, poster_url]);
 
   return (
     <Button type='submit' isDisabled={!isDirty} color='success' className='mt-4' isLoading={isPending}>

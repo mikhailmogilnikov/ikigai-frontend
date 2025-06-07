@@ -5,10 +5,10 @@ schemas:
       - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseModule"
       - type: object
         properties:
-          is_published:
+          published:
             type: boolean
           lessons_count:
             type: number
         required:
-          - is_published
+          - published
           - lessons_count

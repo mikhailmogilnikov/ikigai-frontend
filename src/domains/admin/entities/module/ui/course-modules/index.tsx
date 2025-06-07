@@ -54,13 +54,19 @@ export function CourseModules({ modules }: CourseModulesProps) {
     newModules[index] = newModules[newIndex];
     newModules[newIndex] = module;
 
-    setSortedModules(newModules);
+    // Обновляем поле order для всех модулей в соответствии с их новой позицией
+    const updatedModules = newModules.map((mod, idx) => ({
+      ...mod,
+      order: idx + 1,
+    }));
+
+    setSortedModules(updatedModules);
   };
 
   const handleSaveModules = () => {
-    const mappedModules = sortedModules.map((module) => ({
+    const mappedModules = sortedModules.map((module, index) => ({
       id: module.id,
-      order: module.order,
+      order: index + 1,
     }));
 
     reorderModules({ body: mappedModules, params: { path: { courseId: course } } });
@@ -82,8 +88,8 @@ export function CourseModules({ modules }: CourseModulesProps) {
               <Flex col className='w-full items-start'>
                 <Typo>{module.title}</Typo>
                 <Flex className='items-center gap-2'>
-                  <Chip size='sm' color={module.is_published ? 'success' : 'warning'}>
-                    {module.is_published ? <Trans>Опубликован</Trans> : <Trans>Не опубликован</Trans>}
+                  <Chip size='sm' color={module.published ? 'success' : 'warning'}>
+                    {module.published ? <Trans>Опубликован</Trans> : <Trans>Не опубликован</Trans>}
                   </Chip>
 
                   <Chip size='sm'>

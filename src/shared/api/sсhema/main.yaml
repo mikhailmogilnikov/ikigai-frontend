@@ -90,14 +90,14 @@ paths:
         - auth
       $ref: ./auth/endpoints/auth.yaml#/RecoverPassword
 
-  /auth/recover-password/confirm:
-    post:
-      summary: "Подтверждение восстановления пароля"
-      description: |
-        Подтверждение кода из письма для восстановления пароля.
-      tags:
-        - auth
-      $ref: ./auth/endpoints/auth.yaml#/ConfirmRecoverPassword
+  # /auth/recover-password/confirm:
+  #   post:
+  #     summary: "Подтверждение восстановления пароля"
+  #     description: |
+  #       Подтверждение кода из письма для восстановления пароля.
+  #     tags:
+  #       - auth
+  #     $ref: ./auth/endpoints/auth.yaml#/ConfirmRecoverPassword
   
   /auth/logout:
     post:

@@ -47,7 +47,7 @@ updateAdminLesson:
               type: [string, 'null']
             poster_url:
               type: [string, 'null']
-            is_published:
+            published:
               type: boolean
             content:
               type: string

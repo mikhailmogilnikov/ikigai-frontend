@@ -13,7 +13,7 @@ export const generateAdminMockModule = (
     title: faker.lorem.sentence(),
     course_id: courseId,
     order: order ?? faker.number.int({ min: 1, max: 100 }),
-    is_published: faker.datatype.boolean(),
+    published: faker.datatype.boolean(),
     lessons_count: faker.number.int({ min: 1, max: 10 }),
   };
 };

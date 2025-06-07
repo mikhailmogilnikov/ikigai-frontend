@@ -15,7 +15,7 @@ export const generateAdminMockLesson = (
     order: order ?? faker.number.int({ min: 1, max: 100 }),
     module_id: moduleId,
     course_id: courseId,
-    is_published: faker.datatype.boolean(),
+    published: faker.datatype.boolean(),
     video_url: faker.datatype.boolean() ? faker.internet.url() : null,
     poster_url: faker.datatype.boolean() ? faker.image.url() : null,
     content: faker.lorem.paragraphs(3),

@@ -7,10 +7,10 @@ import { Form, FormField, FormLabel, FormControl, FormItem, FormMessage } from '
 import { cn } from '~/shared/lib/utils';
 import { Typo } from '~/shared/ui/primitives/typo';
 
-import { useLogin } from '../model/useLogin';
+import { useRecoverPassword } from '../model/useRecoverPassword';
 
 export function RecoverPasswordForm({ className }: { className?: string }) {
-  const { form, onSubmit, isPending } = useLogin();
+  const { form, onSubmit, isPending } = useRecoverPassword();
 
   return (
     <Form {...form}>

@@ -5,7 +5,7 @@ schemas:
       - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseCourse"
       - type: object
         properties:
-          is_published:
+          published:
             type: boolean
           modules_amount:
             type: number
@@ -16,7 +16,7 @@ schemas:
           finished_users_amount:
             type: number
     required:
-      - is_published
+      - published
       - modules_amount
       - price
       - users_amount
@@ -28,7 +28,7 @@ schemas:
       - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseCourse"
       - type: object
         properties:
-          is_published:
+          published:
             type: boolean
           description:
             type: string
@@ -39,7 +39,7 @@ schemas:
           finished_users_amount:
             type: number
         required:
-          - is_published
+          - published
           - description
           - price
           - users_amount

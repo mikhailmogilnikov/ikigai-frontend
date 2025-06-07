@@ -30,14 +30,14 @@ export const COURSES_TABLE_COLUMNS: ColumnDef<ApiComponents['AdminCourse']>[] = 
     enableGlobalFilter: false,
   },
   {
-    accessorKey: 'is_published',
+    accessorKey: 'published',
     header: ({ column }) => {
       return <DataTableColumnHeader column={column} title={<Trans>Опубликован</Trans>} />;
     },
     cell: ({ row }) => {
       return (
         <span>
-          {row.original.is_published ? (
+          {row.original.published ? (
             <span className='text-success'>
               <Trans>Да</Trans>
             </span>

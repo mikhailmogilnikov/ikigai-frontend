@@ -83,7 +83,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ConfirmCodePayload'
+              type: object
+              properties:
+                code:
+                  type: string
+                email:
+                  type: string
+              required:
+                - code
+                - email
       responses:
         '200':
           description: OK
@@ -128,7 +136,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ConfirmCodePayload'
+              type: object
+              properties:
+                code:
+                  type: string
+                email:
+                  type: string
+              required:
+                - code
+                - email
   /auth/logout:
     post:
       summary: Выход из системы
@@ -759,7 +775,22 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AdminLesson'
+              type: object
+              properties:
+                title:
+                  type: string
+                video_url:
+                  type:
+                    - string
+                    - 'null'
+                poster_url:
+                  type:
+                    - string
+                    - 'null'
+                is_published:
+                  type: boolean
+                content:
+                  type: string
       responses:
         '201':
           description: OK
@@ -862,13 +893,6 @@ components:
         - first_name
         - last_name
         - repeat_password
-    ConfirmCodePayload:
-      type: object
-      properties:
-        code:
-          type: string
-      required:
-        - code
     AuthRefresh:
       description: Обновление токена
       type: object

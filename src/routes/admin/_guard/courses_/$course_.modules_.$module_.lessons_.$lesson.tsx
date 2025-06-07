@@ -2,6 +2,8 @@ import { Trans, useLingui } from '@lingui/react/macro';
 import { createFileRoute } from '@tanstack/react-router';
 import { PiCaretDoubleLeftBold, PiCaretLeftBold, PiPencilSimpleBold } from 'react-icons/pi';
 
+import { LessonTestsConfigurator } from '~/domains/admin/features/configure-lesson-tests';
+import { DeleteLessonButton } from '~/domains/admin/features/delete-lesson';
 import { EditLessonInfo } from '~/domains/admin/features/edit-lesson';
 import { MarkdownRenderer } from '~/domains/global/widgets/markdown-renderer';
 import { rqClient } from '~/shared/api';
@@ -102,6 +104,10 @@ function RouteComponent() {
       </Flex>
 
       <MarkdownRenderer content={lessonData.content} />
+
+      <LessonTestsConfigurator testsData={lessonData.tests} lessonId={lesson} />
+
+      <DeleteLessonButton className='mb-4' lessonId={lesson} moduleId={module} courseId={course} />
     </Container>
   );
 }

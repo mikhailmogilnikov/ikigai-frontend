@@ -15,6 +15,7 @@ export const buttonTV = tv({
       inverse: 'bg-foreground text-background',
       primary: 'bg-primary text-primary-foreground',
       success: 'bg-success text-success-foreground',
+      danger: 'bg-danger text-danger-foreground',
     },
     size: {
       sm: 'px-2 h-8 text-sm rounded-md',

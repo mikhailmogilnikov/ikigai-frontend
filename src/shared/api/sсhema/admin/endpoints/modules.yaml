@@ -82,11 +82,11 @@ updateAdminModule:
           properties:
             title:
               type: string
-            is_published:
+            published:
               type: boolean
           required:
             - title
-            - is_published
+            - published
   responses:
     '201':
       description: OK

@@ -5,7 +5,7 @@ schemas:
       - $ref: "../../shared/schemas/base-course-schemas.yaml#/schemas/BaseLesson"
       - type: object
         properties:
-          is_published:
+          published:
             type: boolean
           video_url:
             type: [string, 'null']
@@ -21,7 +21,7 @@ schemas:
             type: boolean
             description: "Статус завершения урока (для административной статистики)"
         required:
-          - is_published
+          - published
           - video
           - content
           - tests

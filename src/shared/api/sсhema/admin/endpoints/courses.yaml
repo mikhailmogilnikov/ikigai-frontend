@@ -76,7 +76,7 @@ updateAdminCourse:
             type: number
           image_url:
             type: string
-          is_published:
+          published:
             type: boolean
   responses:
     '201':

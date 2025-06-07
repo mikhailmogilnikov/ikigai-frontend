@@ -19,7 +19,7 @@ interface EditModuleInfoProps {
 
 interface EditModuleInfoSchema {
   title: string;
-  is_published: boolean;
+  published: boolean;
 }
 
 export function EditModuleInfo({ module }: EditModuleInfoProps) {
@@ -28,14 +28,14 @@ export function EditModuleInfo({ module }: EditModuleInfoProps) {
 
   const editModuleInfoSchema = z.object({
     title: z.string().min(1, { message: t`Название не может быть пустым` }),
-    is_published: z.boolean(),
+    published: z.boolean(),
   });
 
   const form = useForm<EditModuleInfoSchema>({
     resolver: zodResolver(editModuleInfoSchema),
     defaultValues: {
       title: module.title,
-      is_published: module.is_published,
+      published: module.published,
     },
   });
 
@@ -83,7 +83,7 @@ export function EditModuleInfo({ module }: EditModuleInfoProps) {
 
         <FormField
           control={form.control}
-          name='is_published'
+          name='published'
           render={({ field }) => (
             <FormItem className='flex items-center gap-2'>
               <FormControl className=''>
@@ -113,11 +113,11 @@ const EditModuleSaveButton = ({
 }) => {
   const formValues = watch();
 
-  const { title, is_published } = module;
+  const { title, published } = module;
 
   const isDirty = useMemo(() => {
-    return title !== formValues.title || is_published !== formValues.is_published;
-  }, [title, is_published, formValues]);
+    return title !== formValues.title || published !== formValues.published;
+  }, [title, published, formValues]);
 
   return (
     <Button type='submit' isDisabled={!isDirty} color='success' className='mt-4' isLoading={isPending}>

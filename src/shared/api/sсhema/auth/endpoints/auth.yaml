@@ -42,7 +42,15 @@ RegisterConfirm:
     content:
       application/json:
         schema:
-          $ref: '../../shared/schemas/common-schemas.yaml#/schemas/ConfirmCodePayload'
+          type: object
+          properties:
+            code:
+              type: string
+            email:
+              type: string
+          required:
+            - code
+            - email
   responses:
     '200':
       description: OK
@@ -79,7 +87,15 @@ ConfirmRecoverPassword:
     content:
       application/json:
         schema:
-          $ref: '../../shared/schemas/common-schemas.yaml#/schemas/ConfirmCodePayload'
+          type: object
+          properties:
+            code:
+              type: string
+            email:
+              type: string
+          required:
+            - code
+            - email
 
 Refresh:
   summary: Обновление токена

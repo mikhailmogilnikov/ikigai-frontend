@@ -1,6 +1,7 @@
 import { ElementType, HTMLAttributes } from 'react';
 
 import { PolymorphicComponentProps } from '~/shared/lib/types';
+import { cn } from '~/shared/lib/utils';
 
 import { Spinner } from '../spinner';
 
@@ -24,7 +25,7 @@ export function Button<T extends ElementType = 'button'>(props: ButtonProps<T>) 
 
   return (
     <Component className={ButtonClassName} {...rest}>
-      {isLoading ? <Spinner className='size-5' color={color} /> : children}
+      {isLoading ? <Spinner className={cn('size-5', color === 'inverse' && 'invert')} /> : children}
     </Component>
   );
 }

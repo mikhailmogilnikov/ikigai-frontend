@@ -10,6 +10,7 @@ import { Flex } from '~/shared/ui/primitives/flex';
 import { AddLessonButton } from '~/domains/admin/features/add-lesson';
 import { rqClient } from '~/shared/api';
 import { ModuleLessons } from '~/domains/admin/entities/lesson';
+import { DeleteModuleButton } from '~/domains/admin/features/delete-module';
 
 export const Route = createFileRoute('/admin/_guard/courses_/$course_/modules_/$module')({
   component: RouteComponent,
@@ -55,6 +56,7 @@ function RouteComponent() {
         <AddLessonButton />
       </Flex>
       <ModuleLessons lessons={lessonsData} />
+      <DeleteModuleButton className='mt-4' moduleId={module} courseId={course} />
     </Container>
   );
 }

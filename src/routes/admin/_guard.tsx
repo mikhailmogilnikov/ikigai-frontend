@@ -1,21 +1,25 @@
-import { createFileRoute, Outlet } from '@tanstack/react-router';
+import { createFileRoute, Outlet, redirect } from '@tanstack/react-router';
 
 import { AdminHeader } from '~/domains/admin/widgets/header';
-import { PrivateGuard } from '~/domains/global/entities/session';
 import { AppLayout } from '~/domains/global/widgets/layout';
-import { Toaster } from '~/shared/ui/common/toaster';
 
 export const Route = createFileRoute('/admin/_guard')({
   component: RouteComponent,
+  beforeLoad: ({ context: { session } }) => {
+    if (!session) {
+      // eslint-disable-next-line @typescript-eslint/only-throw-error
+      throw redirect({
+        to: '/auth/sign-in',
+        search: { redirect: location.href },
+      });
+    }
+  },
 });
 
 function RouteComponent() {
   return (
-    <PrivateGuard role='admin'>
-      <Toaster />
-      <AppLayout header={<AdminHeader />}>
-        <Outlet />
-      </AppLayout>
-    </PrivateGuard>
+    <AppLayout header={<AdminHeader />}>
+      <Outlet />
+    </AppLayout>
   );
 }
