@@ -9,6 +9,8 @@ import { Progress } from '~/shared/ui/primitives/progress';
 import { ApiComponents } from '~/shared/api';
 import { LinkButton } from '~/shared/ui/primitives/link-button';
 import { Divider } from '~/shared/ui/primitives/divider';
+import { Button } from '~/shared/ui/primitives/button/button';
+import { BuyCourseModal, useBuyCourseModal } from '~/domains/education/features/buy-course';
 
 import { CourseFullInfoProps } from '.';
 
@@ -27,7 +29,7 @@ export function CourseFullInfoWidget({ course }: CourseFullInfoProps) {
             lessons_amount={course.lessons_amount}
           />
         ) : (
-          <CourseFullInfoWidgetContentNotPurchased price={course.price} />
+          <CourseFullInfoWidgetContentNotPurchased price={course.price} id={course.id} title={course.title} />
         )}
       </Flex>
     </Flex>
@@ -71,12 +73,28 @@ const CourseFullInfoWidgetContentPurchased = (
   );
 };
 
-const CourseFullInfoWidgetContentNotPurchased = ({ price }: { price: number }) => {
+type CourseFullInfoWidgetContentNotPurchasedProps = Pick<ApiComponents['FullCourse'], 'price' | 'id' | 'title'>;
+
+const CourseFullInfoWidgetContentNotPurchased = ({
+  price,
+  id,
+  title,
+}: CourseFullInfoWidgetContentNotPurchasedProps) => {
+  const { open } = useBuyCourseModal();
+
+  const handleBuyCourse = () => {
+    open({ id, title, price });
+  };
+
   return (
     <>
+      <BuyCourseModal />
       <Typo as='p' size='xl' weight='semibold'>
         {Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 }).format(price)}
       </Typo>
+      <Button color='primary' className='w-full' onClick={handleBuyCourse}>
+        <Trans>Купить курс</Trans>
+      </Button>
     </>
   );
 };
