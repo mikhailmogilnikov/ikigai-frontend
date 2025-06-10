@@ -1,6 +1,6 @@
 import { Trans, useLingui } from '@lingui/react/macro';
 import { useBlocker } from '@tanstack/react-router';
-import { useMemo, useState, useCallback } from 'react';
+import { useMemo, useState, useCallback, useEffect } from 'react';
 import { PiFloppyDiskBackBold, PiPlusBold } from 'react-icons/pi';
 import { toast } from 'sonner';
 import { useQueryClient } from '@tanstack/react-query';
@@ -23,6 +23,10 @@ export function LessonTestsConfigurator({ testsData, lessonId }: LessonTestsConf
   const { t } = useLingui();
   const [tests, setTests] = useState<Test[]>(testsData);
   const queryClient = useQueryClient();
+
+  useEffect(() => {
+    setTests(testsData);
+  }, [testsData]);
 
   const { mutate: updateLesson, isPending: isUpdatingLesson } = rqClient.useMutation(
     'patch',

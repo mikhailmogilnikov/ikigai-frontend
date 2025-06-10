@@ -17,3 +17,47 @@ getTransactions:
             items:
               $ref: '../schemas/transaction-schemas.yaml#/schemas/Transaction'
     <<: *authErrors
+
+createPayment:
+  description: "Создать платеж"
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            course_id:
+              type: number
+          required:
+            - course_id
+  responses:
+    '200':
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              publicId:
+                type: string
+              amount:
+                type: number
+              currency:
+                type: string
+              description:
+                type: string
+              email:
+                type: string
+              invoiceId:
+                type: string
+              accountId:
+                type: string
+            required:
+              - publicId
+              - amount
+              - currency
+              - description
+              - email
+              - invoiceId
+              - accountId
+    <<: *authErrors

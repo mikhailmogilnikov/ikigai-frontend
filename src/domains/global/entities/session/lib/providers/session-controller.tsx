@@ -13,7 +13,7 @@ export function SessionController() {
     const prevRole = prevSessionRef.current?.role;
     const currentRole = session?.role;
 
-    if (prevRole && currentRole && prevRole === currentRole) return;
+    if (prevRole === currentRole) return;
 
     if (session) {
       switch (session.role) {

@@ -13,8 +13,8 @@
     "extract-clean": "lingui extract --clean",
     "compile": "lingui compile",
     "lingui": "bun run extract && bun run compile",
-    "generate-api": "openapi-typescript ./src/shared/api/sсhema/main.yaml --output ./src/shared/api/sсhema/generated.ts",
-    "generate-mocks": "msw init ./public --save"
+    "gen-api": "openapi-typescript ./src/shared/api/sсhema/main.yaml --output ./src/shared/api/sсhema/generated.ts",
+    "gen-mocks": "msw init ./public --save"
   },
   "dependencies": {
     "@blur-ui/scroll-area": "^1.0.1",
@@ -44,6 +44,7 @@
     "@uiw/react-md-editor": "^4.0.7",
     "@vidstack/react": "^1.12.13",
     "canvas-confetti": "^1.9.3",
+    "cloudpayments": "^6.0.1",
     "clsx": "^2.1.1",
     "create-gstore": "^0.2.0",
     "input-otp": "^1.4.2",

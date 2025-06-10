@@ -4,6 +4,7 @@ import { Link, useParams } from '@tanstack/react-router';
 import { useEffect, useMemo, useState } from 'react';
 import { PiCaretDownBold, PiCaretUpBold } from 'react-icons/pi';
 import { toast } from 'sonner';
+import { Plural } from '@lingui/react/macro';
 
 import { ApiComponents, rqClient } from '~/shared/api';
 import { Button } from '~/shared/ui/primitives/button/button';
@@ -93,7 +94,8 @@ export function CourseModules({ modules }: CourseModulesProps) {
                   </Chip>
 
                   <Chip size='sm'>
-                    <Trans>3 урока</Trans>
+                    {module.lessons_amount}{' '}
+                    <Plural value={module.lessons_amount} one='урок' few='урока' many='уроков' />
                   </Chip>
                 </Flex>
               </Flex>

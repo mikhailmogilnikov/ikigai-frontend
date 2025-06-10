@@ -1,5 +1,6 @@
 import { Trans, useLingui } from '@lingui/react/macro';
 import { createFileRoute } from '@tanstack/react-router';
+import { lazy, Suspense } from 'react';
 import { PiCaretDoubleLeftBold, PiCaretLeftBold, PiPencilSimpleBold } from 'react-icons/pi';
 
 import { LessonTestsConfigurator } from '~/domains/admin/features/configure-lesson-tests';
@@ -7,13 +8,17 @@ import { DeleteLessonButton } from '~/domains/admin/features/delete-lesson';
 import { EditLessonInfo } from '~/domains/admin/features/edit-lesson';
 import { MarkdownRenderer } from '~/domains/global/widgets/markdown-renderer';
 import { rqClient } from '~/shared/api';
-import { VideoPlayer } from '~/shared/ui/common/video-player';
 import { Chip } from '~/shared/ui/primitives/chip';
 import { Container } from '~/shared/ui/primitives/container';
 import { Flex } from '~/shared/ui/primitives/flex';
 import { Image } from '~/shared/ui/primitives/image';
 import { LinkButton } from '~/shared/ui/primitives/link-button';
+import { Skeleton } from '~/shared/ui/primitives/skeleton';
 import { Typo } from '~/shared/ui/primitives/typo';
+
+const VideoPlayer = lazy(() =>
+  import('~/shared/ui/common/video-player').then((module) => ({ default: module.VideoPlayer })),
+);
 
 export const Route = createFileRoute('/admin/_guard/courses_/$course_/modules_/$module_/lessons_/$lesson')({
   component: RouteComponent,
@@ -48,13 +53,15 @@ function RouteComponent() {
       </Flex>
       <Flex>
         {lessonData.video_url ? (
-          <VideoPlayer
-            key={`${lessonData.id.toString()}-${lessonData.video_url}`}
-            title={lessonData.title}
-            src={lessonData.video_url}
-            poster={lessonData.poster_url ?? undefined}
-            className='shrink-1 aspect-video w-full rounded-md'
-          />
+          <Suspense fallback={<Skeleton className='aspect-video w-full rounded-md' />}>
+            <VideoPlayer
+              key={`${lessonData.id.toString()}-${lessonData.video_url}`}
+              title={lessonData.title}
+              src={lessonData.video_url}
+              poster={lessonData.poster_url ?? undefined}
+              className='shrink-1 aspect-video w-full rounded-md'
+            />
+          </Suspense>
         ) : (
           <Flex className='bg-default shrink-1 aspect-video w-full items-center justify-center rounded-md text-center'>
             <Typo className='opacity-50'>

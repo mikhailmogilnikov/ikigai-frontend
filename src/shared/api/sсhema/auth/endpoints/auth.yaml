@@ -80,8 +80,8 @@ RecoverPassword:
     '404':
       $ref: '../../shared/responses.yaml#/schemas/NotFoundError'
 
-ConfirmRecoverPassword:
-  summary: Подтверждение восстановления пароля
+RecoverChangePassword:
+  summary: Изменение пароля
   requestBody:
     required: true
     content:
@@ -89,13 +89,16 @@ ConfirmRecoverPassword:
         schema:
           type: object
           properties:
-            code:
+            new_password:
               type: string
-            email:
+            repeat_new_password:
+              type: string
+            verify:
               type: string
           required:
-            - code
-            - email
+            - new_password
+            - repeat_new_password
+            - verify
 
 Refresh:
   summary: Обновление токена

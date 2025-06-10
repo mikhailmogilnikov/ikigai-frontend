@@ -14,7 +14,7 @@ export const generateAdminMockModule = (
     course_id: courseId,
     order: order ?? faker.number.int({ min: 1, max: 100 }),
     published: faker.datatype.boolean(),
-    lessons_count: faker.number.int({ min: 1, max: 10 }),
+    lessons_amount: faker.number.int({ min: 1, max: 10 }),
   };
 };
 

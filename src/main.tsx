@@ -30,6 +30,7 @@ const router = createRouter({
   defaultPendingMinMs: 0,
   defaultPendingMs: 0,
   defaultSsr: false,
+  defaultPreloadDelay: 300,
 });
 
 declare module '@tanstack/react-router' {

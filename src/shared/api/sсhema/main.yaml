@@ -90,14 +90,14 @@ paths:
         - auth
       $ref: ./auth/endpoints/auth.yaml#/RecoverPassword
 
-  # /auth/recover-password/confirm:
-  #   post:
-  #     summary: "Подтверждение восстановления пароля"
-  #     description: |
-  #       Подтверждение кода из письма для восстановления пароля.
-  #     tags:
-  #       - auth
-  #     $ref: ./auth/endpoints/auth.yaml#/ConfirmRecoverPassword
+  /auth/recover-password/change-password:
+    post:
+      summary: "Изменение пароля"
+      description: |
+        Изменение пароля пользователя.
+      tags:
+        - auth
+      $ref: ./auth/endpoints/auth.yaml#/RecoverChangePassword
   
   /auth/logout:
     post:
@@ -188,6 +188,13 @@ paths:
       tags:
         - public
       $ref: ./edu/endpoints/transactions.yaml#/getTransactions
+
+  /transactions/pay:
+    post:
+      summary: "Создать платеж"
+      tags:
+        - public
+      $ref: ./edu/endpoints/transactions.yaml#/createPayment
   
   /users/me:
     get:

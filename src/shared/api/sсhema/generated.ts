@@ -189,6 +189,44 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/auth/recover-password/change-password': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Изменение пароля
+     * @description Изменение пароля пользователя.
+     *
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody: {
+        content: {
+          'application/json': {
+            new_password: string;
+            repeat_new_password: string;
+            verify: string;
+          };
+        };
+      };
+      responses: never;
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/auth/logout': {
     parameters: {
       query?: never;
@@ -574,6 +612,60 @@ export interface paths {
     };
     put?: never;
     post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/transactions/pay': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Создать платеж
+     * @description Создать платеж
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          'application/json': {
+            course_id: number;
+          };
+        };
+      };
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': {
+              publicId: string;
+              amount: number;
+              currency: string;
+              description: string;
+              email: string;
+              invoiceId: string;
+              accountId: string;
+            };
+          };
+        };
+        401: components['responses']['UnauthorizedResponse'];
+      };
+    };
     delete?: never;
     options?: never;
     head?: never;
@@ -1532,7 +1624,7 @@ export interface components {
     /** @description Модуль для админа */
     AdminModule: components['schemas']['BaseModule'] & {
       published: boolean;
-      lessons_count: number;
+      lessons_amount: number;
     };
     ReorderPayload: {
       id: number;

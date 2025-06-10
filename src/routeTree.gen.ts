@@ -20,6 +20,7 @@ import { Route as educationGuardIndexImport } from './routes/(education)/_guard/
 import { Route as AuthGuardSignUpImport } from './routes/auth/_guard/sign-up';
 import { Route as AuthGuardSignInImport } from './routes/auth/_guard/sign-in';
 import { Route as AuthGuardRecoverPasswordImport } from './routes/auth/_guard/recover-password';
+import { Route as AuthGuardNewPasswordImport } from './routes/auth/_guard/new-password';
 import { Route as AdminGuardUsersImport } from './routes/admin/_guard/users';
 import { Route as AdminGuardTransactionsImport } from './routes/admin/_guard/transactions';
 import { Route as educationGuardTransactionsImport } from './routes/(education)/_guard/transactions';
@@ -94,6 +95,12 @@ const AuthGuardSignInRoute = AuthGuardSignInImport.update({
 const AuthGuardRecoverPasswordRoute = AuthGuardRecoverPasswordImport.update({
   id: '/recover-password',
   path: '/recover-password',
+  getParentRoute: () => AuthGuardRoute,
+} as any);
+
+const AuthGuardNewPasswordRoute = AuthGuardNewPasswordImport.update({
+  id: '/new-password',
+  path: '/new-password',
   getParentRoute: () => AuthGuardRoute,
 } as any);
 
@@ -252,6 +259,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminGuardUsersImport;
       parentRoute: typeof AdminGuardImport;
     };
+    '/auth/_guard/new-password': {
+      id: '/auth/_guard/new-password';
+      path: '/new-password';
+      fullPath: '/auth/new-password';
+      preLoaderRoute: typeof AuthGuardNewPasswordImport;
+      parentRoute: typeof AuthGuardImport;
+    };
     '/auth/_guard/recover-password': {
       id: '/auth/_guard/recover-password';
       path: '/recover-password';
@@ -398,12 +412,14 @@ const AdminRouteChildren: AdminRouteChildren = {
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren);
 
 interface AuthGuardRouteChildren {
+  AuthGuardNewPasswordRoute: typeof AuthGuardNewPasswordRoute;
   AuthGuardRecoverPasswordRoute: typeof AuthGuardRecoverPasswordRoute;
   AuthGuardSignInRoute: typeof AuthGuardSignInRoute;
   AuthGuardSignUpRoute: typeof AuthGuardSignUpRoute;
 }
 
 const AuthGuardRouteChildren: AuthGuardRouteChildren = {
+  AuthGuardNewPasswordRoute: AuthGuardNewPasswordRoute,
   AuthGuardRecoverPasswordRoute: AuthGuardRecoverPasswordRoute,
   AuthGuardSignInRoute: AuthGuardSignInRoute,
   AuthGuardSignUpRoute: AuthGuardSignUpRoute,
@@ -430,6 +446,7 @@ export interface FileRoutesByFullPath {
   '/transactions': typeof educationGuardTransactionsRoute;
   '/admin/transactions': typeof AdminGuardTransactionsRoute;
   '/admin/users': typeof AdminGuardUsersRoute;
+  '/auth/new-password': typeof AuthGuardNewPasswordRoute;
   '/auth/recover-password': typeof AuthGuardRecoverPasswordRoute;
   '/auth/sign-in': typeof AuthGuardSignInRoute;
   '/auth/sign-up': typeof AuthGuardSignUpRoute;
@@ -450,6 +467,7 @@ export interface FileRoutesByTo {
   '/transactions': typeof educationGuardTransactionsRoute;
   '/admin/transactions': typeof AdminGuardTransactionsRoute;
   '/admin/users': typeof AdminGuardUsersRoute;
+  '/auth/new-password': typeof AuthGuardNewPasswordRoute;
   '/auth/recover-password': typeof AuthGuardRecoverPasswordRoute;
   '/auth/sign-in': typeof AuthGuardSignInRoute;
   '/auth/sign-up': typeof AuthGuardSignUpRoute;
@@ -476,6 +494,7 @@ export interface FileRoutesById {
   '/(education)/_guard/transactions': typeof educationGuardTransactionsRoute;
   '/admin/_guard/transactions': typeof AdminGuardTransactionsRoute;
   '/admin/_guard/users': typeof AdminGuardUsersRoute;
+  '/auth/_guard/new-password': typeof AuthGuardNewPasswordRoute;
   '/auth/_guard/recover-password': typeof AuthGuardRecoverPasswordRoute;
   '/auth/_guard/sign-in': typeof AuthGuardSignInRoute;
   '/auth/_guard/sign-up': typeof AuthGuardSignUpRoute;
@@ -500,6 +519,7 @@ export interface FileRouteTypes {
     | '/transactions'
     | '/admin/transactions'
     | '/admin/users'
+    | '/auth/new-password'
     | '/auth/recover-password'
     | '/auth/sign-in'
     | '/auth/sign-up'
@@ -519,6 +539,7 @@ export interface FileRouteTypes {
     | '/transactions'
     | '/admin/transactions'
     | '/admin/users'
+    | '/auth/new-password'
     | '/auth/recover-password'
     | '/auth/sign-in'
     | '/auth/sign-up'
@@ -543,6 +564,7 @@ export interface FileRouteTypes {
     | '/(education)/_guard/transactions'
     | '/admin/_guard/transactions'
     | '/admin/_guard/users'
+    | '/auth/_guard/new-password'
     | '/auth/_guard/recover-password'
     | '/auth/_guard/sign-in'
     | '/auth/_guard/sign-up'
@@ -629,6 +651,7 @@ export const routeTree = rootRoute._addFileChildren(rootRouteChildren)._addFileT
       "filePath": "auth/_guard.tsx",
       "parent": "/auth",
       "children": [
+        "/auth/_guard/new-password",
         "/auth/_guard/recover-password",
         "/auth/_guard/sign-in",
         "/auth/_guard/sign-up"
@@ -653,6 +676,10 @@ export const routeTree = rootRoute._addFileChildren(rootRouteChildren)._addFileT
     "/admin/_guard/users": {
       "filePath": "admin/_guard/users.tsx",
       "parent": "/admin/_guard"
+    },
+    "/auth/_guard/new-password": {
+      "filePath": "auth/_guard/new-password.tsx",
+      "parent": "/auth/_guard"
     },
     "/auth/_guard/recover-password": {
       "filePath": "auth/_guard/recover-password.tsx",

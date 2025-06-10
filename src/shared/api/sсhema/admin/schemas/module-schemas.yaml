@@ -7,8 +7,8 @@ schemas:
         properties:
           published:
             type: boolean
-          lessons_count:
+          lessons_amount:
             type: number
         required:
           - published
-          - lessons_count
+          - lessons_amount

@@ -58,9 +58,9 @@ export function ModuleLessons({ lessons }: ModuleLessonsProps) {
   };
 
   const handleSaveLessons = () => {
-    const mappedLessons = sortedLessons.map((lesson) => ({
+    const mappedLessons = sortedLessons.map((lesson, index) => ({
       id: lesson.id,
-      order: lesson.order,
+      order: index + 1,
     }));
 
     reorderLessons({ body: mappedLessons, params: { path: { moduleId: module } } });
