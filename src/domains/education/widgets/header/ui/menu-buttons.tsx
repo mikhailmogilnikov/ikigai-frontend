@@ -9,6 +9,7 @@ import { Divider } from '~/shared/ui/primitives/divider';
 import { Sheet } from '~/shared/ui/overlays/sheet';
 
 import { EducationMenu } from '../../menu';
+
 export function EducationHeaderMenuButtons() {
   return (
     <Flex align='center' gap='sm'>

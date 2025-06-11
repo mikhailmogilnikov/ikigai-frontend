@@ -18,7 +18,7 @@ schemas:
         type: string
       last_name:
         type: string
-      avatar_url:
+      image_url:
         type: string
       join_date:
         type: string
@@ -30,6 +30,7 @@ schemas:
       - phone
       - first_name
       - last_name
-      - avatar_url
+      - image_url
       - join_date
       - role
+      - email

@@ -9,7 +9,7 @@ const generateMockUser = (): ApiComponents['AdminUser'] => {
     first_name: faker.person.firstName(),
     last_name: faker.person.lastName(),
     role: faker.helpers.arrayElement(['admin', 'student']),
-    avatar_url: faker.image.url(),
+    image_url: faker.image.url(),
     join_date: faker.date.past().toISOString(),
     course_amount: faker.number.int({ min: 0, max: 10 }),
   };

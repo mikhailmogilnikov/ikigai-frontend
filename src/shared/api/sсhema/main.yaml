@@ -108,6 +108,42 @@ paths:
       tags:
         - auth
       $ref: ./auth/endpoints/auth.yaml#/Logout
+
+  /auth/update-current-user:
+    patch:
+      summary: "Обновление текущего пользователя"
+      description: |
+        Обновление текущего пользователя.
+      tags:
+        - auth
+      $ref: ./auth/endpoints/auth.yaml#/UpdateCurrentUser
+
+  /auth/upload-avatar:
+    patch:
+      summary: "Загрузка аватара"
+      description: |
+        Загрузка аватара пользователя.
+      tags:
+        - auth
+      $ref: ./auth/endpoints/auth.yaml#/UploadAvatar
+
+  /auth/delete-avatar:
+    delete:
+      summary: "Удаление аватара"
+      description: |
+        Удаление аватара пользователя.
+      tags:
+        - auth
+      $ref: ./auth/endpoints/auth.yaml#/DeleteAvatar
+
+  /auth/update-password:
+    patch:
+      summary: "Изменение пароля"
+      description: |
+        Изменение пароля пользователя.
+      tags:
+        - auth
+      $ref: ./auth/endpoints/auth.yaml#/UpdatePassword
   
   /auth/refresh:
     post:

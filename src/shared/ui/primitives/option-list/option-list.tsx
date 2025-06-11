@@ -24,10 +24,11 @@ export function OptionList(props: OptionListProps) {
 interface OptionListItemProps {
   children: React.ReactNode;
   pressable?: boolean;
+  onClick?: () => void;
 }
 
 export function OptionListItem(props: OptionListItemProps) {
-  const { children, pressable } = props;
+  const { children, pressable, onClick } = props;
 
   return (
     <Flex
@@ -37,6 +38,7 @@ export function OptionListItem(props: OptionListItemProps) {
         pressable &&
           'hover:bg-foreground/10 dark:hover:bg-foreground/5 active:bg-foreground/15 dark:active:bg-foreground/10 cursor-pointer transition-colors',
       )}
+      onClick={onClick}
     >
       {children}
     </Flex>

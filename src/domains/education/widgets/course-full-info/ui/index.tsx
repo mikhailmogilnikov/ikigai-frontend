@@ -15,7 +15,7 @@ export function CourseFullInfo({ course }: CourseFullInfoProps) {
   const isMobile = useMediaQuery(BREAKPOINT_MOBILE);
 
   return (
-    <Flex gap='lg'>
+    <Flex gap='lg' className='w-full'>
       {isMobile ? <CourseFullInfoMobile course={course} /> : <CourseFullInfoDesktop course={course} />}
     </Flex>
   );

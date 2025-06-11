@@ -30,6 +30,12 @@ completeLesson:
   description: "Отметить урок как пройденный"
   # security:
   #   - BearerAuth: []
+  parameters:
+    - name: lessonId
+      in: path
+      required: true
+      schema:
+        type: number
   requestBody:
     required: true
     content:
@@ -38,7 +44,7 @@ completeLesson:
           type: object
           properties:
             lesson_id:
-              type: string
+              type: number
           required:
             - lesson_id
   responses:

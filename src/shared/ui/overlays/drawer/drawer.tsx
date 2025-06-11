@@ -64,7 +64,7 @@ export function DrawerHeader(props: DrawerHeaderProps) {
 
   return (
     <div className={cn('flex shrink-0 flex-col gap-4 p-4', className)} {...wrapperProps}>
-      <VaulDrawer.Title {...rest} className='shrink-0 text-2xl font-semibold' />
+      <VaulDrawer.Title {...rest} className='mt-6 shrink-0 text-2xl font-semibold' />
       <VisuallyHidden asChild>
         <VaulDrawer.Description />
       </VisuallyHidden>

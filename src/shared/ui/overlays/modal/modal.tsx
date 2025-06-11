@@ -70,7 +70,7 @@ export function ModalHeader(props: ModalHeaderProps) {
   const { wrapperProps, restContent, ...rest } = props;
 
   return (
-    <div className='flex shrink-0 flex-col gap-4 p-4 px-5' {...wrapperProps}>
+    <div className='pr-13 flex shrink-0 flex-col gap-4 p-4 px-5' {...wrapperProps}>
       <Dialog.Title {...rest} className='shrink-0 text-2xl font-semibold' />
       <VisuallyHidden asChild>
         <Dialog.Description />

@@ -19,7 +19,7 @@ const MOCK_USER_ME = {
   email: faker.internet.email(),
   first_name: faker.person.firstName(),
   last_name: faker.person.lastName(),
-  avatar_url: faker.image.avatarGitHub(), // faker.image.avatar() более общий, но этот тоже подойдет
+  image_url: faker.image.avatarGitHub(), // faker.image.avatar() более общий, но этот тоже подойдет
   join_date: faker.date.past().toISOString(), // Используем past() для даты регистрации
   role: faker.helpers.arrayElement(['student', 'admin'] as const),
   // Дополнительные поля из ошибки линтера (статистика)

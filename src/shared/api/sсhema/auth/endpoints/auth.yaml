@@ -119,3 +119,77 @@ Logout:
       '401':
         $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
         
+UpdateCurrentUser:
+  summary: Обновление текущего пользователя
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            first_name:
+              type: string
+            last_name:
+              type: string
+          required:
+            - first_name
+            - last_name
+  responses:
+    '200':
+      description: OK
+    '401':
+      $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+
+UploadAvatar:
+  summary: Загрузка аватара
+  requestBody:
+    required: true
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            file:
+              type: string
+              format: binary
+          required:
+            - file
+  responses:
+    '200':
+      description: OK
+    '401':
+      $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+
+DeleteAvatar:
+  summary: Удаление аватара
+  responses:
+    '200':
+      description: OK
+    '401':
+      $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'
+
+UpdatePassword:
+  summary: Изменение пароля
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            old_password:
+              type: string
+            new_password:
+              type: string
+            repeat_new_password:
+              type: string
+          required:
+            - old_password
+            - new_password
+            - repeat_new_password
+  responses:
+    '200':
+      description: OK
+    '401':
+      $ref: '../../shared/responses.yaml#/schemas/UnauthorizedError'

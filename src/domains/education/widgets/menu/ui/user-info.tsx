@@ -6,14 +6,14 @@ import { Typo } from '~/shared/ui/primitives/typo';
 interface UserInfoProps {
   name: string;
   email: string;
-  avatar_url?: string;
+  image_url?: string;
   size?: 'sm' | 'md';
 }
 
-export function UserInfo({ name, email, avatar_url, size = 'sm' }: UserInfoProps) {
+export function UserInfo({ name, email, image_url, size = 'sm' }: UserInfoProps) {
   return (
     <Flex className='items-center gap-4'>
-      <Avatar src={avatar_url ?? undefined} alt='avatar' className={cn('size-24', size === 'sm' && 'size-16')} />
+      <Avatar src={image_url ?? undefined} alt='avatar' className={cn('size-24', size === 'sm' && 'size-16')} />
 
       <Flex col className='gap-0.5'>
         <Typo weight='semibold' size='lg'>

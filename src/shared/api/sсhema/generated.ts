@@ -267,6 +267,184 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/auth/update-current-user': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    /**
+     * Обновление текущего пользователя
+     * @description Обновление текущего пользователя.
+     *
+     */
+    patch: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody: {
+        content: {
+          'application/json': {
+            first_name: string;
+            last_name: string;
+          };
+        };
+      };
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        401: components['responses']['UnauthorizedError'];
+      };
+    };
+    trace?: never;
+  };
+  '/auth/upload-avatar': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    /**
+     * Загрузка аватара
+     * @description Загрузка аватара пользователя.
+     *
+     */
+    patch: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody: {
+        content: {
+          'multipart/form-data': {
+            /** Format: binary */
+            file: string;
+          };
+        };
+      };
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        401: components['responses']['UnauthorizedError'];
+      };
+    };
+    trace?: never;
+  };
+  '/auth/delete-avatar': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /**
+     * Удаление аватара
+     * @description Удаление аватара пользователя.
+     *
+     */
+    delete: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        401: components['responses']['UnauthorizedError'];
+      };
+    };
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/auth/update-password': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    /**
+     * Изменение пароля
+     * @description Изменение пароля пользователя.
+     *
+     */
+    patch: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody: {
+        content: {
+          'application/json': {
+            old_password: string;
+            new_password: string;
+            repeat_new_password: string;
+          };
+        };
+      };
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        401: components['responses']['UnauthorizedError'];
+      };
+    };
+    trace?: never;
+  };
   '/auth/refresh': {
     parameters: {
       query?: never;
@@ -547,13 +725,15 @@ export interface paths {
       parameters: {
         query?: never;
         header?: never;
-        path?: never;
+        path: {
+          lessonId: number;
+        };
         cookie?: never;
       };
       requestBody: {
         content: {
           'application/json': {
-            lesson_id: string;
+            lesson_id: number;
           };
         };
       };
@@ -1512,6 +1692,7 @@ export interface components {
     /** @description Урок в курсе */
     CourseLesson: components['schemas']['BaseLesson'] & {
       is_completed: boolean;
+      is_have_access?: boolean;
     };
     /**
      * Модуль с уроками
@@ -1589,10 +1770,10 @@ export interface components {
     /** @description Базовая схема пользователя */
     BaseUser: {
       id: number;
-      email?: string;
+      email: string;
       first_name: string;
       last_name: string;
-      avatar_url: string;
+      image_url: string;
       join_date: string;
       role: components['schemas']['UserRoles'];
     };

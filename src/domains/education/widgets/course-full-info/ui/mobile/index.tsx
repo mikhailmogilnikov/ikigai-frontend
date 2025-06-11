@@ -8,7 +8,7 @@ import { CourseFullInfoWidget } from '../widget';
 
 export function CourseFullInfoMobile({ course }: CourseFullInfoProps) {
   return (
-    <Flex col>
+    <Flex col className='w-full'>
       <Typo as='h2' size='2xl' weight='semibold'>
         {course.title}
       </Typo>

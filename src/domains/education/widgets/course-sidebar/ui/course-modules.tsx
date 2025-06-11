@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import clsx from 'clsx';
-import { PiCheckBold } from 'react-icons/pi';
+import { PiCheckBold, PiLockBold } from 'react-icons/pi';
 import { useEffect, useState } from 'react';
 import { Trans } from '@lingui/react/macro';
 
@@ -67,24 +67,36 @@ export function CourseModules({ courseModules, courseId, activeLessonId }: Cours
               </AccordionTrigger>
               <AccordionContent className='mt-4'>
                 <Flex col className='gap-0.5'>
-                  {module.lessons.map((lesson) => (
-                    <Link
-                      to={'/courses/$course/lessons/$lesson'}
-                      params={{ course: courseId, lesson: lesson.id.toString() }}
-                      key={lesson.id}
-                      className={clsx(
-                        'hover:bg-default flex items-center justify-between gap-2 rounded-md py-2 transition-all hover:px-2',
-                        lesson.id === Number(activeLessonId) && 'bg-default px-2',
-                      )}
-                    >
-                      {lesson.title}
-                      {lesson.is_completed && (
-                        <div>
-                          <PiCheckBold className='text-success' />
-                        </div>
-                      )}
-                    </Link>
-                  ))}
+                  {module.lessons.map((lesson) => {
+                    const isLessonCompleted = lesson.is_completed;
+                    const isLessonHaveAccess = lesson.is_have_access;
+
+                    return (
+                      <Link
+                        to={'/courses/$course/lessons/$lesson'}
+                        disabled={!isLessonHaveAccess}
+                        data-disabled={!isLessonHaveAccess}
+                        params={{ course: courseId, lesson: lesson.id.toString() }}
+                        key={lesson.id}
+                        className={clsx(
+                          'hover:bg-default flex items-center justify-between gap-2 rounded-md py-2 transition-all hover:px-2 data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50',
+                          lesson.id === Number(activeLessonId) && 'bg-default px-2',
+                        )}
+                      >
+                        {lesson.title}
+                        {isLessonCompleted && (
+                          <div>
+                            <PiCheckBold className='text-success' />
+                          </div>
+                        )}
+                        {!isLessonHaveAccess && (
+                          <div>
+                            <PiLockBold className='text-foreground' />
+                          </div>
+                        )}
+                      </Link>
+                    );
+                  })}
                 </Flex>
               </AccordionContent>
             </AccordionItem>

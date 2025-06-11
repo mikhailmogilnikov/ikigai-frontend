@@ -12,12 +12,16 @@ import {
 import { Avatar } from '~/shared/ui/primitives/avatar';
 import { Flex } from '~/shared/ui/primitives/flex';
 import { LogoutButton } from '~/domains/global/features/logout';
+import { rqClient } from '~/shared/api';
+import { Skeleton } from '~/shared/ui/primitives/skeleton';
 
 import { UserInfo } from './user-info';
 import { MenuNavigation } from './navigation';
 import { MenuSettings } from './settings';
 
 export function EducationMenu() {
+  const { data, isLoading } = rqClient.useQuery('get', '/users/me');
+
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenChange = () => {
@@ -38,7 +42,7 @@ export function EducationMenu() {
           className='size-3 opacity-40 transition-transform data-[open=true]:rotate-180'
           data-open={isOpen}
         />
-        <Avatar src='https://i.pravatar.cc/300' alt='avatar' className='size-10' />
+        <Avatar src={data?.image_url ?? undefined} alt='avatar' className='size-10' />
       </button>
 
       <AdaptiveModal open={isOpen} onOpenChange={handleOpenChange}>
@@ -49,8 +53,12 @@ export function EducationMenu() {
         </VisuallyHidden>
         <AdaptiveModalContent>
           <Flex col className='mt-4 gap-8 max-md:mt-12 md:mb-4'>
-            {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
-            <UserInfo name='Михаил Могильников' email='mikhail@mogilnikov.ru' avatar_url='https://i.pravatar.cc/300' />
+            {isLoading || !data ? (
+              <Skeleton />
+            ) : (
+              <UserInfo name={`${data.first_name} ${data.last_name}`} email={data.email} image_url={data.image_url} />
+            )}
+
             <MenuNavigation closeMenu={handleCloseMenu} />
             <MenuSettings />
           </Flex>
