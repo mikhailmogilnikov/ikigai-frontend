@@ -1,10 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useLingui } from '@lingui/react/macro';
+import { useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
-import { publicRqClient } from '~/shared/api/instance';
+import { publicRqClient, rqClient } from '~/shared/api/instance';
 
 export const useChangeMainData = ({
   firstName,
@@ -16,6 +17,7 @@ export const useChangeMainData = ({
   onSuccess?: () => void;
 }) => {
   const { t } = useLingui();
+  const queryClient = useQueryClient();
 
   const changeMainDataFormSchema = z.object({
     first_name: z.string().min(1, t`Имя должно быть не менее 1 символа`),
@@ -41,7 +43,8 @@ export const useChangeMainData = ({
           message: t`Проверьте введенные данные`,
         });
       },
-      onSuccess: () => {
+      onSuccess: async () => {
+        await queryClient.invalidateQueries(rqClient.queryOptions('get', '/users/me'));
         form.reset();
         toast.success(t`Данные успешно изменены`);
         onSuccess?.();
