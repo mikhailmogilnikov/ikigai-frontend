@@ -1,7 +1,7 @@
 import createFetchClient from 'openapi-fetch';
 import createReactQueryClient from 'openapi-react-query';
 
-import { useSession } from '~/domains/global/entities/session';
+import { useSession } from '~/domains/global/entities/session/lib/hooks/use-session';
 
 import { CONFIG } from '../config';
 

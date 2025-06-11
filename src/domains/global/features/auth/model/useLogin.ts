@@ -3,7 +3,7 @@ import { useLingui } from '@lingui/react/macro';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { useSession } from '~/domains/global/entities/session';
+import { useSession } from '~/domains/global/entities/session/lib/hooks/use-session';
 import { publicRqClient } from '~/shared/api/instance';
 
 export const useLogin = () => {

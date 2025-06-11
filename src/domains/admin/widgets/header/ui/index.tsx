@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router';
 
 import { LogoIcon } from '~/shared/assets/svg/logo';
 import { Flex } from '~/shared/ui/primitives/flex';
-import { useSession } from '~/domains/global/entities/session';
+import { useSession } from '~/domains/global/entities/session/lib/hooks/use-session';
 import { AdminSearch } from '~/domains/admin/features/search';
 
 import { HeaderDesktopNavigationAdmin } from './desktop-navigation';

@@ -12,7 +12,7 @@ import { routeTree } from './routeTree.gen';
 import { PageLoader } from './shared/ui/common/page-loader';
 import { NotFoundPage } from './domains/global/widgets/not-found';
 import { DefaultErrorPage } from './domains/global/widgets/error-page';
-import { useSession } from './domains/global/entities/session';
+import { useSession } from './domains/global/entities/session/lib/hooks/use-session';
 
 const queryClient = new QueryClient(queryClientConfig);
 

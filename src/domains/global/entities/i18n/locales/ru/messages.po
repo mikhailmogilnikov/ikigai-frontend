@@ -257,7 +257,7 @@ msgstr "Громкость"
 msgid "Да"
 msgstr "Да"
 
-#: src/domains/education/features/edit-user/model/useChangeMainData.ts:46
+#: src/domains/education/features/edit-user/model/useChangeMainData.ts:49
 msgid "Данные успешно изменены"
 msgstr "Данные успешно изменены"
 
@@ -386,7 +386,7 @@ msgid "Имя"
 msgstr "Имя"
 
 #: src/domains/global/features/auth/model/useRegistration.ts:27
-#: src/domains/education/features/edit-user/model/useChangeMainData.ts:21
+#: src/domains/education/features/edit-user/model/useChangeMainData.ts:23
 msgid "Имя должно быть не менее 1 символа"
 msgstr "Имя должно быть не менее 1 символа"
 
@@ -941,7 +941,7 @@ msgstr "Прежде чем завершить урок, пройдите тес
 msgid "Проверить"
 msgstr "Проверить"
 
-#: src/domains/education/features/edit-user/model/useChangeMainData.ts:41
+#: src/domains/education/features/edit-user/model/useChangeMainData.ts:43
 msgid "Проверьте введенные данные"
 msgstr "Проверьте введенные данные"
 
@@ -1239,7 +1239,7 @@ msgid "Фамилия"
 msgstr "Фамилия"
 
 #: src/domains/global/features/auth/model/useRegistration.ts:28
-#: src/domains/education/features/edit-user/model/useChangeMainData.ts:22
+#: src/domains/education/features/edit-user/model/useChangeMainData.ts:24
 msgid "Фамилия должна быть не менее 1 символа"
 msgstr "Фамилия должна быть не менее 1 символа"
 

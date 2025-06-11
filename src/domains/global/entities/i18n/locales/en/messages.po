@@ -257,7 +257,7 @@ msgstr "Volume"
 msgid "Да"
 msgstr "Yes"
 
-#: src/domains/education/features/edit-user/model/useChangeMainData.ts:46
+#: src/domains/education/features/edit-user/model/useChangeMainData.ts:49
 msgid "Данные успешно изменены"
 msgstr "Data updated successfully"
 
@@ -386,7 +386,7 @@ msgid "Имя"
 msgstr "First Name"
 
 #: src/domains/global/features/auth/model/useRegistration.ts:27
-#: src/domains/education/features/edit-user/model/useChangeMainData.ts:21
+#: src/domains/education/features/edit-user/model/useChangeMainData.ts:23
 msgid "Имя должно быть не менее 1 символа"
 msgstr "Name must be at least 1 character"
 
@@ -941,7 +941,7 @@ msgstr "Before completing the lesson, take tests on the learned material."
 msgid "Проверить"
 msgstr "Check"
 
-#: src/domains/education/features/edit-user/model/useChangeMainData.ts:41
+#: src/domains/education/features/edit-user/model/useChangeMainData.ts:43
 msgid "Проверьте введенные данные"
 msgstr "Please check the entered data"
 
@@ -1239,7 +1239,7 @@ msgid "Фамилия"
 msgstr "Last Name"
 
 #: src/domains/global/features/auth/model/useRegistration.ts:28
-#: src/domains/education/features/edit-user/model/useChangeMainData.ts:22
+#: src/domains/education/features/edit-user/model/useChangeMainData.ts:24
 msgid "Фамилия должна быть не менее 1 символа"
 msgstr "Last name must be at least 1 character"
 

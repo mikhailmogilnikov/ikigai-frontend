@@ -3,7 +3,7 @@ import { PiSignOutBold } from 'react-icons/pi';
 import { useQueryClient } from '@tanstack/react-query';
 
 import { Button } from '~/shared/ui/primitives/button/button';
-import { useSession } from '~/domains/global/entities/session';
+import { useSession } from '~/domains/global/entities/session/lib/hooks/use-session';
 
 export function LogoutButton() {
   const { logout } = useSession();
