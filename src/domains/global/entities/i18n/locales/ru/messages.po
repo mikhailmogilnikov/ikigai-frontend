@@ -32,11 +32,11 @@ msgstr "{amount, plural, one {Модуль} few {Модуля} many {Модул�
 msgid "{amount, plural, one {Урок} few {Урока} many {Уроков}}"
 msgstr "{amount, plural, one {Урок} few {Урока} many {Уроков}}"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:71
+#: src/domains/education/entities/course/ui/card/course-card.tsx:72
 msgid "{lessons_amount, plural, one {урок} few {урока} many {уроков}}"
 msgstr "{lessons_amount, plural, one {урок} few {урока} many {уроков}}"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:70
+#: src/domains/education/entities/course/ui/card/course-card.tsx:71
 msgid "{modules_amount, plural, one {модуль} few {модуля} many {модулей}}"
 msgstr "{modules_amount, plural, one {модуль} few {модуля} many {модулей}}"
 
@@ -143,11 +143,11 @@ msgstr "Введите код"
 msgid "Введите корректную ссылку"
 msgstr "Введите корректную ссылку"
 
-#: src/domains/education/features/edit-user/ui/change-password/modal.tsx:69
+#: src/domains/education/features/edit-user/ui/change-password/modal.tsx:67
 msgid "Введите новый пароль"
 msgstr "Введите новый пароль"
 
-#: src/domains/education/features/edit-user/ui/change-password/modal.tsx:48
+#: src/domains/education/features/edit-user/ui/change-password/modal.tsx:47
 msgid "Введите старый пароль"
 msgstr "Введите старый пароль"
 
@@ -314,7 +314,7 @@ msgstr "Добавьте ссылку на постер к видео"
 msgid "Дорожка"
 msgstr "Дорожка"
 
-#: src/domains/education/features/buy-course/ui/index.tsx:100
+#: src/domains/education/features/buy-course/ui/index.tsx:105
 msgid "Доступ к материалу: "
 msgstr "Доступ к материалу: "
 
@@ -451,11 +451,11 @@ msgstr "Корректно"
 msgid "Купите первый курс"
 msgstr "Купите первый курс"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:89
+#: src/domains/education/entities/course/ui/card/course-card.tsx:91
 msgid "Купить"
 msgstr "Купить"
 
-#: src/domains/education/widgets/course-full-info/ui/widget.tsx:96
+#: src/domains/education/widgets/course-full-info/ui/widget.tsx:98
 msgid "Купить курс"
 msgstr "Купить курс"
 
@@ -469,7 +469,11 @@ msgstr "Курс"
 msgid "Курс \"{title}\" успешно добавлен"
 msgstr "Курс \"{title}\" успешно добавлен"
 
-#: src/domains/education/features/buy-course/ui/index.tsx:65
+#: src/domains/education/features/get-free-course/ui/index.tsx:27
+msgid "Курс добавлен в вашу коллекцию"
+msgstr "Курс добавлен в вашу коллекцию"
+
+#: src/domains/education/features/buy-course/ui/index.tsx:70
 msgid "Курс успешно оплачен"
 msgstr "Курс успешно оплачен"
 
@@ -564,7 +568,7 @@ msgstr "Название не может быть пустым"
 msgid "Название урока"
 msgstr "Название урока"
 
-#: src/domains/education/features/buy-course/ui/index.tsx:88
+#: src/domains/education/features/buy-course/ui/index.tsx:93
 msgid "Название: "
 msgstr "Название: "
 
@@ -577,11 +581,11 @@ msgstr "Настройки"
 msgid "Настройки звука"
 msgstr "Настройки звука"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:125
+#: src/domains/education/entities/course/ui/card/course-card.tsx:132
 msgid "Начать"
 msgstr "Начать"
 
-#: src/domains/education/widgets/course-full-info/ui/widget.tsx:68
+#: src/domains/education/widgets/course-full-info/ui/widget.tsx:69
 msgid "Начать курс"
 msgstr "Начать курс"
 
@@ -634,6 +638,10 @@ msgstr "Не удалось переместить модули"
 msgid "Не удалось переместить уроки"
 msgstr "Не удалось переместить уроки"
 
+#: src/domains/education/features/get-free-course/ui/index.tsx:19
+msgid "Не удалось получить бесплатный курс"
+msgstr "Не удалось получить бесплатный курс"
+
 #: src/routes/admin/_guard/courses_/$course_.modules_.$module_.lessons_.$lesson_.edit.tsx:39
 msgid "Не удалось сохранить изменения"
 msgstr "Не удалось сохранить изменения"
@@ -678,7 +686,7 @@ msgid "Ничего не найдено"
 msgstr "Ничего не найдено"
 
 #: src/domains/global/features/auth/ui/new-password-form.tsx:27
-#: src/domains/education/features/edit-user/ui/change-password/modal.tsx:61
+#: src/domains/education/features/edit-user/ui/change-password/modal.tsx:60
 msgid "Новый пароль"
 msgstr "Новый пароль"
 
@@ -802,7 +810,7 @@ msgstr "Пароль успешно изменен"
 msgid "Пауза"
 msgstr "Пауза"
 
-#: src/domains/education/features/buy-course/ui/index.tsx:108
+#: src/domains/education/features/buy-course/ui/index.tsx:113
 msgid "Перейти к оплате"
 msgstr "Перейти к оплате"
 
@@ -851,7 +859,7 @@ msgid "По умолчанию"
 msgstr "По умолчанию"
 
 #: src/domains/global/features/auth/ui/new-password-form.tsx:43
-#: src/domains/education/features/edit-user/ui/change-password/modal.tsx:90
+#: src/domains/education/features/edit-user/ui/change-password/modal.tsx:87
 msgid "Повторите новый пароль"
 msgstr "Повторите новый пароль"
 
@@ -860,11 +868,11 @@ msgid "Повторите пароль"
 msgstr "Повторите пароль"
 
 #: src/shared/ui/common/video-player/use-video.ts:59
-#: src/domains/education/entities/course/ui/card/course-card.tsx:127
+#: src/domains/education/entities/course/ui/card/course-card.tsx:134
 msgid "Повторить"
 msgstr "Повторить"
 
-#: src/domains/education/widgets/course-full-info/ui/widget.tsx:70
+#: src/domains/education/widgets/course-full-info/ui/widget.tsx:71
 msgid "Повторить курс"
 msgstr "Повторить курс"
 
@@ -876,8 +884,8 @@ msgstr "Подключение"
 msgid "Подключено"
 msgstr "Подключено"
 
-#: src/domains/education/entities/course/ui/card/course-card.tsx:80
-#: src/domains/education/entities/course/ui/card/course-card.tsx:117
+#: src/domains/education/entities/course/ui/card/course-card.tsx:81
+#: src/domains/education/entities/course/ui/card/course-card.tsx:124
 msgid "Подробнее"
 msgstr "Подробнее"
 
@@ -885,7 +893,7 @@ msgstr "Подробнее"
 msgid "Подтвердите действие"
 msgstr "Подтвердите действие"
 
-#: src/domains/education/features/edit-user/ui/change-password/modal.tsx:82
+#: src/domains/education/features/edit-user/ui/change-password/modal.tsx:80
 msgid "Подтвердите новый пароль"
 msgstr "Подтвердите новый пароль"
 
@@ -911,13 +919,21 @@ msgstr "Поиск"
 msgid "Показать пароль"
 msgstr "Показать пароль"
 
-#: src/domains/education/features/buy-course/ui/index.tsx:82
+#: src/domains/education/features/buy-course/ui/index.tsx:87
 msgid "Покупка курса"
 msgstr "Покупка курса"
 
 #: src/shared/ui/common/video-player/use-video.ts:47
 msgid "Полноэкранный режим"
 msgstr "Полноэкранный режим"
+
+#: src/domains/education/entities/course/ui/card/course-card.tsx:95
+msgid "Получить"
+msgstr "Получить"
+
+#: src/domains/education/widgets/course-full-info/ui/widget.tsx:102
+msgid "Получить бесплатно"
+msgstr "Получить бесплатно"
 
 #: src/domains/admin/widgets/header/ui/desktop-navigation.tsx:22
 msgid "Пользователи"
@@ -933,7 +949,7 @@ msgstr "Посмотреть другие курсы"
 msgid "Почта"
 msgstr "Почта"
 
-#: src/domains/education/widgets/lesson-tests/ui/index.tsx:100
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:102
 msgid "Прежде чем завершить урок, пройдите тесты по усвоенному материалу."
 msgstr "Прежде чем завершить урок, пройдите тесты по усвоенному материалу."
 
@@ -949,7 +965,7 @@ msgstr "Проверьте введенные данные"
 msgid "Проверьте правильность старого пароля"
 msgstr "Проверьте правильность старого пароля"
 
-#: src/domains/education/widgets/lesson-tests/ui/index.tsx:97
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:99
 msgid "Проверьте себя"
 msgstr "Проверьте себя"
 
@@ -962,12 +978,12 @@ msgid "Программа курса"
 msgstr "Программа курса"
 
 #: src/shared/ui/common/video-player/use-video.ts:40
-#: src/domains/education/entities/course/ui/card/course-card.tsx:126
+#: src/domains/education/entities/course/ui/card/course-card.tsx:133
 msgid "Продолжить"
 msgstr "Продолжить"
 
 #: src/routes/(education)/_guard/shop.tsx:38
-#: src/domains/education/widgets/course-full-info/ui/widget.tsx:69
+#: src/domains/education/widgets/course-full-info/ui/widget.tsx:70
 msgid "Продолжить обучение"
 msgstr "Продолжить обучение"
 
@@ -980,8 +996,8 @@ msgid "Произошла непредвиденная ошибка. Попро�
 msgstr "Произошла непредвиденная ошибка. Попробуйте позже."
 
 #: src/domains/education/widgets/course-sidebar/ui/course-progress.tsx:27
-#: src/domains/education/widgets/course-full-info/ui/widget.tsx:55
-#: src/domains/education/entities/course/ui/card/course-card.tsx:109
+#: src/domains/education/widgets/course-full-info/ui/widget.tsx:56
+#: src/domains/education/entities/course/ui/card/course-card.tsx:116
 msgid "Пройдено уроков: {completed_lessons_amount} / {lessons_amount}"
 msgstr "Пройдено уроков: {completed_lessons_amount} / {lessons_amount}"
 
@@ -1047,7 +1063,7 @@ msgstr "Скорость"
 msgid "Скрыть пароль"
 msgstr "Скрыть пароль"
 
-#: src/domains/education/widgets/lesson-tests/ui/index.tsx:114
+#: src/domains/education/widgets/lesson-tests/ui/index.tsx:116
 msgid "Следующий урок"
 msgstr "Следующий урок"
 
@@ -1056,7 +1072,7 @@ msgstr "Следующий урок"
 #~ msgstr "Сменить email"
 
 #: src/domains/education/features/edit-user/ui/change-password/modal.tsx:29
-#: src/domains/education/features/edit-user/ui/change-password/modal.tsx:102
+#: src/domains/education/features/edit-user/ui/change-password/modal.tsx:99
 #: src/domains/education/features/edit-user/ui/change-password/index.tsx:22
 msgid "Сменить пароль"
 msgstr "Сменить пароль"
@@ -1263,7 +1279,7 @@ msgstr "Цена за курс (₽)"
 msgid "Цена не может быть отрицательной"
 msgstr "Цена не может быть отрицательной"
 
-#: src/domains/education/features/buy-course/ui/index.tsx:94
+#: src/domains/education/features/buy-course/ui/index.tsx:99
 msgid "Цена: "
 msgstr "Цена: "
 

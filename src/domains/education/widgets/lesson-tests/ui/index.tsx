@@ -55,7 +55,9 @@ export function LessonTests({ tests, modules }: LessonTestsProps) {
   const handleNextLesson = async () => {
     if (isNextLessonDisabled) return;
 
-    const currentLesson = modules.flatMap((module) => module.lessons).find((lesson) => lesson.id === activeLessonId);
+    const currentLesson = modules
+      .flatMap((module) => module.lessons)
+      .find((lesson) => lesson.id === Number(activeLessonId));
 
     if (!currentLesson?.is_completed) {
       await mutateAsync({

@@ -12,6 +12,7 @@ import { Typo } from '~/shared/ui/primitives/typo';
 import { Button } from '~/shared/ui/primitives/button/button';
 import { ApiComponents } from '~/shared/api';
 import { useBuyCourseModal } from '~/domains/education/features/buy-course';
+import { GetFreeCourseButton } from '~/domains/education/features/get-free-course';
 
 type CourseShop = ApiComponents['ShopCourse'];
 type CourseCollection = ApiComponents['MyCourse'];
@@ -79,15 +80,21 @@ function CourseCardContentShop(props: CourseCardProps) {
         <LinkButton to='/courses/$course' params={{ course: id.toString() }} className='dark:bg-foreground/5 w-full'>
           <Trans>Подробнее</Trans>
         </LinkButton>
-        <Button
-          className='w-full'
-          color='primary'
-          onClick={() => {
-            open({ id, title, price });
-          }}
-        >
-          <Trans>Купить</Trans>
-        </Button>
+        {price > 0 ? (
+          <Button
+            className='w-full'
+            color='primary'
+            onClick={() => {
+              open({ id, title, price });
+            }}
+          >
+            <Trans>Купить</Trans>
+          </Button>
+        ) : (
+          <GetFreeCourseButton courseId={id}>
+            <Trans>Получить</Trans>
+          </GetFreeCourseButton>
+        )}
       </Flex>
     </>
   );

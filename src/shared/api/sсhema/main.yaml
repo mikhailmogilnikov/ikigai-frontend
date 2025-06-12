@@ -194,6 +194,15 @@ paths:
       tags:
         - public  
       $ref: ./edu/endpoints/courses.yaml#/getCourseLessons
+
+  /courses/{courseId}/free:
+    post:
+      summary: "Получить бесплатный курс"
+      description: |
+        Получить бесплатный курс.
+      tags:
+        - public 
+      $ref: ./edu/endpoints/courses.yaml#/getFreeCourse
   
   /lessons/{lessonId}:
     get:

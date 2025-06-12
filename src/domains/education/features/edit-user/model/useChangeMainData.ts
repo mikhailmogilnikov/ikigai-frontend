@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
-import { publicRqClient, rqClient } from '~/shared/api/instance';
+import { rqClient } from '~/shared/api/instance';
 
 export const useChangeMainData = ({
   firstName,
@@ -34,23 +34,19 @@ export const useChangeMainData = ({
     },
   });
 
-  const { mutate: changeMainDataMutation, isPending } = publicRqClient.useMutation(
-    'patch',
-    '/auth/update-current-user',
-    {
-      onError: () => {
-        form.setError('last_name', {
-          message: t`Проверьте введенные данные`,
-        });
-      },
-      onSuccess: async () => {
-        await queryClient.invalidateQueries(rqClient.queryOptions('get', '/users/me'));
-        form.reset();
-        toast.success(t`Данные успешно изменены`);
-        onSuccess?.();
-      },
+  const { mutate: changeMainDataMutation, isPending } = rqClient.useMutation('patch', '/auth/update-current-user', {
+    onError: () => {
+      form.setError('last_name', {
+        message: t`Проверьте введенные данные`,
+      });
     },
-  );
+    onSuccess: async () => {
+      await queryClient.invalidateQueries(rqClient.queryOptions('get', '/users/me'));
+      form.reset();
+      toast.success(t`Данные успешно изменены`);
+      onSuccess?.();
+    },
+  });
 
   function onSubmit(values: ChangeMainDataFormSchema) {
     changeMainDataMutation({

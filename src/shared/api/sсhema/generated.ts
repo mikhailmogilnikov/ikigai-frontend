@@ -660,6 +660,48 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/courses/{courseId}/free': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Получить бесплатный курс
+     * @description Получить бесплатный курс.
+     *
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          courseId: number;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        401: components['responses']['UnauthorizedResponse'];
+        404: components['responses']['NotFoundResponse'];
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/lessons/{lessonId}': {
     parameters: {
       query?: never;

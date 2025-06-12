@@ -62,6 +62,11 @@ export function BuyCourseModal() {
     void queryClient.invalidateQueries(rqClient.queryOptions('get', '/courses/store'));
     void queryClient.invalidateQueries(rqClient.queryOptions('get', '/courses/my-courses'));
     void queryClient.invalidateQueries(rqClient.queryOptions('get', '/transactions'));
+    void queryClient.invalidateQueries(
+      rqClient.queryOptions('get', '/courses/{courseId}', {
+        params: { path: { courseId: course?.id.toString() ?? '' } },
+      }),
+    );
     toast.success(t`Курс успешно оплачен`);
     void navigate({ to: '/' });
     close();

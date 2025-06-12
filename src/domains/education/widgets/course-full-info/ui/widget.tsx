@@ -11,6 +11,7 @@ import { LinkButton } from '~/shared/ui/primitives/link-button';
 import { Divider } from '~/shared/ui/primitives/divider';
 import { Button } from '~/shared/ui/primitives/button/button';
 import { BuyCourseModal, useBuyCourseModal } from '~/domains/education/features/buy-course';
+import { GetFreeCourseButton } from '~/domains/education/features/get-free-course';
 
 import { CourseFullInfoProps } from '.';
 
@@ -92,9 +93,15 @@ const CourseFullInfoWidgetContentNotPurchased = ({
       <Typo as='p' size='xl' weight='semibold'>
         {Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 }).format(price)}
       </Typo>
-      <Button color='primary' className='w-full' onClick={handleBuyCourse}>
-        <Trans>Купить курс</Trans>
-      </Button>
+      {price > 0 ? (
+        <Button color='primary' className='w-full' onClick={handleBuyCourse}>
+          <Trans>Купить курс</Trans>
+        </Button>
+      ) : (
+        <GetFreeCourseButton courseId={id}>
+          <Trans>Получить бесплатно</Trans>
+        </GetFreeCourseButton>
+      )}
     </>
   );
 };

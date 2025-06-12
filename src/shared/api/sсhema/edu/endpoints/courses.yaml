@@ -86,4 +86,17 @@ getCourseLessons:
     <<: *publicResourceErrors
             
             
-            
+getFreeCourse:
+  description: "Получить бесплатный курс"
+  # security:
+  #   - BearerAuth: []
+  parameters:
+    - name: courseId
+      in: path
+      required: true
+      schema:
+        type: number
+  responses:
+    '200':
+      description: "OK"
+    <<: *publicErrors

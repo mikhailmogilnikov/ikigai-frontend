@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
-import { publicRqClient } from '~/shared/api/instance';
+import { rqClient } from '~/shared/api';
 
 export const useChangePassword = (onSuccess?: () => void) => {
   const { t } = useLingui();
@@ -38,7 +38,7 @@ export const useChangePassword = (onSuccess?: () => void) => {
     },
   });
 
-  const { mutate: changePasswordMutation, isPending } = publicRqClient.useMutation('patch', '/auth/update-password', {
+  const { mutate: changePasswordMutation, isPending } = rqClient.useMutation('patch', '/auth/update-password', {
     onError: () => {
       form.setError('old_password', {
         message: t`Проверьте правильность старого пароля`,

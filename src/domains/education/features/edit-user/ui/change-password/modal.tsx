@@ -10,7 +10,7 @@ import {
 import { Button } from '~/shared/ui/primitives/button/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '~/shared/ui/primitives/form';
 import { Flex } from '~/shared/ui/primitives/flex';
-import { Input } from '~/shared/ui/primitives/input';
+import { InputPassword } from '~/shared/ui/primitives/input';
 
 import { useChangePassword } from '../../model/useChangePassword';
 
@@ -40,10 +40,9 @@ export function ChangePasswordModal({ open, onOpenChange }: ChangePasswordModalP
                       <Trans>Старый пароль</Trans>
                     </FormLabel>
                     <FormControl>
-                      <Input
+                      <InputPassword
                         {...field}
-                        type='password'
-                        autoComplete='current-password'
+                        autoComplete='off'
                         className='bg-default mt-1'
                         placeholder={t`Введите старый пароль`}
                       />
@@ -61,9 +60,8 @@ export function ChangePasswordModal({ open, onOpenChange }: ChangePasswordModalP
                       <Trans>Новый пароль</Trans>
                     </FormLabel>
                     <FormControl>
-                      <Input
+                      <InputPassword
                         {...field}
-                        type='password'
                         autoComplete='new-password'
                         className='bg-default mt-1'
                         placeholder={t`Введите новый пароль`}
@@ -82,9 +80,8 @@ export function ChangePasswordModal({ open, onOpenChange }: ChangePasswordModalP
                       <Trans>Подтвердите новый пароль</Trans>
                     </FormLabel>
                     <FormControl>
-                      <Input
+                      <InputPassword
                         {...field}
-                        type='password'
                         autoComplete='new-password'
                         className='bg-default mt-1'
                         placeholder={t`Повторите новый пароль`}
