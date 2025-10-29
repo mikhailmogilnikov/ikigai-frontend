@@ -21,7 +21,7 @@ interface ChangePasswordModalProps {
 
 export function ChangePasswordModal({ open, onOpenChange }: ChangePasswordModalProps) {
   const { t } = useLingui();
-  const { form, onSubmit, isPending } = useChangePassword(onOpenChange);
+  const { form, onSubmit, isPending } = useChangePassword({ open, onSuccess: onOpenChange });
 
   return (
     <AdaptiveModal open={open} onOpenChange={onOpenChange}>

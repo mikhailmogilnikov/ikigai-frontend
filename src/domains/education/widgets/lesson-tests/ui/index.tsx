@@ -32,6 +32,7 @@ export function LessonTests({ tests, modules }: LessonTestsProps) {
       await queryClient.invalidateQueries(
         rqClient.queryOptions('get', '/courses/{courseId}/lessons', { params: { path: { courseId: course } } }),
       );
+      void queryClient.invalidateQueries(rqClient.queryOptions('get', '/courses/my-courses'));
     },
   });
 

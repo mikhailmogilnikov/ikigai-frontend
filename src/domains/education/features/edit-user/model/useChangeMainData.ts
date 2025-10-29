@@ -14,6 +14,7 @@ export const useChangeMainData = ({
 }: {
   firstName: string;
   lastName: string;
+  open: boolean;
   onSuccess?: () => void;
 }) => {
   const { t } = useLingui();
@@ -42,7 +43,6 @@ export const useChangeMainData = ({
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries(rqClient.queryOptions('get', '/users/me'));
-      form.reset();
       toast.success(t`Данные успешно изменены`);
       onSuccess?.();
     },

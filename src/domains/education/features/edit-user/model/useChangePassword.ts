@@ -1,12 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useLingui } from '@lingui/react/macro';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
 import { rqClient } from '~/shared/api';
 
-export const useChangePassword = (onSuccess?: () => void) => {
+export const useChangePassword = ({ open, onSuccess }: { open: boolean; onSuccess?: () => void }) => {
   const { t } = useLingui();
 
   const passwordSchema = z
@@ -38,6 +39,12 @@ export const useChangePassword = (onSuccess?: () => void) => {
     },
   });
 
+  useEffect(() => {
+    if (!open) {
+      form.reset();
+    }
+  }, [open, form]);
+
   const { mutate: changePasswordMutation, isPending } = rqClient.useMutation('patch', '/auth/update-password', {
     onError: () => {
       form.setError('old_password', {
@@ -46,7 +53,6 @@ export const useChangePassword = (onSuccess?: () => void) => {
     },
     onSuccess: () => {
       toast.success(t`Пароль успешно изменен`);
-      form.reset();
       onSuccess?.();
     },
   });

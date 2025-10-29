@@ -23,10 +23,19 @@ interface ChangeMainDataModalProps {
 
 export function ChangeMainDataModal({ open, onOpenChange, firstName, lastName }: ChangeMainDataModalProps) {
   const { t } = useLingui();
-  const { form, onSubmit, isPending } = useChangeMainData({ firstName, lastName, onSuccess: onOpenChange });
+  const { form, onSubmit, isPending } = useChangeMainData({ firstName, lastName, open, onSuccess: onOpenChange });
+
+  const handleOpenChange = () => {
+    form.reset({
+      first_name: firstName,
+      last_name: lastName,
+    });
+
+    onOpenChange();
+  };
 
   return (
-    <AdaptiveModal open={open} onOpenChange={onOpenChange}>
+    <AdaptiveModal open={open} onOpenChange={handleOpenChange}>
       <AdaptiveModalHeader>
         <Trans>Редактировать основные данные</Trans>
       </AdaptiveModalHeader>
